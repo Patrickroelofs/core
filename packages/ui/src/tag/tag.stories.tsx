@@ -24,9 +24,15 @@ export const Tones: Story = {
       <Tag tone="coral" defaultPressed={false}>
         Lead designer
       </Tag>
-      <Tag tone="azure" defaultPressed={false}>Design + front-end</Tag>
-      <Tag tone="plum" defaultPressed={false}>Founding</Tag>
-      <Tag tone="navy" defaultPressed={false}>Contractor</Tag>
+      <Tag tone="azure" defaultPressed={false}>
+        Design + front-end
+      </Tag>
+      <Tag tone="plum" defaultPressed={false}>
+        Founding
+      </Tag>
+      <Tag tone="navy" defaultPressed={false}>
+        Contractor
+      </Tag>
     </div>
   ),
 }
