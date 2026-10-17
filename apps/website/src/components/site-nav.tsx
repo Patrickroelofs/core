@@ -2,7 +2,7 @@ import { NavigationMenu } from '@core/ui/navigation-menu/navigation-menu'
 import { css } from '../../styled-system/css'
 
 const header = css({ display: 'flex', justifyContent: 'center', p: 'gutter' })
-const panel = css({ p: '3' })
+const panel = css({ p: '3', w: '[360px]' })
 
 // ponytail: mock data, replace with real content
 const work = [
@@ -30,7 +30,7 @@ export function SiteNav() {
             <NavigationMenu.Item key={label}>
               <NavigationMenu.Trigger>{label}</NavigationMenu.Trigger>
               <NavigationMenu.Content>
-                <div className={panel} style={{ width: 360 }}>
+                <div className={panel}>
                   {links.map((link) => (
                     <NavigationMenu.ContentLink key={link.title} {...link} />
                   ))}
