@@ -87,6 +87,33 @@ const click = async (locator) => {
   await locator.click()
   await pause(300)
 }
+// Eased scroll to a locator (centred) or an absolute y; scrollIntoView jumps, which looks jarring in a video.
+const scroll = async (target, ms = 900) => {
+  const run = (y) =>
+    page.evaluate(
+      ([to, ms]) =>
+        new Promise((resolve) => {
+          const from = scrollY
+          const start = performance.now()
+          const step = (now) => {
+            const t = Math.min(1, (now - start) / ms)
+            scrollTo(0, from + (to - from) * (t < 0.5 ? 4 * t ** 3 : 1 - (-2 * t + 2) ** 3 / 2))
+            t < 1 ? requestAnimationFrame(step) : resolve()
+          }
+          requestAnimationFrame(step)
+        }),
+      [y, ms],
+    )
+  const y =
+    typeof target === 'number'
+      ? target
+      : await target.evaluate((el) => {
+          const r = el.getBoundingClientRect()
+          return r.top + scrollY - (innerHeight - r.height) / 2
+        })
+  await run(y)
+  await pause(300)
+}
 const ready = async () => {
   if (readyAt) throw new Error('ready() must be called exactly once')
   await pause(1200)
@@ -94,7 +121,7 @@ const ready = async () => {
 }
 
 try {
-  await scenario.default({ baseURL, page, expect, click, moveCursor, pause, ready })
+  await scenario.default({ baseURL, page, expect, click, moveCursor, scroll, pause, ready })
   if (!readyAt) throw new Error('Scenario never called ready()')
   await pause(900)
 } finally {
