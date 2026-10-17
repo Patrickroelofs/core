@@ -3,7 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "predev": "pnpm --filter @core/ui prepare",
     "dev": "storybook dev -p 6006",
+    "prebuild": "pnpm --filter @core/ui prepare",
     "build": "storybook build"
   },
   "dependencies": {

@@ -1,0 +1,16 @@
+import { cva, type RecipeVariantProps } from '../../styled-system/css'
+
+export const titleStyles = cva({
+  base: { fontFamily: 'body', fontWeight: 'extralight', lineHeight: 'tight', letterSpacing: 'tight', margin: '0' },
+  variants: {
+    size: {
+      sm: { fontSize: 'step.3' },
+      md: { fontSize: 'step.4' },
+      lg: { fontSize: 'step.5' },
+      xl: { fontSize: 'step.6', lineHeight: 'none', letterSpacing: 'tighter' },
+    },
+  },
+  defaultVariants: { size: 'md' },
+})
+
+export type TitleVariants = NonNullable<RecipeVariantProps<typeof titleStyles>>

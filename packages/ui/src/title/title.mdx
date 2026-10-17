@@ -1,0 +1,32 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+import * as Stories from './title.stories'
+
+<Meta of={Stories} />
+
+# Title
+
+Heading on the Utopia fluid type scale (https://utopia.fyi). Sizes interpolate between viewport widths via `clamp()`, so no breakpoints are needed. Pick the element with `as`.
+
+```tsx
+import { Title } from '@core/ui/title/title'
+
+<Title as="h1" size="lg">Hello</Title>
+```
+
+<Canvas of={Stories.Default} />
+<Controls of={Stories.Default} />
+
+## Sizes
+
+`sm`, `md` (default), `lg`, `xl` map to fluid steps 3–6. `as` is `h1`–`h6`, `span` or `p` (default `h2`).
+
+<Canvas of={Stories.Sizes} />
+
+## Accessibility
+
+Pick the element with `as` so the heading outline stays correct; size is visual only.
+
+## Don't
+
+- Don't pass `className`; styling comes from the recipe.
+- Don't choose the size to get the heading level, or vice versa.
