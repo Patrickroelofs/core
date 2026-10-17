@@ -9,6 +9,7 @@ const meta = {
   component: Button,
   args: { children: 'Send message', icon: <ArrowUpRightIcon weight="bold" /> },
   argTypes: {
+    icon: { control: false },
     variant: { control: 'select', options: ['primary', 'accent', 'secondary', 'inverse', 'ghost', 'link'] },
     size: { control: 'inline-radio', options: ['sm', 'md', 'lg'] },
   },
