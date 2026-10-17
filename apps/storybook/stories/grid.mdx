@@ -1,0 +1,15 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Fluid/Grid" />
+
+# Fluid grid
+
+12 columns, max width `sizes.grid.max` (1240px), gutter `spacing.gutter` (fluid.s) and page margin `spacing.margin` (fluid.m).
+
+<div style={{ maxWidth: 'var(--sizes-grid-max)', margin: '0 auto', padding: '0 var(--spacing-margin)', background: 'var(--colors-bg-canvas)' }}>
+  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, minmax(0, 1fr))', gap: 'var(--spacing-gutter)' }}>
+    {Array.from({ length: 12 }, (_, i) => (
+      <div key={i} style={{ height: 120, background: 'var(--colors-accent-brand)', opacity: 0.8, color: 'var(--colors-fg-inverse)', font: '500 12px var(--fonts-mono)', padding: 4 }}>{i + 1}</div>
+    ))}
+  </div>
+</div>

@@ -39,6 +39,7 @@ export const semantic = defineSemanticTokens({
   },
   spacing: {
     control: { value: '{spacing.4}' },
-    gutter: { value: '{spacing.8}' },
+    gutter: { value: '{spacing.fluid.s}' },
+    margin: { value: '{spacing.fluid.m}' },
   },
 })

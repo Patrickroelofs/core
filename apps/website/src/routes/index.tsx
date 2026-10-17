@@ -8,12 +8,12 @@ const NAVY = c('fg-default')
 const SNOW = c('bg-canvas')
 const font = "var(--fonts-body)"
 const mono = "var(--fonts-mono)"
-const label: CSSProperties = { font: `500 13px ${font}` }
-const card: CSSProperties = { borderRadius: 'var(--radii-card)', padding: 28, display: 'flex', flexDirection: 'column', gap: 20 }
-const heading: CSSProperties = { margin: 0, font: `200 88px/0.9 ${font}`, letterSpacing: 'var(--letter-spacings-tighter)' }
-const sectionHead: CSSProperties = { gridColumn: 'span 12', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', padding: '56px 8px 8px', gap: 24 }
+const label: CSSProperties = { font: `500 var(--font-sizes-step--1) ${font}` }
+const card: CSSProperties = { borderRadius: 'var(--radii-card)', padding: 'var(--spacing-fluid-m)', display: 'flex', flexDirection: 'column', gap: 'var(--spacing-fluid-s)' }
+const heading: CSSProperties = { margin: 0, font: `200 var(--font-sizes-step-6)/0.9 ${font}`, letterSpacing: 'var(--letter-spacings-tighter)' }
+const sectionHead: CSSProperties = { gridColumn: 'span 12', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', padding: 'var(--spacing-fluid-xl) var(--spacing-fluid-2xs) var(--spacing-fluid-2xs)', gap: 'var(--spacing-gutter)' }
 const hatch = 'repeating-linear-gradient(135deg, rgba(25,32,54,.09) 0 1px, transparent 1px 11px), #dcdcdc'
-const pill: CSSProperties = { borderRadius: 'var(--radii-pill)', padding: '7px 14px', font: `500 14px ${font}` }
+const pill: CSSProperties = { borderRadius: 'var(--radii-pill)', padding: '7px 14px', font: `500 var(--font-sizes-step--1) ${font}` }
 const dim = (o: number): CSSProperties => ({ opacity: o })
 
 const work = [
@@ -71,7 +71,7 @@ function Home() {
       <link rel="stylesheet" precedence="default" href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&family=JetBrains+Mono:wght@400;500&display=swap" />
       <style precedence="default" href="home-page">{css}</style>
       <div style={{ maxWidth: 1440, margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0, 1fr))', gap: 16, padding: '24px 40px', font: `500 13px/1.3 ${font}` }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0, 1fr))', gap: 16, padding: 'var(--spacing-fluid-m) var(--spacing-margin)', font: `500 var(--font-sizes-step--1)/1.3 ${font}` }}>
           <span>Patrick Roelofs</span>
           <span style={dim(0.6)}>Product designer<br />+ front-end engineer</span>
           <span style={dim(0.6)}>Lisbon, PT<br />{clock} WEST</span>
@@ -80,21 +80,21 @@ function Home() {
           </span>
         </div>
 
-        <h1 className="wm" style={{ margin: 0, padding: '8px 32px 0', font: `900 clamp(72px, 14vw, 220px)/0.86 ${font}`, letterSpacing: 'var(--letter-spacings-tighter)', whiteSpace: 'nowrap', display: 'flex', flexDirection: 'column' }}>
+        <h1 className="wm" style={{ margin: 0, padding: 'var(--spacing-fluid-2xs) var(--spacing-margin) 0', font: `900 clamp(72px, 14vw, 220px)/0.86 ${font}`, letterSpacing: 'var(--letter-spacings-tighter)', whiteSpace: 'nowrap', display: 'flex', flexDirection: 'column' }}>
           {row(0, 7)}{row(7, 14)}
         </h1>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, minmax(0, 1fr))', gridAutoRows: 'minmax(120px, auto)', gap: 12, padding: 32 }}>
-          <div style={{ ...card, gridColumn: 'span 5', gridRow: 'span 3', background: c('accent-highlight'), color: SNOW, padding: 32, justifyContent: 'space-between', gap: 24 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, minmax(0, 1fr))', gridAutoRows: 'minmax(120px, auto)', gap: 'var(--spacing-gutter)', padding: 'var(--spacing-margin)' }}>
+          <div style={{ ...card, gridColumn: 'span 5', gridRow: 'span 3', background: c('accent-highlight'), color: SNOW, padding: 'var(--spacing-fluid-l)', justifyContent: 'space-between', gap: 'var(--spacing-fluid-m)' }}>
             <span style={{ ...label, ...dim(0.7) }}>About</span>
-            <p style={{ margin: 0, font: `400 34px/1.14 ${font}`, letterSpacing: 'var(--letter-spacings-tight)', textWrap: 'pretty' }}>
+            <p style={{ margin: 0, font: `400 var(--font-sizes-step-4)/1.14 ${font}`, letterSpacing: 'var(--letter-spacings-tight)', textWrap: 'pretty' }}>
               I turn tangled workflows into tools people <span style={{ fontWeight: 800 }}>actually enjoy</span> opening. Previously at a health-tech startup and a city transit lab.
             </p>
           </div>
           <div style={{ gridColumn: 'span 7', gridRow: 'span 3', borderRadius: 'var(--radii-card)', overflow: 'hidden', position: 'relative', minHeight: 380, background: hatch }}>
-            <span style={{ position: 'absolute', left: 24, top: 22, font: `400 11px ${mono}`, ...dim(0.6) }}>featured project screenshot</span>
+            <span style={{ position: 'absolute', left: 24, top: 22, font: `400 var(--font-sizes-step--2) ${mono}`, ...dim(0.6) }}>featured project screenshot</span>
             <div style={{ position: 'absolute', inset: 'auto 16px 16px 16px', background: SNOW, borderRadius: 'var(--radii-md)', padding: '16px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16 }}>
-              <span style={{ font: `800 22px ${font}`, letterSpacing: '-0.02em' }}>Shiftboard — nurse scheduling</span>
+              <span style={{ font: `800 var(--font-sizes-step-2) ${font}`, letterSpacing: '-0.02em' }}>Shiftboard — nurse scheduling</span>
               <span style={{ ...label, ...dim(0.6) }}>Case study →</span>
             </div>
           </div>
@@ -103,7 +103,7 @@ function Home() {
             <span style={{ ...label, display: 'flex', alignItems: 'center', gap: 8 }}>
               <span style={{ width: 8, height: 8, borderRadius: '50%', background: NAVY }} />Status
             </span>
-            <span style={{ font: `800 32px/1 ${font}`, letterSpacing: '-0.03em' }}>Available Feb 2027</span>
+            <span style={{ font: `800 var(--font-sizes-step-4)/1 ${font}`, letterSpacing: '-0.03em' }}>Available Feb 2027</span>
           </div>
           <div style={{ ...card, gridColumn: 'span 4', gridRow: 'span 2', background: c('accent-info'), color: SNOW, justifyContent: 'space-between' }}>
             <span style={{ ...label, ...dim(0.85) }}>Selected clients</span>
@@ -114,7 +114,7 @@ function Home() {
           <div style={{ ...card, gridColumn: 'span 5', gridRow: 'span 2', background: c('bg-inverse'), color: SNOW, gap: 14 }}>
             <span style={{ ...label, ...dim(0.6) }}>Latest writing</span>
             {posts.map(([t, d]) => (
-              <div key={t} style={{ display: 'flex', justifyContent: 'space-between', gap: 16, paddingBottom: 12, borderBottom: '1px solid rgba(240,240,240,.14)', font: `500 17px/1.25 ${font}` }}>
+              <div key={t} style={{ display: 'flex', justifyContent: 'space-between', gap: 16, paddingBottom: 12, borderBottom: '1px solid rgba(240,240,240,.14)', font: `500 var(--font-sizes-step-1)/1.25 ${font}` }}>
                 <span>{t}</span><span style={{ ...dim(0.5), fontSize: 13, whiteSpace: 'nowrap' }}>{d}</span>
               </div>
             ))}
@@ -126,11 +126,11 @@ function Home() {
           </div>
           {work.map((w) => (
             <div key={w.title} className="lift" style={{ gridColumn: 'span 6', borderRadius: 'var(--radii-card)', overflow: 'hidden', background: '#e4e4e4', display: 'flex', flexDirection: 'column' }}>
-              <div style={{ aspectRatio: '16/10', background: hatch, padding: '20px 24px', boxSizing: 'border-box', font: `400 11px ${mono}`, color: 'rgba(25,32,54,.6)' }}>{w.ph}</div>
+              <div style={{ aspectRatio: '16/10', background: hatch, padding: '20px 24px', boxSizing: 'border-box', font: `400 var(--font-sizes-step--2) ${mono}`, color: 'rgba(25,32,54,.6)' }}>{w.ph}</div>
               <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) auto', gap: '6px 16px', padding: '22px 24px 24px', alignItems: 'baseline' }}>
-                <span style={{ font: `800 30px/1 ${font}`, letterSpacing: '-0.035em' }}>{w.title}</span>
+                <span style={{ font: `800 var(--font-sizes-step-3)/1 ${font}`, letterSpacing: '-0.035em' }}>{w.title}</span>
                 <span style={{ ...label, ...dim(0.6) }}>{w.year}</span>
-                <span style={{ font: `400 16px/1.4 ${font}`, ...dim(0.75) }}>{w.desc}</span>
+                <span style={{ font: `400 var(--font-sizes-step-0)/1.4 ${font}`, ...dim(0.75) }}>{w.desc}</span>
                 <span style={{ justifySelf: 'end', padding: '6px 12px', borderRadius: 'var(--radii-pill)', font: `500 12px ${font}`, background: w.bg, color: w.fg }}>{w.role}</span>
               </div>
             </div>
@@ -143,8 +143,8 @@ function Home() {
           <div style={{ gridColumn: 'span 8', background: c('bg-inverse'), color: SNOW, borderRadius: 'var(--radii-card)', padding: '12px 32px' }}>
             {cv.map(([y, role, org, loc]) => (
               <div key={y + role} style={{ display: 'grid', gridTemplateColumns: '140px minmax(0, 1fr) auto', gap: 24, padding: '20px 0', borderBottom: '1px solid rgba(240,240,240,.12)', alignItems: 'baseline' }}>
-                <span style={{ font: `400 13px ${mono}`, ...dim(0.6) }}>{y}</span>
-                <span style={{ font: `300 22px/1.25 ${font}`, letterSpacing: '-0.015em' }}><b style={{ fontWeight: 700 }}>{role}</b> · {org}</span>
+                <span style={{ font: `400 var(--font-sizes-step--1) ${mono}`, ...dim(0.6) }}>{y}</span>
+                <span style={{ font: `300 var(--font-sizes-step-2)/1.25 ${font}`, letterSpacing: '-0.015em' }}><b style={{ fontWeight: 700 }}>{role}</b> · {org}</span>
                 <span style={{ ...label, ...dim(0.5) }}>{loc}</span>
               </div>
             ))}
@@ -158,19 +158,19 @@ function Home() {
             </div>
             <a href="#" className="cv" style={{ ...card, background: c('accent-brand'), color: NAVY, justifyContent: 'space-between', gap: 16 }}>
               <span style={label}>Full CV</span>
-              <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', font: `800 32px/1 ${font}`, letterSpacing: '-0.03em' }}>
+              <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', font: `800 var(--font-sizes-step-4)/1 ${font}`, letterSpacing: '-0.03em' }}>
                 Download PDF<span style={{ fontWeight: 300 }}>↓</span>
               </span>
             </a>
           </div>
 
           <a id="contact" href="mailto:hello@patrickroelofs.com" className="cta" style={{ gridColumn: 'span 12', marginTop: 48, border: `1.5px solid ${NAVY}`, borderRadius: 'var(--radii-card)', padding: '36px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap' }}>
-            <span style={{ font: `200 56px/1 ${font}`, letterSpacing: '-0.045em' }}>Let’s build something <span style={{ fontWeight: 900 }}>useful.</span></span>
-            <span style={{ font: `500 18px ${font}` }}>hello@patrickroelofs.com ↗</span>
+            <span style={{ font: `200 var(--font-sizes-step-5)/1 ${font}`, letterSpacing: '-0.045em' }}>Let’s build something <span style={{ fontWeight: 900 }}>useful.</span></span>
+            <span style={{ font: `500 var(--font-sizes-step-1) ${font}` }}>hello@patrickroelofs.com ↗</span>
           </a>
         </div>
 
-        <footer style={{ display: 'flex', justifyContent: 'space-between', gap: 24, padding: '8px 40px 32px', ...label, ...dim(0.6) }}>
+        <footer style={{ display: 'flex', justifyContent: 'space-between', gap: 24, padding: 'var(--spacing-fluid-2xs) var(--spacing-margin) var(--spacing-fluid-l)', ...label, ...dim(0.6) }}>
           <span>© 2026 Patrick Roelofs</span>
           <span style={{ display: 'flex', gap: 20 }}><span>Read.cv</span><span>GitHub</span><span>LinkedIn</span></span>
         </footer>

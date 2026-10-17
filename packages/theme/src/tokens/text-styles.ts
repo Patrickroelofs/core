@@ -6,18 +6,18 @@ export const textStyles = defineTextStyles({
     value: {
       fontFamily: 'body',
       fontWeight: 'extralight',
-      fontSize: '3xl',
+      fontSize: 'step.6',
       lineHeight: 'none',
       letterSpacing: 'tighter',
     },
   },
   body: {
-    value: { fontFamily: 'body', fontWeight: 'regular', fontSize: 'md', lineHeight: 'normal' },
+    value: { fontFamily: 'body', fontWeight: 'regular', fontSize: 'step.0', lineHeight: 'normal' },
   },
   label: {
-    value: { fontFamily: 'body', fontWeight: 'medium', fontSize: 'sm', lineHeight: 'snug' },
+    value: { fontFamily: 'body', fontWeight: 'medium', fontSize: 'step.-1', lineHeight: 'snug' },
   },
   mono: {
-    value: { fontFamily: 'mono', fontWeight: 'regular', fontSize: 'xs', lineHeight: 'snug' },
+    value: { fontFamily: 'mono', fontWeight: 'regular', fontSize: 'step.-2', lineHeight: 'snug' },
   },
 })
