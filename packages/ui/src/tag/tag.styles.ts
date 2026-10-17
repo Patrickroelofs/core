@@ -1,36 +1,4 @@
 import { cva, type RecipeVariantProps } from '../../styled-system/css'
-import type { SystemStyleObject } from '../../styled-system/types'
-
-type Tone = 'coral' | 'azure' | 'plum' | 'navy' | 'snow'
-type Appearance = 'solid' | 'outline' | 'soft'
-
-// [fill, text on fill]
-const tones = {
-  coral: ['coral', 'navy'],
-  azure: ['azure', 'snow'],
-  plum: ['plum', 'snow'],
-  navy: ['navy', 'snow'],
-  snow: ['snow', 'navy'],
-} as const satisfies Record<Tone, readonly [string, string]>
-
-const appearances = ['solid', 'outline', 'soft'] as const satisfies readonly Appearance[]
-
-const compoundVariants = (Object.keys(tones) as Tone[]).flatMap((tone) => {
-  const [fill, on] = tones[tone]
-  const filled: SystemStyleObject = { bg: fill, color: on, borderColor: fill }
-  return appearances.map((appearance) => {
-    const rest: Record<Appearance, SystemStyleObject> = {
-      solid: { bg: fill, color: on, borderColor: 'transparent' },
-      outline: { bg: 'transparent', color: fill, borderColor: fill },
-      soft: { bg: 'snow/12', color: 'inherit', borderColor: 'transparent' },
-    }
-    const base = rest[appearance]
-    // outline + soft fill in when selected or hovered (interactive only)
-    const css: SystemStyleObject =
-      appearance === 'solid' ? base : { ...base, '&[aria-pressed=true], &[data-interactive]:hover': filled }
-    return { tone, appearance, css }
-  })
-})
 
 export const tagStyles = cva({
   base: {
@@ -56,7 +24,158 @@ export const tagStyles = cva({
     },
     interactive: { true: { cursor: 'pointer' }, false: {} },
   },
-  compoundVariants,
+  compoundVariants: [
+    {
+      tone: 'coral',
+      appearance: 'solid',
+      css: {
+        bg: 'coral',
+        color: 'navy',
+        borderColor: 'transparent',
+        '&[aria-pressed=true], &[data-interactive]:hover': { boxShadow: '[inset 0 0 0 2px currentColor]' },
+      },
+    },
+    {
+      tone: 'coral',
+      appearance: 'outline',
+      css: {
+        bg: 'transparent',
+        color: 'coral',
+        borderColor: 'coral',
+        '&[aria-pressed=true], &[data-interactive]:hover': { bg: 'coral', color: 'navy', borderColor: 'coral' },
+      },
+    },
+    {
+      tone: 'coral',
+      appearance: 'soft',
+      css: {
+        bg: 'snow/12',
+        color: 'inherit',
+        borderColor: 'transparent',
+        '&[aria-pressed=true], &[data-interactive]:hover': { bg: 'coral', color: 'navy', borderColor: 'coral' },
+      },
+    },
+    {
+      tone: 'azure',
+      appearance: 'solid',
+      css: {
+        bg: 'azure',
+        color: 'snow',
+        borderColor: 'transparent',
+        '&[aria-pressed=true], &[data-interactive]:hover': { boxShadow: '[inset 0 0 0 2px currentColor]' },
+      },
+    },
+    {
+      tone: 'azure',
+      appearance: 'outline',
+      css: {
+        bg: 'transparent',
+        color: 'azure',
+        borderColor: 'azure',
+        '&[aria-pressed=true], &[data-interactive]:hover': { bg: 'azure', color: 'snow', borderColor: 'azure' },
+      },
+    },
+    {
+      tone: 'azure',
+      appearance: 'soft',
+      css: {
+        bg: 'snow/12',
+        color: 'inherit',
+        borderColor: 'transparent',
+        '&[aria-pressed=true], &[data-interactive]:hover': { bg: 'azure', color: 'snow', borderColor: 'azure' },
+      },
+    },
+    {
+      tone: 'plum',
+      appearance: 'solid',
+      css: {
+        bg: 'plum',
+        color: 'snow',
+        borderColor: 'transparent',
+        '&[aria-pressed=true], &[data-interactive]:hover': { boxShadow: '[inset 0 0 0 2px currentColor]' },
+      },
+    },
+    {
+      tone: 'plum',
+      appearance: 'outline',
+      css: {
+        bg: 'transparent',
+        color: 'plum',
+        borderColor: 'plum',
+        '&[aria-pressed=true], &[data-interactive]:hover': { bg: 'plum', color: 'snow', borderColor: 'plum' },
+      },
+    },
+    {
+      tone: 'plum',
+      appearance: 'soft',
+      css: {
+        bg: 'snow/12',
+        color: 'inherit',
+        borderColor: 'transparent',
+        '&[aria-pressed=true], &[data-interactive]:hover': { bg: 'plum', color: 'snow', borderColor: 'plum' },
+      },
+    },
+    {
+      tone: 'navy',
+      appearance: 'solid',
+      css: {
+        bg: 'navy',
+        color: 'snow',
+        borderColor: 'transparent',
+        '&[aria-pressed=true], &[data-interactive]:hover': { boxShadow: '[inset 0 0 0 2px currentColor]' },
+      },
+    },
+    {
+      tone: 'navy',
+      appearance: 'outline',
+      css: {
+        bg: 'transparent',
+        color: 'navy',
+        borderColor: 'navy',
+        '&[aria-pressed=true], &[data-interactive]:hover': { bg: 'navy', color: 'snow', borderColor: 'navy' },
+      },
+    },
+    {
+      tone: 'navy',
+      appearance: 'soft',
+      css: {
+        bg: 'snow/12',
+        color: 'inherit',
+        borderColor: 'transparent',
+        '&[aria-pressed=true], &[data-interactive]:hover': { bg: 'navy', color: 'snow', borderColor: 'navy' },
+      },
+    },
+    {
+      tone: 'snow',
+      appearance: 'solid',
+      css: {
+        bg: 'snow',
+        color: 'navy',
+        borderColor: 'transparent',
+        '&[aria-pressed=true], &[data-interactive]:hover': { boxShadow: '[inset 0 0 0 2px currentColor]' },
+      },
+    },
+    {
+      tone: 'snow',
+      appearance: 'outline',
+      css: {
+        bg: 'transparent',
+        color: 'snow',
+        borderColor: 'snow',
+        '&[aria-pressed=true], &[data-interactive]:hover': { bg: 'snow', color: 'navy', borderColor: 'snow' },
+      },
+    },
+    {
+      tone: 'snow',
+      appearance: 'soft',
+      css: {
+        bg: 'snow/12',
+        color: 'inherit',
+        borderColor: 'transparent',
+        '&[aria-pressed=true], &[data-interactive]:hover': { bg: 'snow', color: 'navy', borderColor: 'snow' },
+      },
+    },
+  ],
   defaultVariants: { tone: 'navy', appearance: 'solid', size: 'md', interactive: false },
 })
 
