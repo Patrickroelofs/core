@@ -18,7 +18,7 @@ Uploading changes an external PR. Always stop after rendering the local MP4, sho
 3. Write a scenario in `/tmp/core-demo-<name>.mjs`. Open a story with `?id=<title>--<story>` (see `packages/ui/src/**/*.stories.tsx`), assert the opening state, call `ready()` once, then 2–6 visible actions, ending on visible proof:
 
    ```js
-   export default async function ({ baseURL, page, expect, click, moveCursor, pause, ready }) {
+   export default async function ({ baseURL, page, expect, click, moveCursor, scroll, pause, ready }) {
      await page.goto(`${baseURL}/iframe.html?id=button--solid&viewMode=story`)
      const button = page.getByRole('button', { name: 'Button' })
      await expect(button).toBeVisible()
@@ -31,7 +31,7 @@ Uploading changes an external PR. Always stop after rendering the local MP4, sho
 
    Optional `export const colorScheme = 'dark'` to record dark mode.
 
-   Website scenarios use `page.goto(`${baseURL}/`)` (or another route) and scroll with `locator.scrollIntoViewIfNeeded()`; start from the top, end on visible proof. Pass `--base-url http://localhost:5173` in step 4.
+   Website scenarios use `page.goto(`${baseURL}/`)` (or another route) and scroll with `await scroll(locator)` (or `scroll(y)`; eased, optional second arg is duration in ms, default 900) instead of `scrollIntoViewIfNeeded()`, which jumps; start from the top, end on visible proof. Pass `--base-url http://localhost:5173` in step 4.
 4. Record: `node .claude/skills/record-pr-demo/record.mjs --scenario /tmp/core-demo-<name>.mjs --label <name>-take-1` (add `--base-url http://localhost:5173` for the website; `--viewport 1440x900` suits it). Use a new label per take. Output: `/tmp/core-pr-demo-<label>.mp4`, under 10 MB.
 5. Watch it, show the user the path + sha256, and **stop for approval**.
 6. After approval, recompute `sha256sum` (must match), then append to the PR body, preserving the existing text:
