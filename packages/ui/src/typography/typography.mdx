@@ -1,0 +1,32 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+import * as Stories from './typography.stories'
+
+<Meta of={Stories} />
+
+# Typography
+
+Body text on the Utopia fluid type scale. Renders a `<p>`; use `render` for other elements.
+
+```tsx
+import { Typography } from '@core/ui/typography/typography'
+
+<Typography size="1">Intro copy</Typography>
+```
+
+<Canvas of={Stories.Default} />
+<Controls of={Stories.Default} />
+
+## Sizes
+
+`-2`, `-1`, `0` (default), `1`, `2` map to fluid steps -2 to 2.
+
+<Canvas of={Stories.Sizes} />
+
+## Accessibility
+
+Sizes are fluid rem-based, so text respects user font settings.
+
+## Don't
+
+- Don't pass `className`; styling comes from the recipe.
+- Don't use it for headings (`Title`) or form labels (`Label`).

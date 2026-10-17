@@ -1,0 +1,32 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+import * as Stories from './label.stories'
+
+<Meta of={Stories} />
+
+# Label
+
+Form/UI label on the Utopia fluid type scale, medium weight. Renders a `<label>`; use `render` for a non-form caption.
+
+```tsx
+import { Label } from '@core/ui/label/label'
+
+<Label htmlFor="email">Email</Label>
+```
+
+<Canvas of={Stories.Default} />
+<Controls of={Stories.Default} />
+
+## Sizes
+
+`md` (default, step -1) and `sm` (step -2).
+
+<Canvas of={Stories.Sizes} />
+
+## Accessibility
+
+Associate with its control via `htmlFor`, or render a `span` when it is not a form label.
+
+## Don't
+
+- Don't pass `className`; styling comes from the recipe.
+- Don't leave a `<label>` without a control.
