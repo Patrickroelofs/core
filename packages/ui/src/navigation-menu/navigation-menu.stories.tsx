@@ -52,10 +52,19 @@ export const Default: Story = {
 }
 
 export const ContentLink: Story = {
-  render: () => (
-    <div style={{ width: 360 }}>
-      <NavigationMenu.ContentLink href="#" title="Loop Transit" meta="2023" description="Design + front-end" />
-      <NavigationMenu.ContentLink href="#" title="Title only" />
-    </div>
+  render: (args) => (
+    <NavigationMenu {...args} defaultValue="work">
+      <NavigationMenu.List>
+        <NavigationMenu.Item value="work">
+          <NavigationMenu.Trigger>Work</NavigationMenu.Trigger>
+          <NavigationMenu.Content>
+            <div style={{ width: 360, padding: 12 }}>
+              <NavigationMenu.ContentLink href="#" title="Loop Transit" meta="2023" description="Design + front-end" />
+              <NavigationMenu.ContentLink href="#" title="Title only" />
+            </div>
+          </NavigationMenu.Content>
+        </NavigationMenu.Item>
+      </NavigationMenu.List>
+    </NavigationMenu>
   ),
 }
