@@ -1,0 +1,32 @@
+{
+  "name": "@core/ui",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./styles.css": "./styles.css",
+    "./*": "./src/*.tsx"
+  },
+  "scripts": {
+    "prepare": "panda codegen && panda cssgen --outfile styles.css",
+    "dev": "panda --watch --outfile styles.css",
+    "build": "pnpm prepare",
+    "typecheck": "tsc -p ."
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.9.0",
+    "@core/theme": "workspace:*"
+  },
+  "devDependencies": {
+    "@pandacss/dev": "^2.2.0",
+    "@pandacss/preset-base": "^2.2.0",
+    "@pandacss/preset-panda": "^2.2.0",
+    "@storybook/react-vite": "^10.6.2",
+    "@types/react": "^19.0.0",
+    "react": "^19.0.0",
+    "typescript": "^5.9.0"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  }
+}

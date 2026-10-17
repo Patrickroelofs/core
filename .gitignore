@@ -147,3 +147,12 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# generated
+styled-system/
+packages/ui/styles.css
+routeTree.gen.ts
+storybook-static/
+.nitro/
+.tanstack/
+.DS_Store

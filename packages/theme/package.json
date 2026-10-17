@@ -1,0 +1,10 @@
+{
+  "name": "@core/theme",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": { "typecheck": "tsc -p ." },
+  "dependencies": { "@pandacss/dev": "^2.2.0" },
+  "devDependencies": { "typescript": "^5.9.0" }
+}
