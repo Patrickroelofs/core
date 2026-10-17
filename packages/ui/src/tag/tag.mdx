@@ -1,0 +1,39 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+import * as TagStories from './tag.stories'
+
+<Meta of={TagStories} />
+
+# Tag
+
+Static pill label for roles, clients and tools. Built on Base UI's `useRender`, so it renders a `<span>` by default and can swap element with the `render` prop.
+
+```tsx
+import { Tag } from '@core/ui/tag/tag'
+
+<Tag tone="coral" size="sm">Lead designer</Tag>
+```
+
+<Canvas of={TagStories.Solid} />
+<Controls of={TagStories.Solid} />
+
+## Tones
+
+`coral`, `azure`, `plum`, `navy` (default), `snow`.
+
+<Canvas of={TagStories.Tones} />
+
+## Appearances
+
+`solid` (default), `outline`, `soft`. Use outline with snow on azure tiles; soft on plum tiles.
+
+<Canvas of={TagStories.Outline} />
+<Canvas of={TagStories.Soft} />
+
+## Accessibility
+
+A tag is plain text with no interaction. Don't rely on tone alone to convey meaning.
+
+## Don't
+
+- Don't pass `className`; styling comes from the recipe.
+- Don't use a tag as a button or filter; use `Button`.
