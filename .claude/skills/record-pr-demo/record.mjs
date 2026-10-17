@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 // Records a Playwright scenario against a running Storybook and converts it to an H.264 MP4.
-// Usage: node record.mjs --scenario /tmp/demo.mjs [--label name] [--base-url http://localhost:6006] [--viewport 1280x720]
+// Usage: node record.mjs --scenario /tmp/demo.mjs [--label name] [--base-url http://localhost:6006] [--viewport 1280x720] [--gameplay clip.mp4]
 import { spawnSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
+import { existsSync } from 'node:fs'
 import { mkdtemp, readdir, readFile, stat } from 'node:fs/promises'
-import { tmpdir } from 'node:os'
+import { homedir, tmpdir } from 'node:os'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
 import { parseArgs } from 'node:util'
@@ -17,6 +18,11 @@ const { values } = parseArgs({
     label: { type: 'string', default: 'demo' },
     'base-url': { type: 'string', default: 'http://localhost:6006' },
     viewport: { type: 'string', default: '1280x720' },
+    gameplay: {
+      type: 'string',
+      default: process.env.CORE_DEMO_GAMEPLAY ?? path.join(homedir(), '.cache/core-pr-demo/subway-surfers.mp4'),
+    },
+    'no-gameplay': { type: 'boolean', default: false },
   },
 })
 if (!values.scenario) throw new Error('--scenario is required')
@@ -139,6 +145,9 @@ const webm = path.join(
   dir,
   (await readdir(dir)).find((f) => f.endsWith('.webm')),
 )
+const gameplay = !values['no-gameplay'] && existsSync(values.gameplay) ? values.gameplay : undefined
+if (!values['no-gameplay'] && !gameplay)
+  console.warn(`No gameplay clip at ${values.gameplay}, recording without the side-by-side.`)
 const ff = spawnSync(
   'ffmpeg',
   [
@@ -147,6 +156,18 @@ const ff = spawnSync(
     String(Math.max(0, readyAt)),
     '-i',
     webm,
+    ...(gameplay
+      ? [
+          '-stream_loop',
+          '-1',
+          '-i',
+          gameplay,
+          '-filter_complex',
+          `[1:v]scale=-2:${height},setsar=1[g];[0:v]setsar=1[d];[d][g]hstack=inputs=2:shortest=1[v]`,
+          '-map',
+          '[v]',
+        ]
+      : []),
     '-an',
     '-c:v',
     'libx264',

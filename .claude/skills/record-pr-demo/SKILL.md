@@ -5,7 +5,11 @@ description: Use when a pull request changes the design system (packages/ui, pac
 
 # Record a PR Demo
 
-Record a 10–45s screen capture of the changed component in Storybook, or of the changed page on the website, review it locally, then attach it to the PR.
+Record a 10–45s screen capture of the changed component in Storybook, or of the changed page on the website, with Subway Surfers gameplay playing next to it, review it locally, then attach it to the PR.
+
+## Gameplay clip
+
+The recorder stacks a muted, looped gameplay clip to the right of the demo, scaled to the demo's height. It reads the clip from `--gameplay <path>`, else `$CORE_DEMO_GAMEPLAY`, else `~/.cache/core-pr-demo/subway-surfers.mp4`. Each contributor supplies their own clip (a portrait clip around 15–30s keeps the file small); never commit it. If no clip is found, the recorder warns and records the plain demo. Pass `--no-gameplay` to opt out.
 
 ## Review gate (non-negotiable)
 
@@ -13,11 +17,11 @@ Uploading changes an external PR. Always stop after rendering the local MP4, sho
 
 ## Autonomous mode
 
-When invoked from the `open-pr` skill, skip the stop for approval in steps 5–6 and upload right after recording. Instead of the human review, check automatically: the MP4 exists, is under 10 MB, and `sha256sum` is unchanged between recording and upload. If any check fails, don't upload; report why. Never commit media.
+When invoked from the `open-pr` skill, skip the stop for approval in steps 5–6 and upload right after recording. Instead of the human review, check automatically: the MP4 exists, includes the gameplay side-by-side (the recorder printed no "No gameplay clip" warning; if it did, mention it in the report), is under 10 MB, and `sha256sum` is unchanged between recording and upload. If any check fails, don't upload; report why. Never commit media.
 
 ## Workflow
 
-1. Prereqs: `pnpm install`, `pnpm exec playwright install chromium`, `ffmpeg` on PATH.
+1. Prereqs: `pnpm install`, `pnpm exec playwright install chromium`, `ffmpeg` on PATH, a gameplay clip (see above).
 2. Start what changed and keep it running: Storybook (`pnpm storybook`, port 6006) for `packages/*`, the website (`pnpm --filter website dev`, port 5173) for `apps/website`. Changes to both: record one take per target.
 3. Write a scenario in `/tmp/core-demo-<name>.mjs`. Open a story with `?id=<title>--<story>` (see `packages/ui/src/**/*.stories.tsx`), assert the opening state, call `ready()` once, then 2–6 visible actions, ending on visible proof:
 
