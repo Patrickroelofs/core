@@ -1,7 +1,6 @@
 import { NavigationMenu as Base } from '@base-ui/react/navigation-menu'
 import type { ReactNode } from 'react'
 import {
-  arrowStyles,
   barItemStyles,
   contentLinkStyles,
   contentStyles,
@@ -17,7 +16,7 @@ type Part<T extends { className?: unknown }> = Omit<T, 'className'>
 export type NavigationMenuProps = Part<Base.Root.Props>
 
 /**
- * Root. Owns the shared flyout (positioner, popup, arrow, viewport) so consumers
+ * Root. Owns the shared flyout (positioner, popup, viewport) so consumers
  * only compose `List > Item > Trigger + Content`; the flyout morphs between items.
  */
 function Root({ children, ...props }: NavigationMenuProps) {
@@ -27,7 +26,6 @@ function Root({ children, ...props }: NavigationMenuProps) {
       <Base.Portal>
         <Base.Positioner className={positionerStyles} sideOffset={12} collisionPadding={12}>
           <Base.Popup className={popupStyles}>
-            <Base.Arrow className={arrowStyles} />
             <Base.Viewport className={viewportStyles} />
           </Base.Popup>
         </Base.Positioner>

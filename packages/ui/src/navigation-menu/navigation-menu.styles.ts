@@ -42,8 +42,8 @@ export const barItemStyles = cva({
 export const iconStyles = css({
   display: 'inline-block',
   fontSize: 'xs',
-  transition: '[opacity 0.2s]',
-  '[data-popup-open] > &': { opacity: 0 },
+  transition: '[transform 0.3s]',
+  '[data-popup-open] > &': { transform: 'rotate(180deg)' },
 })
 
 export const positionerStyles = css({
@@ -64,16 +64,6 @@ export const popupStyles = css({
   transformOrigin: 'var(--transform-origin)',
   transition: `[opacity .2s ${ease}, transform .25s ${ease}, width .35s ${ease}, height .35s ${ease}]`,
   '&[data-starting-style], &[data-ending-style]': { opacity: 0, transform: 'translateY(-6px) scale(.98)' },
-})
-
-export const arrowStyles = css({
-  display: 'block',
-  width: '[14px]',
-  height: '[14px]',
-  bg: 'snow',
-  borderRadius: '[3px]',
-  boxShadow: '[-1px -1px 0 rgba(25,32,54,.08)]',
-  '&[data-side="bottom"]': { top: '[-7px]', transform: 'rotate(45deg)' },
 })
 
 export const viewportStyles = css({ position: 'relative', width: '[100%]', height: '[100%]', overflow: 'hidden' })
