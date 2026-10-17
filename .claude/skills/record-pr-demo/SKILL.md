@@ -1,11 +1,11 @@
 ---
 name: record-pr-demo
-description: Use when a pull request changes the design system (packages/ui, packages/theme) and needs a short visual walkthrough for reviewers.
+description: Use when a pull request changes the design system (packages/ui, packages/theme) or the website (apps/website) and needs a short visual walkthrough for reviewers.
 ---
 
 # Record a PR Demo
 
-Record a 10–45s screen capture of the changed component in Storybook, review it locally, then attach it to the PR.
+Record a 10–45s screen capture of the changed component in Storybook, or of the changed page on the website, review it locally, then attach it to the PR.
 
 ## Review gate (non-negotiable)
 
@@ -14,7 +14,7 @@ Uploading changes an external PR. Always stop after rendering the local MP4, sho
 ## Workflow
 
 1. Prereqs: `pnpm install`, `pnpm exec playwright install chromium`, `ffmpeg` on PATH.
-2. Start Storybook (`pnpm storybook`, port 6006) and keep it running.
+2. Start what changed and keep it running: Storybook (`pnpm storybook`, port 6006) for `packages/*`, the website (`pnpm --filter website dev`, port 5173) for `apps/website`. Changes to both: record one take per target.
 3. Write a scenario in `/tmp/core-demo-<name>.mjs`. Open a story with `?id=<title>--<story>` (see `packages/ui/src/**/*.stories.tsx`), assert the opening state, call `ready()` once, then 2–6 visible actions, ending on visible proof:
 
    ```js
@@ -30,7 +30,9 @@ Uploading changes an external PR. Always stop after rendering the local MP4, sho
    ```
 
    Optional `export const colorScheme = 'dark'` to record dark mode.
-4. Record: `node .claude/skills/record-pr-demo/record.mjs --scenario /tmp/core-demo-<name>.mjs --label <name>-take-1`. Use a new label per take. Output: `/tmp/core-pr-demo-<label>.mp4`, under 10 MB.
+
+   Website scenarios use `page.goto(`${baseURL}/`)` (or another route) and scroll with `locator.scrollIntoViewIfNeeded()`; start from the top, end on visible proof. Pass `--base-url http://localhost:5173` in step 4.
+4. Record: `node .claude/skills/record-pr-demo/record.mjs --scenario /tmp/core-demo-<name>.mjs --label <name>-take-1` (add `--base-url http://localhost:5173` for the website; `--viewport 1440x900` suits it). Use a new label per take. Output: `/tmp/core-pr-demo-<label>.mp4`, under 10 MB.
 5. Watch it, show the user the path + sha256, and **stop for approval**.
 6. After approval, recompute `sha256sum` (must match), then append to the PR body, preserving the existing text:
 

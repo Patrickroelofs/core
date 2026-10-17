@@ -1,0 +1,18 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Fluid/Type" />
+
+# Fluid type
+
+Utopia-style scale from `@core/theme`: **18px / 1.2** at 360px viewport up to **20px / 1.25** at 1240px. Each step is a `clamp()`; resize the viewport to watch it scale.
+
+<div style={{ fontFamily: 'var(--fonts-body)' }}>
+  {['6', '5', '4', '3', '2', '1', '0', '-1', '-2'].map((s) => (
+    <div key={s} style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--spacing-gutter)', borderBottom: '1px solid var(--colors-border-default)', padding: 'var(--spacing-fluid-2xs) 0' }}>
+      <code style={{ width: 90, flex: 'none', fontSize: 12 }}>step.{s}</code>
+      <span style={{ fontSize: `var(--font-sizes-step-${s})`, lineHeight: 1.2 }}>Designing for the night shift</span>
+    </div>
+  ))}
+</div>
+
+Use as `fontSize: 'step.0'` in Panda, or the `display`, `body`, `label`, `mono` text styles which are built on these steps.

@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Fluid/Space" />
+
+# Fluid space
+
+Multiples of the step-0 size (0.25× … 6×). Used in Panda as `padding: 'fluid.m'`.
+
+<div style={{ fontFamily: 'var(--fonts-body)' }}>
+  {['3xs', '2xs', 'xs', 's', 'm', 'l', 'xl', '2xl', '3xl'].map((n) => (
+    <div key={n} style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 8 }}>
+      <code style={{ width: 90, flex: 'none', fontSize: 12 }}>fluid.{n}</code>
+      <div style={{ height: 20, width: `var(--spacing-fluid-${n})`, background: 'var(--colors-accent-brand)' }} />
+    </div>
+  ))}
+</div>
+
+## One-up pairs
+
+Fluid between a size and the next one up, for spacing that should grow faster than the rest.
+
+<div style={{ fontFamily: 'var(--fonts-body)' }}>
+  {['3xs-2xs', '2xs-xs', 'xs-s', 's-m', 'm-l', 'l-xl', 'xl-2xl', '2xl-3xl'].map((n) => (
+    <div key={n} style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 8 }}>
+      <code style={{ width: 90, flex: 'none', fontSize: 12 }}>fluid.{n}</code>
+      <div style={{ height: 20, width: `var(--spacing-fluid-${n})`, background: 'var(--colors-accent-info)' }} />
+    </div>
+  ))}
+</div>
