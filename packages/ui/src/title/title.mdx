@@ -5,12 +5,12 @@ import * as Stories from './title.stories'
 
 # Title
 
-Heading on the Utopia fluid type scale (https://utopia.fyi). Sizes interpolate between viewport widths via `clamp()`, so no breakpoints are needed. Renders an `<h2>`; use the `render` prop for another level.
+Heading on the Utopia fluid type scale (https://utopia.fyi). Sizes interpolate between viewport widths via `clamp()`, so no breakpoints are needed. Pick the element with `as`.
 
 ```tsx
 import { Title } from '@core/ui/title/title'
 
-<Title size="5" render={<h1 />}>Hello</Title>
+<Title as="h1" size="lg">Hello</Title>
 ```
 
 <Canvas of={Stories.Default} />
@@ -18,13 +18,13 @@ import { Title } from '@core/ui/title/title'
 
 ## Sizes
 
-`3`, `4` (default), `5`, `6` map to fluid steps 3–6.
+`sm`, `md` (default), `lg`, `xl` map to fluid steps 3–6. `as` is `h1`–`h6`, `span` or `p` (default `h2`).
 
 <Canvas of={Stories.Sizes} />
 
 ## Accessibility
 
-Pick the element with `render` so the heading outline stays correct; size is visual only.
+Pick the element with `as` so the heading outline stays correct; size is visual only.
 
 ## Don't
 

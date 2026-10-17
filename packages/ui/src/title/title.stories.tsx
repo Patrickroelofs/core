@@ -5,7 +5,10 @@ const meta = {
   title: 'Title',
   component: Title,
   args: { children: 'Fluid headline' },
-  argTypes: { size: { control: 'inline-radio', options: ['3', '4', '5', '6'] } },
+  argTypes: {
+    size: { control: 'inline-radio', options: ['sm', 'md', 'lg', 'xl'] },
+    as: { control: 'select', options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span', 'p'] },
+  },
 } satisfies Meta<typeof Title>
 
 export default meta
@@ -16,9 +19,9 @@ export const Default: Story = {}
 export const Sizes: Story = {
   render: () => (
     <>
-      {(['6', '5', '4', '3'] as const).map((s) => (
+      {(['xl', 'lg', 'md', 'sm'] as const).map((s) => (
         <Title key={s} size={s}>
-          Step {s}
+          Size {s}
         </Title>
       ))}
     </>

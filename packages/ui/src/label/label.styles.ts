@@ -4,11 +4,11 @@ export const labelStyles = cva({
   base: { fontFamily: 'body', fontWeight: 'medium', lineHeight: 'snug' },
   variants: {
     size: {
-      sm: { fontSize: 'step.-2' },
-      md: { fontSize: 'step.-1' },
+      xs: { fontSize: 'step.-2' },
+      sm: { fontSize: 'step.-1' },
     },
   },
-  defaultVariants: { size: 'md' },
+  defaultVariants: { size: 'sm' },
 })
 
 export type LabelVariants = NonNullable<RecipeVariantProps<typeof labelStyles>>
