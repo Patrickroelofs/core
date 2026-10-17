@@ -24,3 +24,21 @@ Primitive color tokens from `@core/theme`.
     </div>
   ))}
 </div>
+
+## Semantic
+
+Intent-based tokens that reference the primitives above.
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: 16 }}>
+  {[
+    'bg.canvas', 'bg.inverse', 'fg.default', 'border.default',
+    'action.primary', 'action.primaryHover', 'accent.brand', 'accent.info', 'accent.highlight', 'focusRing',
+  ].map((name) => (
+    <div key={name} style={{ border: '1px solid #d4d4d8', borderRadius: 8, overflow: 'hidden' }}>
+      <div style={{ height: 64, background: `var(--colors-${name.replace('.', '-')})` }} />
+      <div style={{ padding: 8, fontFamily: 'system-ui, sans-serif', fontSize: 14 }}>
+        <code>{name}</code>
+      </div>
+    </div>
+  ))}
+</div>
