@@ -44,6 +44,14 @@ const css = `
 .p .lift{transition:transform .3s ease;cursor:pointer}.p .lift:hover{transform:translateY(-4px)}
 .p .cta:hover{background:${NAVY};color:${SNOW}}
 .p .cv:hover{background:${NAVY}!important;color:${SNOW}!important}
+@media (max-width:760px){
+.p .g>*{grid-column:1/-1!important;grid-row:auto!important}
+.p .top{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.p .top>:last-child{justify-content:flex-start!important}
+.p .cvrow{grid-template-columns:minmax(0,1fr)!important;gap:4px!important}
+.p .sectionhead{flex-direction:column;align-items:flex-start!important}
+.p .cta{margin-top:var(--spacing-fluid-m)!important}
+}
 `
 
 function Home() {
@@ -71,7 +79,7 @@ function Home() {
       <link rel="stylesheet" precedence="default" href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&family=JetBrains+Mono:wght@400;500&display=swap" />
       <style precedence="default" href="home-page">{css}</style>
       <div style={{ maxWidth: 1440, margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0, 1fr))', gap: 16, padding: 'var(--spacing-fluid-m) var(--spacing-margin)', font: `500 var(--font-sizes-step--1)/1.3 ${font}` }}>
+        <div className="top" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0, 1fr))', gap: 16, padding: 'var(--spacing-fluid-m) var(--spacing-margin)', font: `500 var(--font-sizes-step--1)/1.3 ${font}` }}>
           <span>Patrick Roelofs</span>
           <span style={dim(0.6)}>Product designer<br />+ front-end engineer</span>
           <span style={dim(0.6)}>Lisbon, PT<br />{clock} WEST</span>
@@ -84,7 +92,7 @@ function Home() {
           {row(0, 7)}{row(7, 14)}
         </h1>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(12, minmax(0, 1fr))', gridAutoRows: 'minmax(120px, auto)', gap: 'var(--spacing-gutter)', padding: 'var(--spacing-margin)' }}>
+        <div className="g" style={{ display: 'grid', gridTemplateColumns: 'repeat(12, minmax(0, 1fr))', gridAutoRows: 'minmax(120px, auto)', gap: 'var(--spacing-gutter)', padding: 'var(--spacing-margin)' }}>
           <div style={{ ...card, gridColumn: 'span 5', gridRow: 'span 3', background: c('accent-highlight'), color: SNOW, padding: 'var(--spacing-fluid-l)', justifyContent: 'space-between', gap: 'var(--spacing-fluid-m)' }}>
             <span style={{ ...label, ...dim(0.7) }}>About</span>
             <p style={{ margin: 0, font: `400 var(--font-sizes-step-4)/1.14 ${font}`, letterSpacing: 'var(--letter-spacings-tight)', textWrap: 'pretty' }}>
@@ -120,7 +128,7 @@ function Home() {
             ))}
           </div>
 
-          <div id="work" style={sectionHead}>
+          <div id="work" className="sectionhead" style={sectionHead}>
             <h2 style={heading}>Selected <span style={{ fontWeight: 900 }}>work</span></h2>
             <span style={{ ...label, ...dim(0.6) }}>04 projects · 2019–2026</span>
           </div>
@@ -136,13 +144,13 @@ function Home() {
             </div>
           ))}
 
-          <div id="cv" style={sectionHead}>
+          <div id="cv" className="sectionhead" style={sectionHead}>
             <h2 style={heading}>Curriculum <span style={{ fontWeight: 900 }}>vitae</span></h2>
             <span style={{ ...label, ...dim(0.6) }}>Twelve years, five chapters</span>
           </div>
           <div style={{ gridColumn: 'span 8', background: c('bg-inverse'), color: SNOW, borderRadius: 'var(--radii-card)', padding: '12px 32px' }}>
             {cv.map(([y, role, org, loc]) => (
-              <div key={y + role} style={{ display: 'grid', gridTemplateColumns: '140px minmax(0, 1fr) auto', gap: 24, padding: '20px 0', borderBottom: '1px solid rgba(240,240,240,.12)', alignItems: 'baseline' }}>
+              <div key={y + role} className="cvrow" style={{ display: 'grid', gridTemplateColumns: '140px minmax(0, 1fr) auto', gap: 24, padding: '20px 0', borderBottom: '1px solid rgba(240,240,240,.12)', alignItems: 'baseline' }}>
                 <span style={{ font: `400 var(--font-sizes-step--1) ${mono}`, ...dim(0.6) }}>{y}</span>
                 <span style={{ font: `300 var(--font-sizes-step-2)/1.25 ${font}`, letterSpacing: '-0.015em' }}><b style={{ fontWeight: 700 }}>{role}</b> · {org}</span>
                 <span style={{ ...label, ...dim(0.5) }}>{loc}</span>
