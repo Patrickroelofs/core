@@ -3,6 +3,8 @@
 import css from '@core/ui/styles.css?url'
 import { createRootRoute, HeadContent, Outlet, Scripts } from '@tanstack/react-router'
 import '@fontsource-variable/onest'
+import siteCss from '../../styles.css?url'
+import { SiteNav } from '../components/site-nav'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -11,7 +13,10 @@ export const Route = createRootRoute({
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { title: 'Website' },
     ],
-    links: [{ rel: 'stylesheet', href: css }],
+    links: [
+      { rel: 'stylesheet', href: css },
+      { rel: 'stylesheet', href: siteCss },
+    ],
   }),
   component: () => (
     <html lang="en">
@@ -19,6 +24,7 @@ export const Route = createRootRoute({
         <HeadContent />
       </head>
       <body>
+        <SiteNav />
         <Outlet />
         <Scripts />
       </body>
