@@ -4,7 +4,7 @@ import { css } from '../../styled-system/css'
 const header = css({ display: 'flex', justifyContent: 'center', p: 'gutter' })
 const panel = css({ p: '3', w: '[360px]' })
 
-// ponytail: mock data, replace with real content
+// TODO: mock data, replace with real content
 const work = [
   { title: 'Shiftboard', meta: '2024–26', description: 'Lead designer', href: '#' },
   { title: 'Loop Transit', meta: '2023', description: 'Design + front-end', href: '#' },
