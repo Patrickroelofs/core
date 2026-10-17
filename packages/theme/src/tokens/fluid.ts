@@ -50,7 +50,7 @@ const pairs = Object.fromEntries(
 )
 
 export const fluid = defineTokens({
-  fontSizes: { step: fontSizes },
+  fontSizes: { step: fontSizes, wordmark: { value: clampValue(56, 176) } },
   spacing: { fluid: { ...spacing, ...pairs } },
   sizes: { grid: { max: { value: `${grid.maxWidth / 16}rem` } } },
 })

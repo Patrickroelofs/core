@@ -1,0 +1,57 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+import * as Stories from './wordmark.stories'
+
+<Meta of={Stories} />
+
+# Wordmark
+
+The variable-weight name lockup and signature brand element. Each letter is set in Onest Variable on a 100→900 weight ramp that reverses on every other line, with a coral accent glyph at the end. Built on Base UI's `useRender`, so it renders a `<div>` by default and can swap element with the `render` prop.
+
+```tsx
+import { Wordmark } from '@core/ui/wordmark/wordmark'
+
+<Wordmark />
+<Wordmark lines={['PATRICK', 'ROELOFS']} mode="staircase" size="md" />
+```
+
+<Canvas of={Stories.Follow} />
+<Controls of={Stories.Follow} />
+
+## Modes
+
+- `follow` (default): each letter gets heavier as the pointer comes near and settles back to the ramp when it leaves. Falloff is `radius` px from the letter's centre, defaulting to 1.6× the font size so it scales with `size`. Updates run once per animation frame without React re-renders.
+- `staircase`: the ramp at rest; hovering a letter flips it to the opposite end (thin ↔ heavy).
+- `static`: every letter at 900.
+
+<Canvas of={Stories.Staircase} />
+<Canvas of={Stories.Static} />
+
+## Sizes
+
+`sm` and `md` map to fluid steps 5 and 6. `lg` (default) uses the fluid `wordmark` token, 56px at 360px wide up to 176px at 1240px.
+
+<Canvas of={Stories.Sizes} />
+
+## Tones
+
+`default` (navy) for snow surfaces, `inverse` (snow) for navy or plum ones. The accent stays coral.
+
+<Canvas of={Stories.Inverse} />
+
+## Lines and accent
+
+`lines` takes one string per line (default `['PATRICK', 'ROELOFS']`). `accent` is the trailing glyph on the last line; pass `''` to drop it.
+
+<Canvas of={Stories.CustomLines} />
+
+## Accessibility
+
+- Exposed as `role="img"` with the lines joined as its label; the individual letters are hidden from assistive tech.
+- The follow effect is pointer-only and decorative. Touch input keeps the resting ramp.
+- Weight transitions are dropped under `prefers-reduced-motion`.
+
+## Don't
+
+- Don't pass `className`; styling comes from the recipe.
+- Don't use more than one per page, or as a heading; put the page `<h1>` next to it.
+- Don't put long strings in `lines`; it never wraps.
