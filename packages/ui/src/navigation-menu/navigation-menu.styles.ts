@@ -33,7 +33,7 @@ export const barItemStyles = cva({
     letterSpacing: 'tight',
     textDecoration: 'none',
     transition: '[background 0.2s, color 0.2s]',
-    _hover: { bg: 'navy/8' },
+    '&:hover:not([data-popup-open])': { bg: 'navy/8' },
     _focusVisible: { outlineWidth: '[2px]', outlineStyle: 'solid', outlineColor: 'focusRing', outlineOffset: '[2px]' },
     '&[data-popup-open]': { bg: 'navy', color: 'snow' },
   },
