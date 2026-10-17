@@ -20,4 +20,4 @@ export const theme = definePreset({
   },
 })
 
-export { fluidConfig, clampValue } from './tokens/fluid'
+export { clampValue, fluidConfig } from './tokens/fluid'

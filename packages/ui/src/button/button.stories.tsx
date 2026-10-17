@@ -1,5 +1,5 @@
+import { ArrowRightIcon, ArrowUpRightIcon } from '@phosphor-icons/react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { ArrowUpRightIcon, ArrowRightIcon } from '@phosphor-icons/react'
 import { Button } from './button'
 import { IconButton } from './icon-button'
 import { LinkButton } from './link-button'
@@ -47,8 +47,12 @@ export const Link: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
       <LinkButton href="#work">View work</LinkButton>
-      <LinkButton href="#work" variant="primary" icon={<ArrowUpRightIcon weight="bold" />}>As primary</LinkButton>
-      <LinkButton href="#work" render={(props) => <a {...props} data-custom="rendered" />}>Custom render</LinkButton>
+      <LinkButton href="#work" variant="primary" icon={<ArrowUpRightIcon weight="bold" />}>
+        As primary
+      </LinkButton>
+      <LinkButton href="#work" render={(props) => <a {...props} data-custom="rendered" />}>
+        Custom render
+      </LinkButton>
     </div>
   ),
 }

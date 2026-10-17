@@ -23,11 +23,31 @@ export const buttonStyles = cva({
   },
   variants: {
     variant: {
-      primary: { bg: 'action.primary', color: 'action.onPrimary', borderColor: 'transparent', _hover: { bg: 'accent.brand', color: 'fg.default' } },
-      accent: { bg: 'accent.brand', color: 'fg.default', borderColor: 'transparent', _hover: { bg: 'action.primary', color: 'action.onPrimary' } },
-      secondary: { bg: 'transparent', color: 'fg.default', borderColor: 'action.primary', _hover: { bg: 'action.primary', color: 'action.onPrimary' } },
+      primary: {
+        bg: 'action.primary',
+        color: 'action.onPrimary',
+        borderColor: 'transparent',
+        _hover: { bg: 'accent.brand', color: 'fg.default' },
+      },
+      accent: {
+        bg: 'accent.brand',
+        color: 'fg.default',
+        borderColor: 'transparent',
+        _hover: { bg: 'action.primary', color: 'action.onPrimary' },
+      },
+      secondary: {
+        bg: 'transparent',
+        color: 'fg.default',
+        borderColor: 'action.primary',
+        _hover: { bg: 'action.primary', color: 'action.onPrimary' },
+      },
       inverse: { bg: 'bg.canvas', color: 'fg.default', borderColor: 'transparent', _hover: { bg: 'accent.brand' } },
-      ghost: { bg: 'transparent', color: 'currentColor', borderColor: 'transparent', _hover: { bg: 'action.primary/8' } },
+      ghost: {
+        bg: 'transparent',
+        color: 'currentColor',
+        borderColor: 'transparent',
+        _hover: { bg: 'action.primary/8' },
+      },
       // ghost + underline, for links
       link: {
         bg: 'transparent',
