@@ -1,0 +1,26 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Colors" />
+
+# Colors
+
+Primitive color tokens from `@core/theme`.
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: 16 }}>
+  {[
+    ['snow', '#f0f0f0'],
+    ['plum', '#50216a'],
+    ['navy', '#192036'],
+    ['azure', '#0177bb'],
+    ['coral', '#d65b5c'],
+  ].map(([name, hex]) => (
+    <div key={name} style={{ border: '1px solid #d4d4d8', borderRadius: 8, overflow: 'hidden' }}>
+      <div style={{ height: 96, background: `var(--colors-${name})` }} />
+      <div style={{ padding: 8, fontFamily: 'system-ui, sans-serif', fontSize: 14 }}>
+        <strong>{name}</strong>
+        <br />
+        <code>{hex}</code>
+      </div>
+    </div>
+  ))}
+</div>
