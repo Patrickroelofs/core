@@ -9,6 +9,7 @@ export type StaticTagProps = Omit<ComponentPropsWithoutRef<'span'>, 'className'>
     pressed?: never
     defaultPressed?: never
     onPressedChange?: never
+    onClick?: never
   }
 
 export type ToggleTagProps = Omit<Toggle.Props, 'className'> & Look
@@ -16,10 +17,15 @@ export type ToggleTagProps = Omit<Toggle.Props, 'className'> & Look
 export type TagProps = StaticTagProps | ToggleTagProps
 
 function isToggle(props: TagProps): props is ToggleTagProps {
-  return props.pressed !== undefined || props.defaultPressed !== undefined || props.onPressedChange !== undefined
+  return (
+    props.pressed !== undefined ||
+    props.defaultPressed !== undefined ||
+    props.onPressedChange !== undefined ||
+    props.onClick !== undefined
+  )
 }
 
-/** Pill label. Pass `pressed`, `defaultPressed` or `onPressedChange` to make it a toggleable filter chip. */
+/** Pill label. Pass `pressed`, `defaultPressed`, `onPressedChange` or `onClick` to make it a toggleable filter chip. */
 export function Tag(props: TagProps) {
   if (isToggle(props)) {
     const { tone, appearance, size, ...rest } = props

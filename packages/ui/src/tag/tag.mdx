@@ -5,7 +5,7 @@ import * as TagStories from './tag.stories'
 
 # Tag
 
-Pill label for roles, clients and tools. Static by default (a `<span>`); pass `pressed`, `defaultPressed` or `onPressedChange` and it becomes a toggleable filter chip built on Base UI's `Toggle` (a `<button>` with `aria-pressed`).
+Pill label for roles, clients and tools. Static by default (a `<span>`); pass `pressed`, `defaultPressed`, `onPressedChange` or `onClick` and it becomes a toggleable filter chip built on Base UI's `Toggle` (a `<button>` with `aria-pressed`).
 
 ```tsx
 import { Tag } from '@core/ui/tag/tag'
@@ -43,5 +43,4 @@ Interactive tags are real buttons with `aria-pressed` and a visible focus ring. 
 ## Don't
 
 - Don't pass `className`; styling comes from the recipe.
-- Don't make a static tag clickable with `onClick`; use the toggle props.
 - Don't rely on tone alone to convey meaning.

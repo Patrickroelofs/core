@@ -16,12 +16,14 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Solid: Story = { args: { tone: 'coral' } }
+export const Solid: Story = { args: { tone: 'coral', defaultPressed: false } }
 
 export const Tones: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 8 }}>
-      <Tag tone="coral">Lead designer</Tag>
+      <Tag tone="coral" defaultPressed={false}>
+        Lead designer
+      </Tag>
       <Tag tone="azure">Design + front-end</Tag>
       <Tag tone="plum">Founding</Tag>
       <Tag tone="navy">Contractor</Tag>
@@ -32,8 +34,10 @@ export const Tones: Story = {
 export const Outline: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-      <Tag appearance="outline">Outline</Tag>
-      <Tag appearance="outline" tone="coral" size="sm">
+      <Tag appearance="outline" defaultPressed={false}>
+        Outline
+      </Tag>
+      <Tag appearance="outline" tone="coral" size="sm" defaultPressed={false}>
         Small
       </Tag>
     </div>
@@ -43,10 +47,10 @@ export const Outline: Story = {
 export const Soft: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: 8, background: '#50216a', color: '#f0f0f0', padding: 16, borderRadius: 12 }}>
-      <Tag tone="snow" appearance="soft">
+      <Tag tone="snow" appearance="soft" defaultPressed={false}>
         Figma
       </Tag>
-      <Tag tone="snow" appearance="soft">
+      <Tag tone="snow" appearance="soft" defaultPressed={false}>
         React
       </Tag>
     </div>
