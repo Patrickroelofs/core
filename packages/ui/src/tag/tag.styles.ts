@@ -22,7 +22,6 @@ export const tagStyles = cva({
       sm: { fontSize: 'xs', px: '3', py: '1.5' },
       md: { fontSize: 'sm', px: '[14px]', py: '[7px]' },
     },
-    interactive: { true: { cursor: 'pointer' }, false: {} },
   },
   compoundVariants: [
     {
@@ -32,7 +31,6 @@ export const tagStyles = cva({
         bg: 'coral',
         color: 'navy',
         borderColor: 'transparent',
-        '&[aria-pressed=true], &[data-interactive]:hover': { boxShadow: '[inset 0 0 0 2px currentColor]' },
       },
     },
     {
@@ -42,7 +40,6 @@ export const tagStyles = cva({
         bg: 'transparent',
         color: 'coral',
         borderColor: 'coral',
-        '&[aria-pressed=true], &[data-interactive]:hover': { bg: 'coral', color: 'navy', borderColor: 'coral' },
       },
     },
     {
@@ -52,7 +49,6 @@ export const tagStyles = cva({
         bg: 'snow/12',
         color: 'inherit',
         borderColor: 'transparent',
-        '&[aria-pressed=true], &[data-interactive]:hover': { bg: 'coral', color: 'navy', borderColor: 'coral' },
       },
     },
     {
@@ -62,7 +58,6 @@ export const tagStyles = cva({
         bg: 'azure',
         color: 'snow',
         borderColor: 'transparent',
-        '&[aria-pressed=true], &[data-interactive]:hover': { boxShadow: '[inset 0 0 0 2px currentColor]' },
       },
     },
     {
@@ -72,7 +67,6 @@ export const tagStyles = cva({
         bg: 'transparent',
         color: 'azure',
         borderColor: 'azure',
-        '&[aria-pressed=true], &[data-interactive]:hover': { bg: 'azure', color: 'snow', borderColor: 'azure' },
       },
     },
     {
@@ -82,7 +76,6 @@ export const tagStyles = cva({
         bg: 'snow/12',
         color: 'inherit',
         borderColor: 'transparent',
-        '&[aria-pressed=true], &[data-interactive]:hover': { bg: 'azure', color: 'snow', borderColor: 'azure' },
       },
     },
     {
@@ -92,7 +85,6 @@ export const tagStyles = cva({
         bg: 'plum',
         color: 'snow',
         borderColor: 'transparent',
-        '&[aria-pressed=true], &[data-interactive]:hover': { boxShadow: '[inset 0 0 0 2px currentColor]' },
       },
     },
     {
@@ -102,7 +94,6 @@ export const tagStyles = cva({
         bg: 'transparent',
         color: 'plum',
         borderColor: 'plum',
-        '&[aria-pressed=true], &[data-interactive]:hover': { bg: 'plum', color: 'snow', borderColor: 'plum' },
       },
     },
     {
@@ -112,7 +103,6 @@ export const tagStyles = cva({
         bg: 'snow/12',
         color: 'inherit',
         borderColor: 'transparent',
-        '&[aria-pressed=true], &[data-interactive]:hover': { bg: 'plum', color: 'snow', borderColor: 'plum' },
       },
     },
     {
@@ -122,7 +112,6 @@ export const tagStyles = cva({
         bg: 'navy',
         color: 'snow',
         borderColor: 'transparent',
-        '&[aria-pressed=true], &[data-interactive]:hover': { boxShadow: '[inset 0 0 0 2px currentColor]' },
       },
     },
     {
@@ -132,7 +121,6 @@ export const tagStyles = cva({
         bg: 'transparent',
         color: 'navy',
         borderColor: 'navy',
-        '&[aria-pressed=true], &[data-interactive]:hover': { bg: 'navy', color: 'snow', borderColor: 'navy' },
       },
     },
     {
@@ -142,7 +130,6 @@ export const tagStyles = cva({
         bg: 'snow/12',
         color: 'inherit',
         borderColor: 'transparent',
-        '&[aria-pressed=true], &[data-interactive]:hover': { bg: 'navy', color: 'snow', borderColor: 'navy' },
       },
     },
     {
@@ -152,7 +139,6 @@ export const tagStyles = cva({
         bg: 'snow',
         color: 'navy',
         borderColor: 'transparent',
-        '&[aria-pressed=true], &[data-interactive]:hover': { boxShadow: '[inset 0 0 0 2px currentColor]' },
       },
     },
     {
@@ -162,7 +148,6 @@ export const tagStyles = cva({
         bg: 'transparent',
         color: 'snow',
         borderColor: 'snow',
-        '&[aria-pressed=true], &[data-interactive]:hover': { bg: 'snow', color: 'navy', borderColor: 'snow' },
       },
     },
     {
@@ -172,11 +157,10 @@ export const tagStyles = cva({
         bg: 'snow/12',
         color: 'inherit',
         borderColor: 'transparent',
-        '&[aria-pressed=true], &[data-interactive]:hover': { bg: 'snow', color: 'navy', borderColor: 'snow' },
       },
     },
   ],
-  defaultVariants: { tone: 'navy', appearance: 'solid', size: 'md', interactive: false },
+  defaultVariants: { tone: 'navy', appearance: 'solid', size: 'md' },
 })
 
 export type TagVariants = NonNullable<RecipeVariantProps<typeof tagStyles>>

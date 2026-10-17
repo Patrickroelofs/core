@@ -5,13 +5,12 @@ import * as TagStories from './tag.stories'
 
 # Tag
 
-Pill label for roles, clients and tools. Static by default (a `<span>`); pass `pressed`, `defaultPressed`, `onPressedChange` or `onClick` and it becomes a toggleable filter chip built on Base UI's `Toggle` (a `<button>` with `aria-pressed`).
+Static pill label for roles, clients and tools. Built on Base UI's `useRender`, so it renders a `<span>` by default and can swap element with the `render` prop.
 
 ```tsx
 import { Tag } from '@core/ui/tag/tag'
 
 <Tag tone="coral" size="sm">Lead designer</Tag>
-<Tag appearance="outline" pressed={active} onPressedChange={setActive}>Product</Tag>
 ```
 
 <Canvas of={TagStories.Solid} />
@@ -25,22 +24,16 @@ import { Tag } from '@core/ui/tag/tag'
 
 ## Appearances
 
-`solid` (default), `outline`, `soft`. Outline and soft fill with the tone when pressed or hovered (interactive tags only). Use outline with snow on azure tiles; soft on plum tiles.
+`solid` (default), `outline`, `soft`. Use outline with snow on azure tiles; soft on plum tiles.
 
 <Canvas of={TagStories.Outline} />
 <Canvas of={TagStories.Soft} />
 
-## Filter chips
-
-`TagProps` is a union: toggle props (`pressed`, `defaultPressed`, `onPressedChange`) select the interactive variant, and a static tag rejects them at the type level. For a single-select group, control `pressed` from your own state.
-
-<Canvas of={TagStories.FilterChips} />
-
 ## Accessibility
 
-Interactive tags are real buttons with `aria-pressed` and a visible focus ring. Static tags are plain text.
+A tag is plain text with no interaction. Don't rely on tone alone to convey meaning.
 
 ## Don't
 
 - Don't pass `className`; styling comes from the recipe.
-- Don't rely on tone alone to convey meaning.
+- Don't use a tag as a button or filter; use `Button`.
