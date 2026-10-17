@@ -1,0 +1,71 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+import * as ButtonStories from './button.stories'
+
+<Meta of={ButtonStories} />
+
+# Button
+
+Pill-shaped action built on Base UI's `Button`. Three components share one Panda recipe (`button.styles.ts`):
+
+| Component | Use for |
+| --- | --- |
+| `Button` | Actions. Optional decorative `icon` at the `start` or `end`. |
+| `IconButton` | Icon-only actions. Same recipe with `shape: 'icon'`; `label` is required (aria-label + title). |
+| `LinkButton` | Navigation that should look like a button. Renders an `<a>`. |
+
+```tsx
+import { Button } from '@core/ui/button/button'
+import { IconButton } from '@core/ui/button/icon-button'
+import { LinkButton } from '@core/ui/button/link-button'
+
+<Button variant="primary" icon={<ArrowUpRightIcon />}>Send message</Button>
+<IconButton label="Next" icon={<ArrowRightIcon />} />
+<LinkButton href="/work">View work</LinkButton>
+```
+
+<Canvas of={ButtonStories.Primary} />
+<Controls of={ButtonStories.Primary} />
+
+## Variants
+
+`primary` (default), `accent`, `secondary`, `inverse`, `ghost`, `link`. Hover swaps the fill: primary navy → coral, accent coral → navy, secondary outline → navy fill. `link` is `ghost` plus an underline.
+
+<Canvas of={ButtonStories.Accent} />
+<Canvas of={ButtonStories.Secondary} />
+<Canvas of={ButtonStories.Ghost} />
+
+## Sizes
+
+`sm`, `md` (default), `lg`.
+
+<Canvas of={ButtonStories.Sizes} />
+
+## IconButton
+
+Defaults to `secondary`. Always pass a `label`; it is the accessible name.
+
+<Canvas of={ButtonStories.Icon} />
+
+## LinkButton
+
+Defaults to the `link` variant. It is framework agnostic: pass Base UI's `render` prop to swap in your router's link, and spread the props it gives you.
+
+```tsx
+<LinkButton href="/work" render={(props) => <RouterLink {...props} to="/work" />}>
+  View work
+</LinkButton>
+```
+
+`LinkButton` sets `role="link"`, because Base UI otherwise exposes non-native buttons as `role="button"`.
+
+<Canvas of={ButtonStories.Link} />
+
+## Disabled
+
+<Canvas of={ButtonStories.Disabled} />
+
+## Don't
+
+- Don't pass `className`; styling comes from the recipe.
+- Don't use `Button` for navigation, use `LinkButton`.
+- Don't use `IconButton` without a `label`.
