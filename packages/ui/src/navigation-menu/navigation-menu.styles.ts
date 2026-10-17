@@ -42,8 +42,8 @@ export const barItemStyles = cva({
 export const iconStyles = css({
   display: 'inline-block',
   fontSize: 'xs',
-  transition: '[transform 0.3s]',
-  '[data-popup-open] > &': { transform: 'rotate(180deg)' },
+  transition: '[opacity 0.2s]',
+  '[data-popup-open] > &': { opacity: 0 },
 })
 
 export const positionerStyles = css({
