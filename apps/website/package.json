@@ -3,11 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite dev",
-    "build": "vite build",
+    "dev": "panda codegen && (panda --watch --outfile styles.css & vite dev)",
+    "build": "panda codegen && panda cssgen --outfile styles.css && vite build",
     "typecheck": "tsc -p ."
   },
   "dependencies": {
+    "@core/theme": "workspace:*",
     "@core/ui": "workspace:*",
     "@fontsource-variable/onest": "^5.3.1",
     "@tanstack/react-router": "^1.170.0",
@@ -16,6 +17,9 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@pandacss/dev": "^2.2.0",
+    "@pandacss/preset-base": "^2.2.0",
+    "@pandacss/preset-panda": "^2.2.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^6.1.0",
