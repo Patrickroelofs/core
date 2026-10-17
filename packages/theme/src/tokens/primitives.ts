@@ -12,7 +12,7 @@ export const primitives = defineTokens({
     gray: { 300: { value: '#d4d4d8' } },
   },
   fonts: {
-    onest: { value: "'Onest', system-ui, sans-serif" },
+    onest: { value: "'Onest Variable', 'Onest', system-ui, sans-serif" },
     jetbrainsMono: { value: "'JetBrains Mono', ui-monospace, monospace" },
   },
   fontWeights: {

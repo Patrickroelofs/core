@@ -15,7 +15,8 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
-    "@core/theme": "workspace:*"
+    "@core/theme": "workspace:*",
+    "@phosphor-icons/react": "^2.1.10"
   },
   "devDependencies": {
     "@pandacss/dev": "^2.2.0",

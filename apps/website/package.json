@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@core/ui": "workspace:*",
+    "@fontsource-variable/onest": "^5.3.1",
     "@tanstack/react-router": "^1.170.0",
     "@tanstack/react-start": "^1.169.0",
     "react": "^19.0.0",

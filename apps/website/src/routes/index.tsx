@@ -75,8 +75,6 @@ function Home() {
 
   return (
     <div className="p" style={{ background: SNOW, color: NAVY, fontFamily: font, minHeight: '100vh' }}>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="stylesheet" precedence="default" href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&family=JetBrains+Mono:wght@400;500&display=swap" />
       <style precedence="default" href="home-page">{css}</style>
       <div style={{ maxWidth: 1440, margin: '0 auto' }}>
         <div className="top" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0, 1fr))', gap: 16, padding: 'var(--spacing-fluid-m) var(--spacing-margin)', font: `500 var(--font-sizes-step--1)/1.3 ${font}` }}>

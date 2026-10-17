@@ -1,6 +1,7 @@
 /// <reference types="vite/client" />
 import { createRootRoute, HeadContent, Outlet, Scripts } from '@tanstack/react-router'
 import css from '@core/ui/styles.css?url'
+import '@fontsource-variable/onest'
 
 export const Route = createRootRoute({
   head: () => ({
