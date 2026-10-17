@@ -7,7 +7,10 @@ export const fluidConfig = {
   maxVw: 1240,
   type: { min: { base: 18, ratio: 1.2 }, max: { base: 20, ratio: 1.25 }, steps: [-2, -1, 0, 1, 2, 3, 4, 5, 6] },
   // multipliers of the step-0 size
-  space: { names: ['3xs', '2xs', 'xs', 's', 'm', 'l', 'xl', '2xl', '3xl'], multipliers: [0.25, 0.5, 0.75, 1, 1.5, 2, 3, 4, 6] },
+  space: {
+    names: ['3xs', '2xs', 'xs', 's', 'm', 'l', 'xl', '2xl', '3xl'],
+    multipliers: [0.25, 0.5, 0.75, 1, 1.5, 2, 3, 4, 6],
+  },
   grid: { columns: 12, maxWidth: 1240 },
 }
 
@@ -31,14 +34,19 @@ const fontSizes = Object.fromEntries(
 
 const unit = stepPx(0)
 const spacing = Object.fromEntries(
-  space.names.map((n, i) => [n, { value: clampValue(unit.min * space.multipliers[i], unit.max * space.multipliers[i]) }]),
+  space.names.map((n, i) => [
+    n,
+    { value: clampValue(unit.min * space.multipliers[i], unit.max * space.multipliers[i]) },
+  ]),
 )
 // Utopia "one-up pairs": fluid between a size and the next one up.
 const pairs = Object.fromEntries(
-  space.names.slice(0, -1).map((n, i) => [
-    `${n}-${space.names[i + 1]}`,
-    { value: clampValue(unit.min * space.multipliers[i], unit.max * space.multipliers[i + 1]) },
-  ]),
+  space.names
+    .slice(0, -1)
+    .map((n, i) => [
+      `${n}-${space.names[i + 1]}`,
+      { value: clampValue(unit.min * space.multipliers[i], unit.max * space.multipliers[i + 1]) },
+    ]),
 )
 
 export const fluid = defineTokens({

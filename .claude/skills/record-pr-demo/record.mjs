@@ -6,8 +6,8 @@ import { createHash } from 'node:crypto'
 import { mkdtemp, readdir, readFile, stat } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import path from 'node:path'
-import { parseArgs } from 'node:util'
 import { pathToFileURL } from 'node:url'
+import { parseArgs } from 'node:util'
 
 const MAX_BYTES = 10 * 1024 * 1024 // ponytail: GitHub's free-plan video limit, shorten the demo instead of raising it
 
@@ -60,7 +60,13 @@ await context.addInitScript(() => {
         ring.style.cssText = `position:fixed;left:${e.clientX - 14}px;top:${e.clientY - 14}px;width:28px;height:28px;box-sizing:border-box;border:2px solid #0d99ff;border-radius:50%;pointer-events:none;z-index:2147483646`
         document.documentElement.append(ring)
         ring
-          .animate([{ opacity: 0.9, transform: 'scale(.55)' }, { opacity: 0, transform: 'scale(1.4)' }], 420)
+          .animate(
+            [
+              { opacity: 0.9, transform: 'scale(.55)' },
+              { opacity: 0, transform: 'scale(1.4)' },
+            ],
+            420,
+          )
           .finished.then(() => ring.remove())
       },
       true,
@@ -129,15 +135,37 @@ try {
   await browser.close()
 }
 
-const webm = path.join(dir, (await readdir(dir)).find((f) => f.endsWith('.webm')))
+const webm = path.join(
+  dir,
+  (await readdir(dir)).find((f) => f.endsWith('.webm')),
+)
 const ff = spawnSync(
   'ffmpeg',
-  ['-y', '-ss', String(Math.max(0, readyAt)), '-i', webm, '-an', '-c:v', 'libx264', '-crf', '23', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', output],
+  [
+    '-y',
+    '-ss',
+    String(Math.max(0, readyAt)),
+    '-i',
+    webm,
+    '-an',
+    '-c:v',
+    'libx264',
+    '-crf',
+    '23',
+    '-pix_fmt',
+    'yuv420p',
+    '-movflags',
+    '+faststart',
+    output,
+  ],
   { encoding: 'utf8' },
 )
 if (ff.status !== 0) throw new Error(`ffmpeg failed: ${ff.stderr}`)
 
 const { size } = await stat(output)
-if (size > MAX_BYTES) throw new Error(`${output} is ${(size / 1048576).toFixed(1)} MB, over the 10 MB budget. Shorten the demo.`)
-const sha = createHash('sha256').update(await readFile(output)).digest('hex')
+if (size > MAX_BYTES)
+  throw new Error(`${output} is ${(size / 1048576).toFixed(1)} MB, over the 10 MB budget. Shorten the demo.`)
+const sha = createHash('sha256')
+  .update(await readFile(output))
+  .digest('hex')
 console.log(`${output}\n${(size / 1024).toFixed(0)} KB\nsha256 ${sha}`)
