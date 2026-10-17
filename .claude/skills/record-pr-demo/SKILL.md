@@ -11,6 +11,10 @@ Record a 10–45s screen capture of the changed component in Storybook, or of th
 
 Uploading changes an external PR. Always stop after rendering the local MP4, show the user its path and sha256, and wait for approval. Never upload rejected takes. Never commit media.
 
+## Autonomous mode
+
+When invoked from the `open-pr` skill, skip the stop for approval in steps 5–6 and upload right after recording. Instead of the human review, check automatically: the MP4 exists, is under 10 MB, and `sha256sum` is unchanged between recording and upload. If any check fails, don't upload; report why. Never commit media.
+
 ## Workflow
 
 1. Prereqs: `pnpm install`, `pnpm exec playwright install chromium`, `ffmpeg` on PATH.
