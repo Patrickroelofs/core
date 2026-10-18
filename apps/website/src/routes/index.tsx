@@ -10,7 +10,14 @@ import { Typography } from '@core/ui/typography/typography'
 import { createFileRoute } from '@tanstack/react-router'
 import { css } from '../../styled-system/css'
 
-const section = css({ display: 'flex', flexDirection: 'column', gap: '8', maxW: '[1400px]', mx: 'auto', p: 'gutter' })
+const section = css({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 'fluid.2xl',
+  maxW: '[1400px]',
+  mx: 'auto',
+  p: 'gutter',
+})
 const intro = css({ display: 'flex', flexDirection: 'column', gap: '2' })
 
 // TODO: mock data, replace with real content
