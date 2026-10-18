@@ -5,21 +5,24 @@ import * as FooterStories from './footer.stories'
 
 # Footer
 
-Page footer made of doors. A compound component: `Footer` and `Footer.Door`.
+Page footer made of doors. A compound component: `Footer`, `Footer.Door`, `Footer.Label`, `Footer.Title` and `Footer.Bar`.
 
-- `variant="split"` (default, the only one): doors share the width; the hovered or focused door grows. Stacked below `md`.
-- Add as many `Footer.Door`s as needed; they share the space equally.
-- `Footer.Door` is a `<div>`; `render={<a href="…" />}` makes it a link that grows on hover and focus.
+- `variant="split"` (default, the only one): doors share the width; the hovered or focused door grows (2.2x) and its siblings shrink (0.8x). Stacked below `md`.
+- Add as many `Footer.Door`s as needed.
+- `Footer.Door` is a `<div>`; `render={<a href="…" />}` makes it a link. Set `data-surface` for its colours (see Colors → Surfaces).
+- `Footer.Label` is the small uppercase line; `Footer.Title` is thin and straightens its arrow and turns black when the door is active. Anything else in the door is free content.
+- `Footer.Bar` is the optional full-width strip underneath.
 
 ```tsx
 import { Footer } from '@core/ui/footer/footer'
 
 <Footer variant="split">
-  <Footer.Door render={<a href="/work" />}>
-    <Label size="xs">Work</Label>
-    <Title size="md">See the projects</Title>
+  <Footer.Door data-surface="navy" render={<a href="mailto:hi@example.com" />}>
+    <Footer.Label>Available from Feb 2027</Footer.Label>
+    <Footer.Title>Hire me</Footer.Title>
   </Footer.Door>
-  <Footer.Door render={<a href="/contact" />}>…</Footer.Door>
+  <Footer.Door data-surface="plum" render={<a href="/hello" />}>…</Footer.Door>
+  <Footer.Bar>© 2026</Footer.Bar>
 </Footer>
 ```
 
