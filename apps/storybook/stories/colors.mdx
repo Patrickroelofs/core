@@ -42,3 +42,16 @@ Intent-based tokens that reference the primitives above.
     </div>
   ))}
 </div>
+
+## Surfaces
+
+Set `data-surface="snow | plum | azure | coral | navy"` on any element. It sets the background and repoints the semantic color variables (`fg.default`, `action.primary`, `border.default`, `focusRing`, ...), so components inside pick readable colors on their own. Nesting works.
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: 16 }}>
+  {['snow', 'plum', 'azure', 'coral', 'navy'].map((s) => (
+    <div key={s} data-surface={s} style={{ padding: 16, borderRadius: 8, fontFamily: 'system-ui, sans-serif' }}>
+      <strong style={{ color: 'inherit' }}>{s}</strong>
+      <p style={{ color: 'inherit', margin: '8px 0 0', borderTop: '1px solid var(--colors-border-default)', paddingTop: 8 }}>Readable text</p>
+    </div>
+  ))}
+</div>

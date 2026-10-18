@@ -14,6 +14,7 @@ export const cardStyles = css({
   fontFamily: 'body',
   textDecoration: 'none',
   transition: `[transform .35s ${ease}]`,
+  '&[data-surface]': { bg: 'bg.canvas', color: 'fg.default' },
   '&:is(a[href])': { cursor: 'pointer' },
   '&:is(a[href]):hover': { transform: 'translateY(-4px)' },
   '& :is(h1, h2, h3, h4, h5, h6)': {

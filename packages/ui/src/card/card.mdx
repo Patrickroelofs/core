@@ -8,6 +8,7 @@ import * as CardStories from './card.stories'
 Work card: `Image` slot, heavy title, year, description and role tag. A compound component; compose only the parts you need.
 
 - `Card`: root surface, a `<div>`. Use `render={<a href="…" />}` for a link card that lifts 4px and turns its title `black` on hover.
+- Set `data-surface="coral"` (or another surface) on a `Card` to swap its background and text colors; see Colors → Surfaces.
 - Image: use the `Image` component (`@core/ui/image/image`) as the first child; it has `ratio` and placeholder `tone` props.
 - `Card.Media` + `Card.Reveal`: wrap the `Image` in `Card.Media` and add a `Card.Reveal` for the hover reveal (below).
 - `Card.Body`: vertical stack for the text parts.
