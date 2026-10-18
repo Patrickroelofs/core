@@ -1,4 +1,4 @@
-import type { ComponentProps } from 'react'
+import type { ComponentProps, CSSProperties } from 'react'
 import { monogramStyles, ruleStyles, siteHeaderStyles } from './site-header.styles'
 
 type Part<T extends { className?: unknown }> = Omit<T, 'className'>
@@ -11,18 +11,18 @@ function Root(props: SiteHeaderProps) {
   return <header className={siteHeaderStyles} {...props} />
 }
 
-/** Name as initials ("P.R."); hover or focus unfolds it to the full name. The link is labelled with `name`. */
+/** Name as initials ("P.R."); hover or focus slots each word over to the full name. The link is labelled with `name`. */
 function Monogram({ name, href, ...props }: SiteHeaderMonogramProps) {
   return (
     <a className={monogramStyles} data-monogram="" href={href} aria-label={name} {...props}>
-      {name.split(' ').map((word) => (
-        <span key={word} data-word="" aria-hidden="true">
-          <span>{word[0]}</span>
-          <span data-rest="">
-            <span>{word.slice(1)}</span>
-          </span>
-          <span data-dot="">
-            <span>.</span>
+      {name.split(' ').map((word, i) => (
+        <span key={word} data-word="" aria-hidden="true" style={{ '--chars': word.length, '--i': i } as CSSProperties}>
+          <span data-reel="">
+            <span>
+              {word[0]}
+              <span data-dot="">.</span>
+            </span>
+            <span>{word}</span>
           </span>
         </span>
       ))}

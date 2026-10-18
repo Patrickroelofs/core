@@ -1,6 +1,8 @@
 import { css } from '../../styled-system/css'
 
 const ease = 'cubic-bezier(.2,.7,.2,1)'
+const slow = 'cubic-bezier(.7,0,.2,1)'
+const overshoot = 'cubic-bezier(.5,-.4,.3,1.4)'
 const active = ':is(:hover, :focus-visible)'
 
 /** Top bar: monogram, a rule that fills the gap, then whatever nav is passed in. */
@@ -12,13 +14,14 @@ export const siteHeaderStyles = css({
   py: '5',
   fontFamily: 'body',
   color: 'fg.default',
-  // the rule pulls back while the monogram unfolds
+  // the rule pulls back while the monogram slots over
   [`&:has([data-monogram]${active}) [data-rule]`]: { transform: 'scaleX(.3)', opacity: 0.4 },
 })
 
-/** Initials with a coral dot. On hover each word's rest unfolds (0fr > 1fr) and the dots fold away. */
+/** Slot mark: each word is a 1em window onto a two-row reel ("P." over "Patrick"). On hover the reel rolls up (overshooting) while the window widens to the word. */
 export const monogramStyles = css({
   display: 'flex',
+  gap: '[0.18em]',
   fontSize: '[30px]',
   lineHeight: 'none',
   letterSpacing: 'tighter',
@@ -27,24 +30,25 @@ export const monogramStyles = css({
   textDecoration: 'none',
   _focusVisible: { outlineWidth: '[2px]', outlineStyle: 'solid', outlineColor: 'focusRing', outlineOffset: '[4px]' },
   '& [data-word]': {
-    display: 'flex',
+    display: 'block',
+    height: '[1em]',
+    overflow: 'hidden',
     fontWeight: 'black',
-    marginRight: '[0.02em]',
-    transition: `[margin .5s ${ease}]`,
+    maxWidth: '[0.95em]',
+    transition: `[max-width .6s ${slow} calc(var(--i) * 80ms)]`,
   },
   '& [data-word]:first-child': { fontWeight: 'light' },
-  '& [data-word]:last-child': { marginRight: '0' },
-  '& [data-rest], & [data-dot]': {
-    display: 'grid',
-    transition: `[grid-template-columns .55s ${ease}]`,
+  '& [data-word]:last-child': { maxWidth: '[1.05em]' },
+  '& [data-reel]': {
+    display: 'flex',
+    flexDirection: 'column',
+    transition: `[transform .6s ${overshoot} calc(var(--i) * 80ms)]`,
   },
-  '& [data-rest]': { gridTemplateColumns: '[0fr]' },
-  '& [data-dot]': { gridTemplateColumns: '[1fr]', color: 'coral' },
-  '& [data-rest] > *, & [data-dot] > *': { minWidth: '0', overflow: 'hidden' },
+  '& [data-reel] > *': { height: '[1em]' },
+  '& [data-dot]': { color: 'coral' },
   [`&${active}`]: {
-    '& [data-word]:not(:last-child)': { marginRight: '[0.22em]' },
-    '& [data-rest]': { gridTemplateColumns: '[1fr]' },
-    '& [data-dot]': { gridTemplateColumns: '[0fr]' },
+    '& [data-word]': { maxWidth: '[calc(var(--chars) * 0.62em)]' },
+    '& [data-reel]': { transform: 'translateY(-1em)' },
   },
   _motionReduce: { '&, & *': { transition: '[none]' } },
 })

@@ -7,8 +7,8 @@ import * as SiteHeaderStories from './site-header.stories'
 
 Top bar. A compound component: `SiteHeader`, `SiteHeader.Monogram` and `SiteHeader.Rule`. Anything else inside (usually a `NavigationMenu`) is laid out after them.
 
-- `SiteHeader.Monogram` shows the initials ("P.R."); on hover or focus the rest of each word unfolds and the dots fold away. Pass the full `name`; the first word is light, the others black.
-- `SiteHeader.Rule` is a hairline filling the gap. It pulls back while the monogram unfolds.
+- `SiteHeader.Monogram` shows the initials ("P.R."); on hover or focus each word's reel rolls up from the initial and a coral dot ("P.") to the whole word while its window widens. Pass the full `name`; the first word is light, the others black.
+- `SiteHeader.Rule` is a hairline filling the gap. It pulls back while the monogram slots over.
 
 ```tsx
 import { SiteHeader } from '@core/ui/site-header/site-header'
@@ -20,18 +20,18 @@ import { SiteHeader } from '@core/ui/site-header/site-header'
 </SiteHeader>
 ```
 
-## Monogram
+## Monogram (slot)
 
 <Canvas of={SiteHeaderStories.Monogram} />
 
 ## Accessibility
 
 - Rendered as `<header>` (a `banner` landmark when top-level).
-- The monogram is a link labelled with the full `name`; its letters are hidden from assistive tech so it never reads as "P.R.". Focus unfolds it like hover.
-- The unfold and the rule are disabled with reduced motion.
+- The monogram is a link labelled with the full `name`; its letters are hidden from assistive tech so it never reads as "P.R.". Focus rolls it over like hover.
+- The slot and the rule are disabled with reduced motion.
 
 ## Don't
 
 - Don't pass `className`.
 - Don't pass a single-word `name`; there would be nothing to abbreviate.
-- Don't rely on the unfold to show the name; it is decoration, the label carries it.
+- Don't rely on the animation to show the name; it is decoration, the label carries it.
