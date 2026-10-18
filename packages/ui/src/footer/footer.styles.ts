@@ -23,6 +23,7 @@ export const footerStyles = cva({
 export const doorStyles = css({
   position: 'relative',
   isolation: 'isolate',
+  zIndex: '0',
   containerType: 'inline-size',
   display: 'flex',
   flexDirection: 'column',
@@ -36,6 +37,8 @@ export const doorStyles = css({
   pb: '8',
   color: 'fg.default',
   textDecoration: 'none',
+  // z-index drops only after the shrink finishes, so a leaving door stays over its neighbour while it closes
+  transition: '[z-index 0s linear .6s]',
   '&[data-surface]': { backgroundColor: 'transparent' },
   '&::before': {
     content: '""',
@@ -51,7 +54,8 @@ export const doorStyles = css({
   '&:first-child::before': { right: 'auto', left: '0' },
   '& > *': { transition: `[translate .6s ${ease}]` },
   [`&:is(a[href])${active}`]: {
-    zIndex: '1',
+    zIndex: '2',
+    transitionDelay: '[0s]',
     md: { '&::before': { width: '[160%]' }, '&:not(:first-child) > *': { translate: '[-60cqw 0]' } },
   },
   _focusVisible: { outlineWidth: '[2px]', outlineStyle: 'solid', outlineColor: 'focusRing', outlineOffset: '[-4px]' },
