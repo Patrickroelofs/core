@@ -1,0 +1,47 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+import * as MobileNavigationStories from './mobile-navigation.stories'
+
+<Meta of={MobileNavigationStories} />
+
+# MobileNavigation
+
+Small-screen counterpart of `NavigationMenu`: a Menu button that expands a sheet of large, thin labels. Tapping a label opens its section and the label turns heavy. A compound component on Base UI's `Collapsible` and `Accordion`; the root owns the open state, you compose the parts.
+
+```tsx
+import { MobileNavigation } from '@core/ui/mobile-navigation/mobile-navigation'
+
+<MobileNavigation>
+  <MobileNavigation.Trigger />
+  <MobileNavigation.Sheet>
+    <MobileNavigation.Section value="work">
+      <MobileNavigation.SectionTrigger>Work</MobileNavigation.SectionTrigger>
+      <MobileNavigation.SectionPanel>
+        <MobileNavigation.SectionLink href="/shiftboard" title="Shiftboard" meta="2024" />
+      </MobileNavigation.SectionPanel>
+    </MobileNavigation.Section>
+    <MobileNavigation.Link href="/cv">CV</MobileNavigation.Link>
+  </MobileNavigation.Sheet>
+</MobileNavigation>
+```
+
+<Canvas of={MobileNavigationStories.Open} />
+
+## Parts
+
+- `MobileNavigation`: root. Accepts Base UI `open` / `defaultOpen` / `onOpenChange`.
+- `.Trigger`: the Menu button; label swaps to `openLabel` ("Close") while open. Place it in your header, the `Sheet` can sit anywhere below it.
+- `.Sheet`: the expanding panel; renders the `<nav>` (labelled "Main") and allows one section open at a time.
+- `.Section` / `.SectionTrigger` / `.SectionPanel`: an expandable group. Give each `Section` a `value`.
+- `.SectionLink`: row link in a panel with `title`, optional `description` and `meta`.
+- `.Link`: top-level link without a section.
+
+## Accessibility
+
+- Triggers expose `aria-expanded` and control their panel; Enter/Space toggle, arrow keys move between section triggers.
+- Close the sheet from a link's `onClick` if it navigates in-page.
+
+## Don't
+
+- Don't pass `className`; styling comes from the recipes.
+- Don't render both this and `NavigationMenu` visibly: switch on viewport width in the consumer.
+- Don't nest sections.
