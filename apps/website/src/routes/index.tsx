@@ -84,7 +84,7 @@ function Home() {
         ))}
       </Grid>
       <Grid gap="m">
-        <Card data-surface="coral" render={<Grid.Item span={7} />}>
+        <Card data-surface="plum" render={<Grid.Item span={7} />}>
           <Card.Body>
             <Title as="h3">Experience</Title>
             {experience.map(({ years, role, place, where }) => (
