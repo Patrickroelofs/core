@@ -4,14 +4,14 @@ import { defineTokens } from '@pandacss/dev'
 // between its size at minVw and its size at maxVw, via clamp().
 export const fluidConfig = {
   minVw: 360,
-  maxVw: 1240,
+  maxVw: 1440,
   type: { min: { base: 18, ratio: 1.2 }, max: { base: 20, ratio: 1.25 }, steps: [-2, -1, 0, 1, 2, 3, 4, 5, 6] },
   // multipliers of the step-0 size
   space: {
-    names: ['3xs', '2xs', 'xs', 's', 'm', 'l', 'xl', '2xl', '3xl'],
-    multipliers: [0.25, 0.5, 0.75, 1, 1.5, 2, 3, 4, 6],
+    names: ['3xs', '2xs', 'xs', 's', 'm', 'l', 'xl', '2xl', '3xl', '4xl'],
+    multipliers: [0.25, 0.5, 0.75, 1, 1.5, 2, 3, 4, 8, 12],
   },
-  grid: { columns: 12, maxWidth: 1240 },
+  grid: { columns: 12, maxWidth: 1440 },
 }
 
 const r = (n: number) => +n.toFixed(4)
