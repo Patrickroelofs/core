@@ -93,7 +93,7 @@ export const ruleStyles = css({
     top: '[50%]',
     right: '0',
     // `translate` centres the icon on the line's end so `transform` is free for the pop
-    translate: '[50% calc(-50% - 4px)]',
+    translate: '[50% calc(-50% - 2px)]',
     display: 'grid',
     fontSize: '[24px]',
     lineHeight: 'none',
