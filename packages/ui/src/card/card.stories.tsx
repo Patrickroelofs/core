@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { Label } from '../label/label'
 import { Tag } from '../tag/tag'
+import { Title } from '../title/title'
+import { Typography } from '../typography/typography'
 import { Card } from './card'
 
 const photo = `data:image/svg+xml,${encodeURIComponent(
@@ -26,11 +29,9 @@ export const Link: Story = {
     <Card render={<a href="#shiftboard" />}>
       <Card.Media>shiftboard: dashboard</Card.Media>
       <Card.Body>
-        <Card.Title>Shiftboard</Card.Title>
-        <Card.Meta>2024–26</Card.Meta>
-        <Card.Description>
-          Scheduling for night-shift nurses. Swap requests went from twenty minutes to two.
-        </Card.Description>
+        <Title as="h3">Shiftboard</Title>
+        <Label render={<span />}>2024–26</Label>
+        <Typography>Scheduling for night-shift nurses. Swap requests went from twenty minutes to two.</Typography>
         <Tag tone="coral" size="sm">
           Lead designer
         </Tag>
@@ -44,9 +45,9 @@ export const Static: Story = {
     <Card>
       <Card.Media>loop transit: rider app</Card.Media>
       <Card.Body>
-        <Card.Title>Loop Transit</Card.Title>
-        <Card.Meta>2023</Card.Meta>
-        <Card.Description>A rider app that tells the truth about delays.</Card.Description>
+        <Title as="h3">Loop Transit</Title>
+        <Label render={<span />}>2023</Label>
+        <Typography>A rider app that tells the truth about delays.</Typography>
         <Tag tone="azure" size="sm">
           Design + front-end
         </Tag>
@@ -62,8 +63,8 @@ export const WithImage: Story = {
         <img src={photo} alt="Abstract landscape" />
       </Card.Media>
       <Card.Body>
-        <Card.Title>Fieldkit</Card.Title>
-        <Card.Meta>2021</Card.Meta>
+        <Title as="h3">Fieldkit</Title>
+        <Label render={<span />}>2021</Label>
         <Tag tone="plum" size="sm">
           Founding designer
         </Tag>
@@ -76,8 +77,8 @@ export const TitleOnly: Story = {
   render: () => (
     <Card>
       <Card.Body>
-        <Card.Title>Civic Atlas</Card.Title>
-        <Card.Meta>2019</Card.Meta>
+        <Title as="h3">Civic Atlas</Title>
+        <Label render={<span />}>2019</Label>
       </Card.Body>
     </Card>
   ),
@@ -113,8 +114,8 @@ export const TagVariants: Story = {
   render: () => (
     <Card>
       <Card.Body>
-        <Card.Title>Tags</Card.Title>
-        <Card.Meta>all tones</Card.Meta>
+        <Title as="h3">Tags</Title>
+        <Label render={<span />}>all tones</Label>
         <div style={{ gridColumn: '1 / -1', display: 'flex', flexWrap: 'wrap', gap: 8 }}>
           <Tag tone="coral">coral</Tag>
           <Tag tone="azure">azure</Tag>

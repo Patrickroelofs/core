@@ -2,7 +2,7 @@ import { css, cva, type RecipeVariantProps } from '../../styled-system/css'
 
 const ease = 'cubic-bezier(.2,.7,.2,1)'
 
-/** Lift and heavier title only apply when the card is a link (`<a href>`). */
+/** Lift and heavier title only apply when the card is a link (`<a href>`). Headings inside get the card title look. */
 export const cardStyles = css({
   display: 'flex',
   flexDirection: 'column',
@@ -16,7 +16,14 @@ export const cardStyles = css({
   transition: `[transform .35s ${ease}]`,
   '&:is(a[href])': { cursor: 'pointer' },
   '&:is(a[href]):hover': { transform: 'translateY(-4px)' },
-  '&:is(a[href]):hover [data-part="title"]': { fontWeight: 'black' },
+  '& :is(h1, h2, h3, h4, h5, h6)': {
+    fontSize: '[30px]',
+    fontWeight: 'extrabold',
+    lineHeight: 'none',
+    letterSpacing: '[-0.035em]',
+    transition: `[font-weight .35s ${ease}]`,
+  },
+  '&:is(a[href]):hover :is(h1, h2, h3, h4, h5, h6)': { fontWeight: 'black' },
   _focusVisible: { outlineWidth: '[2px]', outlineStyle: 'solid', outlineColor: 'focusRing', outlineOffset: '[2px]' },
   _motionReduce: { transition: '[none]', '&:is(a[href]):hover': { transform: 'none' } },
 })
@@ -63,18 +70,5 @@ export const bodyStyles = css({
   px: '6',
   pb: '6',
 })
-
-export const titleStyles = css({
-  m: '0',
-  fontSize: '[30px]',
-  fontWeight: 'extrabold',
-  lineHeight: 'none',
-  letterSpacing: '[-0.035em]',
-  transition: `[font-weight .35s ${ease}]`,
-})
-
-export const metaStyles = css({ fontSize: 'sm', fontWeight: 'medium', opacity: 0.6 })
-
-export const descriptionStyles = css({ m: '0', fontSize: 'md', lineHeight: 'normal', opacity: 0.75 })
 
 export type CardMediaVariants = NonNullable<RecipeVariantProps<typeof mediaStyles>>
