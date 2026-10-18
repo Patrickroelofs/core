@@ -4,8 +4,6 @@ import { HeroIntro } from '@core/ui/hero-intro/hero-intro'
 import { Image } from '@core/ui/image/image'
 import { Label } from '@core/ui/label/label'
 import { ListRow } from '@core/ui/list-row/list-row'
-import { NavigationMenu } from '@core/ui/navigation-menu/navigation-menu'
-import { SiteHeader } from '@core/ui/site-header/site-header'
 import { Tag } from '@core/ui/tag/tag'
 import { Title } from '@core/ui/title/title'
 import { Typography } from '@core/ui/typography/typography'
@@ -62,20 +60,6 @@ const writing = [
 function Home() {
   return (
     <main className={section}>
-      <SiteHeader>
-        <SiteHeader.Monogram href="/" name="Patrick Roelofs" />
-        <SiteHeader.Rule />
-        <NavigationMenu>
-          <NavigationMenu.List>
-            <NavigationMenu.Item>
-              <NavigationMenu.Link href="/work">Work</NavigationMenu.Link>
-            </NavigationMenu.Item>
-            <NavigationMenu.Item>
-              <NavigationMenu.Link href="/writing">Writing</NavigationMenu.Link>
-            </NavigationMenu.Item>
-          </NavigationMenu.List>
-        </NavigationMenu>
-      </SiteHeader>
       {/* TODO: placeholder images, replace with real photos */}
       <HeroIntro>
         Hi, I’m{' '}
