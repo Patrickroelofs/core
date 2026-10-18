@@ -18,6 +18,11 @@ export function SiteFooter() {
           <Footer.Title>Say hi</Footer.Title>
           <span>GitHub · LinkedIn</span>
         </Footer.Door>
+        <Footer.Door data-surface="coral" render={<a href="/writing" />}>
+          <Footer.Label>Notes on design</Footer.Label>
+          <Footer.Title>Read</Footer.Title>
+          <span>12 essays</span>
+        </Footer.Door>
         <Footer.Bar>
           <span>© 2026 Patrick Roelofs</span>
           <span>Pick a side</span>
