@@ -7,10 +7,12 @@ import { Typography } from '@core/ui/typography/typography'
 import { createFileRoute } from '@tanstack/react-router'
 import { css } from '../../styled-system/css'
 
+const section = css({ display: 'flex', flexDirection: 'column', gap: '8', maxW: '[1400px]', mx: 'auto', p: 'gutter' })
+const intro = css({ display: 'flex', flexDirection: 'column', gap: '2' })
+
 const grid = css({
   display: 'grid',
   gap: '6',
-  p: 'gutter',
   gridTemplateColumns: '[repeat(auto-fill, minmax(min(100%, 320px), 1fr))]',
 })
 
@@ -48,27 +50,35 @@ const projects = [
 
 function Home() {
   return (
-    <main className={grid}>
-      {projects.map(({ title, year, role, tone, description }) => (
-        <Card key={title} render={<a href={`/work/${title.toLowerCase().replace(/ /g, '-')}`} />}>
-          <Card.Media>
-            <Image label={`${title.toLowerCase()}: cover`} />
-            <Card.Reveal tone={tone}>View case study</Card.Reveal>
-          </Card.Media>
-          <Card.Body>
-            <Title as="h2">{title}</Title>
-            <Typography>{description}</Typography>
-            <Card.Footer>
-              <Tag tone={tone} size="sm">
-                {role}
-              </Tag>
-              <Label size="xs" render={<time dateTime={year.slice(0, 4)} />}>
-                {year}
-              </Label>
-            </Card.Footer>
-          </Card.Body>
-        </Card>
-      ))}
+    <main className={section}>
+      <div className={intro}>
+        <Title as="h1" size="xl">
+          Selected work
+        </Title>
+        <Typography size="lg">Product design and front-end for teams who care about the details.</Typography>
+      </div>
+      <div className={grid}>
+        {projects.map(({ title, year, role, tone, description }) => (
+          <Card key={title} render={<a href={`/work/${title.toLowerCase().replace(/ /g, '-')}`} />}>
+            <Card.Media>
+              <Image label={`${title.toLowerCase()}: cover`} />
+              <Card.Reveal tone={tone}>View case study</Card.Reveal>
+            </Card.Media>
+            <Card.Body>
+              <Title as="h3">{title}</Title>
+              <Typography>{description}</Typography>
+              <Card.Footer>
+                <Tag tone={tone} size="sm">
+                  {role}
+                </Tag>
+                <Label size="xs" render={<time dateTime={year.slice(0, 4)} />}>
+                  {year}
+                </Label>
+              </Card.Footer>
+            </Card.Body>
+          </Card>
+        ))}
+      </div>
     </main>
   )
 }
