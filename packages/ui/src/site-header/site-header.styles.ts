@@ -19,7 +19,7 @@ export const siteHeaderStyles = css({
     bottom: '[-24px]',
     bg: 'bg.canvas/60',
     backdropFilter: '[blur(12px)]',
-    maskImage: '[linear-gradient(to bottom, #000 60%, transparent)]',
+    maskImage: '[linear-gradient(to bottom, #000 calc(100% - 42px), transparent)]',
     pointerEvents: 'none',
   },
   display: 'flex',
