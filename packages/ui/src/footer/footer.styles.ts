@@ -7,12 +7,13 @@ const active = ':is(:hover, :focus-visible)'
 export const footerStyles = cva({
   base: {
     display: 'flex',
-    flexDirection: 'column',
+    flexWrap: 'wrap',
     minWidth: '0',
     overflow: 'hidden',
     borderRadius: 'card',
     fontFamily: 'body',
-    md: { flexDirection: 'row', flexWrap: 'wrap' },
+    // mobile-last so no `flex-d_column` base class is shared with other stylesheets, where the website's copy would win the cascade
+    mdDown: { flexDirection: 'column', flexWrap: 'nowrap' },
   },
   variants: {
     variant: {
