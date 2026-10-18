@@ -95,8 +95,8 @@ export const ruleStyles = css({
     // `translate` centres the icon on the line's end so `transform` is free for the pop
     translate: '[50% -50%]',
     display: 'grid',
-    color: 'coral',
-    fontSize: '[28px]',
+    fontSize: '[24px]',
+    lineHeight: 'none',
     transform: 'rotate(-60deg) scale(0)',
     opacity: 0,
     transition: `[transform .7s ${spring}, opacity .2s linear]`,

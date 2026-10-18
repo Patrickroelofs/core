@@ -8,7 +8,7 @@ import * as SiteHeaderStories from './site-header.stories'
 Sticky top bar. A compound component: `SiteHeader`, `SiteHeader.Monogram` and `SiteHeader.Rule`. Anything else inside (usually a `NavigationMenu`) is laid out after them.
 
 - `SiteHeader.Monogram` shows the full name. Once the page scrolls (more than a few pixels) the header gets `data-collapsed` and each word's reel rolls down to its initial and a coral dot ("P.R."); hover or focus rolls it open again. Pass the full `name`; the first word is light, the others black.
-- `SiteHeader.Rule` is a hairline filling the gap between monogram and nav. It fills from the left with the page's scroll progress (0% at the top, 100% at the bottom), where a thumbs-up icon pops out of its end.
+- `SiteHeader.Rule` is a hairline filling the gap between monogram and nav. It fills from the left with the page's scroll progress (0% at the top, 100% at the bottom), where a 👍 pops out of its end.
 
 The header sticks to the top of the viewport, so render it as a direct child of a tall container (usually `<body>`).
 

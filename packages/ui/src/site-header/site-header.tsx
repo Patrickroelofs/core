@@ -1,4 +1,3 @@
-import { ThumbsUpIcon } from '@phosphor-icons/react'
 import { type ComponentProps, type CSSProperties, useEffect, useRef, useState } from 'react'
 import { monogramStyles, ruleStyles, siteHeaderStyles } from './site-header.styles'
 
@@ -49,9 +48,7 @@ function Monogram({ name, href, ...props }: SiteHeaderMonogramProps) {
 function Rule(props: Part<ComponentProps<'span'>>) {
   return (
     <span className={ruleStyles} data-rule="" aria-hidden="true" {...props}>
-      <span data-thumb="">
-        <ThumbsUpIcon weight="fill" />
-      </span>
+      <span data-thumb="">👍</span>
     </span>
   )
 }
