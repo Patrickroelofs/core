@@ -32,7 +32,7 @@ export const doorStyles = css({
   gap: '10',
   flex: '[1 1 0]',
   minWidth: '0',
-  minHeight: '[300px]',
+  minHeight: '[clamp(300px, 30vw, 600px)]',,
   px: '9',
   pt: '10',
   pb: '8',
