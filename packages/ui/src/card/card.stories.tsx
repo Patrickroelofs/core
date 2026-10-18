@@ -30,11 +30,15 @@ export const Link: Story = {
       <Card.Media>shiftboard: dashboard</Card.Media>
       <Card.Body>
         <Title as="h3">Shiftboard</Title>
-        <Label render={<span />}>2024–26</Label>
         <Typography>Scheduling for night-shift nurses. Swap requests went from twenty minutes to two.</Typography>
-        <Tag tone="coral" size="sm">
-          Lead designer
-        </Tag>
+        <Card.Footer>
+          <Tag tone="coral" size="sm">
+            Lead designer
+          </Tag>
+          <Label size="xs" render={<time dateTime="2024" />}>
+            2024–26
+          </Label>
+        </Card.Footer>
       </Card.Body>
     </Card>
   ),
@@ -46,11 +50,15 @@ export const Static: Story = {
       <Card.Media>loop transit: rider app</Card.Media>
       <Card.Body>
         <Title as="h3">Loop Transit</Title>
-        <Label render={<span />}>2023</Label>
         <Typography>A rider app that tells the truth about delays.</Typography>
-        <Tag tone="azure" size="sm">
-          Design + front-end
-        </Tag>
+        <Card.Footer>
+          <Tag tone="azure" size="sm">
+            Design + front-end
+          </Tag>
+          <Label size="xs" render={<time dateTime="2023" />}>
+            2023
+          </Label>
+        </Card.Footer>
       </Card.Body>
     </Card>
   ),
@@ -64,10 +72,14 @@ export const WithImage: Story = {
       </Card.Media>
       <Card.Body>
         <Title as="h3">Fieldkit</Title>
-        <Label render={<span />}>2021</Label>
-        <Tag tone="plum" size="sm">
-          Founding designer
-        </Tag>
+        <Card.Footer>
+          <Tag tone="plum" size="sm">
+            Founding designer
+          </Tag>
+          <Label size="xs" render={<time dateTime="2021" />}>
+            2021
+          </Label>
+        </Card.Footer>
       </Card.Body>
     </Card>
   ),
@@ -78,7 +90,30 @@ export const TitleOnly: Story = {
     <Card>
       <Card.Body>
         <Title as="h3">Civic Atlas</Title>
-        <Label render={<span />}>2019</Label>
+      </Card.Body>
+    </Card>
+  ),
+}
+
+export const ManyTags: Story = {
+  render: () => (
+    <Card>
+      <Card.Body>
+        <Title as="h3">Many tags</Title>
+        <Card.Footer>
+          <Tag tone="coral" size="sm">
+            Research
+          </Tag>
+          <Tag tone="azure" size="sm">
+            Design
+          </Tag>
+          <Tag tone="plum" size="sm" appearance="outline">
+            Front-end
+          </Tag>
+          <Label size="xs" render={<time dateTime="2022" />}>
+            2022
+          </Label>
+        </Card.Footer>
       </Card.Body>
     </Card>
   ),
@@ -115,8 +150,7 @@ export const TagVariants: Story = {
     <Card>
       <Card.Body>
         <Title as="h3">Tags</Title>
-        <Label render={<span />}>all tones</Label>
-        <div style={{ gridColumn: '1 / -1', display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+        <Card.Footer>
           <Tag tone="coral">coral</Tag>
           <Tag tone="azure">azure</Tag>
           <Tag tone="plum">plum</Tag>
@@ -127,7 +161,7 @@ export const TagVariants: Story = {
           <Tag tone="navy" size="md">
             md
           </Tag>
-        </div>
+        </Card.Footer>
       </Card.Body>
     </Card>
   ),

@@ -22,4 +22,9 @@ function Body(props: Part<ComponentProps<'div'>>) {
   return <div className={bodyStyles} {...props} />
 }
 
-export const Card = Object.assign(Root, { Media, Body })
+/** Row for `Tag`s and a trailing `<time>` (e.g. `<Label render={<time dateTime="2024" />}>`). */
+function Footer(props: Part<ComponentProps<'div'>>) {
+  return <div className={footerStyles} {...props} />
+}
+
+export const Card = Object.assign(Root, { Media, Body, Footer })

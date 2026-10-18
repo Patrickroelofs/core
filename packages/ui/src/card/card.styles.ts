@@ -60,15 +60,22 @@ export const mediaStyles = cva({
 })
 
 export const bodyStyles = css({
-  display: 'grid',
-  gridTemplateColumns: 'minmax(0, 1fr) auto',
-  columnGap: '4',
-  rowGap: '[6px]',
-  alignItems: 'baseline',
-  justifyItems: 'start',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '2',
   pt: '[22px]',
   px: '6',
   pb: '6',
+})
+
+/** Tags on the left, a `<time>` pushed to the right edge. Wraps on narrow cards. */
+export const footerStyles = css({
+  display: 'flex',
+  flexWrap: 'wrap',
+  alignItems: 'center',
+  gap: '2',
+  mt: '2',
+  '& > time': { marginInlineStart: 'auto', opacity: 0.6 },
 })
 
 export type CardMediaVariants = NonNullable<RecipeVariantProps<typeof mediaStyles>>
