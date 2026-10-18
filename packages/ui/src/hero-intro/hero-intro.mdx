@@ -1,0 +1,62 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+import * as HeroIntroStories from './hero-intro.stories'
+
+<Meta of={HeroIntroStories} />
+
+# HeroIntro
+
+Intro sentence for the top of a page, with inline photo pills. A compound component: `HeroIntro`, `HeroIntro.Phrase`, `HeroIntro.Word` and `HeroIntro.Pill`.
+
+- `HeroIntro` is an `<h1>`; write the sentence as text with `Phrase`s in it.
+- A `Phrase` wraps a `Word` (thin, turns black when active) and a `Pill` (a round photo, widened or animated when active).
+- A `Pill` holds one `Image`; `cycle` and `fan` use up to three.
+- `variant` picks the hover behaviour: `pills` (default), `grow`, `marker`, `cycle`, `fan`, `focus`.
+
+```tsx
+import { HeroIntro } from '@core/ui/hero-intro/hero-intro'
+import { Image } from '@core/ui/image/image'
+
+<HeroIntro variant="pills">
+  Hi, I’m{' '}
+  <HeroIntro.Phrase>
+    <HeroIntro.Word>Patrick</HeroIntro.Word>{' '}
+    <HeroIntro.Pill><Image src="/me.jpg" /></HeroIntro.Pill>
+  </HeroIntro.Phrase>
+  .
+</HeroIntro>
+```
+
+## Pills
+
+<Canvas of={HeroIntroStories.Pills} />
+
+## Grow
+
+<Canvas of={HeroIntroStories.Grow} />
+
+## Marker
+
+<Canvas of={HeroIntroStories.Marker} />
+
+## Cycle
+
+<Canvas of={HeroIntroStories.Cycle} />
+
+## Fan
+
+<Canvas of={HeroIntroStories.Fan} />
+
+## Focus
+
+<Canvas of={HeroIntroStories.Focus} />
+
+## Accessibility
+
+- The sentence is real heading text; pills are `aria-hidden` and carry no information.
+- Effects are triggered by hover and focus within a phrase, and are disabled with reduced motion.
+
+## Don't
+
+- Don't pass `className`.
+- Don't put anything in a `Pill` that is needed to understand the sentence.
+- Don't use more than one `HeroIntro` per page.
