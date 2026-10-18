@@ -9,6 +9,7 @@ Work card: `Image` slot, heavy title, year, description and role tag. A compound
 
 - `Card`: root surface, a `<div>`. Use `render={<a href="…" />}` for a link card that lifts 4px and turns its title `black` on hover.
 - Image: use the `Image` component (`@core/ui/image/image`) as the first child; it has `ratio` and placeholder `tone` props.
+- `Card.Media` + `Card.Reveal`: wrap the `Image` in `Card.Media` and add a `Card.Reveal` for the hover reveal (below).
 - `Card.Body`: vertical stack for the text parts.
 - `Card.Footer`: row for `Tag`s on the left and a `<time>` pushed to the right edge; wraps on narrow cards.
 - Text and tags: use the existing `Title` (`as="h3"`), `Typography`, `Tag` and `Label` (`render={<time dateTime="…" />}`, for the date) directly inside the body and footer. Headings inside a card are restyled to the card title look (30px, extrabold, black on link hover).
@@ -42,6 +43,12 @@ Without a link the card does not lift or change weight.
 
 <Canvas of={CardStories.Static} />
 
+## Reveal
+
+On a link card, a tone panel (`tone`: `coral`, `azure`, `plum`, `navy`) wipes up over the image with the CTA text and a ↗. It also shows on keyboard focus. Static cards never show it.
+
+<Canvas of={CardStories.RevealOnHover} />
+
 ## Image
 
 <Canvas of={CardStories.WithImage} />
@@ -61,6 +68,7 @@ Any number of `Tag`s; the `<time>` stays on the right. Tag tones and appearances
 
 - A link card is one `<a>`; its accessible name is the whole text content, so keep the title first.
 - Always give `<img>` meaningful `alt`. The placeholder label is visible text, not an image description.
+- `Card.Reveal` is `aria-hidden`; the link's name comes from the card text, so don't put information only in the CTA.
 - Hover motion is disabled under `prefers-reduced-motion`.
 
 ## Don't

@@ -139,3 +139,26 @@ export const TagVariants: Story = {
     </Card>
   ),
 }
+
+export const RevealOnHover: Story = {
+  render: () => (
+    <Card render={<a href="#shiftboard" />}>
+      <Card.Media>
+        <Image label="shiftboard: dashboard" />
+        <Card.Reveal tone="plum">View case study</Card.Reveal>
+      </Card.Media>
+      <Card.Body>
+        <Title as="h3">Shiftboard</Title>
+        <Typography>Scheduling for night-shift nurses.</Typography>
+        <Card.Footer>
+          <Tag tone="plum" size="sm">
+            Lead designer
+          </Tag>
+          <Label size="xs" render={<time dateTime="2024" />}>
+            2024–26
+          </Label>
+        </Card.Footer>
+      </Card.Body>
+    </Card>
+  ),
+}
