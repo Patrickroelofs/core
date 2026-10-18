@@ -5,41 +5,31 @@ import * as FooterStories from './footer.stories'
 
 # Footer
 
-Page footer made of doors. A compound component: `Footer`, `Footer.Door`, `Footer.Title` and `Footer.Bar`.
+Closing footer where the name is the email link. A compound component: `Footer`, `Footer.Meet` and `Footer.Bar`.
 
-- `variant="split"` (default, the only one): doors share the width; doors keep their size and the hovered or focused one widens over its neighbour (leftwards, the first door rightwards) and its text moves with the edge. Stacked below `md`.
-- Add as many `Footer.Door`s as needed.
-- `Footer.Door` is a `<div>`; `render={<a href="…" />}` makes it a link. Set `data-surface` for its colours (see Colors → Surfaces).
-- Put a `Label` (`render={<span />}`, `size="xs"`) at the top of a door. `Footer.Title` is thin and straightens its arrow and turns black when the door is active. Anything else in the door is free content.
-- `Footer.Bar` is the optional full-width strip underneath.
+- `Footer.Meet` is an `<a>` (or `render={…}`) with `first` (thin), `last` (black) and `email`. They sit apart at rest; on hover or focus they pull together around a coral pill that shows the email. Links to `mailto:email` unless `href` is set.
+- `Footer.Bar` is the optional strip underneath, e.g. copyright and location.
 
 ```tsx
 import { Footer } from '@core/ui/footer/footer'
 
-<Footer variant="split">
-  <Footer.Door data-surface="navy" render={<a href="mailto:hi@example.com" />}>
-    <Label render={<span />} size="xs">Available from Feb 2027</Label>
-    <Footer.Title>Hire me</Footer.Title>
-  </Footer.Door>
-  <Footer.Door data-surface="plum" render={<a href="/hello" />}>…</Footer.Door>
+<Footer>
+  <Footer.Meet first="Ada" last="Lovelace" email="ada@example.com" />
   <Footer.Bar>© 2026</Footer.Bar>
 </Footer>
 ```
 
-## Split
+## Meet
 
-<Canvas of={FooterStories.Split} />
-
-## Three doors
-
-<Canvas of={FooterStories.ThreeDoors} />
+<Canvas of={FooterStories.Meet} />
 
 ## Accessibility
 
-- Rendered as `<footer>` (a `contentinfo` landmark when top-level). Doors are real links with a focus ring; focus grows a door like hover.
-- Growth is disabled with reduced motion.
+- Rendered as `<footer>` (a `contentinfo` landmark when top-level). The link's accessible name is "First Last, email address"; the visual parts are `aria-hidden`.
+- Keyboard focus triggers the same motion as hover and adds an underline.
+- Motion is disabled with reduced motion.
 
 ## Don't
 
 - Don't pass `className`.
-- Don't rely on the growth to convey meaning; it is decoration.
+- Don't use `Footer.Meet` for a link that doesn't go to a person; the pill promises an email.

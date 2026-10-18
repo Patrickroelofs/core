@@ -9,7 +9,7 @@ export const primitives = defineTokens({
     azure: { value: '#0177bb' },
     coral: { value: '#d65b5c' },
     white: { value: '#ffffff' },
-    gray: { 300: { value: '#d4d4d8' } },
+    gray: { 300: { value: '#e4e4e4' } },
   },
   fonts: {
     onest: { value: "'Onest Variable', 'Onest', system-ui, sans-serif" },

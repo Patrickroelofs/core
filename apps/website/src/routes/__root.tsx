@@ -4,6 +4,7 @@ import css from '@core/ui/styles.css?url'
 import { createRootRoute, HeadContent, Outlet, Scripts } from '@tanstack/react-router'
 import '@fontsource-variable/onest'
 import siteCss from '../../styles.css?url'
+import { SiteFooter } from '../components/site-footer'
 import { SiteNav } from '../components/site-nav'
 
 export const Route = createRootRoute({
@@ -26,6 +27,7 @@ export const Route = createRootRoute({
       <body>
         <SiteNav />
         <Outlet />
+        <SiteFooter />
         <Scripts />
       </body>
     </html>

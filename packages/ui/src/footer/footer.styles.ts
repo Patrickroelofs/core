@@ -1,101 +1,78 @@
-import { css, cva, type RecipeVariantProps } from '../../styled-system/css'
+import { css } from '../../styled-system/css'
 
 const ease = 'cubic-bezier(.2,.7,.2,1)'
+const pop = 'cubic-bezier(.3,1.4,.5,1)'
 const active = ':is(:hover, :focus-visible)'
 
-/** `split`: doors side by side from `md` (stacked below). Doors keep their size; the active one's background grows over its neighbour. */
-export const footerStyles = cva({
-  base: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    minWidth: '0',
-    overflow: 'hidden',
-    borderRadius: 'card',
-    fontFamily: 'body',
-    // mobile-last so no `flex-d_column` base class is shared with other stylesheets, where the website's copy would win the cascade
-    mdDown: { flexDirection: 'column', flexWrap: 'nowrap' },
-    // another door taking over: the first door drops under it at once
-    [`&:has(> [data-door]:not(:first-child)${active}) > [data-door]:first-child`]: { transitionDuration: '[0s]' },
-  },
-  variants: { variant: { split: {} } },
-  defaultVariants: { variant: 'split' },
-})
-
-/** The colour is a `::before` that widens (leftwards, except on the first door) over the neighbour with the content moving along with its edge. */
-export const doorStyles = css({
-  position: 'relative',
-  isolation: 'isolate',
-  containerType: 'inline-size',
+export const footerStyles = css({
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'space-between',
-  gap: '10',
-  flex: '[1 1 0]',
+  gap: 'fluid.2xl',
   minWidth: '0',
-  minHeight: '[clamp(360px, 45vw, 800px)]',
-  px: '9',
-  pt: '10',
-  pb: '8',
+  containerType: 'inline-size',
+  borderRadius: 'card',
+  fontFamily: 'body',
+  bg: 'gray.300',
+  color: 'fg.default',
+  px: '8',
+  pt: '9',
+  pb: '5',
+})
+
+/** First name and surname sit apart; on hover/focus they pull together around the email pill. */
+export const meetStyles = css({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   color: 'fg.default',
   textDecoration: 'none',
-  // Later doors sit over earlier ones (DOM order), which is what every switch needs except one going to the first door: that one rises to the top.
-  zIndex: '1',
-  '&[data-surface]': { backgroundColor: 'transparent' },
-  '&::before': {
-    content: '""',
-    position: 'absolute',
-    zIndex: '-1',
-    top: '0',
-    bottom: '0',
-    right: '0',
-    width: '[100%]',
-    bg: 'bg.canvas',
-    transition: `[width .6s ${ease}]`,
-  },
-  '&:first-child::before': { right: 'auto', left: '0' },
-  // z-index is an integer, so on close it steps 3 > 1: the first door stays over the second while it retracts, unless another door is taking over
-  '&:first-child': { transition: '[z-index .6s linear]' },
-  '& > *': { transition: `[translate .6s ${ease}, font-weight .5s ${ease}]` },
-  [`&:is(a[href])${active}`]: {
-    '&:first-child': { zIndex: '3', transitionDuration: '[0s]' },
-    md: { '&::before': { width: '[160%]' }, '&:not(:first-child) > *': { translate: '[-60cqw 0]' } },
-  },
-  _focusVisible: { outlineWidth: '[2px]', outlineStyle: 'solid', outlineColor: 'focusRing', outlineOffset: '[-4px]' },
-  _motionReduce: { '&::before': { transition: '[none]' }, '& > *': { transition: '[none]' } },
-})
-
-/** Thin until the door is active, then black; the trailing arrow straightens. */
-export const titleStyles = css({
-  margin: '0',
-  fontSize: '[clamp(44px, 6.5vw, 140px)]',
-  fontWeight: 'extralight',
-  lineHeight: 'none',
+  whiteSpace: 'nowrap',
+  outline: 'none',
+  fontSize: '[9.6cqw]',
+  lineHeight: '[0.9]',
   letterSpacing: 'tighter',
-  textWrap: 'balance',
-  transition: `[font-weight .5s ${ease}]`,
-  '& > [data-arrow]': {
-    display: 'inline-block',
-    marginInlineStart: '[0.15em]',
-    fontWeight: 'light',
-    transform: 'rotate(-45deg)',
-    transition: `[transform .5s ${ease}]`,
+  '& [data-first]': { fontWeight: 'extralight', transition: `[font-weight .6s ${ease}]` },
+  '& [data-last]': { fontWeight: 'black' },
+  '& [data-dot]': { color: 'coral' },
+  '& [data-pill]': {
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '[0.8em]',
+    width: '[1.6em]',
+    mx: '[0.12em]',
+    borderRadius: 'full',
+    borderWidth: '[0.02em]',
+    borderStyle: 'solid',
+    borderColor: 'fg.default/25',
+    overflow: 'hidden',
+    transition: `[width .7s ${pop}, background-color .4s, border-color .4s]`,
   },
-  [`[data-door]${active} > &`]: { fontWeight: 'black', '& > [data-arrow]': { transform: 'rotate(0deg)' } },
-  _motionReduce: { transition: '[none]', '& > [data-arrow]': { transition: '[none]' } },
+  '& [data-email]': {
+    color: 'snow',
+    fontSize: '[0.16em]',
+    fontWeight: 'bold',
+    letterSpacing: 'tight',
+    opacity: '0',
+    transition: '[opacity .3s]',
+  },
+  [`&${active}`]: {
+    '& [data-first]': { fontWeight: 'medium' },
+    '& [data-pill]': { width: '[3.4em]', bg: 'coral', borderColor: 'transparent' },
+    '& [data-email]': { opacity: '1', transitionDelay: '[.25s]' },
+  },
+  _focusVisible: { textDecoration: 'underline' },
+  _motionReduce: { '&, & *': { transition: '[none]' } },
 })
 
-/** Full-width strip under the doors. */
+/** Strip under the name, e.g. copyright. */
 export const barStyles = css({
   display: 'flex',
   justifyContent: 'space-between',
   flexWrap: 'wrap',
   gap: '3',
-  flex: '[0 0 100%]',
-  px: '9',
-  py: '4',
-  bg: 'navy',
-  color: 'snow',
-  textStyle: 'mono',
+  pt: '4',
+  borderTopWidth: '[1px]',
+  borderTopStyle: 'solid',
+  borderColor: 'fg.default/20',
 })
-
-export type FooterVariants = NonNullable<RecipeVariantProps<typeof footerStyles>>
