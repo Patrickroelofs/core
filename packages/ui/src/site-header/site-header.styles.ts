@@ -1,6 +1,5 @@
 import { css } from '../../styled-system/css'
 
-const ease = 'cubic-bezier(.2,.7,.2,1)'
 const slow = 'cubic-bezier(.7,0,.2,1)'
 const overshoot = 'cubic-bezier(.5,-.4,.3,1.4)'
 const active = ':is(:hover, :focus-visible)'
@@ -18,11 +17,6 @@ export const siteHeaderStyles = css({
   py: '5',
   fontFamily: 'body',
   color: 'fg.default',
-  // the rule pulls back while the monogram is open
-  [`&:not([data-collapsed]) [data-rule], &:has([data-monogram]${active}) [data-rule]`]: {
-    transform: 'scaleX(.3)',
-    opacity: 0.4,
-  },
 })
 
 const open = {
@@ -66,11 +60,18 @@ export const monogramStyles = css({
   _motionReduce: { '&, & *': { transition: '[none]' } },
 })
 
+/** Hairline track with a fill that follows `--progress` (0 to 1, set by the header from the scroll position). */
 export const ruleStyles = css({
+  position: 'relative',
   flex: '1',
   height: '[1px]',
   bg: 'border.default',
-  transformOrigin: 'left',
-  transition: `[transform .55s ${ease}, opacity .55s ${ease}]`,
-  _motionReduce: { transition: '[none]' },
+  '&::after': {
+    content: '""',
+    position: 'absolute',
+    inset: '0',
+    bg: 'fg.default',
+    transformOrigin: 'left',
+    transform: 'scaleX(var(--progress, 0))',
+  },
 })
