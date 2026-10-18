@@ -7,7 +7,7 @@ import * as FooterStories from './footer.stories'
 
 Page footer made of doors. A compound component: `Footer`, `Footer.Door`, `Footer.Label`, `Footer.Title` and `Footer.Bar`.
 
-- `variant="split"` (default, the only one): doors share the width; the hovered or focused door grows (2.2x) and its siblings shrink (0.8x). Stacked below `md`.
+- `variant="split"` (default, the only one): doors share the width; doors keep their size and the hovered or focused one widens its background over its neighbour (leftwards, the first door rightwards). Stacked below `md`.
 - Add as many `Footer.Door`s as needed.
 - `Footer.Door` is a `<div>`; `render={<a href="…" />}` makes it a link. Set `data-surface` for its colours (see Colors → Surfaces).
 - `Footer.Label` is the small uppercase line; `Footer.Title` is thin and straightens its arrow and turns black when the door is active. Anything else in the door is free content.

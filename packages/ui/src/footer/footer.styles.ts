@@ -3,7 +3,7 @@ import { css, cva, type RecipeVariantProps } from '../../styled-system/css'
 const ease = 'cubic-bezier(.2,.7,.2,1)'
 const active = ':is(:hover, :focus-visible)'
 
-/** `split`: doors side by side from `md` (stacked below). The active door grows, its siblings shrink. */
+/** `split`: doors side by side from `md` (stacked below). Doors keep their size; the active one's background grows over its neighbour. */
 export const footerStyles = cva({
   base: {
     display: 'flex',
@@ -15,17 +15,14 @@ export const footerStyles = cva({
     // mobile-last so no `flex-d_column` base class is shared with other stylesheets, where the website's copy would win the cascade
     mdDown: { flexDirection: 'column', flexWrap: 'nowrap' },
   },
-  variants: {
-    variant: {
-      split: {
-        [`&:has([data-door]${active}) [data-door]:not(${active})`]: { md: { flexGrow: 0.8 } },
-      },
-    },
-  },
+  variants: { variant: { split: {} } },
   defaultVariants: { variant: 'split' },
 })
 
+/** The colour is a `::before` that widens (leftwards, except on the first door) over the neighbour while the content stays put. */
 export const doorStyles = css({
+  position: 'relative',
+  isolation: 'isolate',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
@@ -36,14 +33,24 @@ export const doorStyles = css({
   px: '9',
   pt: '10',
   pb: '8',
-  overflow: 'hidden',
-  bg: 'bg.canvas',
   color: 'fg.default',
   textDecoration: 'none',
-  transition: `[flex-grow .6s ${ease}]`,
-  [`&:is(a[href])${active}`]: { md: { flexGrow: 2.2 } },
+  '&[data-surface]': { backgroundColor: 'transparent' },
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    zIndex: '-1',
+    top: '0',
+    bottom: '0',
+    right: '0',
+    width: '[100%]',
+    bg: 'bg.canvas',
+    transition: `[width .6s ${ease}]`,
+  },
+  '&:first-child::before': { right: 'auto', left: '0' },
+  [`&:is(a[href])${active}`]: { zIndex: '1', md: { '&::before': { width: '[160%]' } } },
   _focusVisible: { outlineWidth: '[2px]', outlineStyle: 'solid', outlineColor: 'focusRing', outlineOffset: '[-4px]' },
-  _motionReduce: { transition: '[none]' },
+  _motionReduce: { '&::before': { transition: '[none]' } },
 })
 
 export const labelStyles = css({
