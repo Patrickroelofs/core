@@ -30,10 +30,6 @@ export function SiteFooter() {
           <Footer.Title>Read</Footer.Title>
           <span>12 essays</span>
         </Footer.Door>
-        <Footer.Bar>
-          <span>© 2026 Patrick Roelofs</span>
-          <span>Pick a side</span>
-        </Footer.Bar>
       </Footer>
     </div>
   )
