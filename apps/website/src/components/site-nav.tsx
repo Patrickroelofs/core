@@ -1,7 +1,10 @@
+import { MobileNavigation } from '@core/ui/mobile-navigation/mobile-navigation'
 import { NavigationMenu } from '@core/ui/navigation-menu/navigation-menu'
 import { css } from '../../styled-system/css'
 
-const header = css({ display: 'flex', justifyContent: 'center', p: 'gutter' })
+const header = css({ p: 'gutter', '@media (min-width: 820px)': { display: 'flex', justifyContent: 'center' } })
+const desktop = css({ display: 'none', '@media (min-width: 820px)': { display: 'block' } })
+const mobile = css({ '@media (min-width: 820px)': { display: 'none' } })
 const panel = css({ p: '3', w: '[360px]' })
 
 // TODO: mock data, replace with real content
@@ -24,25 +27,45 @@ const menus = [
 export function SiteNav() {
   return (
     <header className={header}>
-      <NavigationMenu>
-        <NavigationMenu.List>
-          {menus.map(({ label, links }) => (
-            <NavigationMenu.Item key={label}>
-              <NavigationMenu.Trigger>{label}</NavigationMenu.Trigger>
-              <NavigationMenu.Content>
-                <div className={panel}>
+      <div className={mobile}>
+        <MobileNavigation>
+          <MobileNavigation.Trigger />
+          <MobileNavigation.Sheet>
+            {menus.map(({ label, links }) => (
+              <MobileNavigation.Section key={label} value={label}>
+                <MobileNavigation.SectionTrigger>{label}</MobileNavigation.SectionTrigger>
+                <MobileNavigation.SectionPanel>
                   {links.map((link) => (
-                    <NavigationMenu.ContentLink key={link.title} {...link} />
+                    <MobileNavigation.SectionLink key={link.title} {...link} />
                   ))}
-                </div>
-              </NavigationMenu.Content>
+                </MobileNavigation.SectionPanel>
+              </MobileNavigation.Section>
+            ))}
+            <MobileNavigation.Link href="#">CV</MobileNavigation.Link>
+          </MobileNavigation.Sheet>
+        </MobileNavigation>
+      </div>
+      <div className={desktop}>
+        <NavigationMenu>
+          <NavigationMenu.List>
+            {menus.map(({ label, links }) => (
+              <NavigationMenu.Item key={label}>
+                <NavigationMenu.Trigger>{label}</NavigationMenu.Trigger>
+                <NavigationMenu.Content>
+                  <div className={panel}>
+                    {links.map((link) => (
+                      <NavigationMenu.ContentLink key={link.title} {...link} />
+                    ))}
+                  </div>
+                </NavigationMenu.Content>
+              </NavigationMenu.Item>
+            ))}
+            <NavigationMenu.Item>
+              <NavigationMenu.Link href="#">CV</NavigationMenu.Link>
             </NavigationMenu.Item>
-          ))}
-          <NavigationMenu.Item>
-            <NavigationMenu.Link href="#">CV</NavigationMenu.Link>
-          </NavigationMenu.Item>
-        </NavigationMenu.List>
-      </NavigationMenu>
+          </NavigationMenu.List>
+        </NavigationMenu>
+      </div>
     </header>
   )
 }
