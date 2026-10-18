@@ -14,7 +14,9 @@ function Root(props: SiteHeaderProps) {
     const update = () => {
       setCollapsed(window.scrollY > 8)
       const max = document.documentElement.scrollHeight - window.innerHeight
-      ref.current?.style.setProperty('--progress', String(max > 0 ? Math.min(window.scrollY / max, 1) : 0))
+      const progress = max > 0 ? Math.min(window.scrollY / max, 1) : 0
+      ref.current?.style.setProperty('--progress', String(progress))
+      ref.current?.toggleAttribute('data-complete', max > 0 && progress > 0.995)
     }
     update()
     window.addEventListener('scroll', update, { passive: true })
@@ -42,9 +44,13 @@ function Monogram({ name, href, ...props }: SiteHeaderMonogramProps) {
   )
 }
 
-/** Hairline between monogram and nav that fills up with the page's scroll progress. Decorative. */
+/** Hairline between monogram and nav that fills up with the page's scroll progress and ends in a thumbs up at 100%. Decorative. */
 function Rule(props: Part<ComponentProps<'span'>>) {
-  return <span className={ruleStyles} data-rule="" aria-hidden="true" {...props} />
+  return (
+    <span className={ruleStyles} data-rule="" aria-hidden="true" {...props}>
+      <span data-thumb="">👍</span>
+    </span>
+  )
 }
 
 export const SiteHeader = Object.assign(Root, { Monogram, Rule })

@@ -1,6 +1,7 @@
 import { css } from '../../styled-system/css'
 
 const slow = 'cubic-bezier(.7,0,.2,1)'
+const spring = 'cubic-bezier(.3,1.9,.5,1)'
 const overshoot = 'cubic-bezier(.5,-.4,.3,1.4)'
 const active = ':is(:hover, :focus-visible)'
 
@@ -85,4 +86,18 @@ export const ruleStyles = css({
     transformOrigin: 'left',
     transform: 'scaleX(var(--progress, 0))',
   },
+  // at 100% a thumbs up pops out of the line's end, springing past its size and straightening up
+  '& [data-thumb]': {
+    position: 'absolute',
+    right: '0',
+    bottom: '[-4px]',
+    fontSize: '[28px]',
+    lineHeight: 'none',
+    transformOrigin: 'bottom left',
+    transform: 'translateY(8px) rotate(-60deg) scale(0)',
+    opacity: 0,
+    transition: `[transform .7s ${spring}, opacity .2s linear]`,
+  },
+  'header[data-complete] &': { '& [data-thumb]': { transform: 'none', opacity: 1 } },
+  _motionReduce: { '& [data-thumb]': { transition: '[none]' } },
 })
