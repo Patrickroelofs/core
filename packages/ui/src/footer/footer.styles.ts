@@ -19,10 +19,11 @@ export const footerStyles = cva({
   defaultVariants: { variant: 'split' },
 })
 
-/** The colour is a `::before` that widens (leftwards, except on the first door) over the neighbour while the content stays put. */
+/** The colour is a `::before` that widens (leftwards, except on the first door) over the neighbour with the content moving along with its edge. */
 export const doorStyles = css({
   position: 'relative',
   isolation: 'isolate',
+  containerType: 'inline-size',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
@@ -48,9 +49,13 @@ export const doorStyles = css({
     transition: `[width .6s ${ease}]`,
   },
   '&:first-child::before': { right: 'auto', left: '0' },
-  [`&:is(a[href])${active}`]: { zIndex: '1', md: { '&::before': { width: '[160%]' } } },
+  '& > *': { transition: `[translate .6s ${ease}]` },
+  [`&:is(a[href])${active}`]: {
+    zIndex: '1',
+    md: { '&::before': { width: '[160%]' }, '&:not(:first-child) > *': { translate: '[-60cqw 0]' } },
+  },
   _focusVisible: { outlineWidth: '[2px]', outlineStyle: 'solid', outlineColor: 'focusRing', outlineOffset: '[-4px]' },
-  _motionReduce: { '&::before': { transition: '[none]' } },
+  _motionReduce: { '&::before': { transition: '[none]' }, '& > *': { transition: '[none]' } },
 })
 
 export const labelStyles = css({
