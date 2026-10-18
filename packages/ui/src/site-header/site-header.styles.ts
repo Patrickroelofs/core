@@ -21,7 +21,8 @@ export const siteHeaderStyles = css({
 /** Slot mark: each word is a 1em window onto a two-row reel ("P." over "Patrick"). On hover the reel rolls up (overshooting) while the window widens to the word. */
 export const monogramStyles = css({
   display: 'flex',
-  gap: '[0.18em]',
+  gap: '[0.02em]',
+  transition: `[gap .6s ${slow}]`,
   fontSize: '[30px]',
   lineHeight: 'none',
   letterSpacing: 'tighter',
@@ -34,11 +35,11 @@ export const monogramStyles = css({
     height: '[1em]',
     overflow: 'hidden',
     fontWeight: 'black',
-    maxWidth: '[var(--closed, 0.95em)]',
+    maxWidth: '[var(--closed, 0.67em)]',
     transition: `[max-width .6s ${slow} calc(var(--i) * 80ms)]`,
   },
   '& [data-word]:first-child': { fontWeight: 'light' },
-  '& [data-word]:last-child': { '--closed': '1.05em' },
+  '& [data-word]:last-child': { '--closed': '0.9em' },
   '& [data-reel]': {
     display: 'flex',
     flexDirection: 'column',
@@ -47,6 +48,7 @@ export const monogramStyles = css({
   '& [data-reel] > *': { height: '[1em]' },
   '& [data-dot]': { color: 'coral' },
   [`&${active}`]: {
+    gap: '[0.22em]',
     '& [data-word]': { maxWidth: '[calc(var(--chars) * 0.62em)]' },
     '& [data-reel]': { transform: 'translateY(-1em)' },
   },
