@@ -52,7 +52,7 @@ function Home() {
   return (
     <main className={section}>
       <div className={intro}>
-        <Title as="h1" size="xl">
+        <Title as="h1" size="xl" weight="bold">
           Selected work
         </Title>
         <Typography size="lg">Product design and front-end for teams who care about the details.</Typography>
