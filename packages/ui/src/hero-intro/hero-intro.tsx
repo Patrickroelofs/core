@@ -1,13 +1,13 @@
 import type { ComponentProps } from 'react'
-import { type HeroIntroVariants, heroIntroStyles, phraseStyles } from './hero-intro.styles'
+import { heroIntroStyles, phraseStyles } from './hero-intro.styles'
 
 type Part<T extends { className?: unknown }> = Omit<T, 'className'>
 
-export type HeroIntroProps = Part<ComponentProps<'h1'>> & HeroIntroVariants
+export type HeroIntroProps = Part<ComponentProps<'h1'>>
 
-/** Intro sentence as a heading. Plain text plus `Phrase`s; `variant` sets how a hovered phrase reacts. */
-function Root({ variant, ...props }: HeroIntroProps) {
-  return <h1 className={heroIntroStyles({ variant })} {...props} />
+/** Intro sentence as a heading. Plain text plus `Phrase`s. */
+function Root(props: HeroIntroProps) {
+  return <h1 className={heroIntroStyles} {...props} />
 }
 
 /** A `Word` and its `Pill`, hovered or focused together. */
@@ -20,7 +20,7 @@ function Word(props: Part<ComponentProps<'span'>>) {
   return <span data-word="" {...props} />
 }
 
-/** Inline photo pill. Put one `Image` inside, or three for `cycle` and `fan`. Decorative: hidden from assistive tech. */
+/** Inline photo pill. Put one `Image` inside. Decorative: hidden from assistive tech. */
 function Pill(props: Part<ComponentProps<'span'>>) {
   return <span data-pill="" aria-hidden="true" {...props} />
 }

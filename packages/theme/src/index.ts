@@ -20,12 +20,6 @@ export const theme = definePreset({
       textStyles,
       keyframes: {
         sectionIn: { from: { opacity: 0, transform: 'translateY(-8px)' }, to: { opacity: 1, transform: 'none' } },
-        introCycle: {
-          '0%, 28%': { transform: 'translateY(0)' },
-          '33%, 61%': { transform: 'translateY(-100%)' },
-          '66%, 94%': { transform: 'translateY(-200%)' },
-          '100%': { transform: 'translateY(0)' },
-        },
       },
     },
   },
