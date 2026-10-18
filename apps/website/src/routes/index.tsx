@@ -1,5 +1,6 @@
 import { Card } from '@core/ui/card/card'
 import { Grid } from '@core/ui/grid/grid'
+import { HeroIntro } from '@core/ui/hero-intro/hero-intro'
 import { Image } from '@core/ui/image/image'
 import { Label } from '@core/ui/label/label'
 import { ListRow } from '@core/ui/list-row/list-row'
@@ -9,7 +10,14 @@ import { Typography } from '@core/ui/typography/typography'
 import { createFileRoute } from '@tanstack/react-router'
 import { css } from '../../styled-system/css'
 
-const section = css({ display: 'flex', flexDirection: 'column', gap: '8', maxW: '[1400px]', mx: 'auto', p: 'gutter' })
+const section = css({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 'fluid.2xl',
+  maxW: '[1400px]',
+  mx: 'auto',
+  p: 'gutter',
+})
 const intro = css({ display: 'flex', flexDirection: 'column', gap: '2' })
 
 // TODO: mock data, replace with real content
@@ -52,6 +60,31 @@ const writing = [
 function Home() {
   return (
     <main className={section}>
+      {/* TODO: placeholder images, replace with real photos */}
+      <HeroIntro>
+        Hi, I’m{' '}
+        <HeroIntro.Phrase>
+          <HeroIntro.Word>Patrick</HeroIntro.Word>{' '}
+          <HeroIntro.Pill>
+            <Image label="portrait" tone="light" />
+          </HeroIntro.Pill>
+        </HeroIntro.Phrase>
+        , a{' '}
+        <HeroIntro.Phrase>
+          <HeroIntro.Word>frontend web developer</HeroIntro.Word>{' '}
+          <HeroIntro.Pill>
+            <Image label="at work" tone="coral" />
+          </HeroIntro.Pill>
+        </HeroIntro.Phrase>{' '}
+        based in{' '}
+        <HeroIntro.Phrase>
+          <HeroIntro.Word>Nijmegen, the Netherlands</HeroIntro.Word>{' '}
+          <HeroIntro.Pill>
+            <Image label="the city" tone="azure" />
+          </HeroIntro.Pill>
+        </HeroIntro.Phrase>
+        .
+      </HeroIntro>
       <div className={intro}>
         <Title as="h1" size="xl" weight="bold">
           Selected work
