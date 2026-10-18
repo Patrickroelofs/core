@@ -3,7 +3,9 @@ import { css } from '../../styled-system/css'
 const ease = 'cubic-bezier(.2,.7,.2,1)'
 
 export const triggerStyles = css({
-  display: 'inline-flex',
+  display: 'flex',
+  width: 'fit-content',
+  ml: 'auto',
   alignItems: 'center',
   px: '3',
   py: '2',
