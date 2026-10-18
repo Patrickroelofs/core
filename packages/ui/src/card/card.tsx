@@ -1,6 +1,5 @@
 import { useRender } from '@base-ui/react/use-render'
 import type { ComponentProps } from 'react'
-import { Tag, type TagProps } from '../tag/tag'
 import {
   bodyStyles,
   type CardMediaVariants,
@@ -8,7 +7,6 @@ import {
   descriptionStyles,
   mediaStyles,
   metaStyles,
-  tagWrapStyles,
   titleStyles,
 } from './card.styles'
 
@@ -52,13 +50,4 @@ function Description(props: Part<ComponentProps<'p'>>) {
   return <p className={descriptionStyles} {...props} />
 }
 
-/** Role tag, right-aligned. Accepts all `Tag` props (`tone`, `appearance`); defaults to `size="sm"`, `tone="coral"`. */
-function CardTag({ size = 'sm', tone = 'coral', ...props }: TagProps) {
-  return (
-    <span className={tagWrapStyles}>
-      <Tag size={size} tone={tone} {...props} />
-    </span>
-  )
-}
-
-export const Card = Object.assign(Root, { Media, Body, Title, Meta, Description, Tag: CardTag })
+export const Card = Object.assign(Root, { Media, Body, Title, Meta, Description })

@@ -58,6 +58,7 @@ export const bodyStyles = css({
   columnGap: '4',
   rowGap: '[6px]',
   alignItems: 'baseline',
+  justifyItems: 'start',
   pt: '[22px]',
   px: '6',
   pb: '6',
@@ -75,7 +76,5 @@ export const titleStyles = css({
 export const metaStyles = css({ fontSize: 'sm', fontWeight: 'medium', opacity: 0.6 })
 
 export const descriptionStyles = css({ m: '0', fontSize: 'md', lineHeight: 'normal', opacity: 0.75 })
-
-export const tagWrapStyles = css({ justifySelf: 'end' })
 
 export type CardMediaVariants = NonNullable<RecipeVariantProps<typeof mediaStyles>>

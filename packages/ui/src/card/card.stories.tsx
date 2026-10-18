@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { Tag } from '../tag/tag'
 import { Card } from './card'
 
 const photo = `data:image/svg+xml,${encodeURIComponent(
@@ -30,7 +31,9 @@ export const Link: Story = {
         <Card.Description>
           Scheduling for night-shift nurses. Swap requests went from twenty minutes to two.
         </Card.Description>
-        <Card.Tag>Lead designer</Card.Tag>
+        <Tag tone="coral" size="sm">
+          Lead designer
+        </Tag>
       </Card.Body>
     </Card>
   ),
@@ -44,7 +47,9 @@ export const Static: Story = {
         <Card.Title>Loop Transit</Card.Title>
         <Card.Meta>2023</Card.Meta>
         <Card.Description>A rider app that tells the truth about delays.</Card.Description>
-        <Card.Tag tone="azure">Design + front-end</Card.Tag>
+        <Tag tone="azure" size="sm">
+          Design + front-end
+        </Tag>
       </Card.Body>
     </Card>
   ),
@@ -59,7 +64,9 @@ export const WithImage: Story = {
       <Card.Body>
         <Card.Title>Fieldkit</Card.Title>
         <Card.Meta>2021</Card.Meta>
-        <Card.Tag tone="plum">Founding designer</Card.Tag>
+        <Tag tone="plum" size="sm">
+          Founding designer
+        </Tag>
       </Card.Body>
     </Card>
   ),
@@ -109,16 +116,16 @@ export const TagVariants: Story = {
         <Card.Title>Tags</Card.Title>
         <Card.Meta>all tones</Card.Meta>
         <div style={{ gridColumn: '1 / -1', display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-          <Card.Tag tone="coral">coral</Card.Tag>
-          <Card.Tag tone="azure">azure</Card.Tag>
-          <Card.Tag tone="plum">plum</Card.Tag>
-          <Card.Tag tone="navy">navy</Card.Tag>
-          <Card.Tag tone="navy" appearance="outline">
+          <Tag tone="coral">coral</Tag>
+          <Tag tone="azure">azure</Tag>
+          <Tag tone="plum">plum</Tag>
+          <Tag tone="navy">navy</Tag>
+          <Tag tone="navy" appearance="outline">
             outline
-          </Card.Tag>
-          <Card.Tag tone="navy" size="md">
+          </Tag>
+          <Tag tone="navy" size="md">
             md
-          </Card.Tag>
+          </Tag>
         </div>
       </Card.Body>
     </Card>

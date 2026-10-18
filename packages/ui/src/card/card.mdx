@@ -13,10 +13,11 @@ Work card: image slot, heavy title, year, description and role tag. A compound c
 - `Card.Title`: `<h3>` by default; change element with `render`.
 - `Card.Meta`: small muted text next to the title, e.g. the year.
 - `Card.Description`: supporting copy, spans the left column.
-- `Card.Tag`: right-aligned `Tag`. Takes every `Tag` prop; defaults to `size="sm"` and `tone="coral"`.
+- Role tag: use the existing `Tag` (`@core/ui/tag/tag`) directly inside `Card.Body`; the design uses `size="sm"`.
 
 ```tsx
 import { Card } from '@core/ui/card/card'
+import { Tag } from '@core/ui/tag/tag'
 
 <Card render={<a href="/work/shiftboard" />}>
   <Card.Media><img src="…" alt="Shiftboard dashboard" /></Card.Media>
@@ -24,7 +25,7 @@ import { Card } from '@core/ui/card/card'
     <Card.Title>Shiftboard</Card.Title>
     <Card.Meta>2024–26</Card.Meta>
     <Card.Description>Scheduling for night-shift nurses.</Card.Description>
-    <Card.Tag>Lead designer</Card.Tag>
+    <Tag tone="coral" size="sm">Lead designer</Tag>
   </Card.Body>
 </Card>
 ```
@@ -59,7 +60,7 @@ Placeholder tone when there is no image: `light` (default), `dark`, `azure`, `co
 
 ## Tag
 
-`coral` (default), `azure`, `plum`, `navy`, `snow`; `solid`, `outline`, `soft`; `sm` (default), `md`.
+Use `Tag` as-is: `coral`, `azure`, `plum`, `navy`, `snow`; `solid`, `outline`, `soft`; `sm`, `md`. See the Tag docs.
 
 <Canvas of={CardStories.TagVariants} />
 
