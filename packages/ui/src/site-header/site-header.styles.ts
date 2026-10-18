@@ -5,8 +5,12 @@ const slow = 'cubic-bezier(.7,0,.2,1)'
 const overshoot = 'cubic-bezier(.5,-.4,.3,1.4)'
 const active = ':is(:hover, :focus-visible)'
 
-/** Top bar: monogram, a rule that fills the gap, then whatever nav is passed in. */
+/** Top bar, sticky: monogram, a rule that fills the gap, then whatever nav is passed in. Scrolled (`data-collapsed`) the monogram folds to its initials. */
 export const siteHeaderStyles = css({
+  position: 'sticky',
+  top: '0',
+  zIndex: '[30]',
+  bg: 'bg.canvas',
   display: 'flex',
   alignItems: 'center',
   gap: '6',
@@ -14,11 +18,20 @@ export const siteHeaderStyles = css({
   py: '5',
   fontFamily: 'body',
   color: 'fg.default',
-  // the rule pulls back while the monogram slots over
-  [`&:has([data-monogram]${active}) [data-rule]`]: { transform: 'scaleX(.3)', opacity: 0.4 },
+  // the rule pulls back while the monogram is open
+  [`&:not([data-collapsed]) [data-rule], &:has([data-monogram]${active}) [data-rule]`]: {
+    transform: 'scaleX(.3)',
+    opacity: 0.4,
+  },
 })
 
-/** Slot mark: each word is a 1em window onto a two-row reel ("P." over "Patrick"). On hover the reel rolls up (overshooting) while the window widens to the word. */
+const open = {
+  gap: '[0.22em]',
+  '& [data-word]': { maxWidth: '[calc(var(--chars) * 0.62em)]' },
+  '& [data-reel]': { transform: 'translateY(-1em)' },
+} as const
+
+/** Slot mark, open until the header collapses or while hovered: each word is a 1em window onto a two-row reel ("P." over "Patrick"). On hover the reel rolls up (overshooting) while the window widens to the word. */
 export const monogramStyles = css({
   display: 'flex',
   gap: '[0.02em]',
@@ -47,11 +60,8 @@ export const monogramStyles = css({
   },
   '& [data-reel] > *': { height: '[1em]' },
   '& [data-dot]': { color: 'coral' },
-  [`&${active}`]: {
-    gap: '[0.22em]',
-    '& [data-word]': { maxWidth: '[calc(var(--chars) * 0.62em)]' },
-    '& [data-reel]': { transform: 'translateY(-1em)' },
-  },
+  [`&${active}`]: open,
+  'header:not([data-collapsed]) &': open,
   _motionReduce: { '&, & *': { transition: '[none]' } },
 })
 
