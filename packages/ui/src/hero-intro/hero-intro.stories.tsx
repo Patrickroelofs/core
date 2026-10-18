@@ -16,16 +16,16 @@ const meta = {
       </HeroIntro.Phrase>
       , a{' '}
       <HeroIntro.Phrase>
-        <HeroIntro.Word>product designer</HeroIntro.Word>{' '}
+        <HeroIntro.Word>frontend web developer</HeroIntro.Word>{' '}
         <HeroIntro.Pill>
           <Image label="work: Shiftboard" tone="coral" />
         </HeroIntro.Pill>
       </HeroIntro.Phrase>{' '}
       based in{' '}
       <HeroIntro.Phrase>
-        <HeroIntro.Word>Lisbon</HeroIntro.Word>{' '}
+        <HeroIntro.Word>Nijmegen, the Netherlands</HeroIntro.Word>{' '}
         <HeroIntro.Pill>
-          <Image label="rooftops" tone="azure" />
+          <Image label="the city" tone="azure" />
         </HeroIntro.Pill>
       </HeroIntro.Phrase>
       .
