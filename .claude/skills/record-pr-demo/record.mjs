@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Records a Playwright scenario against a running Storybook and converts it to an H.264 MP4.
-// Usage: node record.mjs --scenario /tmp/demo.mjs [--label name] [--base-url http://localhost:6006] [--viewport 1280x720]
+// Usage: node record.mjs --scenario /tmp/demo.mjs [--label name] [--base-url http://localhost:6006] [--viewport 1280x720] [--sidecar clip.mp4]
 import { spawnSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import { mkdtemp, readdir, readFile, stat } from 'node:fs/promises'
@@ -17,6 +17,7 @@ const { values } = parseArgs({
     label: { type: 'string', default: 'demo' },
     'base-url': { type: 'string', default: 'http://localhost:6006' },
     viewport: { type: 'string', default: '1280x720' },
+    sidecar: { type: 'string', default: process.env.PR_DEMO_SIDECAR }, // gameplay clip shown right of the demo
   },
 })
 if (!values.scenario) throw new Error('--scenario is required')
@@ -139,6 +140,7 @@ const webm = path.join(
   dir,
   (await readdir(dir)).find((f) => f.endsWith('.webm')),
 )
+const sideWidth = Math.round((height * 9) / 16 / 2) * 2
 const ff = spawnSync(
   'ffmpeg',
   [
@@ -147,6 +149,16 @@ const ff = spawnSync(
     String(Math.max(0, readyAt)),
     '-i',
     webm,
+    ...(values.sidecar
+      ? [
+          '-stream_loop',
+          '-1',
+          '-i',
+          values.sidecar,
+          '-filter_complex',
+          `[1:v]scale=${sideWidth}:${height}:force_original_aspect_ratio=increase,crop=${sideWidth}:${height}[s];[0:v][s]hstack=shortest=1`,
+        ]
+      : []),
     '-an',
     '-c:v',
     'libx264',
