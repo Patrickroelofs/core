@@ -4,7 +4,13 @@ import { SiteHeader } from '@core/ui/site-header/site-header'
 import { css } from '../../styled-system/css'
 
 const desktop = css({ display: 'none', '@media (min-width: 820px)': { display: 'block' } })
-const mobile = css({ '@media (min-width: 820px)': { display: 'none' } })
+// `contents` (twice, the collapsible root is a div too) makes the trigger a header flex item, and the sheet a full-width row under the bar
+const mobile = css({
+  display: 'contents',
+  '& > *': { display: 'contents' },
+  '& > * > :nth-child(2)': { flexBasis: '[100%]' },
+  '@media (min-width: 820px)': { display: 'none' },
+})
 const panel = css({ p: '3', w: '[360px]' })
 
 // TODO: mock data, replace with real content

@@ -23,6 +23,7 @@ export const siteHeaderStyles = css({
     pointerEvents: 'none',
   },
   display: 'flex',
+  flexWrap: 'wrap',
   alignItems: 'center',
   gap: '6',
   px: 'gutter',
