@@ -32,10 +32,7 @@ function Monogram({ name, href, ...props }: SiteHeaderMonogramProps) {
       {name.split(' ').map((word, i) => (
         <span key={word} data-word="" aria-hidden="true" style={{ '--chars': word.length, '--i': i } as CSSProperties}>
           <span data-reel="">
-            <span>
-              {word[0]}
-              <span data-dot="">.</span>
-            </span>
+            <span>{word[0]}</span>
             <span>{word}</span>
           </span>
         </span>
