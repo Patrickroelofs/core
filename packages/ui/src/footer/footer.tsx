@@ -1,6 +1,6 @@
 import { useRender } from '@base-ui/react/use-render'
 import type { ComponentProps } from 'react'
-import { barStyles, doorStyles, type FooterVariants, footerStyles, labelStyles, titleStyles } from './footer.styles'
+import { barStyles, doorStyles, type FooterVariants, footerStyles, titleStyles } from './footer.styles'
 
 type Part<T extends { className?: unknown }> = Omit<T, 'className'>
 
@@ -21,11 +21,6 @@ function Door({ render, ...props }: FooterDoorProps) {
   })
 }
 
-/** Small uppercase line at the top of a door. */
-function Label(props: Part<ComponentProps<'span'>>) {
-  return <span className={labelStyles} {...props} />
-}
-
 /** Big title; the arrow is added for you. */
 function Title({ children, ...props }: Part<ComponentProps<'span'>>) {
   return (
@@ -43,4 +38,4 @@ function Bar(props: Part<ComponentProps<'div'>>) {
   return <div className={barStyles} {...props} />
 }
 
-export const Footer = Object.assign(Root, { Door, Label, Title, Bar })
+export const Footer = Object.assign(Root, { Door, Title, Bar })

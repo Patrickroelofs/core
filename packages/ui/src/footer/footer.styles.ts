@@ -64,14 +64,6 @@ export const doorStyles = css({
   _motionReduce: { '&::before': { transition: '[none]' }, '& > *': { transition: '[none]' } },
 })
 
-export const labelStyles = css({
-  textStyle: 'mono',
-  textTransform: 'uppercase',
-  letterSpacing: '[0.08em]',
-  whiteSpace: 'nowrap',
-  opacity: 0.75,
-})
-
 /** Thin until the door is active, then black; the trailing arrow straightens. */
 export const titleStyles = css({
   margin: '0',
