@@ -1,6 +1,6 @@
 import { useRender } from '@base-ui/react/use-render'
 import type { ComponentProps } from 'react'
-import { bodyStyles, cardStyles, footerStyles } from './card.styles'
+import { bodyStyles, cardStyles, footerStyles, mediaStyles, type RevealVariants, revealStyles } from './card.styles'
 
 type Part<T extends { className?: unknown }> = Omit<T, 'className'>
 
@@ -20,4 +20,25 @@ function Footer(props: Part<ComponentProps<'div'>>) {
   return <div className={footerStyles} {...props} />
 }
 
-export const Card = Object.assign(Root, { Body, Footer })
+/** Wraps the `Image` so a `Reveal` can sit on top of it. */
+function Media(props: Part<ComponentProps<'div'>>) {
+  return <div className={mediaStyles} {...props} />
+}
+
+export type CardRevealProps = Part<Omit<ComponentProps<'div'>, 'children'>> &
+  RevealVariants & {
+    /** CTA text, e.g. "View case study". */
+    children: string
+  }
+
+/** Tone panel inside `Card.Media` that wipes up on hover/focus of a link card, with the CTA and a ↗. Decorative, hidden from assistive tech. */
+function Reveal({ tone, children, ...props }: CardRevealProps) {
+  return (
+    <div className={revealStyles({ tone })} aria-hidden="true" {...props}>
+      <span>{children}</span>
+      <span>↗</span>
+    </div>
+  )
+}
+
+export const Card = Object.assign(Root, { Media, Reveal, Body, Footer })
