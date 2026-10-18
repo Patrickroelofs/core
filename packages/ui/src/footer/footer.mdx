@@ -1,0 +1,42 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+import * as FooterStories from './footer.stories'
+
+<Meta of={FooterStories} />
+
+# Footer
+
+Page footer made of doors. A compound component: `Footer` and `Footer.Door`.
+
+- `variant="split"` (default, the only one): doors share the width; the hovered or focused door grows. Stacked below `md`.
+- Add as many `Footer.Door`s as needed; they share the space equally.
+- `Footer.Door` is a `<div>`; `render={<a href="…" />}` makes it a link that grows on hover and focus.
+
+```tsx
+import { Footer } from '@core/ui/footer/footer'
+
+<Footer variant="split">
+  <Footer.Door render={<a href="/work" />}>
+    <Label size="xs">Work</Label>
+    <Title size="md">See the projects</Title>
+  </Footer.Door>
+  <Footer.Door render={<a href="/contact" />}>…</Footer.Door>
+</Footer>
+```
+
+## Split
+
+<Canvas of={FooterStories.Split} />
+
+## Three doors
+
+<Canvas of={FooterStories.ThreeDoors} />
+
+## Accessibility
+
+- Rendered as `<footer>` (a `contentinfo` landmark when top-level). Doors are real links with a focus ring; focus grows a door like hover.
+- Growth is disabled with reduced motion.
+
+## Don't
+
+- Don't pass `className`.
+- Don't rely on the growth to convey meaning; it is decoration.
