@@ -52,7 +52,7 @@ export const doorStyles = css({
     transition: `[width .6s ${ease}]`,
   },
   '&:first-child::before': { right: 'auto', left: '0' },
-  '& > *': { transition: `[translate .6s ${ease}]` },
+  '& > *': { transition: `[translate .6s ${ease}, font-weight .5s ${ease}]` },
   [`&:is(a[href])${active}`]: {
     zIndex: '2',
     transitionDelay: '[0s]',
