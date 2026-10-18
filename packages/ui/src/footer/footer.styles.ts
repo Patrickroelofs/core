@@ -14,6 +14,8 @@ export const footerStyles = cva({
     fontFamily: 'body',
     // mobile-last so no `flex-d_column` base class is shared with other stylesheets, where the website's copy would win the cascade
     mdDown: { flexDirection: 'column', flexWrap: 'nowrap' },
+    // another door taking over: the first door drops under it at once
+    [`&:has(> [data-door]:not(:first-child)${active}) > [data-door]:first-child`]: { transitionDuration: '[0s]' },
   },
   variants: { variant: { split: {} } },
   defaultVariants: { variant: 'split' },
@@ -23,7 +25,6 @@ export const footerStyles = cva({
 export const doorStyles = css({
   position: 'relative',
   isolation: 'isolate',
-  zIndex: '0',
   containerType: 'inline-size',
   display: 'flex',
   flexDirection: 'column',
@@ -37,8 +38,8 @@ export const doorStyles = css({
   pb: '8',
   color: 'fg.default',
   textDecoration: 'none',
-  // z-index is an integer, so it steps down 3 > 0 over the close: the leaving door stays over idle doors but drops under the newly active one at once
-  transition: '[z-index .6s linear]',
+  // Later doors sit over earlier ones (DOM order), which is what every switch needs except one going to the first door: that one rises to the top.
+  zIndex: '1',
   '&[data-surface]': { backgroundColor: 'transparent' },
   '&::before': {
     content: '""',
@@ -52,10 +53,11 @@ export const doorStyles = css({
     transition: `[width .6s ${ease}]`,
   },
   '&:first-child::before': { right: 'auto', left: '0' },
+  // z-index is an integer, so on close it steps 3 > 1: the first door stays over the second while it retracts, unless another door is taking over
+  '&:first-child': { transition: '[z-index .6s linear]' },
   '& > *': { transition: `[translate .6s ${ease}, font-weight .5s ${ease}]` },
   [`&:is(a[href])${active}`]: {
-    zIndex: '3',
-    transitionDuration: '[0s]',
+    '&:first-child': { zIndex: '3', transitionDuration: '[0s]' },
     md: { '&::before': { width: '[160%]' }, '&:not(:first-child) > *': { translate: '[-60cqw 0]' } },
   },
   _focusVisible: { outlineWidth: '[2px]', outlineStyle: 'solid', outlineColor: 'focusRing', outlineOffset: '[-4px]' },
