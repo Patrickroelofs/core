@@ -1,7 +1,7 @@
 import { Footer } from '@core/ui/footer/footer'
 import { css } from '../../styled-system/css'
 
-const wrap = css({ maxW: '[1400px]', mx: 'auto', p: 'gutter' })
+const wrap = css({ '& > footer': { borderRadius: '0' } })
 
 // TODO: mock data, replace with real content
 export function SiteFooter() {
