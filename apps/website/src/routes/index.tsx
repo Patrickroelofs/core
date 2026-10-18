@@ -91,13 +91,13 @@ function Home() {
               <ListRow key={years}>
                 <ListRow.Lead>{years}</ListRow.Lead>
                 <ListRow.Body>
-                  <Title as="span" size="sm" weight="bold">
+                  <Title as="span" size="xs" weight="bold">
                     {role}
                   </Title>
-                  <Title as="span" size="sm">{` · ${place}`}</Title>
+                  <Title as="span" size="xs">{` · ${place}`}</Title>
                 </ListRow.Body>
                 <ListRow.Meta>
-                  <Label>{where}</Label>
+                  <Label size="xs">{where}</Label>
                 </ListRow.Meta>
               </ListRow>
             ))}
@@ -110,12 +110,12 @@ function Home() {
               <ListRow key={href} render={<a href={href} />}>
                 <ListRow.Lead>{date}</ListRow.Lead>
                 <ListRow.Body>
-                  <Title as="span" size="sm" weight="bold">
+                  <Title as="span" size="xs" weight="bold">
                     {title}
                   </Title>
                 </ListRow.Body>
                 <ListRow.Meta>
-                  <Label>{meta}</Label>
+                  <Label size="xs">{meta}</Label>
                 </ListRow.Meta>
               </ListRow>
             ))}

@@ -13,15 +13,15 @@ const Row = ({ href }: { href?: string }) => (
   <ListRow render={href ? <a href={href} /> : undefined}>
     <ListRow.Lead>2020 — 2024</ListRow.Lead>
     <ListRow.Body>
-      <Title as="span" size="sm" weight="bold">
+      <Title as="span" size="xs" weight="bold">
         Founding designer
       </Title>
-      <Title as="span" size="sm">
+      <Title as="span" size="xs">
         {' · Fieldkit'}
       </Title>
     </ListRow.Body>
     <ListRow.Meta>
-      <Label>Remote</Label>
+      <Label size="xs">Remote</Label>
     </ListRow.Meta>
   </ListRow>
 )
@@ -34,12 +34,12 @@ export const WithoutLead: Story = {
   render: () => (
     <ListRow>
       <ListRow.Body>
-        <Title as="span" size="sm" weight="bold">
+        <Title as="span" size="xs" weight="bold">
           Quiet interfaces
         </Title>
       </ListRow.Body>
       <ListRow.Meta>
-        <Label>8 min</Label>
+        <Label size="xs">8 min</Label>
       </ListRow.Meta>
     </ListRow>
   ),
