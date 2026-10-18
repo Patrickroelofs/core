@@ -1,4 +1,5 @@
 import { Card } from '@core/ui/card/card'
+import { Grid } from '@core/ui/grid/grid'
 import { Image } from '@core/ui/image/image'
 import { Label } from '@core/ui/label/label'
 import { Tag } from '@core/ui/tag/tag'
@@ -9,12 +10,6 @@ import { css } from '../../styled-system/css'
 
 const section = css({ display: 'flex', flexDirection: 'column', gap: '8', maxW: '[1400px]', mx: 'auto', p: 'gutter' })
 const intro = css({ display: 'flex', flexDirection: 'column', gap: '2' })
-
-const grid = css({
-  display: 'grid',
-  gap: '6',
-  gridTemplateColumns: '[repeat(auto-fill, minmax(min(100%, 320px), 1fr))]',
-})
 
 // TODO: mock data, replace with real content
 const projects = [
@@ -57,9 +52,12 @@ function Home() {
         </Title>
         <Typography size="lg">Product design and front-end for teams who care about the details.</Typography>
       </div>
-      <div className={grid}>
+      <Grid gap="m">
         {projects.map(({ title, year, role, tone, description }) => (
-          <Card key={title} render={<a href={`/work/${title.toLowerCase().replace(/ /g, '-')}`} />}>
+          <Card
+            key={title}
+            render={<Grid.Item span={4} render={<a href={`/work/${title.toLowerCase().replace(/ /g, '-')}`} />} />}
+          >
             <Card.Media>
               <Image label={`${title.toLowerCase()}: cover`} />
               <Card.Reveal tone={tone}>View case study</Card.Reveal>
@@ -78,7 +76,7 @@ function Home() {
             </Card.Body>
           </Card>
         ))}
-      </div>
+      </Grid>
     </main>
   )
 }
