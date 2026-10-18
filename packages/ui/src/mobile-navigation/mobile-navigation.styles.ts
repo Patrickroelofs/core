@@ -29,8 +29,6 @@ export const sheetStyles = css({
   px: '4',
   pt: '2',
   pb: '6',
-  borderTop: '[1px solid]',
-  borderColor: 'border.default',
   overflow: 'hidden',
   height: 'var(--collapsible-panel-height)',
   transition: `[height .4s ${ease}, opacity .3s ${ease}]`,
