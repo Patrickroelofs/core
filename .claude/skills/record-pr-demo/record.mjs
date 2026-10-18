@@ -140,6 +140,15 @@ const webm = path.join(
   dir,
   (await readdir(dir)).find((f) => f.endsWith('.webm')),
 )
+// Random start so each demo shows different gameplay. ponytail: leaves 60s of runway before the clip's end, longer demos would loop to the start.
+const sideDuration = values.sidecar
+  ? Number(
+      spawnSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', values.sidecar], {
+        encoding: 'utf8',
+      }).stdout,
+    )
+  : 0
+const sideStart = Math.random() * Math.max(0, sideDuration - 60)
 const sideWidth = Math.round((height * 9) / 16 / 2) * 2
 const ff = spawnSync(
   'ffmpeg',
@@ -153,6 +162,8 @@ const ff = spawnSync(
       ? [
           '-stream_loop',
           '-1',
+          '-ss',
+          sideStart.toFixed(2),
           '-i',
           values.sidecar,
           '-filter_complex',
