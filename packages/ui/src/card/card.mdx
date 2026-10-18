@@ -1,0 +1,76 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+import * as CardStories from './card.stories'
+
+<Meta of={CardStories} />
+
+# Card
+
+Work card: image slot, heavy title, year, description and role tag. A compound component; compose only the parts you need.
+
+- `Card`: root surface, a `<div>`. Use `render={<a href="…" />}` for a link card that lifts 4px and turns its title `black` on hover.
+- `Card.Media`: image slot. Put an `<img>` inside, or text for the striped placeholder label. Props: `ratio`, `tone`.
+- `Card.Body`: two-column grid (content, auto) holding the text parts.
+- `Card.Title`: `<h3>` by default; change element with `render`.
+- `Card.Meta`: small muted text next to the title, e.g. the year.
+- `Card.Description`: supporting copy, spans the left column.
+- `Card.Tag`: right-aligned `Tag`. Takes every `Tag` prop; defaults to `size="sm"` and `tone="coral"`.
+
+```tsx
+import { Card } from '@core/ui/card/card'
+
+<Card render={<a href="/work/shiftboard" />}>
+  <Card.Media><img src="…" alt="Shiftboard dashboard" /></Card.Media>
+  <Card.Body>
+    <Card.Title>Shiftboard</Card.Title>
+    <Card.Meta>2024–26</Card.Meta>
+    <Card.Description>Scheduling for night-shift nurses.</Card.Description>
+    <Card.Tag>Lead designer</Card.Tag>
+  </Card.Body>
+</Card>
+```
+
+<Canvas of={CardStories.Link} />
+
+## Static
+
+Without a link the card does not lift or change weight.
+
+<Canvas of={CardStories.Static} />
+
+## Image
+
+<Canvas of={CardStories.WithImage} />
+
+## Title only
+
+<Canvas of={CardStories.TitleOnly} />
+
+## Media ratio
+
+`16/10` (default), `16/9`, `4/3`, `1/1`.
+
+<Canvas of={CardStories.Ratios} />
+
+## Media tone
+
+Placeholder tone when there is no image: `light` (default), `dark`, `azure`, `coral`.
+
+<Canvas of={CardStories.MediaTones} />
+
+## Tag
+
+`coral` (default), `azure`, `plum`, `navy`, `snow`; `solid`, `outline`, `soft`; `sm` (default), `md`.
+
+<Canvas of={CardStories.TagVariants} />
+
+## Accessibility
+
+- A link card is one `<a>`; its accessible name is the whole text content, so keep the title first.
+- Always give `<img>` meaningful `alt`. The placeholder label is visible text, not an image description.
+- Hover motion is disabled under `prefers-reduced-motion`.
+
+## Don't
+
+- Don't pass `className`; styling comes from the recipe.
+- Don't put interactive elements (buttons, links) inside a link card.
+- Don't skip heading levels: set `Card.Title`'s element with `render` to fit the page outline.
