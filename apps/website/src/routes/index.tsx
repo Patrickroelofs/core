@@ -34,13 +34,6 @@ const projects = [
     tone: 'plum',
     description: 'An offline notebook for ecologists.',
   },
-  {
-    title: 'Civic Atlas',
-    year: '2019',
-    role: 'Contractor',
-    tone: 'navy',
-    description: 'Open data maps of city spending.',
-  },
 ] as const
 
 function Home() {
