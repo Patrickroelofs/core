@@ -89,12 +89,15 @@ export const ruleStyles = css({
   // at 100% a thumbs up pops out of the line's end, springing past its size and straightening up
   '& [data-thumb]': {
     position: 'absolute',
+    zIndex: '1',
+    top: '[50%]',
     right: '0',
-    bottom: '[-4px]',
+    // `translate` centres the icon on the line's end so `transform` is free for the pop
+    translate: '[50% -50%]',
+    display: 'grid',
+    color: 'coral',
     fontSize: '[28px]',
-    lineHeight: 'none',
-    transformOrigin: 'bottom left',
-    transform: 'translateY(8px) rotate(-60deg) scale(0)',
+    transform: 'rotate(-60deg) scale(0)',
     opacity: 0,
     transition: `[transform .7s ${spring}, opacity .2s linear]`,
   },
