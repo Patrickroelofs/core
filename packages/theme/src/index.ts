@@ -16,6 +16,9 @@ export const theme = definePreset({
       },
       semanticTokens: semantic,
       textStyles,
+      keyframes: {
+        sectionIn: { from: { opacity: 0, transform: 'translateY(-8px)' }, to: { opacity: 1, transform: 'none' } },
+      },
     },
   },
 })
