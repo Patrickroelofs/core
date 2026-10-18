@@ -1,0 +1,37 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+import * as SiteHeaderStories from './site-header.stories'
+
+<Meta of={SiteHeaderStories} />
+
+# SiteHeader
+
+Top bar. A compound component: `SiteHeader`, `SiteHeader.Monogram` and `SiteHeader.Rule`. Anything else inside (usually a `NavigationMenu`) is laid out after them.
+
+- `SiteHeader.Monogram` shows the initials ("P.R."); on hover or focus the rest of each word unfolds and the dots fold away. Pass the full `name`; the first word is light, the others black.
+- `SiteHeader.Rule` is a hairline filling the gap. It pulls back while the monogram unfolds.
+
+```tsx
+import { SiteHeader } from '@core/ui/site-header/site-header'
+
+<SiteHeader>
+  <SiteHeader.Monogram href="/" name="Patrick Roelofs" />
+  <SiteHeader.Rule />
+  <NavigationMenu>…</NavigationMenu>
+</SiteHeader>
+```
+
+## Monogram
+
+<Canvas of={SiteHeaderStories.Monogram} />
+
+## Accessibility
+
+- Rendered as `<header>` (a `banner` landmark when top-level).
+- The monogram is a link labelled with the full `name`; its letters are hidden from assistive tech so it never reads as "P.R.". Focus unfolds it like hover.
+- The unfold and the rule are disabled with reduced motion.
+
+## Don't
+
+- Don't pass `className`.
+- Don't pass a single-word `name`; there would be nothing to abbreviate.
+- Don't rely on the unfold to show the name; it is decoration, the label carries it.
