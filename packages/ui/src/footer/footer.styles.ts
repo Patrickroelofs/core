@@ -37,8 +37,8 @@ export const doorStyles = css({
   pb: '8',
   color: 'fg.default',
   textDecoration: 'none',
-  // z-index drops only after the shrink finishes, so a leaving door stays over its neighbour while it closes
-  transition: '[z-index 0s linear .6s]',
+  // z-index is an integer, so it steps down 3 > 0 over the close: the leaving door stays over idle doors but drops under the newly active one at once
+  transition: '[z-index .6s linear]',
   '&[data-surface]': { backgroundColor: 'transparent' },
   '&::before': {
     content: '""',
@@ -54,8 +54,8 @@ export const doorStyles = css({
   '&:first-child::before': { right: 'auto', left: '0' },
   '& > *': { transition: `[translate .6s ${ease}, font-weight .5s ${ease}]` },
   [`&:is(a[href])${active}`]: {
-    zIndex: '2',
-    transitionDelay: '[0s]',
+    zIndex: '3',
+    transitionDuration: '[0s]',
     md: { '&::before': { width: '[160%]' }, '&:not(:first-child) > *': { translate: '[-60cqw 0]' } },
   },
   _focusVisible: { outlineWidth: '[2px]', outlineStyle: 'solid', outlineColor: 'focusRing', outlineOffset: '[-4px]' },
