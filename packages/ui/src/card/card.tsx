@@ -1,6 +1,6 @@
 import { useRender } from '@base-ui/react/use-render'
 import type { ComponentProps } from 'react'
-import { bodyStyles, type CardMediaVariants, cardStyles, mediaStyles } from './card.styles'
+import { bodyStyles, type CardMediaVariants, cardStyles, footerStyles, mediaStyles } from './card.styles'
 
 type Part<T extends { className?: unknown }> = Omit<T, 'className'>
 
