@@ -1,5 +1,7 @@
 import { css } from '../../styled-system/css'
 
+const ease = 'cubic-bezier(.2,.7,.2,1)'
+
 export const triggerStyles = css({
   display: 'inline-flex',
   alignItems: 'center',
@@ -29,9 +31,23 @@ export const sheetStyles = css({
   pb: '6',
   borderTop: '[1px solid]',
   borderColor: 'border.default',
+  overflow: 'hidden',
+  height: 'var(--collapsible-panel-height)',
+  transition: `[height .4s ${ease}, opacity .3s ${ease}]`,
+  '&[data-starting-style], &[data-ending-style]': { height: '0', opacity: 0 },
+  '&[hidden]': { display: 'none' },
 })
 
-export const sectionStyles = css({ borderBottom: '[1px solid]', borderColor: 'border.default' })
+export const sectionStyles = css({
+  borderBottom: '[1px solid]',
+  borderColor: 'border.default',
+  // Sections slide in one after another when the sheet mounts.
+  animation: `[sectionIn .45s ${ease} backwards]`,
+  '&:nth-child(2)': { animationDelay: '[.05s]' },
+  '&:nth-child(3)': { animationDelay: '[.1s]' },
+  '&:nth-child(4)': { animationDelay: '[.15s]' },
+  '@media (prefers-reduced-motion: reduce)': { animation: '[none]' },
+})
 
 const labelStyles = {
   display: 'flex',
@@ -69,7 +85,7 @@ export const sectionPanelStyles = css({
   pb: '3',
   overflow: 'hidden',
   height: 'var(--accordion-panel-height)',
-  transition: '[height 0.3s]',
+  transition: `[height .3s ${ease}]`,
   '&[data-starting-style], &[data-ending-style]': { height: '0' },
   '&[hidden]': { display: 'none' },
 })
