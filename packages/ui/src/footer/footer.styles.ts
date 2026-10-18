@@ -32,7 +32,7 @@ export const doorStyles = css({
   gap: '10',
   flex: '[1 1 0]',
   minWidth: '0',
-  minHeight: '[clamp(300px, 30vw, 600px)]',
+  minHeight: '[clamp(360px, 45vw, 800px)]',
   px: '9',
   pt: '10',
   pb: '8',
@@ -57,11 +57,11 @@ export const labelStyles = css({
 /** Thin until the door is active, then black; the trailing arrow straightens. */
 export const titleStyles = css({
   margin: '0',
-  fontSize: 'step.6',
+  fontSize: '[clamp(44px, 6.5vw, 140px)]',
   fontWeight: 'extralight',
   lineHeight: 'none',
   letterSpacing: 'tighter',
-  whiteSpace: 'nowrap',
+  textWrap: 'balance',
   transition: `[font-weight .5s ${ease}]`,
   '& > [data-arrow]': {
     display: 'inline-block',
