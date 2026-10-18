@@ -34,11 +34,11 @@ export const monogramStyles = css({
     height: '[1em]',
     overflow: 'hidden',
     fontWeight: 'black',
-    maxWidth: '[0.95em]',
+    maxWidth: '[var(--closed, 0.95em)]',
     transition: `[max-width .6s ${slow} calc(var(--i) * 80ms)]`,
   },
   '& [data-word]:first-child': { fontWeight: 'light' },
-  '& [data-word]:last-child': { maxWidth: '[1.05em]' },
+  '& [data-word]:last-child': { '--closed': '1.05em' },
   '& [data-reel]': {
     display: 'flex',
     flexDirection: 'column',
