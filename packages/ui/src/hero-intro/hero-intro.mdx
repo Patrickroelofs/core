@@ -8,7 +8,7 @@ import * as HeroIntroStories from './hero-intro.stories'
 Intro sentence for the top of a page, with inline photo pills. A compound component: `HeroIntro`, `HeroIntro.Phrase`, `HeroIntro.Word` and `HeroIntro.Pill`.
 
 - `HeroIntro` is an `<h1>`; write the sentence as text with `Phrase`s in it.
-- A `Phrase` wraps a `Word` (thin, turns black when active) and a `Pill` (a round photo that widens when active).
+- A `Phrase` wraps a `Word` (thin, turns black when active) and a `Pill` (a pill-shaped photo slot whose image overflows into a 1/1 circle when active, without moving the text).
 - A `Pill` holds one `Image`.
 
 ```tsx
@@ -32,7 +32,7 @@ import { Image } from '@core/ui/image/image'
 ## Accessibility
 
 - The sentence is real heading text; pills are `aria-hidden` and carry no information.
-- The widening is triggered by hover and focus within a phrase, and is disabled with reduced motion.
+- The overflow is triggered by hover and focus within a phrase, and is disabled with reduced motion.
 
 ## Don't
 
