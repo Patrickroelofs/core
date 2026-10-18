@@ -4,6 +4,7 @@ export const titleStyles = cva({
   base: { fontFamily: 'body', lineHeight: 'tight', letterSpacing: 'tight', margin: '0' },
   variants: {
     size: {
+      xs: { fontSize: 'step.1' },
       sm: { fontSize: 'step.3' },
       md: { fontSize: 'step.4' },
       lg: { fontSize: 'step.5' },

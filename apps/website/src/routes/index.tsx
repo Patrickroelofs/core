@@ -2,6 +2,7 @@ import { Card } from '@core/ui/card/card'
 import { Grid } from '@core/ui/grid/grid'
 import { Image } from '@core/ui/image/image'
 import { Label } from '@core/ui/label/label'
+import { ListRow } from '@core/ui/list-row/list-row'
 import { Tag } from '@core/ui/tag/tag'
 import { Title } from '@core/ui/title/title'
 import { Typography } from '@core/ui/typography/typography'
@@ -36,6 +37,18 @@ const projects = [
   },
 ] as const
 
+const experience = [
+  { years: '2020 — 2024', role: 'Founding designer', place: 'Fieldkit', where: 'Remote' },
+  { years: '2018 — 2020', role: 'Senior designer', place: 'Loop Transit', where: 'Amsterdam' },
+  { years: '2015 — 2018', role: 'Front-end developer', place: 'Studio Nord', where: 'Utrecht' },
+]
+
+const writing = [
+  { date: '2025', title: 'Quiet interfaces', meta: '8 min', href: '/writing/quiet-interfaces' },
+  { date: '2024', title: 'Designing for night shifts', meta: '12 min', href: '/writing/night-shifts' },
+  { date: '2023', title: 'Notes on offline-first', meta: '6 min', href: '/writing/offline-first' },
+]
+
 function Home() {
   return (
     <main className={section}>
@@ -69,6 +82,45 @@ function Home() {
             </Card.Body>
           </Card>
         ))}
+      </Grid>
+      <Grid gap="m">
+        <Card render={<Grid.Item span={7} />}>
+          <Card.Body>
+            <Title as="h3">Experience</Title>
+            {experience.map(({ years, role, place, where }) => (
+              <ListRow key={years}>
+                <ListRow.Lead>{years}</ListRow.Lead>
+                <ListRow.Body>
+                  <Title as="span" size="xs" weight="bold">
+                    {role}
+                  </Title>
+                  <Title as="span" size="xs">{` · ${place}`}</Title>
+                </ListRow.Body>
+                <ListRow.Meta>
+                  <Label size="xs">{where}</Label>
+                </ListRow.Meta>
+              </ListRow>
+            ))}
+          </Card.Body>
+        </Card>
+        <Card render={<Grid.Item span={5} />}>
+          <Card.Body>
+            <Title as="h3">Writing</Title>
+            {writing.map(({ date, title, meta, href }) => (
+              <ListRow key={href} render={<a href={href} />}>
+                <ListRow.Lead>{date}</ListRow.Lead>
+                <ListRow.Body>
+                  <Title as="span" size="xs" weight="bold">
+                    {title}
+                  </Title>
+                </ListRow.Body>
+                <ListRow.Meta>
+                  <Label size="xs">{meta}</Label>
+                </ListRow.Meta>
+              </ListRow>
+            ))}
+          </Card.Body>
+        </Card>
       </Grid>
     </main>
   )
