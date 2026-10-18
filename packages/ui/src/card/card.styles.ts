@@ -1,4 +1,4 @@
-import { css, cva, type RecipeVariantProps } from '../../styled-system/css'
+import { css } from '../../styled-system/css'
 
 const ease = 'cubic-bezier(.2,.7,.2,1)'
 
@@ -28,37 +28,6 @@ export const cardStyles = css({
   _motionReduce: { transition: '[none]', '&:is(a[href]):hover': { transform: 'none' } },
 })
 
-const stripes = (line: string) => `repeating-linear-gradient(135deg, ${line} 0 1px, transparent 1px 11px)`
-
-/** Image slot. Without an `<img>` child it renders the striped placeholder with its label. */
-export const mediaStyles = cva({
-  base: {
-    overflow: 'hidden',
-    boxSizing: 'border-box',
-    fontFamily: 'mono',
-    fontSize: 'xs',
-    px: '[22px]',
-    py: '[18px]',
-    '& > img': { display: 'block', width: '[100%]', height: '[100%]', objectFit: 'cover' },
-    '&:has(> img)': { p: '0' },
-  },
-  variants: {
-    ratio: {
-      '16/10': { aspectRatio: '[16 / 10]' },
-      '16/9': { aspectRatio: '[16 / 9]' },
-      '4/3': { aspectRatio: '[4 / 3]' },
-      '1/1': { aspectRatio: '[1 / 1]' },
-    },
-    tone: {
-      light: { bg: '[#dcdcdc]', color: 'navy/60', backgroundImage: `[${stripes('rgba(25,32,54,.09)')}]` },
-      dark: { bg: 'plum', color: 'snow/75', backgroundImage: `[${stripes('rgba(240,240,240,.08)')}]` },
-      azure: { bg: '[#016aa8]', color: 'snow', backgroundImage: `[${stripes('rgba(240,240,240,.16)')}]` },
-      coral: { bg: 'coral', color: 'navy', backgroundImage: `[${stripes('rgba(25,32,54,.14)')}]` },
-    },
-  },
-  defaultVariants: { ratio: '16/10', tone: 'light' },
-})
-
 export const bodyStyles = css({
   display: 'flex',
   flexDirection: 'column',
@@ -77,5 +46,3 @@ export const footerStyles = css({
   mt: '2',
   '& > time': { marginInlineStart: 'auto', opacity: 0.6 },
 })
-
-export type CardMediaVariants = NonNullable<RecipeVariantProps<typeof mediaStyles>>

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
+import { Image } from '../image/image'
 import { Label } from '../label/label'
 import { Tag } from '../tag/tag'
 import { Title } from '../title/title'
@@ -27,7 +28,7 @@ type Story = StoryObj<typeof meta>
 export const Link: Story = {
   render: () => (
     <Card render={<a href="#shiftboard" />}>
-      <Card.Media>shiftboard: dashboard</Card.Media>
+      <Image label="shiftboard: dashboard" />
       <Card.Body>
         <Title as="h3">Shiftboard</Title>
         <Typography>Scheduling for night-shift nurses. Swap requests went from twenty minutes to two.</Typography>
@@ -47,7 +48,7 @@ export const Link: Story = {
 export const Static: Story = {
   render: () => (
     <Card>
-      <Card.Media>loop transit: rider app</Card.Media>
+      <Image label="loop transit: rider app" />
       <Card.Body>
         <Title as="h3">Loop Transit</Title>
         <Typography>A rider app that tells the truth about delays.</Typography>
@@ -67,9 +68,7 @@ export const Static: Story = {
 export const WithImage: Story = {
   render: () => (
     <Card render={<a href="#fieldkit" />}>
-      <Card.Media>
-        <img src={photo} alt="Abstract landscape" />
-      </Card.Media>
+      <Image src={photo} alt="Abstract landscape" />
       <Card.Body>
         <Title as="h3">Fieldkit</Title>
         <Card.Footer>
@@ -116,32 +115,6 @@ export const ManyTags: Story = {
         </Card.Footer>
       </Card.Body>
     </Card>
-  ),
-}
-
-export const Ratios: Story = {
-  render: () => (
-    <div style={{ display: 'grid', gap: 12 }}>
-      {(['16/10', '16/9', '4/3', '1/1'] as const).map((ratio) => (
-        <Card key={ratio}>
-          <Card.Media ratio={ratio}>ratio: {ratio}</Card.Media>
-        </Card>
-      ))}
-    </div>
-  ),
-}
-
-export const MediaTones: Story = {
-  render: () => (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, width: 420 }}>
-      {(['light', 'dark', 'azure', 'coral'] as const).map((tone) => (
-        <Card key={tone}>
-          <Card.Media tone={tone} ratio="16/9">
-            {tone}
-          </Card.Media>
-        </Card>
-      ))}
-    </div>
   ),
 }
 

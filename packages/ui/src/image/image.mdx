@@ -1,0 +1,44 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+import * as ImageStories from './image.stories'
+
+<Meta of={ImageStories} />
+
+# Image
+
+Fixed-ratio image that fills its container's width. With a `src` it renders an `<img>` (`object-fit: cover`); without one it renders a striped placeholder showing `label`.
+
+```tsx
+import { Image } from '@core/ui/image/image'
+
+<Image src="/shiftboard.png" alt="Shiftboard dashboard" ratio="16/9" />
+<Image label="shiftboard: dashboard" tone="azure" />
+```
+
+<Canvas of={ImageStories.Placeholder} />
+<Controls of={ImageStories.Placeholder} />
+
+## With an image
+
+<Canvas of={ImageStories.WithSrc} />
+
+## Ratio
+
+`16/10` (default), `16/9`, `4/3`, `1/1`.
+
+<Canvas of={ImageStories.Ratios} />
+
+## Placeholder tone
+
+`light` (default), `dark`, `azure`, `coral`. Ignored when `src` is set.
+
+<Canvas of={ImageStories.Tones} />
+
+## Accessibility
+
+- Always give a real `src` a meaningful `alt` (use `alt=""` only for decoration).
+- The placeholder is a plain `<div>` with visible `label` text and ignores `alt`.
+
+## Don't
+
+- Don't pass `className`; styling comes from the recipe.
+- Don't use the placeholder in production content; it marks a missing image.
