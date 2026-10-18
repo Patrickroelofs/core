@@ -8,7 +8,7 @@ const on = ':is(:hover, :focus-within)'
 export const heroIntroStyles = css({
   margin: '0',
   fontFamily: 'body',
-  fontSize: '[clamp(32px, 5.2vw, 80px)]',
+  fontSize: '[clamp(40px, 6.4vw, 96px)]',
   fontWeight: 'light',
   lineHeight: '[1.08]',
   letterSpacing: 'tighter',

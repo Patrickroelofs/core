@@ -14,14 +14,13 @@ const meta = {
           <Image label="portrait" tone="light" />
         </HeroIntro.Pill>
       </HeroIntro.Phrase>
-      ,<br />a{' '}
+      , a{' '}
       <HeroIntro.Phrase>
         <HeroIntro.Word>frontend web developer</HeroIntro.Word>{' '}
         <HeroIntro.Pill>
           <Image label="work: Shiftboard" tone="coral" />
         </HeroIntro.Pill>
-      </HeroIntro.Phrase>
-      <br />
+      </HeroIntro.Phrase>{' '}
       based in{' '}
       <HeroIntro.Phrase>
         <HeroIntro.Word>Nijmegen, the Netherlands</HeroIntro.Word>{' '}
