@@ -8,11 +8,16 @@
     "build": "pnpm -r build",
     "typecheck": "pnpm -r typecheck",
     "check": "biome check .",
-    "check:fix": "biome check --write ."
+    "check:fix": "biome check --write .",
+    "build:website": "pnpm --filter website build",
+    "start": "pnpm --filter website start"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.15",
     "@playwright/test": "^1.64.1",
     "typescript": "^5.9.0"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }
