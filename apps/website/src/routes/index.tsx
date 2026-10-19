@@ -65,9 +65,9 @@ function Home() {
             <Image label="at work" tone="coral" />
           </HeroIntro.Pill>
         </HeroIntro.Phrase>{' '}
-        based in{' '}
+        based in<br />
         <HeroIntro.Phrase>
-          <HeroIntro.Word>Nijmegen, the Netherlands</HeroIntro.Word>{' '}
+          <HeroIntro.Word>the Netherlands </HeroIntro.Word>{' '}
           <HeroIntro.Pill>
             <Image label="the city" tone="azure" />
           </HeroIntro.Pill>

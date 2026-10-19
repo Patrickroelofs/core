@@ -26,7 +26,7 @@ export const siteHeaderStyles = css({
   flexWrap: 'wrap',
   alignItems: 'center',
   gap: '6',
-  px: 'gutter',
+  px: '[max(var(--spacing-gutter), calc((100% - 1400px) / 2 + var(--spacing-gutter)))]',
   py: '5',
   fontFamily: 'body',
   color: 'fg.default',

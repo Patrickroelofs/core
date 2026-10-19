@@ -23,7 +23,7 @@ const meta = {
       </HeroIntro.Phrase>{' '}
       based in{' '}
       <HeroIntro.Phrase>
-        <HeroIntro.Word>Nijmegen, the Netherlands</HeroIntro.Word>{' '}
+        <HeroIntro.Word>the Netherlands</HeroIntro.Word>{' '}
         <HeroIntro.Pill>
           <Image label="the city" tone="azure" />
         </HeroIntro.Pill>

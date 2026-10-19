@@ -13,7 +13,7 @@ export const heroIntroStyles = css({
   lineHeight: '[1.08]',
   letterSpacing: 'tighter',
   textWrap: 'pretty',
-  '& [data-word]': { cursor: 'pointer', transition: `[font-weight .4s ${ease}]` },
+  '& [data-word]': { cursor: 'pointer', transition: `[font-weight .4s ${ease}, letter-spacing .4s ${ease}]` },
   // the pill only reserves space (1.7em x 0.82em); on hover the image grows to 2.4em x 2.4em in %; its image overflows it on hover without moving the text
   '& [data-pill]': {
     display: 'inline-block',
@@ -38,7 +38,7 @@ export const heroIntroStyles = css({
     transition: `[width .5s ${pop}, height .5s ${pop}]`,
   },
   [`& [data-phrase]${on}`]: {
-    '& [data-word]': { fontWeight: 'black' },
+    '& [data-word]': { fontWeight: 'black', letterSpacing: 'tight' },
     '& [data-pill] > *': { width: '[141%]', height: '[293%]', zIndex: '1' },
   },
   _motionReduce: { '&, & *': { transition: '[none]' } },

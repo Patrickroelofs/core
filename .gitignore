@@ -145,6 +145,9 @@ vite.config.ts.timestamp-*
 # Astro generated types
 .astro/
 
+# Jetbrains IDEs
+.idea
+
 # Turbo Repo
 .turbo
 
