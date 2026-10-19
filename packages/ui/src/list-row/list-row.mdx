@@ -7,10 +7,10 @@ import * as ListRowStories from './list-row.stories'
 
 Hairline-separated row for CV entries, posts and credits. A compound component: `ListRow`, `ListRow.Lead`, `ListRow.Body` and `ListRow.Meta`.
 
-- `Lead`: mono column, usually a date range. Optional; without it the body takes the first column.
+- `Lead`: leading column, usually a date range. Optional; without it the body takes the first column.
 - `Body`: put `Title as="span"` inside (bold part, then light detail).
 - `Meta`: trailing small text, usually a `Label`.
-- `render={<a href="…" />}` makes a link row that turns coral on hover and focus.
+- `render={<a href="…" />}` makes a link row that turns coral (the lead and meta stay put) and nudges right on hover (no nudge with reduced motion).
 
 ```tsx
 import { ListRow } from '@core/ui/list-row/list-row'
