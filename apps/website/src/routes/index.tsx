@@ -48,7 +48,7 @@ const projects = [
   },
 ] as const
 
-const archiveHead = css({
+const sectionHead = css({
   display: 'flex',
   flexWrap: 'wrap',
   alignItems: 'flex-end',
@@ -68,22 +68,20 @@ const writing = [
   { date: 'Nov 2025', title: 'A tiny checklist for handoff', kind: 'Note', minutes: '3 min' },
 ] as const
 
-const cvHead = css({
-  display: 'flex',
-  flexWrap: 'wrap',
-  alignItems: 'flex-end',
-  justifyContent: 'space-between',
-  gap: '6',
+const cvSide = css({
+  display: 'grid',
+  gap: 'fluid.m',
+  minWidth: '0',
+  md: { gridTemplateRows: '[repeat(2, minmax(0, 1fr))]' },
 })
-const cvSide = css({ display: 'grid', gridTemplateRows: '[repeat(2, minmax(0, 1fr))]', gap: 'fluid.m', minWidth: '0' })
 const tools = css({ display: 'flex', flexWrap: 'wrap', gap: '2' })
 
 // TODO: mock data, replace with real content
 const cv = [
-  { years: '2024 — now', role: 'Independent designer', org: 'Shiftboard, Loop Transit', location: 'Lisbon' },
-  { years: '2020 — 2024', role: 'Founding designer', org: 'Fieldkit', location: 'Remote' },
-  { years: '2017 — 2020', role: 'Designer', org: 'Civic Lab', location: 'Porto' },
-  { years: '2014 — 2017', role: 'Junior designer', org: 'Studio Halde', location: 'Porto' },
+  { years: '2024–now', role: 'Independent designer', org: 'Shiftboard, Loop Transit', location: 'Lisbon' },
+  { years: '2020–24', role: 'Founding designer', org: 'Fieldkit', location: 'Remote' },
+  { years: '2017–20', role: 'Designer', org: 'Civic Lab', location: 'Porto' },
+  { years: '2014–17', role: 'Junior designer', org: 'Studio Halde', location: 'Porto' },
   { years: '2014', role: 'BA Communication Design', org: 'University of Porto', location: 'Porto' },
 ] as const
 const toolkit = ['Figma', 'TypeScript', 'React', 'User research', 'Design systems', 'Workshops'] as const
@@ -151,7 +149,7 @@ function Home() {
         </Grid>
       </section>
       <section id="cv" className={work}>
-        <div className={cvHead}>
+        <div className={sectionHead}>
           <Title as="h2" size="xl">
             Curriculum{' '}
             <Title as="span" size="xl" weight="black">
@@ -163,20 +161,22 @@ function Home() {
         <Grid gap="m">
           <Grid.Item span={8}>
             <Tile tone="navy" justify="start">
-              {cv.map(({ years, role, org, location }) => (
-                <ListRow key={years}>
-                  <ListRow.Lead>{years}</ListRow.Lead>
-                  <ListRow.Body>
-                    <Title as="span" size="xs" weight="bold">
-                      {role}
-                    </Title>{' '}
-                    · {org}
-                  </ListRow.Body>
-                  <ListRow.Meta>
-                    <Label size="xs">{location}</Label>
-                  </ListRow.Meta>
-                </ListRow>
-              ))}
+              <ul>
+                {cv.map(({ years, role, org, location }) => (
+                  <ListRow key={years} render={<li />}>
+                    <ListRow.Lead>{years}</ListRow.Lead>
+                    <ListRow.Body>
+                      <Title as="span" size="xs" weight="bold">
+                        {role}
+                      </Title>
+                      <Title as="span" size="xs">{` · ${org}`}</Title>
+                    </ListRow.Body>
+                    <ListRow.Meta>
+                      <Label size="xs">{location}</Label>
+                    </ListRow.Meta>
+                  </ListRow>
+                ))}
+              </ul>
             </Tile>
           </Grid.Item>
           <Grid.Item span={4} render={<div className={cvSide} />}>
@@ -192,7 +192,7 @@ function Home() {
             </Tile>
             <Tile tone="coral" render={<a href="/cv.pdf" />}>
               <Tile.Label>Full CV</Tile.Label>
-              <Title as="span" size="md" weight="bold">
+              <Title as="span" size="sm" weight="bold">
                 Download PDF ↓
               </Title>
             </Tile>
@@ -200,7 +200,7 @@ function Home() {
         </Grid>
       </section>
       <section id="writing" className={work}>
-        <div className={archiveHead}>
+        <div className={sectionHead}>
           <Title as="h2" size="xl">
             Writing{' '}
             <Title as="span" size="xl" weight="black">
