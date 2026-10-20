@@ -43,7 +43,6 @@ const sectionStyles = css({
   pt: 'fluid.2xs',
   borderTop: '[1.5px solid]',
   borderColor: 'border.strong',
-  scrollMarginTop: '[calc(var(--site-header-height, 0px) + var(--section-nav-height, 0px) + 16px)]',
 })
 const sectionLabel = css({
   display: 'flex',
