@@ -1,0 +1,51 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+import * as SectionNavStories from './section-nav.stories'
+
+<Meta of={SectionNavStories} />
+
+# SectionNav
+
+Sticky "on this page" bar for long pages (About, case studies). A compound component: `SectionNav` and `SectionNav.Link`. Each link points at a section's `#id`; the bar watches the scroll position and slides a navy pill to the link of the section in view.
+
+- A section becomes active once its top passes `offset` px (default 40) below the bar. At the very bottom of the page the last link wins. Above the first section no link is active and the pill is hidden; it fades in on the first one, then slides and resizes between links.
+- Clicking a link scrolls smoothly to its section and keeps the pill on the target for the whole scroll instead of stepping through every link on the way. The URL hash is updated.
+- It sticks right under the site header at `var(--site-header-height)`, which `SiteHeader` publishes, and follows it if the header grows (e.g. the mobile menu opens).
+- Once docked (`data-docked`) the bar takes over the header's blurred backdrop and fade-out: the header's fade stops at its own edge and the bar's fades out below it, so the two read as one surface. Before docking it is an opaque bar with hairline rules.
+- It publishes `--section-nav-height`, so things that stick below it (section labels) can use `top: calc(var(--site-header-height, 0px) + var(--section-nav-height, 0px) + 16px)`.
+- When the links don't fit (phones) the row scrolls sideways, the active link is kept centred and the edges fade.
+
+```tsx
+import { SectionNav } from '@core/ui/section-nav/section-nav'
+
+<SectionNav>
+  <SectionNav.Link href="#story" number="01">Story</SectionNav.Link>
+  <SectionNav.Link href="#experience" number="02">Experience</SectionNav.Link>
+</SectionNav>
+<section id="story">…</section>
+<section id="experience">…</section>
+```
+
+<Canvas of={SectionNavStories.Default} />
+
+## Under the site header
+
+Scroll down: the bar docks under the header, and the fade-out moves from the header to the bar.
+
+<Canvas of={SectionNavStories.UnderSiteHeader} />
+
+## Narrow
+
+<Canvas of={SectionNavStories.Narrow} />
+
+## Accessibility
+
+- A `<nav>` landmark labelled "On this page" (override with `aria-label`).
+- The active link has `aria-current="location"`.
+- Links are real anchors: they work without JavaScript, and modifier-clicks open normally.
+- With reduced motion, scrolling jumps and the pill and bar move without animating.
+
+## Don't
+
+- Don't pass `className`.
+- Don't link to ids that aren't on the page; those links never become active.
+- Don't use it for page-to-page navigation; that is `NavigationMenu`.

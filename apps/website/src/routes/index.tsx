@@ -65,7 +65,8 @@ function Home() {
             <Image label="at work" tone="coral" />
           </HeroIntro.Pill>
         </HeroIntro.Phrase>{' '}
-        based in<br />
+        based in
+        <br />
         <HeroIntro.Phrase>
           <HeroIntro.Word>the Netherlands </HeroIntro.Word>{' '}
           <HeroIntro.Pill>

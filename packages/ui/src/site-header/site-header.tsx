@@ -22,6 +22,17 @@ function Root(props: SiteHeaderProps) {
     window.addEventListener('scroll', update, { passive: true })
     return () => window.removeEventListener('scroll', update)
   }, [])
+  useEffect(() => {
+    const header = ref.current
+    if (!header) return
+    const root = document.documentElement.style
+    const ro = new ResizeObserver(() => root.setProperty('--site-header-height', `${header.offsetHeight}px`))
+    ro.observe(header)
+    return () => {
+      ro.disconnect()
+      root.removeProperty('--site-header-height')
+    }
+  }, [])
   return <header ref={ref} className={siteHeaderStyles} data-collapsed={collapsed ? '' : undefined} {...props} />
 }
 
