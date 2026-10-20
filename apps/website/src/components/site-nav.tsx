@@ -20,8 +20,8 @@ const work = [
   { title: 'Fieldkit', meta: '2021', description: 'Founding designer', href: '#' },
 ]
 const about = [
-  { title: 'Story', description: 'From Porto print studios to hospital software.', href: '#' },
-  { title: 'Process', description: 'Shadowing, sketching, shipping in small loops.', href: '#' },
+  { title: 'Story', description: 'From Porto print studios to hospital software.', href: '/about#story' },
+  { title: 'Experience', description: 'Twelve years, five chapters.', href: '/about#experience' },
   { title: 'Speaking', meta: '06', description: 'Talks and workshops.', href: '#' },
 ]
 
@@ -30,9 +30,9 @@ const menus = [
   { label: 'About', links: about },
 ]
 
-export function SiteNav() {
+export function SiteNav({ hideOnScroll = false }: { hideOnScroll?: boolean }) {
   return (
-    <SiteHeader>
+    <SiteHeader hideOnScroll={hideOnScroll}>
       <SiteHeader.Monogram href="/" name="Patrick Roelofs" />
       <SiteHeader.Rule />
       <div className={mobile}>

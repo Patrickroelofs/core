@@ -3,6 +3,7 @@ import { css } from '../../styled-system/css'
 const slow = 'cubic-bezier(.7,0,.2,1)'
 const spring = 'cubic-bezier(.3,1.9,.5,1)'
 const overshoot = 'cubic-bezier(.5,-.4,.3,1.4)'
+const travel = 'cubic-bezier(.65,0,.35,1)'
 const active = ':is(:hover, :focus-visible)'
 
 /** Top bar, sticky: monogram, a rule that fills the gap, then whatever nav is passed in. Scrolled (`data-collapsed`) the monogram folds to its initials. */
@@ -30,6 +31,9 @@ export const siteHeaderStyles = css({
   py: '5',
   fontFamily: 'body',
   color: 'fg.default',
+  transition: `[transform .45s ${travel}]`,
+  '&[data-hidden]': { transform: 'translateY(calc(-100% - 24px))' },
+  _motionReduce: { transition: '[none]' },
 })
 
 const open = {
