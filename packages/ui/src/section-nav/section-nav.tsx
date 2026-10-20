@@ -179,26 +179,17 @@ function Root({
   }, [])
 
   const go = (e: MouseEvent, id: string) => {
-    const el = document.getElementById(id)
-    const nav = navRef.current
-    if (!el || !nav || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return
-    e.preventDefault()
-    const y = el.getBoundingClientRect().top + window.scrollY
-    const header = cssNumber('--site-header-height')
+    if (!document.getElementById(id) || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0)
+      return
     lock.current = true
     held.current = null
     select(id)
-    window.scrollTo({
-      top: Math.max(0, y - header - nav.offsetHeight - 16),
-      behavior: reducedMotion() ? 'auto' : 'smooth',
-    })
-    history.replaceState(history.state, '', `#${id}`)
     clearTimeout(idle.current)
     idle.current = setTimeout(release, 200)
   }
 
   return (
-    <nav ref={navRef} className={sectionNavStyles} aria-label={label} {...props}>
+    <nav ref={navRef} className={sectionNavStyles} data-section-nav="" aria-label={label} {...props}>
       <Context.Provider value={{ active, go }}>
         <div ref={trackRef} className={trackStyles} onScroll={() => measure()}>
           <span className={indicatorStyles} aria-hidden="true" />
