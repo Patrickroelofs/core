@@ -1,7 +1,7 @@
 /// <reference types="vite/client" />
 
 import css from '@core/ui/styles.css?url'
-import { createRootRoute, HeadContent, Outlet, Scripts, useMatches } from '@tanstack/react-router'
+import { createRootRoute, HeadContent, Outlet, Scripts } from '@tanstack/react-router'
 import '@fontsource-variable/onest'
 import siteCss from '../../styles.css?url'
 import { SiteFooter } from '../components/site-footer'
@@ -22,21 +22,14 @@ export const Route = createRootRoute({
   component: Root,
 })
 
-declare module '@tanstack/react-router' {
-  interface StaticDataRouteOption {
-    hideHeaderOnScroll?: boolean
-  }
-}
-
 function Root() {
-  const hideOnScroll = useMatches({ select: (matches) => matches.some((m) => m.staticData.hideHeaderOnScroll) })
   return (
     <html lang="en">
       <head>
         <HeadContent />
       </head>
       <body>
-        <SiteNav hideOnScroll={hideOnScroll} />
+        <SiteNav />
         <Outlet />
         <SiteFooter />
         <Scripts />

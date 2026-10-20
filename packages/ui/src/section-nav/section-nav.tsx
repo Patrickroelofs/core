@@ -79,6 +79,14 @@ function Root({
     select(next)
   }
 
+  const dock = () => {
+    const nav = navRef.current
+    if (!nav) return
+    const docked = nav.getBoundingClientRect().top <= cssNumber('--site-header-height') + 1
+    nav.toggleAttribute('data-docked', docked)
+    document.documentElement.toggleAttribute('data-section-nav-docked', docked)
+  }
+
   const release = () => {
     held.current = window.scrollY
     lock.current = false
@@ -89,6 +97,7 @@ function Root({
   useEffect(() => {
     let frame = 0
     const onScroll = () => {
+      dock()
       if (lock.current) {
         clearTimeout(idle.current)
         idle.current = setTimeout(release, 140)
@@ -104,8 +113,10 @@ function Root({
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', onScroll)
     nav?.addEventListener('transitionend', onScroll)
+    dock()
     spy()
     return () => {
+      document.documentElement.removeAttribute('data-section-nav-docked')
       window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', onScroll)
       nav?.removeEventListener('transitionend', onScroll)
@@ -173,7 +184,7 @@ function Root({
     if (!el || !nav || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return
     e.preventDefault()
     const y = el.getBoundingClientRect().top + window.scrollY
-    const header = cssNumber('--site-header-autohide') && y > window.scrollY ? 0 : cssNumber('--site-header-height')
+    const header = cssNumber('--site-header-height')
     lock.current = true
     held.current = null
     select(id)

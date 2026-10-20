@@ -9,8 +9,9 @@ Sticky "on this page" bar for long pages (About, case studies). A compound compo
 
 - A section becomes active once its top passes `offset` px (default 40) below the bar. At the very bottom of the page the last link wins. Above the first section no link is active and the pill is hidden; it fades in on the first one, then slides and resizes between links.
 - Clicking a link scrolls smoothly to its section and keeps the pill on the target for the whole scroll instead of stepping through every link on the way. The URL hash is updated.
-- It sticks at `var(--site-header-offset)`, which `SiteHeader` publishes. With `<SiteHeader hideOnScroll>` the header slides away while scrolling down and the bar glides up into its place with the same timing, then both come back on scroll up.
-- It publishes `--section-nav-height`, so things that stick below it (section labels) can use `top: calc(var(--site-header-offset, 0px) + var(--section-nav-height, 0px) + 16px)` with the same `top` transition.
+- It sticks right under the site header at `var(--site-header-height)`, which `SiteHeader` publishes, and follows it if the header grows (e.g. the mobile menu opens).
+- Once docked (`data-docked`) the bar takes over the header's blurred backdrop and fade-out: the header's fade stops at its own edge and the bar's fades out below it, so the two read as one surface. Before docking it is an opaque bar with hairline rules.
+- It publishes `--section-nav-height`, so things that stick below it (section labels) can use `top: calc(var(--site-header-height, 0px) + var(--section-nav-height, 0px) + 16px)`.
 - When the links don't fit (phones) the row scrolls sideways, the active link is kept centred and the edges fade.
 
 ```tsx
@@ -28,7 +29,7 @@ import { SectionNav } from '@core/ui/section-nav/section-nav'
 
 ## Under the site header
 
-`SiteHeader` with `hideOnScroll`. Scroll down: the header leaves, the bar takes the top. Scroll up: the header returns and the bar steps down under it.
+Scroll down: the bar docks under the header, and the fade-out moves from the header to the bar.
 
 <Canvas of={SectionNavStories.UnderSiteHeader} />
 

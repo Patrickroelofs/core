@@ -10,8 +10,7 @@ Sticky top bar. A compound component: `SiteHeader`, `SiteHeader.Monogram` and `S
 - `SiteHeader.Monogram` shows the full name. Once the page scrolls (more than a few pixels) the header gets `data-collapsed` and each word's reel rolls down to its initial and a coral dot ("P.R."); hover or focus rolls it open again. Pass the full `name`; the first word is light, the others black.
 - `SiteHeader.Rule` is a hairline filling the gap between monogram and nav. It fills from the left with the page's scroll progress (0% at the top, 100% at the bottom), where a 👍 pops out of its end.
 
-- `hideOnScroll` slides the header out of view while scrolling down and back on scroll up. It stays put while hovered, focused or while a menu is open. Use it on long pages with a `SectionNav`, which docks into the freed space.
-- The header publishes `--site-header-height`, `--site-header-offset` (its height, or 0 while hidden) and `--site-header-autohide` on `<html>`, so other sticky elements can sit under it.
+- The header publishes `--site-header-height` on `<html>`, so other sticky elements (e.g. `SectionNav`) can sit under it. While a `SectionNav` is docked the header's fade-out is handed to that bar.
 
 The header sticks to the top of the viewport, so render it as a direct child of a tall container (usually `<body>`). Its backdrop spans the full width, while its content lines up with a centred 1400px column (`maxW: '[1400px]', mx: 'auto', p: 'gutter'`).
 

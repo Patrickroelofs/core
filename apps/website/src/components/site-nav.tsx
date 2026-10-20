@@ -30,9 +30,9 @@ const menus = [
   { label: 'About', links: about },
 ]
 
-export function SiteNav({ hideOnScroll = false }: { hideOnScroll?: boolean }) {
+export function SiteNav() {
   return (
-    <SiteHeader hideOnScroll={hideOnScroll}>
+    <SiteHeader>
       <SiteHeader.Monogram href="/" name="Patrick Roelofs" />
       <SiteHeader.Rule />
       <div className={mobile}>

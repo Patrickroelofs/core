@@ -4,10 +4,29 @@ const travel = 'cubic-bezier(.65,0,.35,1)'
 
 export const sectionNavStyles = css({
   position: 'sticky',
-  top: '[var(--site-header-offset, 0px)]',
+  top: '[var(--site-header-height, 0px)]',
   zIndex: '[20]',
   bg: 'bg.canvas/92',
   backdropFilter: '[blur(8px)]',
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    zIndex: '-1',
+    inset: '0',
+    bottom: '[-24px]',
+    bg: 'bg.canvas/60',
+    backdropFilter: '[blur(12px)]',
+    maskImage: '[linear-gradient(to bottom, #000 calc(100% - 42px), transparent)]',
+    pointerEvents: 'none',
+    opacity: 0,
+    transition: '[opacity .25s ease]',
+  },
+  '&[data-docked]': {
+    bg: 'transparent',
+    backdropFilter: '[none]',
+    borderBottomColor: 'transparent',
+    '&::before': { opacity: 1 },
+  },
   borderTopWidth: '[1.5px]',
   borderTopStyle: 'solid',
   borderTopColor: 'border.strong',
@@ -18,7 +37,7 @@ export const sectionNavStyles = css({
   py: '3',
   fontFamily: 'body',
   color: 'fg.default',
-  transition: `[top .45s ${travel}]`,
+  transition: `[top .45s ${travel}, background .25s ease, border-color .25s ease]`,
   _motionReduce: { transition: '[none]' },
 })
 

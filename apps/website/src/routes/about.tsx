@@ -51,7 +51,7 @@ const sectionLabel = css({
   gap: '1',
   md: {
     position: 'sticky',
-    top: '[calc(var(--site-header-offset, 0px) + var(--section-nav-height, 0px) + 16px)]',
+    top: '[calc(var(--site-header-height, 0px) + var(--section-nav-height, 0px) + 16px)]',
     transition: '[top .45s cubic-bezier(.65,0,.35,1)]',
     _motionReduce: { transition: '[none]' },
   },
@@ -360,6 +360,5 @@ function About() {
 
 export const Route = createFileRoute('/about')({
   component: About,
-  staticData: { hideHeaderOnScroll: true },
   head: () => ({ meta: [{ title: 'About · Patrick Roelofs' }] }),
 })

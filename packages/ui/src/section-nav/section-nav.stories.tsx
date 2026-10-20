@@ -57,7 +57,7 @@ export const Default: Story = {
 export const UnderSiteHeader: Story = {
   render: () => (
     <>
-      <SiteHeader hideOnScroll>
+      <SiteHeader>
         <SiteHeader.Monogram href="#" name="Patrick Roelofs" />
         <SiteHeader.Rule />
       </SiteHeader>
