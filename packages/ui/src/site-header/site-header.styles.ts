@@ -30,7 +30,7 @@ export const siteHeaderStyles = css({
   py: '5',
   fontFamily: 'body',
   color: 'fg.default',
-  'html[data-section-nav-docked] &': { '&::before': { bottom: '0', maskImage: '[none]' } },
+  'html[data-section-nav-docked] &': { '&::before': { display: 'none' } },
 })
 
 const open = {
