@@ -3,7 +3,9 @@ import { Grid } from '@core/ui/grid/grid'
 import { HeroIntro } from '@core/ui/hero-intro/hero-intro'
 import { Image } from '@core/ui/image/image'
 import { Label } from '@core/ui/label/label'
+import { ListRow } from '@core/ui/list-row/list-row'
 import { Tag } from '@core/ui/tag/tag'
+import { Tile } from '@core/ui/tile/tile'
 import { Title } from '@core/ui/title/title'
 import { Typography } from '@core/ui/typography/typography'
 import { createFileRoute } from '@tanstack/react-router'
@@ -45,6 +47,46 @@ const projects = [
     description: 'An offline notebook for ecologists.',
   },
 ] as const
+
+const archiveHead = css({
+  display: 'flex',
+  flexWrap: 'wrap',
+  alignItems: 'flex-end',
+  justifyContent: 'space-between',
+  gap: '6',
+})
+const archiveList = css({ borderTopWidth: '[1.5px]', borderTopStyle: 'solid', borderColor: 'fg.default' })
+const archiveMeta = css({ display: 'flex', gap: '6' })
+
+// TODO: mock data, replace with real content
+const writing = [
+  { date: 'Sep 2026', title: 'Designing for the night shift', kind: 'Essay', minutes: '9 min' },
+  { date: 'Jul 2026', title: 'Your empty state is a promise', kind: 'Essay', minutes: '6 min' },
+  { date: 'Jun 2026', title: 'Lisbon Design Week: slides + notes', kind: 'Talk', minutes: '22 min' },
+  { date: 'Apr 2026', title: 'Notes on prototyping in code', kind: 'Note', minutes: '4 min' },
+  { date: 'Jan 2026', title: 'What transit maps taught me about hierarchy', kind: 'Essay', minutes: '11 min' },
+  { date: 'Nov 2025', title: 'A tiny checklist for handoff', kind: 'Note', minutes: '3 min' },
+] as const
+
+const cvHead = css({
+  display: 'flex',
+  flexWrap: 'wrap',
+  alignItems: 'flex-end',
+  justifyContent: 'space-between',
+  gap: '6',
+})
+const cvSide = css({ display: 'grid', gridTemplateRows: '[repeat(2, minmax(0, 1fr))]', gap: 'fluid.m', minWidth: '0' })
+const tools = css({ display: 'flex', flexWrap: 'wrap', gap: '2' })
+
+// TODO: mock data, replace with real content
+const cv = [
+  { years: '2024 — now', role: 'Independent designer', org: 'Shiftboard, Loop Transit', location: 'Lisbon' },
+  { years: '2020 — 2024', role: 'Founding designer', org: 'Fieldkit', location: 'Remote' },
+  { years: '2017 — 2020', role: 'Designer', org: 'Civic Lab', location: 'Porto' },
+  { years: '2014 — 2017', role: 'Junior designer', org: 'Studio Halde', location: 'Porto' },
+  { years: '2014', role: 'BA Communication Design', org: 'University of Porto', location: 'Porto' },
+] as const
+const toolkit = ['Figma', 'TypeScript', 'React', 'User research', 'Design systems', 'Workshops'] as const
 
 function Home() {
   return (
@@ -107,6 +149,85 @@ function Home() {
             </Card>
           ))}
         </Grid>
+      </section>
+      <section id="cv" className={work}>
+        <div className={cvHead}>
+          <Title as="h2" size="xl">
+            Curriculum{' '}
+            <Title as="span" size="xl" weight="black">
+              vitae
+            </Title>
+          </Title>
+          <Label size="sm">Twelve years, five chapters</Label>
+        </div>
+        <Grid gap="m">
+          <Grid.Item span={8}>
+            <Tile tone="navy" justify="start">
+              {cv.map(({ years, role, org, location }) => (
+                <ListRow key={years}>
+                  <ListRow.Lead>{years}</ListRow.Lead>
+                  <ListRow.Body>
+                    <Title as="span" size="xs" weight="bold">
+                      {role}
+                    </Title>{' '}
+                    · {org}
+                  </ListRow.Body>
+                  <ListRow.Meta>
+                    <Label size="xs">{location}</Label>
+                  </ListRow.Meta>
+                </ListRow>
+              ))}
+            </Tile>
+          </Grid.Item>
+          <Grid.Item span={4} render={<div className={cvSide} />}>
+            <Tile tone="plum" justify="start">
+              <Tile.Label>Toolkit</Tile.Label>
+              <div className={tools}>
+                {toolkit.map((tool) => (
+                  <Tag key={tool} tone="snow" appearance="soft">
+                    {tool}
+                  </Tag>
+                ))}
+              </div>
+            </Tile>
+            <Tile tone="coral" render={<a href="/cv.pdf" />}>
+              <Tile.Label>Full CV</Tile.Label>
+              <Title as="span" size="md" weight="bold">
+                Download PDF ↓
+              </Title>
+            </Tile>
+          </Grid.Item>
+        </Grid>
+      </section>
+      <section id="writing" className={work}>
+        <div className={archiveHead}>
+          <Title as="h2" size="xl">
+            Writing{' '}
+            <Title as="span" size="xl" weight="black">
+              archive
+            </Title>
+          </Title>
+        </div>
+        <ul className={archiveList}>
+          {writing.map(({ date, title, kind, minutes }) => (
+            <li key={title}>
+              <ListRow render={<a href={`/writing/${title.toLowerCase().replace(/\W+/g, '-')}`} />}>
+                <ListRow.Lead>{date}</ListRow.Lead>
+                <ListRow.Body>
+                  <Title as="span" size="sm" weight="medium">
+                    {title}
+                  </Title>
+                </ListRow.Body>
+                <ListRow.Meta>
+                  <span className={archiveMeta}>
+                    <Label size="xs">{kind}</Label>
+                    <Label size="xs">{minutes}</Label>
+                  </span>
+                </ListRow.Meta>
+              </ListRow>
+            </li>
+          ))}
+        </ul>
       </section>
     </main>
   )

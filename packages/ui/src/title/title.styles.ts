@@ -12,6 +12,7 @@ export const titleStyles = cva({
     },
     weight: {
       light: { fontWeight: 'extralight' },
+      medium: { fontWeight: 'medium' },
       bold: { fontWeight: 'extrabold' },
       black: { fontWeight: 'black' },
     },
