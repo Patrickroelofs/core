@@ -19,7 +19,11 @@ export const Route = createRootRoute({
       { rel: 'stylesheet', href: siteCss },
     ],
   }),
-  component: () => (
+  component: Root,
+})
+
+function Root() {
+  return (
     <html lang="en">
       <head>
         <HeadContent />
@@ -31,5 +35,5 @@ export const Route = createRootRoute({
         <Scripts />
       </body>
     </html>
-  ),
-})
+  )
+}
