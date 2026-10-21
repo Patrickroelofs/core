@@ -16,6 +16,12 @@ export const titleStyles = cva({
       bold: { fontWeight: 'extrabold' },
       black: { fontWeight: 'black' },
     },
+    // declared after size so it wins over xl's lineHeight
+    leading: {
+      tight: { lineHeight: 'tight' },
+      snug: { lineHeight: 'snug' },
+      normal: { lineHeight: 'normal' },
+    },
   },
   defaultVariants: { size: 'md', weight: 'light' },
 })

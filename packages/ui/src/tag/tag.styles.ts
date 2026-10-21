@@ -21,6 +21,14 @@ export const tagStyles = cva({
     size: {
       sm: { fontSize: 'xs', px: '3', py: '1.5' },
       md: { fontSize: 'sm', px: '[14px]', py: '[7px]' },
+      // highlights a phrase inside running text: takes the surrounding font size
+      inline: {
+        display: 'inline',
+        fontSize: '[inherit]',
+        fontWeight: '[inherit]',
+        lineHeight: '[inherit]',
+        px: '[0.3em]',
+      },
     },
   },
   compoundVariants: [

@@ -10,11 +10,11 @@ export type TileTone = 'snow' | 'plum' | 'azure' | 'coral' | 'navy'
 export type TileProps = Part<useRender.ComponentProps<'div'>> & TileVariants & { tone?: TileTone }
 
 /** Rounded coloured panel. A `<div>` by default; pass `render={<a href="…" />}` for a link tile that flips to navy on hover. */
-function Root({ tone = 'navy', justify, render, ...props }: TileProps) {
+function Root({ tone = 'navy', justify, shape, render, ...props }: TileProps) {
   return useRender({
     render,
     defaultTagName: 'div',
-    props: mergeProps({ className: tileStyles({ justify }), 'data-surface': tone }, props),
+    props: mergeProps({ className: tileStyles({ justify, shape }), 'data-surface': tone }, props),
   })
 }
 

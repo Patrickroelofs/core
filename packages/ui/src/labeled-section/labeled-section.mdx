@@ -5,16 +5,16 @@ import * as LabeledSectionStories from './labeled-section.stories'
 
 # LabeledSection
 
-Hairline-topped page section with a sticky label column beside the content. A compound component: `LabeledSection`, `LabeledSection.Label` and `LabeledSection.Content`.
+Page section with a sticky label column beside the content. A compound component: `LabeledSection`, `LabeledSection.Label` and `LabeledSection.Content`.
 
-- `LabeledSection`: requires `id`, the anchor for `SectionNav.Link href="#id"`.
+- `LabeledSection`: requires `id`, the anchor for `SectionNav.Link href="#id"`, plus `number`, shown small above the title; a pill-and-hairline divider is rendered above the section, its pill coloured by `tone` (`coral` default, `navy`, `azure`, `plum`); vary it between neighbours.
 - `LabeledSection.Label`: children are the `h2` title; optional `hint`. Sticks below the SiteHeader and a docked SectionNav on `md` and up.
 - `LabeledSection.Content`: the right column.
 
 ```tsx
 import { LabeledSection } from '@core/ui/labeled-section/labeled-section'
 
-<LabeledSection id="experience">
+<LabeledSection id="experience" number="02">
   <LabeledSection.Label hint="Twelve years, five chapters">Experience</LabeledSection.Label>
   <LabeledSection.Content>…</LabeledSection.Content>
 </LabeledSection>

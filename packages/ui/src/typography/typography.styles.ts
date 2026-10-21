@@ -10,6 +10,11 @@ export const typographyStyles = cva({
       lg: { fontSize: 'step.1' },
       xl: { fontSize: 'step.2' },
     },
+    weight: {
+      regular: { fontWeight: 'regular' },
+      medium: { fontWeight: 'medium' },
+      bold: { fontWeight: 'bold' },
+    },
   },
   defaultVariants: { size: 'md' },
 })

@@ -8,6 +8,7 @@ const meta = {
   argTypes: {
     size: { control: 'inline-radio', options: ['xs', 'sm', 'md', 'lg', 'xl'] },
     weight: { control: 'inline-radio', options: ['light', 'medium', 'bold', 'black'] },
+    leading: { control: 'inline-radio', options: ['tight', 'snug', 'normal'] },
     as: { control: 'select', options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'span', 'p'] },
   },
 } satisfies Meta<typeof Title>

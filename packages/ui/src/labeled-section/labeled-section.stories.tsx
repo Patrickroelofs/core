@@ -8,7 +8,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  args: { id: 'experience' },
+  args: { id: 'experience', number: '02' },
   render: (args) => (
     <LabeledSection {...args}>
       <LabeledSection.Label hint="Twelve years, five chapters">Experience</LabeledSection.Label>

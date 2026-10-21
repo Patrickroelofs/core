@@ -21,8 +21,13 @@ export const tileStyles = cva({
       start: { justifyContent: 'flex-start' },
       between: { justifyContent: 'space-between' },
     },
+    // speech bubble: square-ish bottom-left corner as the tail
+    shape: {
+      card: {},
+      bubble: { borderRadius: '[28px 28px 28px 6px]' },
+    },
   },
-  defaultVariants: { justify: 'between' },
+  defaultVariants: { justify: 'between', shape: 'card' },
 })
 
 export const labelStyles = css({ fontSize: 'step.-1', fontWeight: 'medium', lineHeight: 'snug', opacity: 0.7 })

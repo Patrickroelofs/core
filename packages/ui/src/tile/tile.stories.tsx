@@ -6,7 +6,10 @@ const meta = {
   title: 'Tile',
   component: Tile,
   args: { tone: 'plum' },
-  argTypes: { tone: { control: 'inline-radio', options: ['snow', 'plum', 'azure', 'coral', 'navy'] } },
+  argTypes: {
+    shape: { control: 'inline-radio', options: ['card', 'bubble'] },
+    tone: { control: 'inline-radio', options: ['snow', 'plum', 'azure', 'coral', 'navy'] },
+  },
   render: (args) => (
     <Tile {...args}>
       <Tile.Label>Toolkit</Tile.Label>
@@ -33,6 +36,15 @@ export const Link: Story = {
     <Tile {...args}>
       <Tile.Label>Full CV</Tile.Label>
       <strong>Download PDF ↓</strong>
+    </Tile>
+  ),
+}
+
+export const Bubble: Story = {
+  args: { tone: 'azure', shape: 'bubble', justify: 'start' },
+  render: (args) => (
+    <Tile {...args}>
+      <span>Hi! I’m Patrick.</span>
     </Tile>
   ),
 }

@@ -8,7 +8,7 @@ const meta = {
   argTypes: {
     tone: { control: 'select', options: ['coral', 'azure', 'plum', 'navy', 'snow'] },
     appearance: { control: 'inline-radio', options: ['solid', 'outline', 'soft'] },
-    size: { control: 'inline-radio', options: ['sm', 'md'] },
+    size: { control: 'inline-radio', options: ['sm', 'md', 'inline'] },
   },
 } satisfies Meta<typeof Tag>
 
@@ -49,5 +49,17 @@ export const Soft: Story = {
         React
       </Tag>
     </div>
+  ),
+}
+
+export const Inline: Story = {
+  render: () => (
+    <p style={{ fontSize: 40, fontWeight: 300, margin: 0 }}>
+      I ride{' '}
+      <Tag tone="coral" size="inline">
+        every tram line
+      </Tag>
+      .
+    </p>
   ),
 }
