@@ -1,11 +1,10 @@
 /// <reference types="vite/client" />
 
 import css from '@core/ui/styles.css?url'
-import { createRootRoute, HeadContent, Outlet, Scripts } from '@tanstack/react-router'
+import { withPayloadRoot } from '@payloadcms/tanstack-start/client'
+import { createRootRoute, HeadContent, Scripts } from '@tanstack/react-router'
 import '@fontsource-variable/onest'
 import siteCss from '../../styles.css?url'
-import { SiteFooter } from '../components/site-footer'
-import { SiteNav } from '../components/site-nav'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -19,19 +18,18 @@ export const Route = createRootRoute({
       { rel: 'stylesheet', href: siteCss },
     ],
   }),
-  component: Root,
+  // Payload renders its own document on /admin, ours everywhere else
+  shellComponent: withPayloadRoot(Shell),
 })
 
-function Root() {
+function Shell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
       <body>
-        <SiteNav />
-        <Outlet />
-        <SiteFooter />
+        {children}
         <Scripts />
       </body>
     </html>

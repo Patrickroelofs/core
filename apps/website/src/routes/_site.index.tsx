@@ -221,4 +221,4 @@ function Home() {
   )
 }
 
-export const Route = createFileRoute('/')({ component: Home })
+export const Route = createFileRoute('/_site/')({ component: Home })

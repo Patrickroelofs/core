@@ -45,7 +45,7 @@ function About() {
   )
 }
 
-export const Route = createFileRoute('/about')({
+export const Route = createFileRoute('/_site/about')({
   component: About,
   head: () => ({ meta: [{ title: 'About - Patrick Roelofs' }] }),
 })

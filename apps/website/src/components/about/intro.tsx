@@ -7,11 +7,12 @@ export function Intro() {
   return (
     <div className={intro}>
       <HeroIntro>
-        I’m Patrick, a Dutch designer in Lisbon. I make{' '}
+        I’m Patrick, a Dutch developer.
+        <br /> I make{' '}
         <HeroIntro.Phrase>
           <HeroIntro.Word>calm software</HeroIntro.Word>{' '}
         </HeroIntro.Phrase>{' '}
-        for people doing hard jobs: nurses on night shifts, tram drivers, support teams at 2am.
+        for people like you.
       </HeroIntro>
     </div>
   )
