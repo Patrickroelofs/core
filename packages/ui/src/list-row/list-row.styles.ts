@@ -22,7 +22,7 @@ export const rowStyles = css({
   _motionReduce: { transition: '[none]', '&:is(a[href]):hover': { pl: '2' } },
 })
 
-export const leadStyles = css({ color: 'fg.default', opacity: 0.6 })
+export const leadStyles = css({ color: 'fg.default', opacity: 0.6, fontSize: 'md' })
 
 export const bodyStyles = css({ minWidth: '0' })
 

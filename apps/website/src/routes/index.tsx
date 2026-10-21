@@ -76,7 +76,6 @@ const cvHead = css({
   gap: '6',
 })
 const cvSide = css({ display: 'grid', gridTemplateRows: '[repeat(2, minmax(0, 1fr))]', gap: 'fluid.m', minWidth: '0' })
-const tools = css({ display: 'flex', flexWrap: 'wrap', gap: '2' })
 
 // TODO: mock data, replace with real content
 const cv = [
@@ -86,7 +85,6 @@ const cv = [
   { years: '2014 — 2017', role: 'Junior designer', org: 'Studio Halde', location: 'Porto' },
   { years: '2014', role: 'BA Communication Design', org: 'University of Porto', location: 'Porto' },
 ] as const
-const toolkit = ['Figma', 'TypeScript', 'React', 'User research', 'Design systems', 'Workshops'] as const
 
 function Home() {
   return (
@@ -180,16 +178,6 @@ function Home() {
             </Tile>
           </Grid.Item>
           <Grid.Item span={4} render={<div className={cvSide} />}>
-            <Tile tone="plum" justify="start">
-              <Tile.Label>Toolkit</Tile.Label>
-              <div className={tools}>
-                {toolkit.map((tool) => (
-                  <Tag key={tool} tone="snow" appearance="soft">
-                    {tool}
-                  </Tag>
-                ))}
-              </div>
-            </Tile>
             <Tile tone="coral" render={<a href="/cv.pdf" />}>
               <Tile.Label>Full CV</Tile.Label>
               <Title as="span" size="md" weight="bold">
