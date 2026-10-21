@@ -11,24 +11,6 @@ const mobile = css({
   '& > * > :nth-child(2)': { flexBasis: '[100%]' },
   '@media (min-width: 820px)': { display: 'none' },
 })
-const panel = css({ p: '3', w: '[360px]' })
-
-// TODO: mock data, replace with real content
-const work = [
-  { title: 'Shiftboard', meta: '2024–26', description: 'Lead designer', href: '#' },
-  { title: 'Loop Transit', meta: '2023', description: 'Design + front-end', href: '#' },
-  { title: 'Fieldkit', meta: '2021', description: 'Founding designer', href: '#' },
-]
-const about = [
-  { title: 'Story', description: 'From Porto print studios to hospital software.', href: '/about#story' },
-  { title: 'Experience', description: 'Twelve years, five chapters.', href: '/about#experience' },
-  { title: 'Speaking', meta: '06', description: 'Talks and workshops.', href: '#' },
-]
-
-const menus = [
-  { label: 'Work', links: work },
-  { label: 'About', links: about },
-]
 
 export function SiteNav() {
   return (
@@ -39,37 +21,15 @@ export function SiteNav() {
         <MobileNavigation>
           <MobileNavigation.Trigger />
           <MobileNavigation.Sheet>
-            {menus.map(({ label, links }) => (
-              <MobileNavigation.Section key={label} value={label}>
-                <MobileNavigation.SectionTrigger>{label}</MobileNavigation.SectionTrigger>
-                <MobileNavigation.SectionPanel>
-                  {links.map((link) => (
-                    <MobileNavigation.SectionLink key={link.title} {...link} />
-                  ))}
-                </MobileNavigation.SectionPanel>
-              </MobileNavigation.Section>
-            ))}
-            <MobileNavigation.Link href="#">CV</MobileNavigation.Link>
+            <MobileNavigation.Link href="/about">About</MobileNavigation.Link>
           </MobileNavigation.Sheet>
         </MobileNavigation>
       </div>
       <div className={desktop}>
         <NavigationMenu>
           <NavigationMenu.List>
-            {menus.map(({ label, links }) => (
-              <NavigationMenu.Item key={label}>
-                <NavigationMenu.Trigger>{label}</NavigationMenu.Trigger>
-                <NavigationMenu.Content>
-                  <div className={panel}>
-                    {links.map((link) => (
-                      <NavigationMenu.ContentLink key={link.title} {...link} />
-                    ))}
-                  </div>
-                </NavigationMenu.Content>
-              </NavigationMenu.Item>
-            ))}
             <NavigationMenu.Item>
-              <NavigationMenu.Link href="#">CV</NavigationMenu.Link>
+              <NavigationMenu.Link href="/about">About</NavigationMenu.Link>
             </NavigationMenu.Item>
           </NavigationMenu.List>
         </NavigationMenu>
