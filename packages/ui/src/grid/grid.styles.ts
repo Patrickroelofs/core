@@ -7,7 +7,6 @@ export const gridStyles = cva({
     layout: {
       bento: {
         display: 'grid',
-        gridTemplateColumns: '[minmax(0, 1fr)]',
         md: { gridTemplateColumns: '[repeat(12, minmax(0, 1fr))]' },
       },
       flex: { display: 'flex', flexWrap: 'wrap' },

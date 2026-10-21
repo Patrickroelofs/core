@@ -21,7 +21,7 @@ const section = css({
   pt: 'fluid.3xl',
 })
 const intro = css({ display: 'flex', flexDirection: 'column', gap: '2' })
-const work = css({ display: 'flex', flexDirection: 'column', gap: 'fluid.l', pt: 'fluid.4xl' })
+const work = css({ display: 'flex', flexDirection: 'column', gap: 'fluid.l' })
 
 // TODO: mock data, replace with real content
 const projects = [

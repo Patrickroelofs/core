@@ -217,12 +217,7 @@ function Link({ href, number, children, render, onClick, ...props }: SectionNavL
         onClick?.(e)
         go(e, id)
       },
-      children: (
-        <>
-          {number != null ? <span data-number="">{number}</span> : null}
-          {children}
-        </>
-      ),
+      children: <>{children}</>,
       ...props,
     },
   })
