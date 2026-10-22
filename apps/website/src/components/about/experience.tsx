@@ -4,7 +4,6 @@ import { LabeledSection } from '@/components/ui/labeled-section/labeled-section'
 import { Tag } from '@/components/ui/tag/tag'
 import { Title } from '@/components/ui/title/title'
 import { Typography } from '@/components/ui/typography/typography'
-import { css } from '../../../styled-system/css'
 
 // TODO: mock data, replace with real content
 const experience = [
@@ -55,44 +54,6 @@ const experience = [
   },
 ] as const
 
-const layout = css({
-  display: 'grid',
-  gridTemplateColumns: '[minmax(0, 1fr)]',
-  gap: 'fluid.m',
-  md: { gridTemplateColumns: '[minmax(0, 7fr) minmax(0, 5fr)]' },
-})
-const list = css({ display: 'flex', flexDirection: 'column', listStyle: 'none', m: '0', p: '0' })
-const pick = css({
-  all: 'unset',
-  cursor: 'pointer',
-  display: 'flex',
-  alignItems: 'baseline',
-  gap: '4',
-  py: '1',
-  opacity: 0.25,
-  transition: '[opacity .3s]',
-  _hover: { opacity: 1 },
-  '&[aria-pressed="true"]': { opacity: 1 },
-  _focusVisible: { outlineWidth: '[2px]', outlineStyle: 'solid', outlineColor: 'focusRing', outlineOffset: '[4px]' },
-  _motionReduce: { transition: '[none]' },
-})
-const short = css({ minW: '9' })
-const detail = css({
-  alignSelf: 'start',
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '4',
-  borderTopWidth: '[3px]',
-  borderTopStyle: 'solid',
-  borderColor: 'accent.brand',
-  pt: '5',
-  md: {
-    position: 'sticky',
-    top: '[calc(var(--site-header-height, 0px) + var(--section-nav-height, 0px) + 32px)]',
-  },
-})
-const wins = css({ display: 'flex', flexWrap: 'wrap', gap: '2' })
-
 export function Experience() {
   const [active, setActive] = useState(0)
   const cur = experience[active]
@@ -101,12 +62,17 @@ export function Experience() {
     <LabeledSection id="experience" number="02" tone="navy">
       <LabeledSection.Label hint="Pick a role for details">Experience</LabeledSection.Label>
       <LabeledSection.Content>
-        <div className={layout}>
-          <ul className={list}>
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-fluid-m md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
+          <ul className="flex flex-col list-none m-0 p-0">
             {experience.map(({ org, short: yy }, i) => (
               <li key={org}>
-                <button type="button" className={pick} aria-pressed={active === i} onClick={() => setActive(i)}>
-                  <Label size="xs" render={<span className={short} />}>
+                <button
+                  type="button"
+                  className="flex cursor-pointer items-baseline gap-4 px-0 py-1 border-0 text-left opacity-25 transition-opacity hover:opacity-100 aria-pressed:opacity-100 focus-ring [--focus-offset:4px] motion-reduce:transition-none"
+                  aria-pressed={active === i}
+                  onClick={() => setActive(i)}
+                >
+                  <Label size="xs" render={<span className="min-w-9" />}>
                     {yy}
                   </Label>
                   <Title as="span" size="xl">
@@ -116,7 +82,10 @@ export function Experience() {
               </li>
             ))}
           </ul>
-          <div className={detail} aria-live="polite">
+          <div
+            className="self-start flex flex-col gap-4 border-t-[3px] border-accent-brand pt-5 md:sticky md:top-[calc(var(--site-header-height,0px)_+_var(--section-nav-height,0px)_+_32px)]"
+            aria-live="polite"
+          >
             <Label size="xs" render={<span />}>
               {cur.years} · {cur.place}
             </Label>
@@ -124,7 +93,7 @@ export function Experience() {
               {cur.role}
             </Title>
             <Typography>{cur.text}</Typography>
-            <div className={wins}>
+            <div className="flex flex-wrap gap-2">
               {cur.wins.map((w) => (
                 <Tag key={w} tone="coral" appearance="outline" size="sm">
                   {w}

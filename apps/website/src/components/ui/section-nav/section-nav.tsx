@@ -1,16 +1,15 @@
 import { useRender } from '@base-ui/react/use-render'
+import { cx } from 'class-variance-authority'
 import {
   type ComponentProps,
   createContext,
   type MouseEvent,
-  type ReactNode,
   useContext,
   useEffect,
   useLayoutEffect,
   useRef,
   useState,
 } from 'react'
-import { indicatorStyles, linkStyles, sectionNavStyles, trackStyles } from './section-nav.styles'
 
 type Part<T extends { className?: unknown }> = Omit<T, 'className'>
 
@@ -21,7 +20,6 @@ export type SectionNavProps = Part<ComponentProps<'nav'>> & {
 
 export type SectionNavLinkProps = Omit<useRender.ComponentProps<'a'>, 'className'> & {
   href: `#${string}`
-  number?: ReactNode
 }
 
 const Context = createContext<{ active: string | null; go: (e: MouseEvent, id: string) => void }>({
@@ -189,10 +187,45 @@ function Root({
   }
 
   return (
-    <nav ref={navRef} className={sectionNavStyles} data-section-nav="" aria-label={label} {...props}>
+    <nav
+      ref={navRef}
+      className={cx(
+        'sticky top-[var(--site-header-height,0px)] z-20 bg-bg-canvas/92 backdrop-blur-[8px]',
+        'px-site py-3 font-body text-fg-default',
+        '[transition:top_.45s_var(--ease-travel),background_.25s_ease,border-color_.25s_ease]',
+        'before:absolute before:-z-1 before:inset-x-0 before:top-0 before:-bottom-12',
+        'before:bg-bg-canvas/60 before:backdrop-blur-[12px] before:pointer-events-none before:opacity-0',
+        'before:[mask-image:linear-gradient(to_bottom,#000_calc(100%_-_40px),transparent)]',
+        'data-docked:bg-transparent data-docked:backdrop-filter-none data-docked:border-b-transparent',
+        'data-docked:before:top-[calc(-1*var(--site-header-height,0px))] data-docked:before:opacity-100',
+        'motion-reduce:transition-none',
+      )}
+      data-section-nav=""
+      aria-label={label}
+      {...props}
+    >
       <Context.Provider value={{ active, go }}>
-        <div ref={trackRef} className={trackStyles} onScroll={() => measure()}>
-          <span className={indicatorStyles} aria-hidden="true" />
+        <div
+          ref={trackRef}
+          className={cx(
+            'group/track relative flex gap-1.5 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
+            '[--fade-start:#000] [--fade-end:#000]',
+            'data-overflow-start:[--fade-start:transparent] data-overflow-end:[--fade-end:transparent]',
+            '[mask-image:linear-gradient(90deg,var(--fade-start),#000_32px,#000_calc(100%_-_32px),var(--fade-end))]',
+          )}
+          onScroll={() => measure()}
+        >
+          <span
+            className={cx(
+              'absolute top-0 left-0 h-[var(--indicator-height,0px)] w-[var(--indicator-width,0px)]',
+              '[transform:translate(var(--indicator-x,0px),var(--indicator-y,0px))]',
+              'bg-action-primary rounded-pill opacity-0 pointer-events-none transition-opacity duration-300',
+              'group-data-[indicator=snap]/track:opacity-100 group-data-[indicator=move]/track:opacity-100',
+              'group-data-[indicator=move]/track:[transition:transform_.45s_var(--ease-travel),width_.45s_var(--ease-travel),height_.45s_var(--ease-travel),opacity_.3s_ease]',
+              'motion-reduce:transition-none! motion-reduce:group-data-indicator/track:transition-none!',
+            )}
+            aria-hidden="true"
+          />
           {children}
         </div>
       </Context.Provider>
@@ -200,7 +233,7 @@ function Root({
   )
 }
 
-function Link({ href, number, children, render, onClick, ...props }: SectionNavLinkProps) {
+function Link({ href, children, render, onClick, ...props }: SectionNavLinkProps) {
   const { active, go } = useContext(Context)
   const id = decodeURIComponent(href.slice(1))
   const on = active === id
@@ -208,7 +241,12 @@ function Link({ href, number, children, render, onClick, ...props }: SectionNavL
     render,
     defaultTagName: 'a',
     props: {
-      className: linkStyles,
+      className: cx(
+        'relative inline-flex flex-none gap-1.5 px-3 py-1.5 rounded-pill text-sm font-medium leading-snug whitespace-nowrap',
+        'text-fg-default no-underline transition-colors duration-[.35s] hover:text-accent-brand',
+        'focus-ring',
+        'data-active:text-action-on-primary',
+      ),
       href,
       'data-section-link': '',
       'data-active': on ? '' : undefined,

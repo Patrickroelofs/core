@@ -1,7 +1,7 @@
 import '@fontsource-variable/onest'
 import { createFileRoute, Outlet } from '@tanstack/react-router'
-import siteCss from '../../styles.css?url'
 import { SiteNav } from '../components/site-nav'
+import siteCss from '../styles.css?url'
 
 export const Route = createFileRoute('/_frontend')({
   head: () => ({

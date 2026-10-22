@@ -3,17 +3,6 @@ import { Label } from '@/components/ui/label/label'
 import { ListRow } from '@/components/ui/list-row/list-row'
 import { Tile } from '@/components/ui/tile/tile'
 import { Title } from '@/components/ui/title/title'
-import { css } from '../../../styled-system/css'
-
-const section = css({ display: 'flex', flexDirection: 'column', gap: 'fluid.l' })
-const head = css({
-  display: 'flex',
-  flexWrap: 'wrap',
-  alignItems: 'flex-end',
-  justifyContent: 'space-between',
-  gap: '6',
-})
-const side = css({ display: 'grid', gridTemplateRows: '[repeat(2, minmax(0, 1fr))]', gap: 'fluid.m', minWidth: '0' })
 
 // TODO: mock data, replace with real content
 const cv = [
@@ -26,8 +15,8 @@ const cv = [
 
 export function Cv() {
   return (
-    <section id="cv" className={section}>
-      <div className={head}>
+    <section id="cv" className="flex flex-col gap-fluid-l">
+      <div className="flex flex-wrap items-end justify-between gap-6">
         <Title as="h2" size="xl">
           Curriculum{' '}
           <Title as="span" size="xl" weight="black">
@@ -55,7 +44,7 @@ export function Cv() {
             ))}
           </Tile>
         </Grid.Item>
-        <Grid.Item span={4} render={<div className={side} />}>
+        <Grid.Item span={4} render={<div className="grid grid-rows-[repeat(2,minmax(0,1fr))] gap-fluid-m min-w-0" />}>
           <Tile tone="coral" render={<a href="/cv.pdf" />}>
             <Tile.Label>Full CV</Tile.Label>
             <Title as="span" size="md" weight="bold">

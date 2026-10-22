@@ -2,7 +2,6 @@ import { Label } from '@/components/ui/label/label'
 import { LabeledSection } from '@/components/ui/labeled-section/labeled-section'
 import { ListRow } from '@/components/ui/list-row/list-row'
 import { Title } from '@/components/ui/title/title'
-import { css } from '../../../styled-system/css'
 
 // TODO: mock data, replace with real content
 const studied = [
@@ -11,14 +10,12 @@ const studied = [
   { years: '2019', title: 'Front-end Masters', org: 'Self-directed, 6 months' },
 ]
 
-const list = css({ listStyle: 'none', m: '0', p: '0' })
-
 export function Education() {
   return (
     <LabeledSection id="education" number="03" tone="azure">
       <LabeledSection.Label>Education</LabeledSection.Label>
       <LabeledSection.Content>
-        <ul className={list}>
+        <ul className="list-none m-0 p-0">
           {studied.map(({ years, title, org }) => (
             <li key={title}>
               <ListRow>

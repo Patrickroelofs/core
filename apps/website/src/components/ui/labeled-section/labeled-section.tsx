@@ -1,7 +1,15 @@
+import { cva, cx } from 'class-variance-authority'
 import { type ComponentProps, createContext, type ReactNode, useContext } from 'react'
 import { Label as LabelText } from '../label/label'
 import { Title } from '../title/title'
-import { dividerStyles, labelStyles, numberStyles, sectionStyles } from './labeled-section.styles'
+
+/** The divider pill takes the section's tone. */
+const pillStyles = cva('h-2.5 w-16 flex-none rounded-pill', {
+  variants: {
+    tone: { coral: 'bg-coral', navy: 'bg-navy', azure: 'bg-azure', plum: 'bg-plum' },
+  },
+  defaultVariants: { tone: 'coral' },
+})
 
 type Part<T extends { className?: unknown }> = Omit<T, 'className'>
 
@@ -19,11 +27,17 @@ export type LabeledSectionProps = Part<ComponentProps<'section'>> & {
 function Root({ id, number, tone, ...props }: LabeledSectionProps) {
   return (
     <Context.Provider value={{ id, number }}>
-      <div className={dividerStyles({ tone })} aria-hidden="true">
-        <span data-part="pill" />
-        <span data-part="rule" />
+      {/* rail above each section: a pill in the section's tone followed by a hairline */}
+      <div className="mt-fluid-4xl flex items-center gap-3" aria-hidden="true">
+        <span className={pillStyles({ tone })} />
+        <span className="h-px flex-1 bg-border-default" />
       </div>
-      <section id={id} className={sectionStyles} aria-labelledby={`${id}-title`} {...props} />
+      <section
+        id={id}
+        className="grid *:min-w-0 gap-fluid-s pt-fluid-l md:grid-cols-[minmax(0,3fr)_minmax(0,9fr)]"
+        aria-labelledby={`${id}-title`}
+        {...props}
+      />
     </Context.Provider>
   )
 }
@@ -35,8 +49,14 @@ function Label({ hint, children }: LabeledSectionLabelProps) {
   const { id, number } = useContext(Context)
   return (
     <div>
-      <div className={labelStyles}>
-        <span className={numberStyles}>{number}</span>
+      <div
+        className={cx(
+          'flex flex-col gap-1',
+          'md:sticky md:top-[calc(var(--site-header-height,0px)_+_var(--section-nav-height,0px)_+_32px)]',
+          'md:transition-[top] md:duration-[.45s] md:ease-travel md:motion-reduce:transition-none',
+        )}
+      >
+        <span className="font-mono text-xs opacity-60">{number}</span>
         <Title as="h2" size="xs" weight="bold" id={`${id}-title`}>
           {children}
         </Title>

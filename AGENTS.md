@@ -4,7 +4,7 @@ Package-specific rules live in that package's `AGENTS.md`.
 
 ## UI components
 
-Components live in `apps/website/src/components/ui/<name>/`. Style with the Panda recipe in `<name>.styles.ts` and semantic tokens from `@core/theme`; never accept `className`. Build on Base UI primitives. Panda `strictTokens` is on: use theme tokens, or an escape hatch like `px: '[14px]'` for one-offs.
+Components live in `apps/website/src/components/ui/<name>/`. Style with Tailwind v4 classes inline in the component's `className` (`cva` from `class-variance-authority`, in the same file, only where there are variants) and the semantic tokens in `packages/theme/theme.css` (`bg-bg-canvas`, `text-fg-default`, `gap-fluid-m`, ...); never accept `className`. Write class names as complete literal strings, Tailwind can't see ones built with template literals. Build on Base UI primitives.
 
 ## Checks
 

@@ -1,15 +1,6 @@
 import { NavigationMenu as Base } from '@base-ui/react/navigation-menu'
+import { cx } from 'class-variance-authority'
 import type { ReactNode } from 'react'
-import {
-  barItemStyles,
-  contentLinkStyles,
-  contentStyles,
-  iconStyles,
-  listStyles,
-  popupStyles,
-  positionerStyles,
-  viewportStyles,
-} from './navigation-menu.styles'
 
 type Part<T extends { className?: unknown }> = Omit<T, 'className'>
 
@@ -24,9 +15,25 @@ function Root({ children, ...props }: NavigationMenuProps) {
     <Base.Root aria-label="Main" {...props}>
       {children}
       <Base.Portal>
-        <Base.Positioner className={positionerStyles} sideOffset={12} collisionPadding={12}>
-          <Base.Popup className={popupStyles}>
-            <Base.Viewport className={viewportStyles} />
+        <Base.Positioner
+          className={cx(
+            'z-40 w-(--positioner-width) h-(--positioner-height)',
+            '[transition:left_.35s_var(--ease-soft),top_.35s_var(--ease-soft),width_.35s_var(--ease-soft),height_.35s_var(--ease-soft)]',
+            'data-instant:transition-none',
+          )}
+          sideOffset={12}
+          collisionPadding={12}
+        >
+          <Base.Popup
+            className={cx(
+              'relative w-(--popup-width) h-(--popup-height) bg-snow rounded-card origin-(--transform-origin)',
+              '[box-shadow:0_12px_32px_rgba(25,32,54,.16),0_0_0_1px_rgba(25,32,54,.08)]',
+              '[transition:opacity_.2s_var(--ease-soft),transform_.25s_var(--ease-soft),width_.35s_var(--ease-soft),height_.35s_var(--ease-soft)]',
+              'data-starting-style:opacity-0 data-starting-style:[transform:translateY(-6px)_scale(.98)]',
+              'data-ending-style:opacity-0 data-ending-style:[transform:translateY(-6px)_scale(.98)]',
+            )}
+          >
+            <Base.Viewport className="relative w-full h-full overflow-hidden" />
           </Base.Popup>
         </Base.Positioner>
       </Base.Portal>
@@ -35,7 +42,7 @@ function Root({ children, ...props }: NavigationMenuProps) {
 }
 
 function List(props: Part<Base.List.Props>) {
-  return <Base.List className={listStyles} {...props} />
+  return <Base.List className="flex gap-0.5 list-none m-0 p-1 bg-navy/8 rounded-pill w-fit" {...props} />
 }
 
 function Item(props: Part<Base.Item.Props>) {
@@ -44,20 +51,54 @@ function Item(props: Part<Base.Item.Props>) {
 
 function Trigger({ children, ...props }: Part<Base.Trigger.Props>) {
   return (
-    <Base.Trigger className={barItemStyles()} {...props}>
+    <Base.Trigger
+      className={cx(
+        'group/trigger inline-flex items-center gap-1.5 px-4 py-2.5 border-0 rounded-pill bg-transparent text-navy cursor-pointer',
+        'font-body text-sm font-medium leading-none tracking-tight no-underline transition-[background,color]',
+        'not-data-popup-open:hover:bg-navy/8',
+        'focus-ring',
+        'data-popup-open:bg-navy data-popup-open:text-snow',
+      )}
+      {...props}
+    >
       {children}
-      <Base.Icon className={iconStyles}>↓</Base.Icon>
+      <Base.Icon className="inline-block text-xs transition-transform duration-300 group-data-popup-open/trigger:rotate-180">
+        ↓
+      </Base.Icon>
     </Base.Trigger>
   )
 }
 
 function Content(props: Part<Base.Content.Props>) {
-  return <Base.Content className={contentStyles} {...props} />
+  return (
+    <Base.Content
+      className={cx(
+        'w-max [transition:opacity_.3s_var(--ease-soft),transform_.32s_var(--ease-soft)]',
+        'data-starting-style:opacity-0 data-ending-style:opacity-0',
+        'data-starting-style:data-[activation-direction=right]:[transform:translateX(28px)]',
+        'data-starting-style:data-[activation-direction=left]:[transform:translateX(-28px)]',
+        'data-ending-style:data-[activation-direction=right]:[transform:translateX(-28px)]',
+        'data-ending-style:data-[activation-direction=left]:[transform:translateX(28px)]',
+      )}
+      {...props}
+    />
+  )
 }
 
 /** Top-level link in the bar, styled like a trigger. Renders an `<a>`; use `render` for a router link. */
 function Link(props: Part<Base.Link.Props>) {
-  return <Base.Link className={barItemStyles()} {...props} />
+  return (
+    <Base.Link
+      className={cx(
+        'inline-flex items-center gap-1.5 px-4 py-2.5 border-0 rounded-pill bg-transparent text-navy cursor-pointer',
+        'font-body text-sm font-medium leading-none tracking-tight no-underline transition-[background,color]',
+        'not-data-popup-open:hover:bg-navy/8',
+        'focus-ring',
+        'data-popup-open:bg-navy data-popup-open:text-snow',
+      )}
+      {...props}
+    />
+  )
 }
 
 export type NavigationMenuContentLinkProps = Part<Base.Link.Props> & {
@@ -69,10 +110,24 @@ export type NavigationMenuContentLinkProps = Part<Base.Link.Props> & {
 /** Row link inside a `Content` panel. */
 function ContentLink({ title, description, meta, ...props }: NavigationMenuContentLinkProps) {
   return (
-    <Base.Link className={contentLinkStyles} {...props}>
-      <span data-part="title">{title}</span>
-      {meta ? <span data-part="meta">{meta}</span> : <span />}
-      {description ? <span data-part="description">{description}</span> : null}
+    <Base.Link
+      className={cx(
+        'group/link grid grid-cols-[minmax(0,1fr)_auto] gap-x-4 gap-y-1 items-baseline px-3.5 py-3 rounded-control',
+        'text-navy font-body no-underline transition-[background] duration-150',
+        'hover:bg-navy/8 focus-visible:bg-navy/8 focus-ring [--focus-offset:0px]',
+      )}
+      {...props}
+    >
+      <span
+        className={cx(
+          'text-menu-title font-semibold tracking-tight transition-[font-weight] duration-300',
+          'group-hover/link:font-extrabold group-focus-visible/link:font-extrabold',
+        )}
+      >
+        {title}
+      </span>
+      {meta ? <span className="font-mono text-xs opacity-55">{meta}</span> : <span />}
+      {description ? <span className="col-[1/-1] text-sm leading-normal opacity-65">{description}</span> : null}
     </Base.Link>
   )
 }

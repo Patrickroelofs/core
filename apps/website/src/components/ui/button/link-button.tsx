@@ -1,6 +1,5 @@
 import { Button as BaseButton } from '@base-ui/react/button'
-import type { ButtonProps } from './button'
-import { type ButtonVariants, buttonStyles } from './button.styles'
+import { type ButtonProps, type ButtonVariants, buttonStyles } from './button'
 
 export type LinkButtonProps = Omit<ButtonProps, 'type' | 'nativeButton' | 'variant'> &
   Pick<ButtonVariants, 'variant'> & {

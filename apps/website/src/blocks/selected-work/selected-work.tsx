@@ -5,10 +5,6 @@ import { Label } from '@/components/ui/label/label'
 import { Tag } from '@/components/ui/tag/tag'
 import { Title } from '@/components/ui/title/title'
 import { Typography } from '@/components/ui/typography/typography'
-import { css } from '../../../styled-system/css'
-
-const work = css({ display: 'flex', flexDirection: 'column', gap: 'fluid.l' })
-const intro = css({ display: 'flex', flexDirection: 'column', gap: '2' })
 
 // TODO: mock data, replace with real content
 const projects = [
@@ -37,8 +33,8 @@ const projects = [
 
 export function SelectedWork() {
   return (
-    <section className={work}>
-      <div className={intro}>
+    <section className="flex flex-col gap-fluid-l">
+      <div className="flex flex-col gap-2">
         <Title as="h1" size="xl" weight="bold">
           Selected work
         </Title>

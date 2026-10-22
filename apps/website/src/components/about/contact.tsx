@@ -2,7 +2,6 @@ import { Label } from '@/components/ui/label/label'
 import { LabeledSection } from '@/components/ui/labeled-section/labeled-section'
 import { ListRow } from '@/components/ui/list-row/list-row'
 import { Title } from '@/components/ui/title/title'
-import { css } from '../../../styled-system/css'
 
 // TODO: mock data, replace with real content
 const links = [
@@ -13,14 +12,12 @@ const links = [
   { label: 'Code', value: 'GitHub', href: '#' },
 ]
 
-const list = css({ listStyle: 'none', m: '0', p: '0' })
-
 export function Contact() {
   return (
     <LabeledSection id="contact" number="07" tone="azure">
       <LabeledSection.Label>Contact</LabeledSection.Label>
       <LabeledSection.Content>
-        <ul className={list}>
+        <ul className="list-none m-0 p-0">
           {links.map(({ label, value, href }) => (
             <li key={label}>
               <ListRow render={<a href={href} />}>

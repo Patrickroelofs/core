@@ -1,6 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { SectionNav } from '@/components/ui/section-nav/section-nav'
-import { css } from '../../../styled-system/css'
 
 import { DarkSlabFooter } from '../../blocks/dark-slab-footer/dark-slab-footer'
 import { Contact } from '../../components/about/contact'
@@ -10,8 +9,6 @@ import { Intro } from '../../components/about/intro'
 import { Languages } from '../../components/about/languages'
 import { OutsideWork } from '../../components/about/outside-work'
 import { Story } from '../../components/about/story'
-
-const main = css({ maxW: '[1400px]', mx: 'auto', p: 'gutter', pt: 'fluid.xl' })
 
 const sections = [
   { id: 'story', label: 'Story' },
@@ -27,13 +24,13 @@ function About() {
   return (
     <>
       <SectionNav>
-        {sections.map(({ id, label }, i) => (
-          <SectionNav.Link key={id} href={`#${id}`} number={String(i + 1).padStart(2, '0')}>
+        {sections.map(({ id, label }) => (
+          <SectionNav.Link key={id} href={`#${id}`}>
             {label}
           </SectionNav.Link>
         ))}
       </SectionNav>
-      <main className={main}>
+      <main className="max-w-site mx-auto p-gutter pt-fluid-xl">
         <Intro />
         <Story />
         <Experience />

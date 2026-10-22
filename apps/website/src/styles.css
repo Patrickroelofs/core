@@ -1,0 +1,54 @@
+@import "tailwindcss";
+@import "@core/theme/theme.css";
+
+/* shorthand variants shared by components */
+@custom-variant link (&:is(a[href]));
+/* inside a link that is hovered or focused */
+@custom-variant link-active (:is(a[href]:is(:hover, :focus-visible)) &);
+@custom-variant headings (& :is(h1, h2, h3, h4, h5, h6));
+/* the site header monogram is "open" (full name showing) on hover/focus, or while the header hasn't collapsed */
+@custom-variant monogram-open {
+  &:is([data-monogram]:is(:hover, :focus-visible), header:not([data-collapsed]) [data-monogram]) {
+    @slot;
+  }
+  :is([data-monogram]:is(:hover, :focus-visible), header:not([data-collapsed]) [data-monogram]) & {
+    @slot;
+  }
+}
+
+/* keyboard focus ring; set --focus-offset to change the gap */
+@utility focus-ring {
+  &:focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: var(--focus-offset, 2px);
+  }
+}
+
+/* horizontal page gutter that also centres content within --container-site */
+@utility px-site {
+  padding-inline: max(var(--spacing-gutter), calc((100% - var(--container-site)) / 2 + var(--spacing-gutter)));
+}
+
+@layer base {
+  html:has([data-section-nav]) {
+    scroll-behavior: smooth;
+    @media (prefers-reduced-motion: reduce) {
+      scroll-behavior: auto;
+    }
+    & [id] {
+      scroll-margin-top: calc(var(--site-header-height, 0px) + var(--section-nav-height, 0px) + 16px);
+    }
+  }
+  body {
+    margin: 0;
+    background-color: var(--color-bg-canvas);
+    color: var(--color-fg-default);
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: var(--text-step-0);
+    line-height: var(--leading-normal);
+  }
+  a {
+    color: inherit;
+  }
+}

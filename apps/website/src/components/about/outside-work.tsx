@@ -2,21 +2,13 @@ import { LinkButton } from '@/components/ui/button/link-button'
 import { LabeledSection } from '@/components/ui/labeled-section/labeled-section'
 import { Tag } from '@/components/ui/tag/tag'
 import { Title } from '@/components/ui/title/title'
-import { css } from '../../../styled-system/css'
-
-const body = css({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'flex-start',
-  gap: 'fluid.m',
-})
 
 export function OutsideWork() {
   return (
     <LabeledSection id="outside-work" number="05">
       <LabeledSection.Label>Outside work</LabeledSection.Label>
       <LabeledSection.Content>
-        <div className={body}>
+        <div className="flex flex-col items-start gap-fluid-m">
           {/* TODO: mock data, replace with real content */}
           <Title as="p" size="lg" leading="normal">
             Off the clock I{' '}

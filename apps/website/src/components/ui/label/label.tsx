@@ -1,5 +1,17 @@
 import { useRender } from '@base-ui/react/use-render'
-import { type LabelVariants, labelStyles } from './label.styles'
+import { cva, type VariantProps } from 'class-variance-authority'
+
+const labelStyles = cva('font-body font-medium leading-snug', {
+  variants: {
+    size: {
+      xs: 'text-step-n2',
+      sm: 'text-step-n1',
+    },
+  },
+  defaultVariants: { size: 'sm' },
+})
+
+export type LabelVariants = NonNullable<VariantProps<typeof labelStyles>>
 
 export type LabelProps = Omit<useRender.ComponentProps<'label'>, 'className'> & LabelVariants
 

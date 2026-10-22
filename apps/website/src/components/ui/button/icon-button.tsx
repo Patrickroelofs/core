@@ -1,6 +1,6 @@
 import { Button as BaseButton } from '@base-ui/react/button'
 import type { ReactNode } from 'react'
-import { type ButtonVariants, buttonStyles } from './button.styles'
+import { type ButtonVariants, buttonStyles } from './button'
 
 export type IconButtonProps = Omit<BaseButton.Props, 'className' | 'children' | 'aria-label'> &
   Omit<ButtonVariants, 'shape'> & {

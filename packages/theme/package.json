@@ -4,15 +4,6 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./src/index.ts"
-  },
-  "scripts": {
-    "typecheck": "tsc -p ."
-  },
-  "dependencies": {
-    "@pandacss/dev": "^2.2.0"
-  },
-  "devDependencies": {
-    "typescript": "^5.9.0"
+    "./theme.css": "./theme.css"
   }
 }

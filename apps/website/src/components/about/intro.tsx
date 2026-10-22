@@ -1,11 +1,8 @@
 import { HeroIntro } from '@/components/ui/hero-intro/hero-intro'
-import { css } from '../../../styled-system/css'
-
-const intro = css({ mb: 'fluid.xl' })
 
 export function Intro() {
   return (
-    <div className={intro}>
+    <div className="mb-fluid-xl">
       <HeroIntro>
         I’m Patrick, a Dutch developer.
         <br /> I make{' '}

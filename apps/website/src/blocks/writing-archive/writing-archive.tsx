@@ -1,18 +1,6 @@
 import { Label } from '@/components/ui/label/label'
 import { ListRow } from '@/components/ui/list-row/list-row'
 import { Title } from '@/components/ui/title/title'
-import { css } from '../../../styled-system/css'
-
-const section = css({ display: 'flex', flexDirection: 'column', gap: 'fluid.l' })
-const head = css({
-  display: 'flex',
-  flexWrap: 'wrap',
-  alignItems: 'flex-end',
-  justifyContent: 'space-between',
-  gap: '6',
-})
-const list = css({ borderTopWidth: '[1.5px]', borderTopStyle: 'solid', borderColor: 'fg.default' })
-const meta = css({ display: 'flex', gap: '6' })
 
 // TODO: mock data, replace with real content
 const writing = [
@@ -26,8 +14,8 @@ const writing = [
 
 export function WritingArchive() {
   return (
-    <section id="writing" className={section}>
-      <div className={head}>
+    <section id="writing" className="flex flex-col gap-fluid-l">
+      <div className="flex flex-wrap items-end justify-between gap-6">
         <Title as="h2" size="xl">
           Writing{' '}
           <Title as="span" size="xl" weight="black">
@@ -35,7 +23,7 @@ export function WritingArchive() {
           </Title>
         </Title>
       </div>
-      <ul className={list}>
+      <ul className="border-t-[1.5px] border-fg-default">
         {writing.map(({ date, title, kind, minutes }) => (
           <li key={title}>
             <ListRow render={<a href={`/writing/${title.toLowerCase().replace(/\W+/g, '-')}`} />}>
@@ -46,7 +34,7 @@ export function WritingArchive() {
                 </Title>
               </ListRow.Body>
               <ListRow.Meta>
-                <span className={meta}>
+                <span className="flex gap-6">
                   <Label size="xs">{kind}</Label>
                   <Label size="xs">{minutes}</Label>
                 </span>
