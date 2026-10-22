@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import type { ComponentProps, ReactNode } from 'react'
 
-const imageStyles = cva('block w-full overflow-hidden box-border object-cover', {
+const imageStyles = cva('block w-full overflow-hidden box-border object-cover rounded-lg', {
   variants: {
     ratio: {
       '16/10': 'aspect-[16/10]',

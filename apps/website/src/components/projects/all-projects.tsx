@@ -8,9 +8,7 @@ import { projects } from './projects'
 
 const filters = [
   { value: 'All', word: 'all work,' },
-  { value: 'Health', word: 'health,' },
-  { value: 'Transit', word: 'transit or' },
-  { value: 'Side project', word: 'side projects.' },
+  { value: 'Personal', word: 'personal projects,' },
 ] as const
 
 type Filter = (typeof filters)[number]['value']

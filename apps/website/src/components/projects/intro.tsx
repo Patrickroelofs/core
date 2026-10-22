@@ -3,12 +3,8 @@ import { Title } from '@/components/ui/title/title'
 
 export function Intro() {
   return (
-    <Title as="h1" size="xl" leading="normal">
-      Twelve years of calm software for <Tag size="inline">health</Tag> and{' '}
-      <Tag size="inline" tone="azure">
-        transit
-      </Tag>
-      , plus a few things I built{' '}
+    <Title as="h1" size="xl" leading="normal" weight="light">
+      Calm websites for <Tag size="inline">everyone</Tag>,<br /> plus a few things I built{' '}
       <Tag size="inline" tone="coral">
         for fun
       </Tag>

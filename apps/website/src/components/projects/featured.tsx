@@ -6,6 +6,7 @@ import { projects } from './projects'
 
 export function Featured() {
   const { category, year, description, image } = projects[0]
+
   return (
     <a href="/projects/shiftboard-handover" className="flex flex-col gap-6">
       <div className="relative overflow-hidden rounded-3xl">
@@ -19,10 +20,11 @@ export function Featured() {
       </div>
       <div className="grid items-end gap-6 md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
         <Title as="h2" size="xl">
-          Shiftboard{' '}
+          Patrick{' '}
           <Title as="span" size="xl" weight="black">
-            Handover
+            Roelofs
           </Title>
+          .com
         </Title>
         <Typography size="lg">{description}</Typography>
       </div>
