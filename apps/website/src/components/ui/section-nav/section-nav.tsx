@@ -191,14 +191,13 @@ function Root({
       ref={navRef}
       className={cx(
         'sticky top-[var(--site-header-height,0px)] z-20 bg-bg-canvas/92 backdrop-blur-[8px]',
-        'px-site py-3 font-body text-fg-default',
+        'px-site py-3',
         '[transition:top_.45s_var(--ease-travel),background_.25s_ease,border-color_.25s_ease]',
         'before:absolute before:-z-1 before:inset-x-0 before:top-0 before:-bottom-12',
         'before:bg-bg-canvas/60 before:backdrop-blur-[12px] before:pointer-events-none before:opacity-0',
         'before:[mask-image:linear-gradient(to_bottom,#000_calc(100%_-_40px),transparent)]',
         'data-docked:bg-transparent data-docked:backdrop-filter-none data-docked:border-b-transparent',
         'data-docked:before:top-[calc(-1*var(--site-header-height,0px))] data-docked:before:opacity-100',
-        'motion-reduce:transition-none',
       )}
       data-section-nav=""
       aria-label={label}
@@ -222,7 +221,7 @@ function Root({
               'bg-action-primary rounded-pill opacity-0 pointer-events-none transition-opacity duration-300',
               'group-data-[indicator=snap]/track:opacity-100 group-data-[indicator=move]/track:opacity-100',
               'group-data-[indicator=move]/track:[transition:transform_.45s_var(--ease-travel),width_.45s_var(--ease-travel),height_.45s_var(--ease-travel),opacity_.3s_ease]',
-              'motion-reduce:transition-none! motion-reduce:group-data-indicator/track:transition-none!',
+              ' ',
             )}
             aria-hidden="true"
           />
@@ -243,7 +242,7 @@ function Link({ href, children, render, onClick, ...props }: SectionNavLinkProps
     props: {
       className: cx(
         'relative inline-flex flex-none gap-1.5 px-3 py-1.5 rounded-pill text-sm font-medium leading-snug whitespace-nowrap',
-        'text-fg-default no-underline transition-colors duration-[.35s] hover:text-accent-brand',
+        'transition-colors duration-[.35s] hover:text-accent-brand',
         'focus-ring',
         'data-active:text-action-on-primary',
       ),

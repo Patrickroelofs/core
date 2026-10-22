@@ -14,19 +14,19 @@ function Root({ render, ...props }: ListRowProps) {
     props: {
       className: cx(
         'grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-4 py-3 border-b border-border-default',
-        'font-body text-fg-default no-underline transition-colors',
+        'transition-colors',
         'has-[>[data-lead]]:grid-cols-[minmax(72px,104px)_minmax(0,1fr)_auto]',
         'last:border-b-0',
         'link:px-2 link:[transition:color_.2s,padding-left_.25s_ease] link:hover:text-accent-brand link:hover:pl-6',
         'focus-ring',
-        'motion-reduce:transition-none motion-reduce:link:hover:pl-2',
+        'motion-reduce:link:hover:pl-2',
       ),
       ...props,
     },
   })
 }
-
-/** Mono lead column, e.g. a date range. */
+/** Mono lead column, e.g. a date range. Lead and meta keep their colour when a link row turns coral on hover. */
+/** Lead and meta keep their colour when a link row turns coral on hover. */
 function Lead(props: Part<ComponentProps<'span'>>) {
   return <span className="text-fg-default opacity-60 text-md" data-lead="" {...props} />
 }

@@ -8,10 +8,7 @@ export type HeroIntroProps = Part<ComponentProps<'h1'>>
 /** Intro sentence as a heading. Plain text plus `Phrase`s. */
 function Root(props: HeroIntroProps) {
   return (
-    <h1
-      className="m-0 font-body text-[clamp(40px,6.4vw,96px)] font-light leading-[1.08] tracking-tighter text-pretty"
-      {...props}
-    />
+    <h1 className="text-[clamp(40px,6.4vw,96px)] font-light leading-[1.08] tracking-tighter text-pretty" {...props} />
   )
 }
 
@@ -27,7 +24,6 @@ function Word(props: Part<ComponentProps<'span'>>) {
       className={cx(
         'cursor-pointer [transition:font-weight_.4s_var(--ease-soft),letter-spacing_.4s_var(--ease-soft)]',
         'group-[:is(:hover,:focus-within)]/phrase:font-black group-[:is(:hover,:focus-within)]/phrase:tracking-tight',
-        'motion-reduce:transition-none',
       )}
       {...props}
     />
@@ -48,7 +44,6 @@ function Pill(props: Part<ComponentProps<'span'>>) {
         '*:[transition:width_.5s_var(--ease-pop),height_.5s_var(--ease-pop)]',
         'group-[:is(:hover,:focus-within)]/phrase:*:z-1 group-[:is(:hover,:focus-within)]/phrase:*:h-[293%]',
         'group-[:is(:hover,:focus-within)]/phrase:*:w-[141%]',
-        'motion-reduce:*:transition-none',
       )}
       aria-hidden="true"
       {...props}

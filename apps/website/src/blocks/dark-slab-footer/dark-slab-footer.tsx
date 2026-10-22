@@ -24,7 +24,7 @@ export function DarkSlabFooter() {
               Let’s make something calm together.
             </Title>
             <a
-              className="bg-snow text-navy rounded-pill px-6 py-3 font-medium no-underline transition-[background-color] hover:bg-coral focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-snow motion-reduce:transition-none"
+              className="bg-snow text-navy rounded-pill px-6 py-3 font-medium transition-[background-color] hover:bg-coral focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-snow"
               href="mailto:hello@patrickroelofs.com"
             >
               hello@patrickroelofs.com ↗
@@ -35,10 +35,10 @@ export function DarkSlabFooter() {
           <Label size="xs" render={<span />}>
             © 2026 Patrick Roelofs · Nijmegen, the Netherlands
           </Label>
-          <ul className="flex flex-wrap gap-5 list-none m-0 p-0">
+          <ul className="flex flex-wrap gap-5">
             {socials.map(({ label, href }) => (
               <li key={label}>
-                <Label size="xs" render={<a className="text-inherit no-underline hover:text-coral" href={href} />}>
+                <Label size="xs" render={<a className="hover:text-coral" href={href} />}>
                   {label}
                 </Label>
               </li>

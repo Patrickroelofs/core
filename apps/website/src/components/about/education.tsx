@@ -12,10 +12,10 @@ const studied = [
 
 export function Education() {
   return (
-    <LabeledSection id="education" number="03" tone="azure">
+    <LabeledSection id="education" tone="azure">
       <LabeledSection.Label>Education</LabeledSection.Label>
       <LabeledSection.Content>
-        <ul className="list-none m-0 p-0">
+        <ul className="  ">
           {studied.map(({ years, title, org }) => (
             <li key={title}>
               <ListRow>

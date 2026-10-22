@@ -1,7 +1,7 @@
 import { useRender } from '@base-ui/react/use-render'
 import { cva, type VariantProps } from 'class-variance-authority'
 
-const typographyStyles = cva('font-body leading-normal m-0', {
+const typographyStyles = cva('leading-normal', {
   variants: {
     size: {
       xs: 'text-step-n2',

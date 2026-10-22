@@ -6,7 +6,7 @@ import type { ComponentProps } from 'react'
 const revealStyles = cva(
   [
     'absolute inset-0 flex items-end justify-between px-6 py-5.5 [clip-path:inset(100%_0_0_0)]',
-    'transition-[clip-path] duration-[.35s] ease-soft link-active:[clip-path:inset(0_0_0_0)] motion-reduce:transition-none',
+    'transition-[clip-path] duration-[.35s] ease-soft link-active:[clip-path:inset(0_0_0_0)]',
   ],
   {
     variants: {
@@ -34,13 +34,13 @@ function Root({ render, ...props }: CardProps) {
     defaultTagName: 'div',
     props: {
       className: cx(
-        'flex flex-col min-w-0 overflow-hidden rounded-card font-body text-navy no-underline',
+        'flex flex-col min-w-0 overflow-hidden rounded-card text-navy',
         'bg-gray-300 data-surface:bg-bg-canvas data-surface:text-fg-default',
         'transition-[translate] duration-[.35s] ease-soft link:cursor-pointer link:hover:-translate-y-1',
         'headings:text-title headings:font-extrabold headings:leading-none headings:tracking-[-0.035em]',
         'headings:[transition:font-weight_.35s_var(--ease-soft)] link:hover:headings:font-black',
         'focus-ring',
-        'motion-reduce:transition-none motion-reduce:link:hover:translate-y-0 motion-reduce:headings:transition-none',
+        'motion-reduce:link:hover:translate-y-0',
       ),
       ...props,
     },
@@ -75,7 +75,7 @@ function Reveal({ tone, children, ...props }: CardRevealProps) {
         className={cx(
           'translate-y-3 text-lg font-bold tracking-[-0.02em] opacity-0',
           '[transition:translate_.35s_var(--ease-soft)_80ms,opacity_.35s_var(--ease-soft)_80ms]',
-          'link-active:translate-y-0 link-active:opacity-100 motion-reduce:transition-none',
+          'link-active:translate-y-0 link-active:opacity-100',
         )}
       >
         {children}
@@ -84,7 +84,7 @@ function Reveal({ tone, children, ...props }: CardRevealProps) {
         className={cx(
           'translate-x-[-10px] translate-y-[10px] text-[28px] font-light opacity-0',
           '[transition:translate_.35s_var(--ease-soft)_140ms,opacity_.35s_var(--ease-soft)_140ms]',
-          'link-active:translate-x-0 link-active:translate-y-0 link-active:opacity-100 motion-reduce:transition-none',
+          'link-active:translate-x-0 link-active:translate-y-0 link-active:opacity-100',
         )}
       >
         ↗

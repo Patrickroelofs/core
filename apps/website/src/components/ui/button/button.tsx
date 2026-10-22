@@ -5,7 +5,7 @@ import type { ReactNode } from 'react'
 export const buttonStyles = cva(
   [
     'inline-flex flex-none items-center justify-center gap-2',
-    'font-body font-semibold leading-none tracking-[-0.01em] whitespace-nowrap no-underline',
+    'font-semibold leading-none tracking-[-0.01em] whitespace-nowrap',
     'border-[1.5px] cursor-pointer transition-[background,color,border-color]',
     'disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-40',
     'data-disabled:pointer-events-none data-disabled:cursor-not-allowed data-disabled:opacity-40',
@@ -18,12 +18,11 @@ export const buttonStyles = cva(
           'bg-action-primary text-action-on-primary border-transparent hover:bg-accent-brand hover:text-fg-default',
         accent:
           'bg-accent-brand text-fg-default border-transparent hover:bg-action-primary hover:text-action-on-primary',
-        secondary:
-          'bg-transparent text-fg-default border-action-primary hover:bg-action-primary hover:text-action-on-primary',
+        secondary: 'text-fg-default border-action-primary hover:bg-action-primary hover:text-action-on-primary',
         inverse: 'bg-bg-canvas text-fg-default border-transparent hover:bg-accent-brand',
-        ghost: 'bg-transparent text-current border-transparent hover:bg-action-primary/8',
+        ghost: 'border-transparent hover:bg-action-primary/8',
         // ghost + underline, for links
-        link: 'bg-transparent text-current border-transparent underline underline-offset-4 hover:bg-action-primary/8',
+        link: 'border-transparent underline underline-offset-4 hover:bg-action-primary/8',
       },
       size: {
         sm: 'text-sm',
@@ -32,7 +31,7 @@ export const buttonStyles = cva(
       },
       shape: {
         default: 'rounded-pill',
-        icon: 'p-0 rounded-full',
+        icon: 'rounded-full',
       },
     },
     compoundVariants: [

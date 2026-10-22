@@ -12,7 +12,7 @@ const languages = [
 
 export function Languages() {
   return (
-    <LabeledSection id="languages" number="04" tone="plum">
+    <LabeledSection id="languages" tone="plum">
       <LabeledSection.Label>Languages</LabeledSection.Label>
       <LabeledSection.Content>
         <Grid gap="m" render={<ul />}>

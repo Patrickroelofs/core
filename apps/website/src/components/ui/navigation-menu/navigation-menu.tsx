@@ -42,7 +42,7 @@ function Root({ children, ...props }: NavigationMenuProps) {
 }
 
 function List(props: Part<Base.List.Props>) {
-  return <Base.List className="flex gap-0.5 list-none m-0 p-1 bg-navy/8 rounded-pill w-fit" {...props} />
+  return <Base.List className="flex gap-0.5 p-1 bg-navy/8 rounded-pill w-fit" {...props} />
 }
 
 function Item(props: Part<Base.Item.Props>) {
@@ -53,8 +53,8 @@ function Trigger({ children, ...props }: Part<Base.Trigger.Props>) {
   return (
     <Base.Trigger
       className={cx(
-        'group/trigger inline-flex items-center gap-1.5 px-4 py-2.5 border-0 rounded-pill bg-transparent text-navy cursor-pointer',
-        'font-body text-sm font-medium leading-none tracking-tight no-underline transition-[background,color]',
+        'group/trigger inline-flex items-center gap-1.5 px-4 py-2.5 rounded-pill text-navy cursor-pointer',
+        'text-sm font-medium leading-none tracking-tight transition-[background,color]',
         'not-data-popup-open:hover:bg-navy/8',
         'focus-ring',
         'data-popup-open:bg-navy data-popup-open:text-snow',
@@ -90,8 +90,8 @@ function Link(props: Part<Base.Link.Props>) {
   return (
     <Base.Link
       className={cx(
-        'inline-flex items-center gap-1.5 px-4 py-2.5 border-0 rounded-pill bg-transparent text-navy cursor-pointer',
-        'font-body text-sm font-medium leading-none tracking-tight no-underline transition-[background,color]',
+        'inline-flex items-center gap-1.5 px-4 py-2.5 rounded-pill text-navy cursor-pointer',
+        'text-sm font-medium leading-none tracking-tight transition-[background,color]',
         'not-data-popup-open:hover:bg-navy/8',
         'focus-ring',
         'data-popup-open:bg-navy data-popup-open:text-snow',
@@ -113,7 +113,7 @@ function ContentLink({ title, description, meta, ...props }: NavigationMenuConte
     <Base.Link
       className={cx(
         'group/link grid grid-cols-[minmax(0,1fr)_auto] gap-x-4 gap-y-1 items-baseline px-3.5 py-3 rounded-control',
-        'text-navy font-body no-underline transition-[background] duration-150',
+        'text-navy transition-[background] duration-150',
         'hover:bg-navy/8 focus-visible:bg-navy/8 focus-ring [--focus-offset:0px]',
       )}
       {...props}
@@ -126,7 +126,7 @@ function ContentLink({ title, description, meta, ...props }: NavigationMenuConte
       >
         {title}
       </span>
-      {meta ? <span className="font-mono text-xs opacity-55">{meta}</span> : <span />}
+      {meta ? <span className="text-xs opacity-55">{meta}</span> : <span />}
       {description ? <span className="col-[1/-1] text-sm leading-normal opacity-65">{description}</span> : null}
     </Base.Link>
   )

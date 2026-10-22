@@ -3,7 +3,7 @@ import { Typography } from '@/components/ui/typography/typography'
 
 export function Story() {
   return (
-    <LabeledSection id="story" number="01">
+    <LabeledSection id="story">
       <LabeledSection.Label>Story</LabeledSection.Label>
       <LabeledSection.Content>
         <div className="flex flex-col gap-8">

@@ -1,7 +1,7 @@
 import { useRender } from '@base-ui/react/use-render'
 import { cva, type VariantProps } from 'class-variance-authority'
 
-const labelStyles = cva('font-body font-medium leading-snug', {
+const labelStyles = cva('font-medium leading-snug', {
   variants: {
     size: {
       xs: 'text-step-n2',

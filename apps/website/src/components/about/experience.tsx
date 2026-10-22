@@ -59,16 +59,16 @@ export function Experience() {
   const cur = experience[active]
 
   return (
-    <LabeledSection id="experience" number="02" tone="navy">
+    <LabeledSection id="experience" tone="navy">
       <LabeledSection.Label hint="Pick a role for details">Experience</LabeledSection.Label>
       <LabeledSection.Content>
         <div className="grid grid-cols-[minmax(0,1fr)] gap-fluid-m md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
-          <ul className="flex flex-col list-none m-0 p-0">
+          <ul className="flex flex-col">
             {experience.map(({ org, short: yy }, i) => (
               <li key={org}>
                 <button
                   type="button"
-                  className="flex cursor-pointer items-baseline gap-4 px-0 py-1 border-0 text-left opacity-25 transition-opacity hover:opacity-100 aria-pressed:opacity-100 focus-ring [--focus-offset:4px] motion-reduce:transition-none"
+                  className="flex cursor-pointer items-baseline gap-4 py-1 text-left opacity-25 transition-opacity hover:opacity-100 aria-pressed:opacity-100 focus-ring [--focus-offset:4px]"
                   aria-pressed={active === i}
                   onClick={() => setActive(i)}
                 >

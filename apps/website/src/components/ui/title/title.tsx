@@ -1,7 +1,7 @@
 import { useRender } from '@base-ui/react/use-render'
 import { cva, type VariantProps } from 'class-variance-authority'
 
-const titleStyles = cva('font-body m-0', {
+const titleStyles = cva(null, {
   variants: {
     size: {
       xs: 'text-step-1 leading-tight tracking-tight',

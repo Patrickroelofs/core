@@ -1,39 +1,30 @@
 import { useRender } from '@base-ui/react/use-render'
 import { cva, type VariantProps } from 'class-variance-authority'
 
-const tagStyles = cva(
-  ['font-body whitespace-nowrap rounded-pill border', 'transition-[background,color]', 'focus-ring'],
-  {
-    variants: {
-      tone: { coral: '', azure: '', plum: '', navy: '', snow: '' },
-      appearance: { solid: '', outline: '', soft: '' },
-      size: {
-        sm: 'inline-flex items-center gap-1.5 font-medium leading-[1.1] text-xs px-3 py-1.5',
-        md: 'inline-flex items-center gap-1.5 font-medium leading-[1.1] text-sm px-3.5 py-[7px]',
-        // highlights a phrase inside running text: takes the surrounding font size
-        inline: 'inline text-[length:inherit] [font-weight:inherit] leading-[inherit] px-[0.3em]',
-      },
+const tagStyles = cva(['whitespace-nowrap rounded-pill border', 'transition-[background,color]', 'focus-ring'], {
+  variants: {
+    // --tone is the accent colour, --on-tone the text colour on a solid fill
+    tone: {
+      coral: '[--tone:var(--color-coral)] [--on-tone:var(--color-navy)]',
+      azure: '[--tone:var(--color-azure)] [--on-tone:var(--color-snow)]',
+      plum: '[--tone:var(--color-plum)] [--on-tone:var(--color-snow)]',
+      navy: '[--tone:var(--color-navy)] [--on-tone:var(--color-snow)]',
+      snow: '[--tone:var(--color-snow)] [--on-tone:var(--color-navy)]',
     },
-    compoundVariants: [
-      { tone: 'coral', appearance: 'solid', class: 'bg-coral text-navy border-transparent' },
-      { tone: 'coral', appearance: 'outline', class: 'bg-transparent text-coral border-coral' },
-      { tone: 'coral', appearance: 'soft', class: 'bg-snow/12 text-inherit border-transparent' },
-      { tone: 'azure', appearance: 'solid', class: 'bg-azure text-snow border-transparent' },
-      { tone: 'azure', appearance: 'outline', class: 'bg-transparent text-azure border-azure' },
-      { tone: 'azure', appearance: 'soft', class: 'bg-snow/12 text-inherit border-transparent' },
-      { tone: 'plum', appearance: 'solid', class: 'bg-plum text-snow border-transparent' },
-      { tone: 'plum', appearance: 'outline', class: 'bg-transparent text-plum border-plum' },
-      { tone: 'plum', appearance: 'soft', class: 'bg-snow/12 text-inherit border-transparent' },
-      { tone: 'navy', appearance: 'solid', class: 'bg-navy text-snow border-transparent' },
-      { tone: 'navy', appearance: 'outline', class: 'bg-transparent text-navy border-navy' },
-      { tone: 'navy', appearance: 'soft', class: 'bg-snow/12 text-inherit border-transparent' },
-      { tone: 'snow', appearance: 'solid', class: 'bg-snow text-navy border-transparent' },
-      { tone: 'snow', appearance: 'outline', class: 'bg-transparent text-snow border-snow' },
-      { tone: 'snow', appearance: 'soft', class: 'bg-snow/12 text-inherit border-transparent' },
-    ],
-    defaultVariants: { tone: 'navy', appearance: 'solid', size: 'md' },
+    appearance: {
+      solid: 'bg-(color:--tone) text-(color:--on-tone) border-transparent',
+      outline: 'text-(color:--tone) border-(color:--tone)',
+      soft: 'bg-snow/12 border-transparent',
+    },
+    size: {
+      sm: 'inline-flex items-center gap-1.5 font-medium leading-[1.1] text-xs px-3 py-1.5',
+      md: 'inline-flex items-center gap-1.5 font-medium leading-[1.1] text-sm px-3.5 py-[7px]',
+      // highlights a phrase inside running text: takes the surrounding font size
+      inline: 'inline text-[length:inherit] [font-weight:inherit] leading-[inherit] px-[0.3em]',
+    },
   },
-)
+  defaultVariants: { tone: 'navy', appearance: 'solid', size: 'md' },
+})
 
 export type TagVariants = NonNullable<VariantProps<typeof tagStyles>>
 

@@ -6,10 +6,9 @@ import type { ComponentProps } from 'react'
 /** Colour comes from `data-surface`, set by the component from `tone`. Link tiles flip to navy on hover. */
 const tileStyles = cva(
   [
-    'flex flex-col gap-5 min-w-0 p-7 font-body no-underline transition-[background-color,color]',
+    'flex flex-col gap-5 min-w-0 p-7 transition-[background-color,color]',
     'link:hover:data-surface:bg-navy link:hover:data-surface:text-snow',
     'focus-ring',
-    'motion-reduce:transition-none',
   ],
   {
     variants: {

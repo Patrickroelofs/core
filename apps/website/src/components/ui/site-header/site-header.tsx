@@ -37,7 +37,7 @@ function Root(props: SiteHeaderProps) {
     <header
       ref={ref}
       className={cx(
-        'group/header sticky top-0 z-30 flex flex-wrap items-center gap-6 py-5 font-body text-fg-default',
+        'group/header sticky top-0 z-30 flex flex-wrap items-center gap-6 py-5',
         'px-site',
         // the blurred backdrop is its own layer so the fade-out at the bottom doesn't fade the content
         'before:absolute before:-z-1 before:inset-x-0 before:top-0 before:-bottom-6',
@@ -59,8 +59,8 @@ function Monogram({ name, href, ...props }: SiteHeaderMonogramProps) {
   return (
     <a
       className={cx(
-        'flex gap-[0.02em] [transition:gap_.6s_var(--ease-slow)] text-title leading-none tracking-tighter whitespace-nowrap text-inherit no-underline',
-        'monogram-open:gap-[0.22em] motion-reduce:transition-none!',
+        'flex gap-[0.02em] [transition:gap_.6s_var(--ease-slow)] text-title leading-none tracking-tighter whitespace-nowrap',
+        'monogram-open:gap-[0.22em]',
         'focus-ring [--focus-offset:4px]',
       )}
       data-monogram=""
@@ -75,14 +75,14 @@ function Monogram({ name, href, ...props }: SiteHeaderMonogramProps) {
           className={cx(
             'block h-[1em] overflow-hidden font-black first:font-light last:[--closed:0.96em]',
             'max-w-[var(--closed,0.73em)] monogram-open:max-w-[calc(var(--chars)*0.62em)]',
-            '[transition:max-width_.6s_var(--ease-slow)_calc(var(--i)*80ms)] motion-reduce:transition-none!',
+            '[transition:max-width_.6s_var(--ease-slow)_calc(var(--i)*80ms)]',
           )}
           style={{ '--chars': word.length, '--i': i } as CSSProperties}
         >
           <span
             className={cx(
               'flex flex-col monogram-open:[transform:translateY(-1em)]',
-              '[transition:transform_.6s_var(--ease-overshoot)_calc(var(--i)*80ms)] motion-reduce:transition-none!',
+              '[transition:transform_.6s_var(--ease-overshoot)_calc(var(--i)*80ms)]',
             )}
           >
             {/* padding: negative letter-spacing makes the last glyph overhang its box, which `overflow: hidden` would clip */}
@@ -112,7 +112,6 @@ function Rule(props: Part<ComponentProps<'span'>>) {
           'absolute top-1/2 right-0 z-1 grid text-[24px] leading-none [translate:50%_-50%]',
           '[transform:rotate(-60deg)_scale(0)] opacity-0 [transition:transform_.7s_var(--ease-spring),opacity_.2s_linear]',
           'group-data-complete/header:[transform:none] group-data-complete/header:opacity-100',
-          'motion-reduce:transition-none',
         )}
       >
         👍

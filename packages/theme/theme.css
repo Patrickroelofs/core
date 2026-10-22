@@ -27,7 +27,6 @@
   --color-focus-ring: var(--color-azure);
 
   --font-body: "Onest Variable", "Onest", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
   --text-*: initial;
   --text-xs: 12px;

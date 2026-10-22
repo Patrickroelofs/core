@@ -20,8 +20,7 @@ function Root({ render, ...props }: FooterProps) {
     render,
     defaultTagName: 'footer',
     props: {
-      className:
-        'flex flex-col gap-fluid-2xl min-w-0 @container rounded-card font-body bg-gray-300 text-fg-default px-8 pt-9 pb-5',
+      className: 'flex flex-col gap-fluid-2xl min-w-0 @container rounded-card bg-gray-300 px-8 pt-9 pb-5',
       ...props,
     },
   })
@@ -34,7 +33,7 @@ function Meet({ first, last, email, render, ...props }: FooterMeetProps) {
     defaultTagName: 'a',
     props: {
       className: cx(
-        'group/meet flex items-center justify-center text-fg-default no-underline whitespace-nowrap outline-none',
+        'group/meet flex items-center justify-center whitespace-nowrap outline-none',
         'text-[9.6cqw] leading-[0.9] tracking-tighter focus-visible:underline',
       ),
       href: `mailto:${email}`,
@@ -45,7 +44,7 @@ function Meet({ first, last, email, render, ...props }: FooterMeetProps) {
           <span
             className={cx(
               'font-extralight [transition:font-weight_.6s_var(--ease-soft)]',
-              'group-[:is(:hover,:focus-visible)]/meet:font-medium motion-reduce:transition-none',
+              'group-[:is(:hover,:focus-visible)]/meet:font-medium',
             )}
             aria-hidden="true"
           >
@@ -56,7 +55,7 @@ function Meet({ first, last, email, render, ...props }: FooterMeetProps) {
               'mx-[0.12em] inline-flex h-[0.8em] w-[1.6em] items-center justify-center overflow-hidden rounded-full',
               'border-[0.02em] border-fg-default/25 [transition:width_.7s_var(--ease-pop),background-color_.4s,border-color_.4s]',
               'group-[:is(:hover,:focus-visible)]/meet:w-[3.4em] group-[:is(:hover,:focus-visible)]/meet:border-transparent',
-              'group-[:is(:hover,:focus-visible)]/meet:bg-coral motion-reduce:transition-none',
+              'group-[:is(:hover,:focus-visible)]/meet:bg-coral',
             )}
             aria-hidden="true"
           >
@@ -64,7 +63,6 @@ function Meet({ first, last, email, render, ...props }: FooterMeetProps) {
               className={cx(
                 'text-[0.16em] font-bold tracking-tight text-snow opacity-0 transition-opacity duration-300',
                 'group-[:is(:hover,:focus-visible)]/meet:opacity-100 group-[:is(:hover,:focus-visible)]/meet:delay-[.25s]',
-                'motion-reduce:transition-none',
               )}
             >
               {email}

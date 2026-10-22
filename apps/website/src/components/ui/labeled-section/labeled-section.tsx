@@ -13,20 +13,18 @@ const pillStyles = cva('h-2.5 w-16 flex-none rounded-pill', {
 
 type Part<T extends { className?: unknown }> = Omit<T, 'className'>
 
-const Context = createContext({ id: '', number: '' })
+const Context = createContext({ id: '' })
 
 export type LabeledSectionProps = Part<ComponentProps<'section'>> & {
   id: string
-  /** Section number, e.g. `"02"`: shown small above the title. */
-  number: string
   /** Colour of the divider pill; vary it between neighbouring sections. */
   tone?: 'coral' | 'navy' | 'azure' | 'plum'
 }
 
 /** Root. A `<section>` labelled by its `LabeledSection.Label` title, preceded by a decorative divider; `id` is the anchor target for `SectionNav.Link`. */
-function Root({ id, number, tone, ...props }: LabeledSectionProps) {
+function Root({ id, tone, ...props }: LabeledSectionProps) {
   return (
-    <Context.Provider value={{ id, number }}>
+    <Context.Provider value={{ id }}>
       {/* rail above each section: a pill in the section's tone followed by a hairline */}
       <div className="mt-fluid-4xl flex items-center gap-3" aria-hidden="true">
         <span className={pillStyles({ tone })} />
@@ -46,7 +44,7 @@ export type LabeledSectionLabelProps = { hint?: ReactNode; children: ReactNode }
 
 /** Left column: the `h2` title (children) and an optional hint. */
 function Label({ hint, children }: LabeledSectionLabelProps) {
-  const { id, number } = useContext(Context)
+  const { id } = useContext(Context)
   return (
     <div>
       <div
@@ -56,7 +54,6 @@ function Label({ hint, children }: LabeledSectionLabelProps) {
           'md:transition-[top] md:duration-[.45s] md:ease-travel md:motion-reduce:transition-none',
         )}
       >
-        <span className="font-mono text-xs opacity-60">{number}</span>
         <Title as="h2" size="xs" weight="bold" id={`${id}-title`}>
           {children}
         </Title>

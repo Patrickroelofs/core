@@ -5,7 +5,7 @@ import { Title } from '@/components/ui/title/title'
 
 export function OutsideWork() {
   return (
-    <LabeledSection id="outside-work" number="05">
+    <LabeledSection id="outside-work">
       <LabeledSection.Label>Outside work</LabeledSection.Label>
       <LabeledSection.Content>
         <div className="flex flex-col items-start gap-fluid-m">

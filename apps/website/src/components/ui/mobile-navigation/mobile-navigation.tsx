@@ -25,8 +25,8 @@ function Trigger({ children = 'Menu', openLabel = 'Close', ...props }: MobileNav
   return (
     <Collapsible.Trigger
       className={cx(
-        'group/trigger flex w-fit ml-auto items-center px-3 py-2 border border-border-strong rounded-pill bg-transparent',
-        'text-fg-default cursor-pointer font-body text-sm font-medium leading-none',
+        'group/trigger flex w-fit ml-auto items-center px-3 py-2 border border-border-strong rounded-pill',
+        'cursor-pointer text-sm font-medium leading-none',
         'focus-ring',
       )}
       {...props}
@@ -62,7 +62,6 @@ function Section(props: Part<Accordion.Item.Props>) {
       className={cx(
         'border-b border-border-default animate-section-in',
         'nth-2:[animation-delay:.05s] nth-3:[animation-delay:.1s] nth-4:[animation-delay:.15s]',
-        'motion-reduce:animate-none',
       )}
       {...props}
     />
@@ -74,8 +73,8 @@ function SectionTrigger({ children, ...props }: Part<Accordion.Trigger.Props>) {
     <Accordion.Header render={<div />}>
       <Accordion.Trigger
         className={cx(
-          'group/trigger flex w-full justify-between items-center py-4.5 px-1 border-0 bg-transparent text-fg-default cursor-pointer',
-          'font-body text-xl font-extralight leading-none tracking-tighter no-underline',
+          'group/trigger flex w-full justify-between items-center py-4.5 px-1 cursor-pointer',
+          'text-xl font-extralight leading-none tracking-tighter',
           'focus-ring [--focus-offset:0px]',
           'transition-[font-weight] duration-300 data-panel-open:font-black',
         )}
@@ -113,13 +112,12 @@ function Link(props: AnchorProps) {
       className={cx(
         'border-b border-border-default animate-section-in',
         'nth-2:[animation-delay:.05s] nth-3:[animation-delay:.1s] nth-4:[animation-delay:.15s]',
-        'motion-reduce:animate-none',
       )}
     >
       <a
         className={cx(
-          'flex w-full justify-between items-center py-4.5 px-1 border-0 bg-transparent text-fg-default cursor-pointer',
-          'font-body text-xl font-extralight leading-none tracking-tighter no-underline',
+          'flex w-full justify-between items-center py-4.5 px-1 cursor-pointer',
+          'text-xl font-extralight leading-none tracking-tighter',
           'focus-ring [--focus-offset:0px]',
         )}
         {...props}
@@ -140,7 +138,7 @@ function SectionLink({ title, description, meta, ...props }: MobileNavigationSec
     <a
       className={cx(
         'group/link grid grid-cols-[minmax(0,1fr)_auto] gap-x-4 gap-y-1 items-baseline px-3.5 py-3 rounded-control',
-        'text-navy font-body no-underline transition-[background] duration-150',
+        'text-navy transition-[background] duration-150',
         'hover:bg-navy/8 focus-visible:bg-navy/8 focus-ring [--focus-offset:0px]',
       )}
       {...props}
@@ -153,7 +151,7 @@ function SectionLink({ title, description, meta, ...props }: MobileNavigationSec
       >
         {title}
       </span>
-      {meta ? <span className="font-mono text-xs opacity-55">{meta}</span> : <span />}
+      {meta ? <span className="text-xs opacity-55">{meta}</span> : <span />}
       {description ? <span className="col-[1/-1] text-sm leading-normal opacity-65">{description}</span> : null}
     </a>
   )

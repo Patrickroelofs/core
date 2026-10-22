@@ -14,10 +14,10 @@ const links = [
 
 export function Contact() {
   return (
-    <LabeledSection id="contact" number="07" tone="azure">
+    <LabeledSection id="contact" tone="azure">
       <LabeledSection.Label>Contact</LabeledSection.Label>
       <LabeledSection.Content>
-        <ul className="list-none m-0 p-0">
+        <ul className="  ">
           {links.map(({ label, value, href }) => (
             <li key={label}>
               <ListRow render={<a href={href} />}>
