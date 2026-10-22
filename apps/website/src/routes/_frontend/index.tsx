@@ -3,7 +3,7 @@ import { HeroIntro } from '../../blocks/hero-intro/hero-intro'
 
 function Home() {
   return (
-    <main className="flex flex-col gap-fluid-3xl max-w-site mx-auto p-gutter pt-fluid-3xl">
+    <main className="flex justify-center items-center pt-fluid-2xl max-w-site mx-auto">
       <HeroIntro />
     </main>
   )
