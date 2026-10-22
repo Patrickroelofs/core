@@ -25,7 +25,7 @@ function Shiftboard() {
   )
 }
 
-export const Route = createFileRoute('/_frontend/projects/shiftboard-handover')({
+export const Route = createFileRoute('/_frontend/projects/patrickroelofs')({
   component: Shiftboard,
   head: () => ({ meta: [{ title: 'Shiftboard Handover - Patrick Roelofs' }] }),
 })

@@ -43,7 +43,7 @@ export function AllProjects() {
                 render={
                   <a
                     // only Shiftboard has a case study so far
-                    href={title === projects[0].title ? '/projects/shiftboard-handover' : '#'}
+                    href={title === projects[0].title ? '/projects/patrickroelofs' : '#'}
                     onMouseEnter={() => setHovered(title)}
                     onFocus={() => setHovered(title)}
                   />

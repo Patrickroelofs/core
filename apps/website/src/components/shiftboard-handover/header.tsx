@@ -6,18 +6,15 @@ export function Header() {
   return (
     <header className="flex flex-col gap-fluid-xl">
       <div className="flex flex-col gap-7">
-        <a href="/projects" className="opacity-70">
-          ← All work
-        </a>
         <Title as="h1" size="xl">
-          Shiftboard
+          Patrick
           <br />
           <Title as="span" size="xl" weight="black">
-            Handover<span className="text-accent-brand">.</span>
+            Roelofs.com
           </Title>
         </Title>
         <div className="max-w-[36ch]">
-          <Typography size="xl">Rebuilding the night-shift handover for 40,000 nurses across 300 wards.</Typography>
+          <Typography size="xl">Personal website and portfolio.</Typography>
         </div>
       </div>
       <div className="overflow-hidden rounded-3xl">

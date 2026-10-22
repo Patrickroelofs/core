@@ -3,13 +3,7 @@ import { Title } from '@/components/ui/title/title'
 import { Typography } from '@/components/ui/typography/typography'
 
 // TODO: mock data, replace with real content
-const facts = [
-  ['Client', 'Shiftboard'],
-  ['Role', 'Lead designer, front-end'],
-  ['Team', '6 designers, 14 engineers'],
-  ['Timeline', '2019 — 2021'],
-  ['Platform', 'Ward tablets, web'],
-] as const
+const facts = [['Role', 'Lead designer, front-end']] as const
 
 export function Facts() {
   return (
@@ -28,10 +22,10 @@ export function Facts() {
       </dl>
       <div className="grid gap-6 md:grid-cols-[minmax(0,3fr)_minmax(0,9fr)]">
         <div className="hidden md:block" />
-        <div className="max-w-[32ch]">
+        <div className="max-w-[46ch]">
           <Title as="p" size="sm">
-            The old handover was accurate, complete and almost never read. We rebuilt it around what the next nurse
-            needs to do in the next hour.
+            This case study is a handover of my personal website and portfolio, which I designed and built. It was
+            created to showcase my work and skills as a designer and developer.
           </Title>
         </div>
       </div>

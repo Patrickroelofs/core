@@ -8,7 +8,7 @@ export function Featured() {
   const { category, year, description, image } = projects[0]
 
   return (
-    <a href="/projects/shiftboard-handover" className="flex flex-col gap-6">
+    <a href="/projects/patrickroelofs" className="flex flex-col gap-6">
       <div className="relative overflow-hidden rounded-3xl">
         <Image ratio="16/9" label={image} />
         <span className="absolute bottom-5 left-5 flex flex-wrap gap-1.5">

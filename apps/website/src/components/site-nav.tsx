@@ -16,9 +16,9 @@ export function SiteNav() {
               <MobileNavigation.SectionPanel>
                 <MobileNavigation.SectionLink href="/projects" title="All work" />
                 <MobileNavigation.SectionLink
-                  href="/projects/shiftboard-handover"
-                  title="Shiftboard Handover"
-                  meta="Health · 2021"
+                  href="/projects/patrickroelofs"
+                  title="Patrick Roelofs"
+                  meta="Personal - 2026"
                 />
               </MobileNavigation.SectionPanel>
             </MobileNavigation.Section>
@@ -46,9 +46,9 @@ export function SiteNav() {
                 <div className="flex w-80 flex-col p-2">
                   <NavigationMenu.ContentLink href="/projects" title="All work" />
                   <NavigationMenu.ContentLink
-                    href="/projects/shiftboard-handover"
-                    title="Shiftboard Handover"
-                    meta="Health · 2021"
+                    href="/projects/patrickroelofs"
+                    title="Patrick Roelofs"
+                    meta="Personal - 2026"
                   />
                 </div>
               </NavigationMenu.Content>
