@@ -1,8 +1,8 @@
-import { Grid } from '@core/ui/grid/grid'
-import { Label } from '@core/ui/label/label'
-import { LabeledSection } from '@core/ui/labeled-section/labeled-section'
-import { Tile } from '@core/ui/tile/tile'
-import { Title } from '@core/ui/title/title'
+import { Grid } from '@/components/ui/grid/grid'
+import { Label } from '@/components/ui/label/label'
+import { LabeledSection } from '@/components/ui/labeled-section/labeled-section'
+import { Tile } from '@/components/ui/tile/tile'
+import { Title } from '@/components/ui/title/title'
 import { css } from '../../../styled-system/css'
 
 // TODO: mock data, replace with real content

@@ -1,6 +1,6 @@
-import { MobileNavigation } from '@core/ui/mobile-navigation/mobile-navigation'
-import { NavigationMenu } from '@core/ui/navigation-menu/navigation-menu'
-import { SiteHeader } from '@core/ui/site-header/site-header'
+import { MobileNavigation } from '@/components/ui/mobile-navigation/mobile-navigation'
+import { NavigationMenu } from '@/components/ui/navigation-menu/navigation-menu'
+import { SiteHeader } from '@/components/ui/site-header/site-header'
 import { css } from '../../styled-system/css'
 
 const desktop = css({ display: 'none', '@media (min-width: 820px)': { display: 'block' } })

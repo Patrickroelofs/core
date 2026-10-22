@@ -1,5 +1,5 @@
-import { LabeledSection } from '@core/ui/labeled-section/labeled-section'
-import { Typography } from '@core/ui/typography/typography'
+import { LabeledSection } from '@/components/ui/labeled-section/labeled-section'
+import { Typography } from '@/components/ui/typography/typography'
 import { css } from '../../../styled-system/css'
 
 const body = css({ display: 'flex', flexDirection: 'column', gap: '8' })

@@ -1,7 +1,7 @@
-import { Label } from '@core/ui/label/label'
-import { LabeledSection } from '@core/ui/labeled-section/labeled-section'
-import { ListRow } from '@core/ui/list-row/list-row'
-import { Title } from '@core/ui/title/title'
+import { Label } from '@/components/ui/label/label'
+import { LabeledSection } from '@/components/ui/labeled-section/labeled-section'
+import { ListRow } from '@/components/ui/list-row/list-row'
+import { Title } from '@/components/ui/title/title'
 import { css } from '../../../styled-system/css'
 
 // TODO: mock data, replace with real content

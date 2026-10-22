@@ -1,12 +1,12 @@
 # Agents
 
-Package-specific rules live in that package's `AGENTS.md` (e.g. `packages/ui/AGENTS.md`).
+Package-specific rules live in that package's `AGENTS.md`.
 
-## Using UI components
+## UI components
 
-Before using or changing a `@core/ui` component, read its docs at `packages/ui/src/<name>/<name>.mdx` (props, variants, accessibility notes, Don'ts). Don't guess the API from usage elsewhere.
+Components live in `apps/website/src/components/ui/<name>/`. Style with the Panda recipe in `<name>.styles.ts` and semantic tokens from `@core/theme`; never accept `className`. Build on Base UI primitives. Panda `strictTokens` is on: use theme tokens, or an escape hatch like `px: '[14px]'` for one-offs.
 
 ## Checks
 
 - `pnpm check` (Biome) and `pnpm typecheck` must pass.
-- PRs that change `packages/ui`, `packages/theme` or `apps/website` get a demo recorded with the `record-pr-demo` skill.
+- PRs that change `packages/theme` or `apps/website` get a demo recorded with the `record-pr-demo` skill.

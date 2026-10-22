@@ -1,10 +1,7 @@
 /// <reference types="vite/client" />
 
-import css from '@core/ui/styles.css?url'
 import { withPayloadRoot } from '@payloadcms/tanstack-start/client'
 import { createRootRoute, HeadContent, Scripts } from '@tanstack/react-router'
-import '@fontsource-variable/onest'
-import siteCss from '../../styles.css?url'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -13,12 +10,7 @@ export const Route = createRootRoute({
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { title: 'Website' },
     ],
-    links: [
-      { rel: 'stylesheet', href: css },
-      { rel: 'stylesheet', href: siteCss },
-    ],
   }),
-  // Payload renders its own document on /admin, ours everywhere else
   shellComponent: withPayloadRoot(Shell),
 })
 

@@ -1,4 +1,4 @@
-import { HeroIntro } from '@core/ui/hero-intro/hero-intro'
+import { HeroIntro } from '@/components/ui/hero-intro/hero-intro'
 import { css } from '../../../styled-system/css'
 
 const intro = css({ mb: 'fluid.xl' })

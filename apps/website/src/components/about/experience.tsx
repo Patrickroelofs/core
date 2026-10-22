@@ -1,9 +1,9 @@
-import { Label } from '@core/ui/label/label'
-import { LabeledSection } from '@core/ui/labeled-section/labeled-section'
-import { Tag } from '@core/ui/tag/tag'
-import { Title } from '@core/ui/title/title'
-import { Typography } from '@core/ui/typography/typography'
 import { useState } from 'react'
+import { Label } from '@/components/ui/label/label'
+import { LabeledSection } from '@/components/ui/labeled-section/labeled-section'
+import { Tag } from '@/components/ui/tag/tag'
+import { Title } from '@/components/ui/title/title'
+import { Typography } from '@/components/ui/typography/typography'
 import { css } from '../../../styled-system/css'
 
 // TODO: mock data, replace with real content

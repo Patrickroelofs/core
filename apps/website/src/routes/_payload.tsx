@@ -1,6 +1,5 @@
 import { payloadLayoutRoute } from '@payloadcms/tanstack-start/client'
 import { createFileRoute } from '@tanstack/react-router'
-import '@payloadcms/ui/css/app.css'
 
 import { getLayoutDataFn, serverFunctionHandler } from './_payload/server.functions.js'
 
