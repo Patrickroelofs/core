@@ -152,11 +152,8 @@ vite.config.ts.timestamp-*
 .turbo
 
 # generated
-styled-system/
-packages/ui/styles.css
-apps/website/styles.css
 routeTree.gen.ts
-storybook-static/
 .nitro/
 .tanstack/
 .DS_Store
+

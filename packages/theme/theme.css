@@ -1,0 +1,164 @@
+/* Design tokens. Primitives hold raw values, semantic tokens (bg-*, fg-*, action-*, ...) hold intent and are what components use. */
+@theme static {
+  --color-*: initial;
+  --color-snow: #f0f0f0;
+  --color-plum: #50216a;
+  --color-navy: #192036;
+  --color-azure: #0177bb;
+  --color-coral: #d65b5c;
+  --color-white: #ffffff;
+  --color-gray-300: #e4e4e4;
+  --color-azure-deep: #016aa8;
+  --color-snow-deep: #dcdcdc;
+
+  --color-bg-canvas: var(--color-snow);
+  --color-bg-surface: var(--color-white);
+  --color-bg-inverse: var(--color-navy);
+  --color-fg-default: var(--color-navy);
+  --color-fg-inverse: var(--color-snow);
+  --color-border-default: var(--color-gray-300);
+  --color-border-strong: var(--color-navy);
+  --color-action-primary: var(--color-navy);
+  --color-action-primary-hover: var(--color-plum);
+  --color-action-on-primary: var(--color-snow);
+  --color-accent-brand: var(--color-coral);
+  --color-accent-info: var(--color-azure);
+  --color-accent-highlight: var(--color-plum);
+  --color-focus-ring: var(--color-azure);
+
+  --font-body: "Onest Variable", "Onest", system-ui, sans-serif;
+
+  --text-*: initial;
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-md: 16px;
+  --text-lg: 22px;
+  --text-xl: 34px;
+  --text-2xl: 56px;
+  --text-3xl: 88px;
+  --text-title: 30px;
+  --text-menu-title: 17px;
+  /* Utopia fluid scale (https://utopia.fyi): 18px at 360px wide (x1.2) to 20px at 1440px (x1.25); "n" is a negative step */
+  --text-step-0: clamp(1.125rem, 1.0833rem + 0.1852vw, 1.25rem);
+  --text-step-1: clamp(1.35rem, 1.2792rem + 0.3148vw, 1.5625rem);
+  --text-step-2: clamp(1.62rem, 1.509rem + 0.4935vw, 1.9531rem);
+  --text-step-3: clamp(1.944rem, 1.7782rem + 0.7369vw, 2.4414rem);
+  --text-step-4: clamp(2.3328rem, 2.0931rem + 1.0651vw, 3.0518rem);
+  --text-step-5: clamp(2.7994rem, 2.4609rem + 1.5042vw, 3.8147rem);
+  --text-step-6: clamp(3.3592rem, 2.8895rem + 2.0876vw, 4.7684rem);
+  --text-step-n2: clamp(0.7813rem, 0.775rem + 0.0278vw, 0.8rem);
+  --text-step-n1: clamp(0.9375rem, 0.9167rem + 0.0926vw, 1rem);
+
+  --leading-tight: 1.14;
+  --leading-snug: 1.25;
+  --leading-normal: 1.4;
+
+  --radius-*: initial;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 999px;
+  --radius-control: var(--radius-sm);
+  --radius-card: var(--radius-lg);
+  --radius-pill: var(--radius-full);
+
+  --spacing-control: 1rem;
+  --spacing-gutter: var(--spacing-fluid-s);
+  --spacing-margin: var(--spacing-fluid-m);
+  /* fluid space, and "one-up pairs" that grow from one size to the next */
+  --spacing-fluid-3xs: clamp(0.2813rem, 0.2708rem + 0.0463vw, 0.3125rem);
+  --spacing-fluid-2xs: clamp(0.5625rem, 0.5417rem + 0.0926vw, 0.625rem);
+  --spacing-fluid-xs: clamp(0.8438rem, 0.8125rem + 0.1389vw, 0.9375rem);
+  --spacing-fluid-s: clamp(1.125rem, 1.0833rem + 0.1852vw, 1.25rem);
+  --spacing-fluid-m: clamp(1.6875rem, 1.625rem + 0.2778vw, 1.875rem);
+  --spacing-fluid-l: clamp(2.25rem, 2.1667rem + 0.3704vw, 2.5rem);
+  --spacing-fluid-xl: clamp(3.375rem, 3.25rem + 0.5556vw, 3.75rem);
+  --spacing-fluid-2xl: clamp(4.5rem, 4.3333rem + 0.7407vw, 5rem);
+  --spacing-fluid-3xl: clamp(9rem, 8.6667rem + 1.4815vw, 10rem);
+  --spacing-fluid-4xl: clamp(13.5rem, 13rem + 2.2222vw, 15rem);
+  --spacing-fluid-3xs-2xs: clamp(0.2813rem, 0.1667rem + 0.5093vw, 0.625rem);
+  --spacing-fluid-2xs-xs: clamp(0.5625rem, 0.4375rem + 0.5556vw, 0.9375rem);
+  --spacing-fluid-xs-s: clamp(0.8438rem, 0.7083rem + 0.6019vw, 1.25rem);
+  --spacing-fluid-s-m: clamp(1.125rem, 0.875rem + 1.1111vw, 1.875rem);
+  --spacing-fluid-m-l: clamp(1.6875rem, 1.4167rem + 1.2037vw, 2.5rem);
+  --spacing-fluid-l-xl: clamp(2.25rem, 1.75rem + 2.2222vw, 3.75rem);
+  --spacing-fluid-xl-2xl: clamp(3.375rem, 2.8333rem + 2.4074vw, 5rem);
+  --spacing-fluid-2xl-3xl: clamp(4.5rem, 2.6667rem + 8.1481vw, 10rem);
+  --spacing-fluid-3xl-4xl: clamp(9rem, 7rem + 8.8889vw, 15rem);
+
+  --container-site: 1400px;
+
+  --breakpoint-nav: 820px;
+
+  --default-transition-duration: 0.2s;
+  --default-transition-timing-function: ease;
+  --ease-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-pop: cubic-bezier(0.3, 1.4, 0.5, 1);
+  --ease-slow: cubic-bezier(0.7, 0, 0.2, 1);
+  --ease-travel: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.3, 1.9, 0.5, 1);
+  --ease-overshoot: cubic-bezier(0.5, -0.4, 0.3, 1.4);
+
+  --animate-section-in: section-in 0.45s var(--ease-soft) backwards;
+  @keyframes section-in {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* Surfaces repoint the semantic colours, so everything using bg/fg/action/border tokens follows.
+   Pairs picked for contrast (WCAG): all >= 4.5:1 except navy on coral (4.2:1, best of the palette). */
+@layer base {
+  [data-surface] {
+    background-color: var(--color-bg-canvas);
+    color: var(--color-fg-default);
+    --color-border-default: color-mix(in srgb, var(--color-fg-default) 20%, transparent);
+    --color-border-strong: var(--color-fg-default);
+  }
+  [data-surface="snow"] {
+    --color-bg-canvas: var(--color-snow);
+    --color-fg-default: var(--color-navy);
+    --color-action-primary: var(--color-navy);
+    --color-action-on-primary: var(--color-snow);
+    --color-action-primary-hover: var(--color-plum);
+    --color-focus-ring: var(--color-azure);
+  }
+  [data-surface="plum"] {
+    --color-bg-canvas: var(--color-plum);
+    --color-fg-default: var(--color-snow);
+    --color-action-primary: var(--color-snow);
+    --color-action-on-primary: var(--color-plum);
+    --color-action-primary-hover: var(--color-coral);
+    --color-focus-ring: var(--color-snow);
+  }
+  [data-surface="azure"] {
+    --color-bg-canvas: var(--color-azure);
+    --color-fg-default: var(--color-white);
+    --color-action-primary: var(--color-white);
+    --color-action-on-primary: var(--color-azure);
+    --color-action-primary-hover: var(--color-navy);
+    --color-focus-ring: var(--color-white);
+  }
+  [data-surface="coral"] {
+    --color-bg-canvas: var(--color-coral);
+    --color-fg-default: var(--color-navy);
+    --color-action-primary: var(--color-navy);
+    --color-action-on-primary: var(--color-snow);
+    --color-action-primary-hover: var(--color-plum);
+    --color-focus-ring: var(--color-navy);
+  }
+  [data-surface="navy"] {
+    --color-bg-canvas: var(--color-navy);
+    --color-fg-default: var(--color-snow);
+    --color-action-primary: var(--color-snow);
+    --color-action-on-primary: var(--color-navy);
+    --color-action-primary-hover: var(--color-coral);
+    --color-focus-ring: var(--color-snow);
+  }
+}

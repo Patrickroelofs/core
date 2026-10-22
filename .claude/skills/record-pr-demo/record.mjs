@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-// Records a Playwright scenario against a running Storybook and converts it to an H.264 MP4.
-// Usage: node record.mjs --scenario /tmp/demo.mjs [--label name] [--base-url http://localhost:6006] [--viewport 1280x720]
+// Records a Playwright scenario against the running website and converts it to an H.264 MP4.
+// Usage: node record.mjs --scenario /tmp/demo.mjs [--label name] [--base-url http://localhost:5173] [--viewport 1280x720]
 import { spawnSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import { mkdtemp, readdir, readFile, stat } from 'node:fs/promises'
@@ -15,7 +15,7 @@ const { values } = parseArgs({
   options: {
     scenario: { type: 'string' },
     label: { type: 'string', default: 'demo' },
-    'base-url': { type: 'string', default: 'http://localhost:6006' },
+    'base-url': { type: 'string', default: 'http://localhost:5173' },
     viewport: { type: 'string', default: '1280x720' },
   },
 })

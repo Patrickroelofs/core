@@ -1,35 +1,73 @@
-import { MobileNavigation } from '@core/ui/mobile-navigation/mobile-navigation'
-import { NavigationMenu } from '@core/ui/navigation-menu/navigation-menu'
-import { SiteHeader } from '@core/ui/site-header/site-header'
-import { css } from '../../styled-system/css'
-
-const desktop = css({ display: 'none', '@media (min-width: 820px)': { display: 'block' } })
-// `contents` (twice, the collapsible root is a div too) makes the trigger a header flex item, and the sheet a full-width row under the bar
-const mobile = css({
-  display: 'contents',
-  '& > *': { display: 'contents' },
-  '& > * > :nth-child(2)': { flexBasis: '[100%]' },
-  '@media (min-width: 820px)': { display: 'none' },
-})
+import { MobileNavigation } from '@/components/ui/mobile-navigation/mobile-navigation'
+import { NavigationMenu } from '@/components/ui/navigation-menu/navigation-menu'
+import { SiteHeader } from '@/components/ui/site-header/site-header'
 
 export function SiteNav() {
   return (
     <SiteHeader>
       <SiteHeader.Monogram href="/" name="Patrick Roelofs" />
       <SiteHeader.Rule />
-      <div className={mobile}>
+      <div className="contents *:contents [&>*>:nth-child(2)]:basis-full nav:hidden">
         <MobileNavigation>
           <MobileNavigation.Trigger />
           <MobileNavigation.Sheet>
+            <MobileNavigation.Section value="work">
+              <MobileNavigation.SectionTrigger>Work</MobileNavigation.SectionTrigger>
+              <MobileNavigation.SectionPanel>
+                <MobileNavigation.SectionLink href="/projects" title="All work" />
+                <MobileNavigation.SectionLink
+                  href="/projects/shiftboard-handover"
+                  title="Shiftboard Handover"
+                  meta="Health · 2021"
+                />
+              </MobileNavigation.SectionPanel>
+            </MobileNavigation.Section>
             <MobileNavigation.Link href="/about">About</MobileNavigation.Link>
+            <MobileNavigation.Section value="writing">
+              <MobileNavigation.SectionTrigger>Writing</MobileNavigation.SectionTrigger>
+              <MobileNavigation.SectionPanel>
+                <MobileNavigation.SectionLink href="/writing" title="All writing" />
+                <MobileNavigation.SectionLink
+                  href="/writing/designing-for-4am"
+                  title="Designing for 4am"
+                  meta="Health · 2026"
+                />
+              </MobileNavigation.SectionPanel>
+            </MobileNavigation.Section>
           </MobileNavigation.Sheet>
         </MobileNavigation>
       </div>
-      <div className={desktop}>
+      <div className="hidden nav:block">
         <NavigationMenu>
           <NavigationMenu.List>
             <NavigationMenu.Item>
+              <NavigationMenu.Trigger>Work</NavigationMenu.Trigger>
+              <NavigationMenu.Content>
+                <div className="flex w-80 flex-col p-2">
+                  <NavigationMenu.ContentLink href="/projects" title="All work" />
+                  <NavigationMenu.ContentLink
+                    href="/projects/shiftboard-handover"
+                    title="Shiftboard Handover"
+                    meta="Health · 2021"
+                  />
+                </div>
+              </NavigationMenu.Content>
+            </NavigationMenu.Item>
+            <NavigationMenu.Item>
               <NavigationMenu.Link href="/about">About</NavigationMenu.Link>
+            </NavigationMenu.Item>
+            <NavigationMenu.Item>
+              <NavigationMenu.Trigger>Writing</NavigationMenu.Trigger>
+              <NavigationMenu.Content>
+                <div className="flex w-80 flex-col p-2">
+                  <NavigationMenu.ContentLink href="/writing" title="All writing" />
+                  <NavigationMenu.ContentLink
+                    href="/writing/designing-for-4am"
+                    title="Designing for 4am"
+                    meta="Health · 2026"
+                  />
+                </div>
+              </NavigationMenu.Content>
             </NavigationMenu.Item>
           </NavigationMenu.List>
         </NavigationMenu>

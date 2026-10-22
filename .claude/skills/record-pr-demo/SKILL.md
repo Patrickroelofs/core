@@ -1,11 +1,11 @@
 ---
 name: record-pr-demo
-description: Use when a pull request changes the design system (packages/ui, packages/theme) or the website (apps/website) and needs a short visual walkthrough for reviewers.
+description: Use when a pull request changes the design system (packages/theme) or the website (apps/website) and needs a short visual walkthrough for reviewers.
 ---
 
 # Record a PR Demo
 
-Record a 10–45s screen capture of the changed component in Storybook, or of the changed page on the website, review it locally, then attach it to the PR.
+Record a 10–45s screen capture of the changed page on the website, review it locally, then attach it to the PR.
 
 ## Review gate (non-negotiable)
 
@@ -18,8 +18,8 @@ When invoked from the `open-pr` skill, skip the stop for approval in steps 5–6
 ## Workflow
 
 1. Prereqs: `pnpm install`, `pnpm exec playwright install chromium`, `ffmpeg` on PATH.
-2. Start what changed and keep it running: Storybook (`pnpm storybook`, port 6006) for `packages/*`, the website (`pnpm --filter website dev`, port 5173) for `apps/website`. Changes to both: record one take per target.
-3. Write a scenario in `/tmp/core-demo-<name>.mjs`. Open a story with `?id=<title>--<story>` (see `packages/ui/src/**/*.stories.tsx`), assert the opening state, call `ready()` once, then 2–6 visible actions, ending on visible proof:
+2. Start the website and keep it running: `pnpm --filter website dev` (port 5173).
+3. Write a scenario in `/tmp/core-demo-<name>.mjs`. Open the changed route, assert the opening state, call `ready()` once, then 2–6 visible actions, ending on visible proof:
 
    ```js
    export default async function ({ baseURL, page, expect, click, moveCursor, scroll, pause, ready }) {

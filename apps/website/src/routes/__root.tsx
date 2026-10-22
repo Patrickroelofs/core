@@ -1,11 +1,7 @@
 /// <reference types="vite/client" />
 
-import css from '@core/ui/styles.css?url'
-import { createRootRoute, HeadContent, Outlet, Scripts } from '@tanstack/react-router'
-import '@fontsource-variable/onest'
-import siteCss from '../../styles.css?url'
-import { SiteFooter } from '../components/site-footer'
-import { SiteNav } from '../components/site-nav'
+import { withPayloadRoot } from '@payloadcms/tanstack-start/client'
+import { createRootRoute, HeadContent, Scripts } from '@tanstack/react-router'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -14,24 +10,18 @@ export const Route = createRootRoute({
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { title: 'Website' },
     ],
-    links: [
-      { rel: 'stylesheet', href: css },
-      { rel: 'stylesheet', href: siteCss },
-    ],
   }),
-  component: Root,
+  shellComponent: withPayloadRoot(Shell),
 })
 
-function Root() {
+function Shell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
       <body>
-        <SiteNav />
-        <Outlet />
-        <SiteFooter />
+        {children}
         <Scripts />
       </body>
     </html>
