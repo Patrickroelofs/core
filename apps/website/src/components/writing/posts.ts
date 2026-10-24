@@ -1,5 +1,12 @@
 // TODO: mock data, replace with real content
 export const posts = [
+  {
+    year: '2026',
+    date: '24 Oct',
+    title: 'Frontend architecture for the agentic future',
+    tag: 'Engineering',
+    minutes: '5 min',
+  },
   { year: '2026', date: '14 Oct', title: 'Designing for 4am', tag: 'Health', minutes: '9 min' },
   { year: '2026', date: '22 Aug', title: 'Timetables are interfaces', tag: 'Transit', minutes: '6 min' },
   { year: '2026', date: '10 Jun', title: 'The case for fewer settings', tag: 'Process', minutes: '4 min' },
@@ -12,5 +19,9 @@ export const posts = [
 
 export type Post = (typeof posts)[number]
 
-// only the first essay exists so far
-export const postHref = (p: Post) => (p === posts[0] ? '/writing/designing-for-4am' : '#')
+const hrefs: Record<string, string> = {
+  'Frontend architecture for the agentic future': '/writing/frontend-architecture-for-the-agentic-future',
+  'Designing for 4am': '/writing/designing-for-4am',
+}
+
+export const postHref = (p: Post) => hrefs[p.title] ?? '#'
