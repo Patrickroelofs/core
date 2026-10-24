@@ -7,7 +7,7 @@ export function Latest() {
   const { date, year, minutes } = posts[0]
   return (
     <a
-      href="/writing/designing-for-4am"
+      href="/writing/frontend-architecture-for-the-agentic-future"
       className="focus-ring grid gap-fluid-s md:grid-cols-[minmax(0,3fr)_minmax(0,9fr)]"
     >
       <div className="flex flex-col gap-1.5 pt-3">
@@ -20,14 +20,14 @@ export function Latest() {
       </div>
       <div className="flex flex-col gap-fluid-m">
         <Title as="h2" size="xl">
-          Designing for{' '}
+          Frontend architecture for the{' '}
           <Title as="span" size="xl" weight="black">
-            4am
+            agentic future
           </Title>
         </Title>
         <Typography size="xl">
-          What three night shifts on a hospital ward taught me about handover screens, and why the best change we made
-          was deleting things.
+          How I structure this repo so a person, or an agent, can find, change and verify anything without reading
+          everything.
         </Typography>
         <span className="font-semibold text-accent-brand">Read the essay →</span>
       </div>
