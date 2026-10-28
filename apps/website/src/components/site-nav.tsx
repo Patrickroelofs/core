@@ -34,6 +34,7 @@ export function SiteNav() {
                 />
               </MobileNavigation.SectionPanel>
             </MobileNavigation.Section>
+            <MobileNavigation.Link href="/photography">Photography</MobileNavigation.Link>
           </MobileNavigation.Sheet>
         </MobileNavigation>
       </div>
@@ -68,6 +69,9 @@ export function SiteNav() {
                   />
                 </div>
               </NavigationMenu.Content>
+            </NavigationMenu.Item>
+            <NavigationMenu.Item>
+              <NavigationMenu.Link href="/photography">Photography</NavigationMenu.Link>
             </NavigationMenu.Item>
           </NavigationMenu.List>
         </NavigationMenu>
