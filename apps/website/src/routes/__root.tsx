@@ -1,7 +1,10 @@
 /// <reference types="vite/client" />
 
-import { withPayloadRoot } from '@payloadcms/tanstack-start/client'
+import '@fontsource-variable/onest'
+import fontLatin from '@fontsource-variable/onest/files/onest-latin-wght-normal.woff2?url'
 import { createRootRoute, HeadContent, Scripts } from '@tanstack/react-router'
+import { SiteNav } from '../components/site-nav'
+import siteCss from '../styles.css?url'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -10,8 +13,13 @@ export const Route = createRootRoute({
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { title: 'Website' },
     ],
+    links: [
+      // the latin subset is on every page: start it before the CSS has been parsed
+      { rel: 'preload', href: fontLatin, as: 'font', type: 'font/woff2', crossOrigin: 'anonymous' },
+      { rel: 'stylesheet', href: siteCss },
+    ],
   }),
-  shellComponent: withPayloadRoot(Shell),
+  shellComponent: Shell,
 })
 
 function Shell({ children }: { children: React.ReactNode }) {
@@ -21,6 +29,7 @@ function Shell({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
+        <SiteNav />
         {children}
         <Scripts />
       </body>

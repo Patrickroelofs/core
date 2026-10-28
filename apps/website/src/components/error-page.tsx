@@ -1,10 +1,10 @@
-import { DarkSlabFooter } from '@/blocks/dark-slab-footer/dark-slab-footer'
 import { Rail } from '@/components/projects/rail'
 import { LabeledSection } from '@/components/ui/labeled-section/labeled-section'
 import { ListRow } from '@/components/ui/list-row/list-row'
 import { Title } from '@/components/ui/title/title'
 import { Typography } from '@/components/ui/typography/typography'
 import { Latest } from '@/components/writing/latest'
+import { DarkSlabFooter } from './dark-slab-footer'
 
 const pages = [
   { title: 'Home', description: 'Start from the top.', href: '/' },

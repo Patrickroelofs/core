@@ -6,30 +6,18 @@
     "dev": "vite dev",
     "build": "vite build",
     "typecheck": "tsc -p .",
-    "payload": "payload",
-    "generate:importmap": "payload generate:importmap",
     "start": "node .output/server/index.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
     "@core/theme": "workspace:*",
     "@fontsource-variable/onest": "^5.3.1",
-    "@payloadcms/db-mongodb": "4.0.0-beta.3",
-    "@payloadcms/graphql": "4.0.0-beta.3",
-    "@payloadcms/plugin-mcp": "4.0.0-beta.3",
-    "@payloadcms/richtext-lexical": "4.0.0-beta.3",
-    "@payloadcms/tanstack-start": "4.0.0-beta.3",
-    "@payloadcms/ui": "4.0.0-beta.3",
     "@phosphor-icons/react": "^2.1.10",
     "@tanstack/react-router": "^1.170.0",
     "@tanstack/react-start": "^1.169.0",
-    "@vitejs/plugin-rsc": "^0.5.38",
     "class-variance-authority": "^0.7.1",
-    "graphql": "^16.14.2",
-    "payload": "4.0.0-beta.3",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "sharp": "^0.35.5"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.0",

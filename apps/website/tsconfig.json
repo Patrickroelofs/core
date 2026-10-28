@@ -2,8 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "paths": {
-      "@/*": ["./src/*"],
-      "@payload-config": ["./src/payload.config.ts"]
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src", "vite.config.ts"]

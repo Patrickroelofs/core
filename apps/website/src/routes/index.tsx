@@ -4,4 +4,4 @@ function Home() {
   return <></>
 }
 
-export const Route = createFileRoute('/_frontend/')({ component: Home })
+export const Route = createFileRoute('/')({ component: Home })

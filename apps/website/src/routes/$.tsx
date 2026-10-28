@@ -1,7 +1,7 @@
 import { createFileRoute, notFound } from '@tanstack/react-router'
 
-// catch-all inside the frontend layout, so unknown URLs get the site nav and styles with the 404 page
-export const Route = createFileRoute('/_frontend/$')({
+// catch-all so unknown URLs render the 404 page
+export const Route = createFileRoute('/$')({
   loader: () => {
     throw notFound()
   },

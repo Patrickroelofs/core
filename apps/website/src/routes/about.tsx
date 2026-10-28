@@ -1,14 +1,13 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { SectionNav } from '@/components/ui/section-nav/section-nav'
-
-import { DarkSlabFooter } from '../../blocks/dark-slab-footer/dark-slab-footer'
-import { Contact } from '../../components/about/contact'
-import { Education } from '../../components/about/education'
-import { Experience } from '../../components/about/experience'
-import { Intro } from '../../components/about/intro'
-import { Languages } from '../../components/about/languages'
-import { OutsideWork } from '../../components/about/outside-work'
-import { Story } from '../../components/about/story'
+import { Contact } from '../components/about/contact'
+import { Education } from '../components/about/education'
+import { Experience } from '../components/about/experience'
+import { Intro } from '../components/about/intro'
+import { Languages } from '../components/about/languages'
+import { OutsideWork } from '../components/about/outside-work'
+import { Story } from '../components/about/story'
+import { DarkSlabFooter } from '../components/dark-slab-footer'
 
 const sections = [
   { id: 'story', label: 'Story' },
@@ -44,7 +43,7 @@ function About() {
   )
 }
 
-export const Route = createFileRoute('/_frontend/about')({
+export const Route = createFileRoute('/about')({
   component: About,
   head: () => ({ meta: [{ title: 'About - Patrick Roelofs' }] }),
 })

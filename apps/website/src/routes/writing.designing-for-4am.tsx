@@ -1,10 +1,10 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { DarkSlabFooter } from '../../blocks/dark-slab-footer/dark-slab-footer'
-import { Body } from '../../components/writing/body'
-import { Contents } from '../../components/writing/contents'
-import { Header } from '../../components/writing/header'
-import { MoreWriting } from '../../components/writing/more-writing'
-import { Outro } from '../../components/writing/outro'
+import { DarkSlabFooter } from '../components/dark-slab-footer'
+import { Body } from '../components/writing/body'
+import { Contents } from '../components/writing/contents'
+import { Header } from '../components/writing/header'
+import { MoreWriting } from '../components/writing/more-writing'
+import { Outro } from '../components/writing/outro'
 
 function Article() {
   return (
@@ -23,7 +23,7 @@ function Article() {
   )
 }
 
-export const Route = createFileRoute('/_frontend/writing/designing-for-4am')({
+export const Route = createFileRoute('/writing/designing-for-4am')({
   component: Article,
   head: () => ({ meta: [{ title: 'Designing for 4am - Patrick Roelofs' }] }),
 })

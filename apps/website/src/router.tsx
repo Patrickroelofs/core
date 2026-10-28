@@ -1,4 +1,3 @@
-import { payloadParseSearch, payloadStringifySearch } from '@payloadcms/tanstack-start/shared'
 import { createRouter } from '@tanstack/react-router'
 import { ErrorPage } from './components/error-page'
 import { routeTree } from './routeTree.gen'
@@ -15,9 +14,7 @@ export function getRouter() {
   return createRouter({
     defaultErrorComponent: ServerError,
     defaultNotFoundComponent: NotFound,
-    parseSearch: payloadParseSearch,
     routeTree,
     scrollRestoration: true,
-    stringifySearch: payloadStringifySearch,
   })
 }

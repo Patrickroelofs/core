@@ -1,9 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { DarkSlabFooter } from '../../blocks/dark-slab-footer/dark-slab-footer'
-import { Rail } from '../../components/projects/rail'
-import { Archive } from '../../components/writing/archive'
-import { Intro } from '../../components/writing/intro'
-import { Latest } from '../../components/writing/latest'
+import { DarkSlabFooter } from '../components/dark-slab-footer'
+import { Rail } from '../components/projects/rail'
+import { Archive } from '../components/writing/archive'
+import { Intro } from '../components/writing/intro'
+import { Latest } from '../components/writing/latest'
 
 function Writing() {
   return (
@@ -24,7 +24,7 @@ function Writing() {
   )
 }
 
-export const Route = createFileRoute('/_frontend/writing/')({
+export const Route = createFileRoute('/writing/')({
   component: Writing,
   head: () => ({ meta: [{ title: 'Writing - Patrick Roelofs' }] }),
 })
