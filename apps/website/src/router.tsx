@@ -1,19 +1,20 @@
 import { payloadParseSearch, payloadStringifySearch } from '@payloadcms/tanstack-start/shared'
 import { createRouter } from '@tanstack/react-router'
+import { ErrorPage } from './components/error-page'
 import { routeTree } from './routeTree.gen'
 
-function DefaultNotFound() {
-  return (
-    <div style={{ fontFamily: 'system-ui, sans-serif', padding: '2rem' }}>
-      <h1>404 — Page not found</h1>
-      <p>The page you requested does not exist.</p>
-    </div>
-  )
+function NotFound() {
+  return <ErrorPage code="404" message="This page took the last tram home. It moved, or it never existed." />
+}
+
+function ServerError() {
+  return <ErrorPage code="500" message="Something broke on my end. Try again in a moment." />
 }
 
 export function getRouter() {
   return createRouter({
-    defaultNotFoundComponent: DefaultNotFound,
+    defaultErrorComponent: ServerError,
+    defaultNotFoundComponent: NotFound,
     parseSearch: payloadParseSearch,
     routeTree,
     scrollRestoration: true,
