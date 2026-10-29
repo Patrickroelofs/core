@@ -5,6 +5,7 @@ import { Frames } from '../components/photo-series/frames'
 import { Header } from '../components/photo-series/header'
 import { MoreSeries } from '../components/photo-series/more-series'
 import { Story } from '../components/photo-series/story'
+import { seo } from '../seo/pages'
 
 function PhotoSeries() {
   return (
@@ -23,5 +24,5 @@ function PhotoSeries() {
 
 export const Route = createFileRoute('/photography/night-ferries')({
   component: PhotoSeries,
-  head: () => ({ meta: [{ title: 'Night ferries - Patrick Roelofs' }] }),
+  head: () => seo('/photography/night-ferries'),
 })

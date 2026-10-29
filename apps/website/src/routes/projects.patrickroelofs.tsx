@@ -7,6 +7,7 @@ import { NextProject } from '../components/shiftboard-handover/next-project'
 import { Outcome } from '../components/shiftboard-handover/outcome'
 import { Problem } from '../components/shiftboard-handover/problem'
 import { Process } from '../components/shiftboard-handover/process'
+import { seo } from '../seo/pages'
 
 function Shiftboard() {
   return (
@@ -27,5 +28,5 @@ function Shiftboard() {
 
 export const Route = createFileRoute('/projects/patrickroelofs')({
   component: Shiftboard,
-  head: () => ({ meta: [{ title: 'Shiftboard Handover - Patrick Roelofs' }] }),
+  head: () => seo('/projects/patrickroelofs'),
 })

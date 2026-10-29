@@ -3,6 +3,7 @@
 import fontLatin from '@fontsource-variable/onest/files/onest-latin-wght-normal.woff2?url'
 import { createRootRoute, HeadContent, Scripts } from '@tanstack/react-router'
 import { SiteNav } from '../components/site-nav'
+import { siteName } from '../seo/pages'
 import siteCss from '../styles.css?url'
 
 export const Route = createRootRoute({
@@ -10,7 +11,7 @@ export const Route = createRootRoute({
     meta: [
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'Website' },
+      { title: siteName },
     ],
     links: [
       // the latin subset is on every page: start it before the CSS has been parsed

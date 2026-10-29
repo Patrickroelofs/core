@@ -5,6 +5,7 @@ import { Contents } from '../components/writing/contents'
 import { Header } from '../components/writing/header'
 import { MoreWriting } from '../components/writing/more-writing'
 import { Outro } from '../components/writing/outro'
+import { seo } from '../seo/pages'
 
 function Article() {
   return (
@@ -25,5 +26,5 @@ function Article() {
 
 export const Route = createFileRoute('/writing/designing-for-4am')({
   component: Article,
-  head: () => ({ meta: [{ title: 'Designing for 4am - Patrick Roelofs' }] }),
+  head: () => seo('/writing/designing-for-4am'),
 })
