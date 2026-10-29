@@ -13,4 +13,4 @@ Components live in `apps/website/src/components/ui/<name>/`. Style with Tailwind
 
 ## SEO
 
-Page titles, descriptions and Open Graph images come from `apps/website/src/seo/pages.ts`. Add new pages there and set the route's `head: () => seo('/path')`; the OG image (`/og/<path>.png`) is rendered with satori and prerendered at build.
+Page titles, descriptions and Open Graph images come from `apps/website/src/seo/pages.ts`. Add new pages there and set the route's `head: () => seo('/path')`; the OG image (`/og/<path>.png`) is rendered with satori and prerendered at build. Tags use absolute URLs on `VITE_SITE_URL` (build-time, defaults to `https://patrickroelofs.com`); set it per deploy, e.g. `VITE_SITE_URL=https://v2.patrickroelofs.com`.
