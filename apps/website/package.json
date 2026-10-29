@@ -6,7 +6,7 @@
     "dev": "vite dev",
     "build": "vite build",
     "typecheck": "tsc -p .",
-    "start": "node .output/server/index.mjs"
+    "start": "vite preview"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
@@ -20,10 +20,14 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^8.0.9",
+    "@rolldown/plugin-babel": "^0.2.4",
     "@tailwindcss/vite": "^4.1.0",
+    "@tanstack/redact": "0.2.3",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^6.1.0",
+    "babel-plugin-react-compiler": "^1.0.0",
     "nitro": "3.0.260903-beta",
     "tailwindcss": "^4.1.0",
     "typescript": "^5.9.0",

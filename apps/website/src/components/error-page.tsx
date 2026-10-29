@@ -64,3 +64,11 @@ export function ErrorPage({ code, message }: { code: string; message: string }) 
     </>
   )
 }
+
+export function NotFound() {
+  return <ErrorPage code="404" message="This page took the last tram home. It moved, or it never existed." />
+}
+
+export function ServerError() {
+  return <ErrorPage code="500" message="Something broke on my end. Try again in a moment." />
+}

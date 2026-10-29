@@ -1,6 +1,5 @@
 /// <reference types="vite/client" />
 
-import '@fontsource-variable/onest'
 import fontLatin from '@fontsource-variable/onest/files/onest-latin-wght-normal.woff2?url'
 import { createRootRoute, HeadContent, Scripts } from '@tanstack/react-router'
 import { SiteNav } from '../components/site-nav'
