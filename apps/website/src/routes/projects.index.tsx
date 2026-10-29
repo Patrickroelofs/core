@@ -5,6 +5,7 @@ import { Clients } from '../components/projects/clients'
 import { Featured } from '../components/projects/featured'
 import { Intro } from '../components/projects/intro'
 import { Rail } from '../components/projects/rail'
+import { seo } from '../seo/pages'
 
 function Projects() {
   return (
@@ -26,5 +27,5 @@ function Projects() {
 
 export const Route = createFileRoute('/projects/')({
   component: Projects,
-  head: () => ({ meta: [{ title: 'Work - Patrick Roelofs' }] }),
+  head: () => seo('/projects'),
 })

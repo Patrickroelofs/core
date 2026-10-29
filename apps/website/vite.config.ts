@@ -8,6 +8,7 @@ import redact from '@tanstack/redact/vite'
 import viteReact, { reactCompilerPreset } from '@vitejs/plugin-react'
 import { nitro } from 'nitro/vite'
 import { defineConfig } from 'vite'
+import { ogImagePath, type PagePath, pages } from './src/seo/pages'
 
 const dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -36,13 +37,17 @@ export default defineConfig({
       preset: 'static',
       prerender: {
         crawlLinks: true,
-        routes: staticRoutes(path.join(dirname, 'src/routes')),
+        routes: [
+          ...staticRoutes(path.join(dirname, 'src/routes')),
+          ...(Object.keys(pages) as PagePath[]).map(ogImagePath),
+        ],
       },
       compressPublicAssets: { gzip: true, brotli: true },
     }),
     tailwindcss(),
   ],
-  environments: { ssr: { resolve: { noExternal: true } } },
+  environments: { ssr: { resolve: { noExternal: true, external: ['satori', '@resvg/resvg-js'] } } },
+  optimizeDeps: { exclude: ['@resvg/resvg-js'] },
   resolve: { alias: { '@/': `${path.resolve(dirname, 'src')}/` } },
   server: { port: 3000 },
   preview: {

@@ -3,6 +3,7 @@ import { DarkSlabFooter } from '../components/dark-slab-footer'
 import { AllSeries } from '../components/photography/all-series'
 import { Featured } from '../components/photography/featured'
 import { Intro } from '../components/photography/intro'
+import { seo } from '../seo/pages'
 
 function Photography() {
   return (
@@ -19,5 +20,5 @@ function Photography() {
 
 export const Route = createFileRoute('/photography/')({
   component: Photography,
-  head: () => ({ meta: [{ title: 'Photography - Patrick Roelofs' }] }),
+  head: () => seo('/photography'),
 })

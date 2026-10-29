@@ -8,6 +8,7 @@ import { Languages } from '../components/about/languages'
 import { OutsideWork } from '../components/about/outside-work'
 import { Story } from '../components/about/story'
 import { DarkSlabFooter } from '../components/dark-slab-footer'
+import { seo } from '../seo/pages'
 
 const sections = [
   { id: 'story', label: 'Story' },
@@ -45,5 +46,5 @@ function About() {
 
 export const Route = createFileRoute('/about')({
   component: About,
-  head: () => ({ meta: [{ title: 'About - Patrick Roelofs' }] }),
+  head: () => seo('/about'),
 })
