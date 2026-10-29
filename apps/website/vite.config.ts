@@ -13,6 +13,7 @@ export default defineConfig({
     tanstackStart(),
     viteReact(),
     nitro({
+      preset: 'static',
       prerender: {
         crawlLinks: true,
         routes: [
@@ -24,10 +25,10 @@ export default defineConfig({
           '/writing/designing-for-4am',
           '/photography',
           '/photography/night-ferries',
+          '/404.html',
         ],
       },
       compressPublicAssets: { gzip: true, brotli: true },
-      routeRules: { '/assets/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } } },
     }),
     tailwindcss(),
   ],

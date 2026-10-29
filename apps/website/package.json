@@ -6,7 +6,7 @@
     "dev": "vite dev",
     "build": "vite build",
     "typecheck": "tsc -p .",
-    "start": "node .output/server/index.mjs"
+    "start": "vite preview"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
