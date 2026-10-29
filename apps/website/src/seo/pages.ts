@@ -1,5 +1,5 @@
 export const siteName = 'Patrick Roelofs'
-export const siteUrl = 'https://patrickroelofs.com'
+export const siteUrl = (import.meta.env?.VITE_SITE_URL || 'https://patrickroelofs.com').replace(/\/$/, '')
 
 export type Page = {
   title: string
