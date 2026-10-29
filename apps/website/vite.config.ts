@@ -1,3 +1,4 @@
+import { readdirSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import tailwindcss from '@tailwindcss/vite'
@@ -8,6 +9,21 @@ import { defineConfig } from 'vite'
 
 const dirname = path.dirname(fileURLToPath(import.meta.url))
 
+function staticRoutes(dir: string) {
+  const files = readdirSync(dir, { recursive: true, encoding: 'utf8' })
+    .filter((file) => /\.tsx?$/.test(file))
+    .map((file) =>
+      file
+        .replace(/\.tsx?$/, '')
+        .split(/[/.](?![^[]*\])/)
+        .filter((segment) => !['index', 'route'].includes(segment) && !/^[_(]/.test(segment))
+        .map((segment) => segment.replace(/\[(.+?)\]/g, '$1')),
+    )
+    .filter((segments) => !segments.some((segment) => segment.startsWith('$') || segment.startsWith('-')))
+    .map((segments) => `/${segments.join('/')}`)
+  return [...new Set(files)]
+}
+
 export default defineConfig({
   plugins: [
     tanstackStart(),
@@ -16,17 +32,7 @@ export default defineConfig({
       preset: 'static',
       prerender: {
         crawlLinks: true,
-        routes: [
-          '/',
-          '/about',
-          '/projects',
-          '/projects/patrickroelofs',
-          '/writing',
-          '/writing/designing-for-4am',
-          '/photography',
-          '/photography/night-ferries',
-          '/404.html',
-        ],
+        routes: staticRoutes(path.join(dirname, 'src/routes')),
       },
       compressPublicAssets: { gzip: true, brotli: true },
     }),
