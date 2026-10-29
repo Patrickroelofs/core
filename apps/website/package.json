@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "budget": "node scripts/check-budget.mjs",
     "typecheck": "tsc -p .",
     "start": "node .output/server/index.mjs"
   },
