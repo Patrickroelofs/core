@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url'
 import babel from '@rolldown/plugin-babel'
 import tailwindcss from '@tailwindcss/vite'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import redact from '@tanstack/redact/vite'
 import viteReact, { reactCompilerPreset } from '@vitejs/plugin-react'
 import { nitro } from 'nitro/vite'
 import { defineConfig } from 'vite'
@@ -27,6 +28,7 @@ function staticRoutes(dir: string) {
 
 export default defineConfig({
   plugins: [
+    redact(),
     tanstackStart(),
     viteReact(),
     babel({ presets: [reactCompilerPreset()] }),
@@ -40,6 +42,7 @@ export default defineConfig({
     }),
     tailwindcss(),
   ],
+  environments: { ssr: { resolve: { noExternal: true } } },
   resolve: { alias: { '@/': `${path.resolve(dirname, 'src')}/` } },
   server: { port: 3000 },
 })

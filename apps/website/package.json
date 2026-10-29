@@ -23,6 +23,7 @@
     "@babel/core": "^8.0.9",
     "@rolldown/plugin-babel": "^0.2.4",
     "@tailwindcss/vite": "^4.1.0",
+    "@tanstack/redact": "0.2.3",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^6.1.0",
