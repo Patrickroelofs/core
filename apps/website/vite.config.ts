@@ -1,9 +1,10 @@
 import { readdirSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import babel from '@rolldown/plugin-babel'
 import tailwindcss from '@tailwindcss/vite'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
-import viteReact from '@vitejs/plugin-react'
+import viteReact, { reactCompilerPreset } from '@vitejs/plugin-react'
 import { nitro } from 'nitro/vite'
 import { defineConfig } from 'vite'
 
@@ -28,6 +29,7 @@ export default defineConfig({
   plugins: [
     tanstackStart(),
     viteReact(),
+    babel({ presets: [reactCompilerPreset()] }),
     nitro({
       preset: 'static',
       prerender: {
