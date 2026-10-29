@@ -45,5 +45,10 @@ export default defineConfig({
   environments: { ssr: { resolve: { noExternal: true } } },
   resolve: { alias: { '@/': `${path.resolve(dirname, 'src')}/` } },
   server: { port: 3000 },
-  preview: { host: true, port: Number(process.env.PORT) || 3000, strictPort: true },
+  preview: {
+    host: true,
+    port: Number(process.env.PORT) || 3000,
+    strictPort: true,
+    allowedHosts: ['.patrickroelofs.com'],
+  },
 })
