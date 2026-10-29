@@ -38,6 +38,7 @@ export type ImageProps = Omit<ComponentProps<'img'>, 'className' | 'children'> &
 
 /** Fixed-ratio image. Without `src` it renders a striped placeholder carrying `label`. */
 export function Image({ ratio, tone = 'light', label, alt = '', src, ...props }: ImageProps) {
-  if (src) return <img className={imageStyles({ ratio })} src={src} alt={alt} {...props} />
+  if (src)
+    return <img className={imageStyles({ ratio })} src={src} alt={alt} loading="lazy" decoding="async" {...props} />
   return <div className={imageStyles({ ratio, tone, class: 'text-xs px-5.5 py-4.5' })}>{label}</div>
 }

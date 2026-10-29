@@ -1,5 +1,15 @@
 @import "tailwindcss";
 @import "@core/theme/theme.css";
+@import "@fontsource-variable/onest";
+
+@font-face {
+  font-family: "Onest Fallback";
+  src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Arimo");
+  size-adjust: 105.93%;
+  ascent-override: 91.57%;
+  descent-override: 28.79%;
+  line-gap-override: 0%;
+}
 
 /* shorthand variants shared by components */
 @custom-variant link (&:is(a[href]));

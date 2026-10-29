@@ -26,7 +26,7 @@
   --color-accent-highlight: var(--color-plum);
   --color-focus-ring: var(--color-azure);
 
-  --font-body: "Onest Variable", "Onest", system-ui, sans-serif;
+  --font-body: "Onest Variable", "Onest", "Onest Fallback", system-ui, sans-serif;
 
   --text-*: initial;
   --text-xs: 12px;

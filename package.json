@@ -9,6 +9,7 @@
     "check": "biome check .",
     "check:fix": "biome check --write .",
     "build:website": "pnpm --filter website build",
+    "budget": "pnpm --filter website budget",
     "start": "pnpm --filter website start"
   },
   "devDependencies": {
