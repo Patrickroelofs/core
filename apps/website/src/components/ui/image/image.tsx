@@ -1,5 +1,7 @@
+import { useRouterState } from '@tanstack/react-router'
 import { cva, cx, type VariantProps } from 'class-variance-authority'
 import { type ComponentProps, type ReactNode, useEffect, useRef, useState } from 'react'
+import { watch } from './reveal'
 
 const imageStyles = cva('block w-full overflow-hidden box-border object-cover rounded-lg', {
   variants: {
@@ -13,7 +15,7 @@ const imageStyles = cva('block w-full overflow-hidden box-border object-cover ro
       // fills its parent's height, for tiles sized by a grid
       fill: 'h-full',
     },
-    /** Placeholder when there is no `src`; picks the curtain colours when there is. */
+    /** Placeholder only; set when no `src` is given. */
     tone: {
       light:
         'bg-snow-deep text-navy/60 bg-[image:repeating-linear-gradient(135deg,rgba(25,32,54,.09)_0_1px,transparent_1px_11px)]',
@@ -38,14 +40,7 @@ export type ImageProps = Omit<ComponentProps<'img'>, 'className' | 'children'> &
 
 type Curtain = [string, string, string]
 
-/** Lead, middle and back panel per tone, lifting in that order. `light` has none and gets one from `mixes`. */
-const curtains: Partial<Record<NonNullable<ImageVariants['tone']>, Curtain>> = {
-  coral: ['bg-coral', 'bg-plum', 'bg-navy'],
-  azure: ['bg-azure', 'bg-plum', 'bg-navy'],
-  dark: ['bg-plum', 'bg-azure', 'bg-navy'],
-  navy: ['bg-navy', 'bg-plum', 'bg-coral'],
-}
-
+/** Lead, middle and back panel, lifting in that order. One per page, picked from its path. */
 const mixes: Curtain[] = [
   ['bg-coral', 'bg-plum', 'bg-navy'],
   ['bg-coral', 'bg-azure', 'bg-navy'],
@@ -59,41 +54,28 @@ const hash = (s: string) => [...s].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >
 
 const delays = ['delay-0', 'delay-150', 'delay-300']
 
-/** Fixed-ratio image. With `src` three tone panels lift off it once it has loaded and is in view; without, a striped placeholder carrying `label`. */
+/** Fixed-ratio image. With `src` three tone panels lift off it once it is in view and loaded, in sync with the other images that came into view with it; without, a striped placeholder carrying `label`. */
 export function Image({ ratio, tone = 'light', label, alt = '', src, ...props }: ImageProps) {
   const boxRef = useRef<HTMLDivElement>(null)
   const imgRef = useRef<HTMLImageElement>(null)
   const [revealed, setRevealed] = useState(false)
+  const pathname = useRouterState({ select: (s) => s.location.pathname })
 
   useEffect(() => {
     const box = boxRef.current
     const img = imgRef.current
     if (!src || !box || !img) return
 
-    let visible = false
-    const lift = () => {
-      if (visible && img.complete) setRevealed(true)
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry?.isIntersecting) return
-        visible = true
-        observer.disconnect()
-        lift()
-      },
-      { threshold: 0.25 },
-    )
-
     setRevealed(false)
-    observer.observe(box)
-    img.addEventListener('load', lift)
-    img.addEventListener('error', lift)
+    const watcher = watch(box, img.complete, () => setRevealed(true))
+    const loaded = () => watcher.loaded()
+    img.addEventListener('load', loaded)
+    img.addEventListener('error', loaded)
 
     return () => {
-      observer.disconnect()
-      img.removeEventListener('load', lift)
-      img.removeEventListener('error', lift)
+      watcher.stop()
+      img.removeEventListener('load', loaded)
+      img.removeEventListener('error', loaded)
     }
   }, [src])
 
@@ -110,7 +92,7 @@ export function Image({ ratio, tone = 'light', label, alt = '', src, ...props }:
         decoding="async"
         {...props}
       />
-      {(curtains[tone ?? 'light'] ?? mixes[hash(src) % mixes.length])
+      {mixes[hash(pathname) % mixes.length]
         .map((color, i) => (
           <div
             key={color}
