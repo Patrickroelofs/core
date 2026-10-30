@@ -37,36 +37,37 @@ export type ImageProps = Omit<ComponentProps<'img'>, 'className' | 'children'> &
   }
 
 const steps = [8, 32]
-const stepMs = 130
+const stepMs = 260
 
 const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-/** Fixed-ratio image. With `src` it starts pixelated and sharpens in steps once in view; without, a striped placeholder carrying `label`. */
+const layerStyles = 'absolute inset-0 size-full transition-opacity duration-300 ease-soft motion-reduce:transition-none'
+
+/** Fixed-ratio image. With `src` it starts pixelated and crossfades through sharper steps once in view; without, a striped placeholder carrying `label`. */
 export function Image({ ratio, tone = 'light', label, alt = '', src, ...props }: ImageProps) {
   const boxRef = useRef<HTMLDivElement>(null)
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const canvasRefs = useRef<(HTMLCanvasElement | null)[]>([])
   const imgRef = useRef<HTMLImageElement>(null)
-  const [sharp, setSharp] = useState(false)
+  const [shown, setShown] = useState(-1)
 
   useEffect(() => {
     const box = boxRef.current
-    const canvas = canvasRef.current
     const img = imgRef.current
-    if (!src || !box || !canvas || !img) return
+    if (!src || !box || !img) return
     if (reducedMotion()) {
-      setSharp(true)
+      setShown(steps.length)
       return
     }
 
-    let step = 0
     let visible = false
+    let drawn = false
     let timer: ReturnType<typeof setTimeout> | undefined
     const loaded = () => img.complete && img.naturalWidth > 0
 
-    const draw = (cols: number) => {
-      const ctx = canvas.getContext('2d')
+    const draw = (canvas: HTMLCanvasElement | null, cols: number) => {
+      const ctx = canvas?.getContext('2d')
       const { width, height } = box.getBoundingClientRect()
-      if (!ctx || !width || !height) return
+      if (!canvas || !ctx || !width || !height) return
       const rows = Math.max(1, Math.round((cols * height) / width))
       canvas.width = cols
       canvas.height = rows
@@ -76,20 +77,22 @@ export function Image({ ratio, tone = 'light', label, alt = '', src, ...props }:
       ctx.drawImage(img, (cols - w) / 2, (rows - h) / 2, w, h)
     }
 
-    const advance = () => {
-      step += 1
-      if (step >= steps.length) return setSharp(true)
-      draw(steps[step])
-      timer = setTimeout(advance, stepMs)
+    const advance = (step: number) => {
+      setShown(step)
+      if (step < steps.length) timer = setTimeout(() => advance(step + 1), stepMs)
     }
 
     const start = () => {
-      if (!loaded() || timer) return
-      draw(steps[0])
-      if (visible) timer = setTimeout(advance, stepMs)
+      if (!loaded()) return
+      if (!drawn) {
+        for (const [i, cols] of steps.entries()) draw(canvasRefs.current[i] ?? null, cols)
+        drawn = true
+        setShown(0)
+      }
+      if (visible && !timer) timer = setTimeout(() => advance(1), stepMs)
     }
 
-    const fail = () => setSharp(true)
+    const fail = () => setShown(steps.length)
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -101,7 +104,7 @@ export function Image({ ratio, tone = 'light', label, alt = '', src, ...props }:
       { threshold: 0.25 },
     )
 
-    setSharp(false)
+    setShown(-1)
     observer.observe(box)
     img.addEventListener('load', start)
     img.addEventListener('error', fail)
@@ -119,18 +122,23 @@ export function Image({ ratio, tone = 'light', label, alt = '', src, ...props }:
 
   return (
     <div ref={boxRef} className={imageStyles({ ratio, tone, class: 'relative' })}>
+      {steps.map((cols, i) => (
+        <canvas
+          key={cols}
+          ref={(el) => {
+            canvasRefs.current[i] = el
+          }}
+          className={cx(layerStyles, '[image-rendering:pixelated]', shown >= i ? 'opacity-100' : 'opacity-0')}
+        />
+      ))}
       <img
         ref={imgRef}
-        className={cx('absolute inset-0 size-full object-cover', sharp ? 'opacity-100' : 'opacity-0')}
+        className={cx(layerStyles, 'object-cover', shown >= steps.length ? 'opacity-100' : 'opacity-0')}
         src={src}
         alt={alt}
         loading="lazy"
         decoding="async"
         {...props}
-      />
-      <canvas
-        ref={canvasRef}
-        className={cx('absolute inset-0 size-full [image-rendering:pixelated]', sharp && 'hidden')}
       />
     </div>
   )
