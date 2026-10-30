@@ -36,14 +36,26 @@ export type ImageProps = Omit<ComponentProps<'img'>, 'className' | 'children'> &
     label?: ReactNode
   }
 
-/** Lead, middle and back panel per tone, lifting in that order. */
-const curtains: Record<NonNullable<ImageVariants['tone']>, [string, string, string]> = {
-  light: ['bg-coral', 'bg-plum', 'bg-navy'],
+type Curtain = [string, string, string]
+
+/** Lead, middle and back panel per tone, lifting in that order. `light` has none and gets one from `mixes`. */
+const curtains: Partial<Record<NonNullable<ImageVariants['tone']>, Curtain>> = {
   coral: ['bg-coral', 'bg-plum', 'bg-navy'],
   azure: ['bg-azure', 'bg-plum', 'bg-navy'],
   dark: ['bg-plum', 'bg-azure', 'bg-navy'],
   navy: ['bg-navy', 'bg-plum', 'bg-coral'],
 }
+
+const mixes: Curtain[] = [
+  ['bg-coral', 'bg-plum', 'bg-navy'],
+  ['bg-coral', 'bg-azure', 'bg-navy'],
+  ['bg-azure', 'bg-coral', 'bg-navy'],
+  ['bg-azure', 'bg-plum', 'bg-navy'],
+  ['bg-plum', 'bg-coral', 'bg-navy'],
+  ['bg-plum', 'bg-azure', 'bg-navy'],
+]
+
+const hash = (s: string) => [...s].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 0)
 
 const delays = ['delay-0', 'delay-150', 'delay-300']
 
@@ -98,7 +110,7 @@ export function Image({ ratio, tone = 'light', label, alt = '', src, ...props }:
         decoding="async"
         {...props}
       />
-      {curtains[tone ?? 'light']
+      {(curtains[tone ?? 'light'] ?? mixes[hash(src) % mixes.length])
         .map((color, i) => (
           <div
             key={color}
