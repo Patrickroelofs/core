@@ -1,6 +1,7 @@
 import { Image } from '@/components/ui/image/image'
 import { Title } from '@/components/ui/title/title'
 import { Typography } from '@/components/ui/typography/typography'
+import { mockImage } from '@/mock/image'
 
 export function Header() {
   return (
@@ -18,7 +19,12 @@ export function Header() {
         </div>
       </div>
       <div className="overflow-hidden rounded-3xl">
-        <Image ratio="16/9" label="hero image, handover on a ward tablet" />
+        <Image
+          ratio="16/9"
+          label="hero image, handover on a ward tablet"
+          src={mockImage('hero image, handover on a ward tablet', 1600, 900)}
+          alt="hero image, handover on a ward tablet"
+        />
       </div>
     </header>
   )

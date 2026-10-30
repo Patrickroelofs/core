@@ -4,6 +4,7 @@ import { Image } from '@/components/ui/image/image'
 import { Label } from '@/components/ui/label/label'
 import { Title } from '@/components/ui/title/title'
 import { Typography } from '@/components/ui/typography/typography'
+import { mockImage } from '@/mock/image'
 import { Rail } from '../photo-series/rail'
 import { series } from './series'
 
@@ -67,7 +68,7 @@ export function AllSeries() {
                   {[a, b, c].map((tone, i) => (
                     // biome-ignore lint/suspicious/noArrayIndexKey: fixed trio of placeholders
                     <div key={i} className="overflow-hidden rounded-[20px]">
-                      <Image ratio="fill" tone={tone} />
+                      <Image ratio="fill" tone={tone} src={mockImage(`${name}-${i}`, i === 0 ? 1200 : 600, 800)} />
                     </div>
                   ))}
                 </div>

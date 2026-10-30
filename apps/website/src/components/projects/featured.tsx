@@ -2,6 +2,7 @@ import { Image } from '@/components/ui/image/image'
 import { Tag } from '@/components/ui/tag/tag'
 import { Title } from '@/components/ui/title/title'
 import { Typography } from '@/components/ui/typography/typography'
+import { mockImage } from '@/mock/image'
 import { projects } from './projects'
 
 export function Featured() {
@@ -10,7 +11,7 @@ export function Featured() {
   return (
     <a href="/projects/patrickroelofs" className="flex flex-col gap-6">
       <div className="relative overflow-hidden rounded-3xl">
-        <Image ratio="16/9" label={image} />
+        <Image ratio="16/9" label={image} src={mockImage(image, 1600, 900)} alt={image} />
         <span className="absolute bottom-5 left-5 flex flex-wrap gap-1.5">
           <Tag>Featured</Tag>
           <Tag tone="snow">

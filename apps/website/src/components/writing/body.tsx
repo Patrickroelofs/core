@@ -3,6 +3,7 @@ import { Image } from '@/components/ui/image/image'
 import { Label } from '@/components/ui/label/label'
 import { Title } from '@/components/ui/title/title'
 import { Typography } from '@/components/ui/typography/typography'
+import { mockImage } from '@/mock/image'
 import { headings } from './headings'
 
 // TODO: mock data, replace with real content
@@ -83,7 +84,12 @@ export function Body() {
       </Noted>
 
       <figure className="my-fluid-m flex flex-col gap-3 md:col-span-full">
-        <Image ratio="16/9" label="patient card, before and after" />
+        <Image
+          ratio="16/9"
+          label="patient card, before and after"
+          src={mockImage('patient card, before and after', 1600, 900)}
+          alt="patient card, before and after"
+        />
         <Label size="xs" render={<figcaption />}>
           <span>Fig. 1 · The patient card, first version and the one that shipped.</span>
         </Label>

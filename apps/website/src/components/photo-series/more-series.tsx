@@ -1,6 +1,7 @@
 import { Image } from '@/components/ui/image/image'
 import { Label } from '@/components/ui/label/label'
 import { Title } from '@/components/ui/title/title'
+import { mockImage } from '@/mock/image'
 import { series } from '../photography/series'
 
 const more = series.slice(2, 5)
@@ -17,7 +18,7 @@ export function MoreSeries() {
             {/* TODO: other series have no pages yet */}
             <a href="/photography/night-ferries" className="flex flex-col gap-3 hover:text-accent-brand">
               <div className="overflow-hidden rounded-3xl">
-                <Image ratio="4/3" tone={tone} />
+                <Image ratio="4/3" tone={tone} src={mockImage(name, 1200, 900)} />
               </div>
               <span className="flex items-baseline justify-between gap-4">
                 <Title as="span" size="xs" weight="bold">

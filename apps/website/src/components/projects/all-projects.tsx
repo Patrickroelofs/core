@@ -4,6 +4,7 @@ import { Label } from '@/components/ui/label/label'
 import { ListRow } from '@/components/ui/list-row/list-row'
 import { Title } from '@/components/ui/title/title'
 import { Typography } from '@/components/ui/typography/typography'
+import { mockImage } from '@/mock/image'
 import { projects } from './projects'
 
 const filters = [
@@ -65,7 +66,13 @@ export function AllProjects() {
         <div className="hidden md:block">
           <div className="sticky top-8 flex flex-col gap-3.5">
             <div className="overflow-hidden rounded-3xl">
-              <Image ratio="4/3" tone={current.tone} label={current.image} />
+              <Image
+                ratio="4/3"
+                tone={current.tone}
+                label={current.image}
+                src={mockImage(current.image, 1200, 900)}
+                alt={current.image}
+              />
             </div>
             <Typography>{current.description}</Typography>
             <Label size="xs" render={<span />}>
