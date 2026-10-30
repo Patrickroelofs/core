@@ -1,5 +1,4 @@
 import { Title } from '@/components/ui/title/title'
-import { Typography } from '@/components/ui/typography/typography'
 
 export function Intro() {
   return (
@@ -11,9 +10,6 @@ export function Intro() {
           graphs<span className="text-accent-brand">.</span>
         </Title>
       </Title>
-      <Typography weight="medium">
-        On film, mostly. Lisbon, mostly before seven. Grouped into series since 2019.
-      </Typography>
     </header>
   )
 }

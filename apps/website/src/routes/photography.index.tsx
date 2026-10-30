@@ -1,6 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { DarkSlabFooter } from '../components/dark-slab-footer'
-import { AllSeries } from '../components/photography/all-series'
 import { Featured } from '../components/photography/featured'
 import { Intro } from '../components/photography/intro'
 import { seo } from '../seo/pages'
@@ -11,7 +10,6 @@ function Photography() {
       <main className="max-w-site mx-auto p-gutter pt-fluid-xl">
         <Intro />
         <Featured />
-        <AllSeries />
       </main>
       <DarkSlabFooter />
     </>

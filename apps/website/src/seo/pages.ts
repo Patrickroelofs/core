@@ -28,12 +28,12 @@ export const pages = {
     meta: '14 Oct 2026 · 9 min read',
     article: true,
   },
-  '/photography': { title: 'Photography' },
-  '/photography/night-ferries': {
-    title: 'Night ferries',
-    description: 'Five crossings between Cais do Sodré and Barreiro, shot after eleven. November 2025.',
+  '/photography': { title: 'Photography', description: 'Photographs on film, grouped into series.' },
+  '/photography/texel': {
+    title: 'Texel',
+    description: 'Photographs from Texel, the Netherlands, taken in November 2024 on a Praktica TL2.',
     kicker: 'Photo series',
-    meta: 'November 2025',
+    meta: 'Texel · November 2024',
   },
 } satisfies Record<string, Page>
 
