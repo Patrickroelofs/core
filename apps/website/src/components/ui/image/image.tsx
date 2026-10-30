@@ -52,9 +52,7 @@ const mixes: Curtain[] = [
 
 const hash = (s: string) => [...s].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 0)
 
-const delays = ['delay-0', 'delay-150', 'delay-300']
-
-/** Fixed-ratio image. With `src` three tone panels lift off it once it is in view and loaded, in sync with the other images that came into view with it; without, a striped placeholder carrying `label`. */
+/** Fixed-ratio image. With `src` three tone panels lift off it once it is in view and loaded, in one sweep with the other images that came into view with it; without, a striped placeholder carrying `label`. */
 export function Image({ ratio, tone = 'light', label, alt = '', src, ...props }: ImageProps) {
   const boxRef = useRef<HTMLDivElement>(null)
   const imgRef = useRef<HTMLImageElement>(null)
@@ -66,8 +64,10 @@ export function Image({ ratio, tone = 'light', label, alt = '', src, ...props }:
     const img = imgRef.current
     if (!src || !box || !img) return
 
+    const layers = () => [...box.querySelectorAll<HTMLElement>('[data-layer]')].reverse()
+    for (const layer of layers()) layer.style.removeProperty('clip-path')
     setRevealed(false)
-    const watcher = watch(box, img.complete, () => setRevealed(true))
+    const watcher = watch(box, img.complete, layers, () => setRevealed(true))
     const loaded = () => watcher.loaded()
     img.addEventListener('load', loaded)
     img.addEventListener('error', loaded)
@@ -93,16 +93,12 @@ export function Image({ ratio, tone = 'light', label, alt = '', src, ...props }:
         {...props}
       />
       {mixes[hash(pathname) % mixes.length]
-        .map((color, i) => (
+        .map((color) => (
           <div
             key={color}
+            data-layer
             aria-hidden="true"
-            className={cx(
-              'absolute inset-0 transition-[clip-path] duration-700 ease-soft motion-reduce:transition-none',
-              color,
-              delays[i],
-              revealed ? '[clip-path:inset(0_0_100%_0)]' : '[clip-path:inset(0_0_0_0)]',
-            )}
+            className={cx('absolute inset-0', color, revealed && 'hidden')}
           />
         ))
         .reverse()}
