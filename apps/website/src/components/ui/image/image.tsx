@@ -36,7 +36,7 @@ export type ImageProps = Omit<ComponentProps<'img'>, 'className' | 'children'> &
     label?: ReactNode
   }
 
-const steps = [6, 12, 24, 48, 96]
+const steps = [8, 32]
 const stepMs = 130
 
 const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
