@@ -3,13 +3,10 @@ import { LabeledSection } from '@/components/ui/labeled-section/labeled-section'
 import { ListRow } from '@/components/ui/list-row/list-row'
 import { Title } from '@/components/ui/title/title'
 
-// TODO: mock data, replace with real content
 const links = [
-  { label: 'Email', value: 'hello@patrickroelofs.com', href: 'mailto:hello@patrickroelofs.com' },
-  { label: 'Call', value: 'Book 20 minutes', href: '#' },
-  { label: 'Profile', value: 'LinkedIn', href: '#' },
-  { label: 'CV', value: 'Read.cv', href: '#' },
-  { label: 'Code', value: 'GitHub', href: '#' },
+  { label: 'Email', value: 'contact@patrickroelofs.com', href: 'mailto:contact@patrickroelofs.com' },
+  { label: 'Profile', value: 'LinkedIn', href: 'https://www.linkedin.com/in/patrick-roelofs/' },
+  { label: 'Code', value: 'GitHub', href: 'https://github.com/Patrickroelofs/' },
 ]
 
 export function Contact() {

@@ -3,11 +3,9 @@ import { LabeledSection } from '@/components/ui/labeled-section/labeled-section'
 import { ListRow } from '@/components/ui/list-row/list-row'
 import { Title } from '@/components/ui/title/title'
 
-// TODO: mock data, replace with real content
 const studied = [
-  { years: '2007 — 11', title: 'BA Graphic Design', org: 'HKU, Utrecht' },
-  { years: '2016', title: 'Interaction Design Specialisation', org: 'UC San Diego (online)' },
-  { years: '2019', title: 'Front-end Masters', org: 'Self-directed, 6 months' },
+  { years: '2019 — 2024', title: 'IT', org: 'HAN Arnhem, HBO' },
+  { years: '2016 — 2019', title: 'UX', org: 'HAN Arnhem, HBO' },
 ]
 
 export function Education() {
@@ -23,7 +21,7 @@ export function Education() {
                   <Title as="span" size="xs" weight="bold">
                     {title}
                   </Title>
-                  <Title as="span" size="xs">{` · ${org}`}</Title>
+                  <Title as="span" size="xs">{` - ${org}`}</Title>
                 </ListRow.Body>
                 <ListRow.Meta>
                   <Label size="xs" render={<span />}>

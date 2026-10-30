@@ -11,7 +11,10 @@ export type Page = {
 
 export const pages = {
   '/': { title: siteName, description: 'Dutch developer making calm software.' },
-  '/about': { title: 'About' },
+  '/about': {
+    title: 'About',
+    description: 'Meet Patrick, a frontend developer making fun, calm software with a touch of UX.',
+  },
   '/projects': { title: 'Work' },
   '/projects/patrickroelofs': {
     title: 'Shiftboard Handover',

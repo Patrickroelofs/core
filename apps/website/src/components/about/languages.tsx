@@ -4,10 +4,9 @@ import { LabeledSection } from '@/components/ui/labeled-section/labeled-section'
 import { Tile } from '@/components/ui/tile/tile'
 import { Title } from '@/components/ui/title/title'
 
-// TODO: mock data, replace with real content
 const languages = [
-  { name: 'Dutch', level: 'Native', hello: 'Hallo! Ik ben Patrick.', tone: 'navy' },
-  { name: 'English', level: 'Fluent · C1', hello: 'Hi! I’m Patrick.', tone: 'azure' },
+  { name: 'Dutch', level: 'Fluent', hello: 'Hallo! Ik ben Patrick.', tone: 'navy' },
+  { name: 'English', level: 'Fluent', hello: 'Hi! I’m Patrick.', tone: 'azure' },
 ] as const
 
 export function Languages() {

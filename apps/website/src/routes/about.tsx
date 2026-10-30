@@ -16,7 +16,6 @@ const sections = [
   { id: 'education', label: 'Education' },
   { id: 'languages', label: 'Languages' },
   { id: 'outside-work', label: 'Outside work' },
-  { id: 'references', label: 'References' },
   { id: 'contact', label: 'Contact' },
 ] as const
 

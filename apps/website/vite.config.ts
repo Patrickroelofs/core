@@ -11,10 +11,12 @@ import { defineConfig } from 'vite'
 import { ogImagePath, type PagePath, pages } from './src/seo/pages'
 
 const dirname = path.dirname(fileURLToPath(import.meta.url))
+const hiddenRoutes = /^(projects|writing)\./
+const hiddenPages = /^\/(projects|writing)(\/|$)/
 
 function staticRoutes(dir: string) {
   const files = readdirSync(dir, { recursive: true, encoding: 'utf8' })
-    .filter((file) => /\.tsx?$/.test(file))
+    .filter((file) => /\.tsx?$/.test(file) && !hiddenRoutes.test(file))
     .map((file) =>
       file
         .replace(/\.tsx?$/, '')
@@ -30,7 +32,7 @@ function staticRoutes(dir: string) {
 export default defineConfig({
   plugins: [
     redact(),
-    tanstackStart(),
+    tanstackStart({ router: { routeFileIgnorePattern: hiddenRoutes.source } }),
     viteReact(),
     babel({ presets: [reactCompilerPreset()] }),
     nitro({
@@ -39,7 +41,7 @@ export default defineConfig({
         crawlLinks: true,
         routes: [
           ...staticRoutes(path.join(dirname, 'src/routes')),
-          ...(Object.keys(pages) as PagePath[]).map(ogImagePath),
+          ...(Object.keys(pages) as PagePath[]).filter((page) => !hiddenPages.test(page)).map(ogImagePath),
         ],
       },
       compressPublicAssets: { gzip: true, brotli: true },

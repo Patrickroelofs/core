@@ -5,52 +5,27 @@ import { Tag } from '@/components/ui/tag/tag'
 import { Title } from '@/components/ui/title/title'
 import { Typography } from '@/components/ui/typography/typography'
 
-// TODO: mock data, replace with real content
 const experience = [
   {
-    short: '22',
-    org: 'Independent',
-    role: 'Independent',
-    years: '2022 — now',
-    place: 'Lisbon',
-    text: 'Working with early-stage health and mobility teams on zero-to-one products, usually embedded for 2–6 months.',
-    wins: ['8 clients', '3 launches', 'Lisbon + remote'],
+    short: '25',
+    role: 'Medior frontend developer',
+    years: 'Feb 2025 — present',
+    text: 'I work on frontend architecture and help adopt AI in the frontend workflow while keeping it efficient, maintainable and of high-quality, while helping customers balance costs with useful additions to their software.',
+    wins: ['Frontend architecture', 'AI development', 'Product decisions'],
   },
   {
-    short: '18',
-    org: 'Shiftboard',
-    role: 'Lead designer',
-    years: '2018 — 2022',
-    place: 'Amsterdam',
-    text: 'Built the design team from one to six. Led the night-shift handover tool used by 40,000 nurses across 300 wards.',
-    wins: ['Handover −38%', 'Team of 6', 'Design system'],
+    short: '23',
+    role: 'Junior frontend developer',
+    years: 'Jun 2023 — Feb 2025',
+    text: 'I learned the ropes across different customers and found my place in a changing industry.',
+    wins: ['Customer projects', 'Learning'],
   },
   {
-    short: '14',
-    org: 'Loop Transit',
-    role: 'Product designer',
-    years: '2014 — 2018',
-    place: 'Utrecht',
-    text: 'Designed the real-time departures app and the driver console. First role writing production front-end.',
-    wins: ['App Store feature', '1.2M riders'],
-  },
-  {
-    short: '12',
-    org: 'Studio Norte',
-    role: 'Designer',
-    years: '2012 — 2014',
-    place: 'Rotterdam',
-    text: 'Wayfinding and timetable design for regional transport operators.',
-    wins: ['Timetables for 6 regions'],
-  },
-  {
-    short: '11',
-    org: 'Total Identity',
-    role: 'Intern',
-    years: '2011',
-    place: 'Amsterdam',
-    text: 'Identity and print work. Learned to kern.',
-    wins: ['Six months'],
+    short: '23',
+    role: 'Frontend intern',
+    years: 'Jan 2023 — Jun 2023',
+    text: 'I explored gamification in a survey app to encourage more people to complete surveys.',
+    wins: ['Gamification', 'Survey app'],
   },
 ] as const
 
@@ -64,8 +39,8 @@ export function Experience() {
       <LabeledSection.Content>
         <div className="grid grid-cols-[minmax(0,1fr)] gap-fluid-m md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
           <ul className="flex flex-col">
-            {experience.map(({ org, short: yy }, i) => (
-              <li key={org}>
+            {experience.map(({ role, short: yy }, i) => (
+              <li key={role}>
                 <button
                   type="button"
                   className="flex cursor-pointer items-baseline gap-4 py-1 text-left opacity-25 transition-opacity hover:opacity-100 aria-pressed:opacity-100 focus-ring [--focus-offset:4px]"
@@ -75,8 +50,8 @@ export function Experience() {
                   <Label size="xs" render={<span className="min-w-9" />}>
                     {yy}
                   </Label>
-                  <Title as="span" size="xl">
-                    {org}
+                  <Title as="span" size="sm">
+                    {role}
                   </Title>
                 </button>
               </li>
@@ -87,7 +62,7 @@ export function Experience() {
             aria-live="polite"
           >
             <Label size="xs" render={<span />}>
-              {cur.years} · {cur.place}
+              {cur.years} - Iquality
             </Label>
             <Title as="h3" size="sm" weight="bold">
               {cur.role}

@@ -1,11 +1,9 @@
 import { Label } from '@/components/ui/label/label'
 import { Title } from '@/components/ui/title/title'
 
-// TODO: mock data, replace with real content
 const socials = [
-  { label: 'Read.cv', href: '#' },
-  { label: 'GitHub', href: '#' },
-  { label: 'LinkedIn', href: '#' },
+  { label: 'GitHub', href: 'https://github.com/Patrickroelofs/' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/patrick-roelofs/' },
 ] as const
 
 export function DarkSlabFooter() {
@@ -25,15 +23,15 @@ export function DarkSlabFooter() {
             </Title>
             <a
               className="bg-snow text-navy rounded-pill px-6 py-3 font-medium transition-[background-color] hover:bg-coral focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-snow"
-              href="mailto:hello@patrickroelofs.com"
+              href="mailto:contact@patrickroelofs.com"
             >
-              hello@patrickroelofs.com ↗
+              contact@patrickroelofs.com ↗
             </a>
           </div>
         </div>
         <div className="flex flex-wrap justify-between gap-4">
           <Label size="xs" render={<span />}>
-            © 2026 Patrick Roelofs · Nijmegen, the Netherlands
+            © 2026 Patrick Roelofs
           </Label>
           <ul className="flex flex-wrap gap-5">
             {socials.map(({ label, href }) => (

@@ -34,7 +34,7 @@ export function Outro() {
               {copied ? 'Copied ✓' : 'Copy link'}
             </Button>
             <Button
-              render={<a href="mailto:hello@patrickroelofs.com?subject=Designing%20for%204am" />}
+              render={<a href="mailto:contact@patrickroelofs.com?subject=Designing%20for%204am" />}
               nativeButton={false}
               icon="↗"
             >

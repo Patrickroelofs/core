@@ -9,27 +9,18 @@ export function OutsideWork() {
       <LabeledSection.Label>Outside work</LabeledSection.Label>
       <LabeledSection.Content>
         <div className="flex flex-col items-start gap-fluid-m">
-          {/* TODO: mock data, replace with real content */}
           <Title as="p" size="lg" leading="normal">
-            Off the clock I{' '}
+            Outside work, I enjoy{' '}
             <Tag tone="navy" size="inline">
-              shoot film
+              photography
             </Tag>
-            , ride{' '}
+            ,{' '}
             <Tag tone="coral" size="inline">
-              every tram line
-            </Tag>
-            , reread{' '}
-            <Tag tone="navy" appearance="outline" size="inline">
-              Jane Jacobs
-            </Tag>
-            , cook{' '}
-            <Tag tone="azure" size="inline">
-              bacalhau
+              gaming
             </Tag>{' '}
-            and build{' '}
-            <Tag tone="plum" size="inline">
-              e-ink clocks
+            and{' '}
+            <Tag tone="azure" size="inline">
+              technology
             </Tag>
             .
           </Title>

@@ -3,17 +3,14 @@ import { LabeledSection } from '@/components/ui/labeled-section/labeled-section'
 import { ListRow } from '@/components/ui/list-row/list-row'
 import { Title } from '@/components/ui/title/title'
 import { Typography } from '@/components/ui/typography/typography'
-import { Latest } from '@/components/writing/latest'
 import { DarkSlabFooter } from './dark-slab-footer'
 
 const pages = [
   { title: 'Home', description: 'Start from the top.', href: '/' },
-  { title: 'Work', description: 'Selected projects, 2014 to now.', href: '/projects' },
-  { title: 'Writing', description: 'Essays on calm software and transit.', href: '/writing' },
   { title: 'About', description: 'Who I am and how I work.', href: '/about' },
 ] as const
 
-/** Shared page for 404s and other errors: a giant status code, a way back and the latest essay. */
+/** Shared page for 404s and other errors: a giant status code and a way back. */
 export function ErrorPage({ code, message }: { code: string; message: string }) {
   return (
     <>
@@ -56,9 +53,6 @@ export function ErrorPage({ code, message }: { code: string; message: string }) 
         </LabeledSection>
 
         <Rail tone="coral" />
-        <div className="pt-12">
-          <Latest />
-        </div>
       </main>
       <DarkSlabFooter />
     </>
