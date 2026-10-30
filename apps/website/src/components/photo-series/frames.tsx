@@ -1,5 +1,6 @@
 import { Image, type ImageVariants } from '@/components/ui/image/image'
 import { Label } from '@/components/ui/label/label'
+import { mockImage } from '@/mock/image'
 import { Rail } from './rail'
 
 // TODO: mock data, replace with real photos
@@ -20,6 +21,16 @@ const frames: {
   { title: 'Cais do Sodré arrival', time: '00:31', tone: 'dark', ratio: '4/5', col: 'md:col-[4/span_6]' },
 ]
 
+const sizes: Record<NonNullable<ImageVariants['ratio']>, [number, number]> = {
+  '16/10': [1600, 1000],
+  '16/9': [1600, 900],
+  '3/2': [1500, 1000],
+  '4/3': [1200, 900],
+  '4/5': [1000, 1250],
+  '1/1': [1200, 1200],
+  fill: [1200, 1200],
+}
+
 export function Frames() {
   return (
     <>
@@ -29,7 +40,13 @@ export function Frames() {
           <figure key={title} className={col}>
             <div className="flex flex-col gap-3">
               <div className="overflow-hidden rounded-3xl">
-                <Image ratio={ratio} tone={tone} label={title} />
+                <Image
+                  ratio={ratio}
+                  tone={tone}
+                  label={title}
+                  src={mockImage(title, ...sizes[ratio ?? '16/10'])}
+                  alt={title}
+                />
               </div>
               <figcaption className="flex justify-between gap-4">
                 <Label size="xs" render={<span />}>

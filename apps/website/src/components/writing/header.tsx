@@ -2,6 +2,7 @@ import { Image } from '@/components/ui/image/image'
 import { Label } from '@/components/ui/label/label'
 import { Title } from '@/components/ui/title/title'
 import { Typography } from '@/components/ui/typography/typography'
+import { mockImage } from '@/mock/image'
 
 export function Header() {
   return (
@@ -32,7 +33,13 @@ export function Header() {
         </div>
       </div>
       <figure className="flex flex-col gap-3">
-        <Image ratio="16/9" label="lead image, wide" />
+        <Image
+          priority
+          ratio="16/9"
+          label="lead image, wide"
+          src={mockImage('lead image, wide', 1600, 900)}
+          alt="lead image, wide"
+        />
         <Label size="xs">
           <figcaption>Ward 4B at shift change, Amsterdam.</figcaption>
         </Label>

@@ -2,6 +2,7 @@ import { Image } from '@/components/ui/image/image'
 import { Tag } from '@/components/ui/tag/tag'
 import { Title } from '@/components/ui/title/title'
 import { Typography } from '@/components/ui/typography/typography'
+import { mockImage } from '@/mock/image'
 import { Rail } from '../photo-series/rail'
 import { series } from './series'
 
@@ -19,13 +20,13 @@ export function Featured() {
         >
           <div className="grid aspect-[4/3] grid-cols-[2fr_1fr] grid-rows-2 gap-2">
             <div className="row-span-2 overflow-hidden rounded-3xl">
-              <Image ratio="fill" tone={a} />
+              <Image ratio="fill" tone={a} src={mockImage(`${latest.name}-0`, 1200, 1200)} />
             </div>
             <div className="overflow-hidden rounded-[20px]">
-              <Image ratio="fill" tone={b} />
+              <Image ratio="fill" tone={b} src={mockImage(`${latest.name}-1`, 800, 600)} />
             </div>
             <div className="overflow-hidden rounded-[20px]">
-              <Image ratio="fill" tone={c} />
+              <Image ratio="fill" tone={c} src={mockImage(`${latest.name}-2`, 800, 600)} />
             </div>
           </div>
           <div className="flex flex-col gap-5">
