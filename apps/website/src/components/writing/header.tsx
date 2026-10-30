@@ -34,6 +34,7 @@ export function Header() {
       </div>
       <figure className="flex flex-col gap-3">
         <Image
+          priority
           ratio="16/9"
           label="lead image, wide"
           src={mockImage('lead image, wide', 1600, 900)}

@@ -20,6 +20,7 @@ export function Header() {
       </div>
       <div className="overflow-hidden rounded-3xl">
         <Image
+          priority
           ratio="16/9"
           label="hero image, handover on a ward tablet"
           src={mockImage('hero image, handover on a ward tablet', 1600, 900)}
