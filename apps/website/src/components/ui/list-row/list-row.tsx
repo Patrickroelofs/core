@@ -13,9 +13,9 @@ function Root({ render, ...props }: ListRowProps) {
     defaultTagName: 'div',
     props: {
       className: cx(
-        'grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-4 py-3 border-b border-border-default',
+        'grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-x-4 gap-y-1 py-3 border-b border-border-default',
         'transition-colors',
-        'has-[>[data-lead]]:grid-cols-[minmax(72px,104px)_minmax(0,1fr)_auto]',
+        'sm:has-[>[data-lead]]:grid-cols-[minmax(72px,104px)_minmax(0,1fr)_auto]',
         'last:border-b-0',
         'link:px-2 link:[transition:color_.2s,padding-left_.25s_ease] link:hover:text-accent-brand link:hover:pl-6',
         'focus-ring',
@@ -28,12 +28,12 @@ function Root({ render, ...props }: ListRowProps) {
 /** Mono lead column, e.g. a date range. Lead and meta keep their colour when a link row turns coral on hover. */
 /** Lead and meta keep their colour when a link row turns coral on hover. */
 function Lead(props: Part<ComponentProps<'span'>>) {
-  return <span className="text-fg-default opacity-60 text-md" data-lead="" {...props} />
+  return <span className="text-fg-default opacity-60 text-md max-sm:col-span-full" data-lead="" {...props} />
 }
 
 /** Main column: put a `Title` (and detail text) inside. */
 function Body(props: Part<ComponentProps<'span'>>) {
-  return <span className="min-w-0" {...props} />
+  return <span className="min-w-0 [overflow-wrap:anywhere]" {...props} />
 }
 
 /** Trailing small text, e.g. a `Label`. */

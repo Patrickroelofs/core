@@ -4,7 +4,19 @@ import { ListRow } from '@/components/ui/list-row/list-row'
 import { Title } from '@/components/ui/title/title'
 
 const links = [
-  { label: 'Email', value: 'contact@patrickroelofs.com', href: 'mailto:contact@patrickroelofs.com' },
+  {
+    label: 'Email',
+    value: (
+      <>
+        contact@
+        <wbr />
+        patrickroelofs
+        <wbr />
+        .com
+      </>
+    ),
+    href: 'mailto:contact@patrickroelofs.com',
+  },
   { label: 'Profile', value: 'LinkedIn', href: 'https://www.linkedin.com/in/patrick-roelofs/' },
   { label: 'Code', value: 'GitHub', href: 'https://github.com/Patrickroelofs/' },
 ]
@@ -14,7 +26,7 @@ export function Contact() {
     <LabeledSection id="contact" tone="azure">
       <LabeledSection.Label>Contact</LabeledSection.Label>
       <LabeledSection.Content>
-        <ul className="  ">
+        <ul>
           {links.map(({ label, value, href }) => (
             <li key={label}>
               <ListRow render={<a href={href} />}>
