@@ -1,13 +1,17 @@
 import { readdirSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import mdx from '@mdx-js/rollup'
 import babel from '@rolldown/plugin-babel'
 import tailwindcss from '@tailwindcss/vite'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import redact from '@tanstack/redact/vite'
 import viteReact, { reactCompilerPreset } from '@vitejs/plugin-react'
 import { nitro } from 'nitro/vite'
+import remarkFrontmatter from 'remark-frontmatter'
+import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 import { defineConfig } from 'vite'
+import { remarkHeadings } from './src/content/remark-headings'
 import { ogImagePath, type PagePath, pages } from './src/seo/pages'
 
 const dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -29,9 +33,28 @@ function staticRoutes(dir: string) {
   return [...new Set(files)]
 }
 
+function contentRoutes(dir: string) {
+  return readdirSync(dir, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .flatMap((section) =>
+      readdirSync(path.join(dir, section.name))
+        .filter((file) => file.endsWith('.mdx'))
+        .map((file) => `/${section.name}/${file.replace(/\.mdx$/, '')}`),
+    )
+    .filter((page) => !hiddenPages.test(page))
+}
+
+const content = contentRoutes(path.join(dirname, 'src/content'))
+
 export default defineConfig({
   plugins: [
     redact(),
+    {
+      enforce: 'pre',
+      ...mdx({
+        remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter, remarkHeadings],
+      }),
+    },
     tanstackStart({ router: { routeFileIgnorePattern: hiddenRoutes.source } }),
     viteReact(),
     babel({ presets: [reactCompilerPreset()] }),
@@ -41,7 +64,10 @@ export default defineConfig({
         crawlLinks: true,
         routes: [
           ...staticRoutes(path.join(dirname, 'src/routes')),
-          ...(Object.keys(pages) as PagePath[]).filter((page) => !hiddenPages.test(page)).map(ogImagePath),
+          ...content,
+          ...[...(Object.keys(pages) as PagePath[]).filter((page) => !hiddenPages.test(page)), ...content].map(
+            ogImagePath,
+          ),
         ],
       },
       compressPublicAssets: { gzip: true, brotli: true },

@@ -2,8 +2,9 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button/button'
 import { Tag } from '@/components/ui/tag/tag'
 import { Title } from '@/components/ui/title/title'
+import type { Post } from '@/content/content'
 
-export function Outro() {
+export function Outro({ post }: { post: Post }) {
   const [copied, setCopied] = useState(false)
   const copy = () => {
     navigator.clipboard?.writeText(location.href).catch(() => {})
@@ -19,22 +20,27 @@ export function Outro() {
           <span className="h-2.5 w-16 flex-none rounded-pill bg-coral" />
           <span className="h-px flex-1 bg-border-default" />
         </div>
-        <div className="max-w-[28ch]">
-          <Title as="p" size="sm">
-            Thanks for reading. If you design for people on shifts, I’d like to hear how you handle handovers.
-          </Title>
-        </div>
+        {post.outro ? (
+          <div className="max-w-[28ch]">
+            <Title as="p" size="sm">
+              {post.outro}
+            </Title>
+          </div>
+        ) : null}
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex gap-1.5">
-            <Tag appearance="soft">Health</Tag>
-            <Tag appearance="soft">Process</Tag>
+            {post.tags.map((tag) => (
+              <Tag key={tag} appearance="soft">
+                {tag}
+              </Tag>
+            ))}
           </div>
           <div className="flex flex-wrap gap-2">
             <Button variant="secondary" onClick={copy}>
               {copied ? 'Copied ✓' : 'Copy link'}
             </Button>
             <Button
-              render={<a href="mailto:contact@patrickroelofs.com?subject=Designing%20for%204am" />}
+              render={<a href={`mailto:contact@patrickroelofs.com?subject=${encodeURIComponent(post.title)}`} />}
               nativeButton={false}
               icon="↗"
             >

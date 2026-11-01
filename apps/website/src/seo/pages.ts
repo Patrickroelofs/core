@@ -16,21 +16,7 @@ export const pages = {
     description: 'Meet Patrick, a frontend developer making fun, calm software with a touch of UX.',
   },
   '/projects': { title: 'Work' },
-  '/projects/patrickroelofs': {
-    title: 'Shiftboard Handover',
-    description: 'Personal website and portfolio.',
-    kicker: 'Case study',
-    meta: 'Personal · 2026',
-  },
   '/writing': { title: 'Writing' },
-  '/writing/designing-for-4am': {
-    title: 'Designing for 4am',
-    description:
-      'What three night shifts on a hospital ward taught me about handover screens, and why the best change we made was deleting things.',
-    kicker: 'Essay',
-    meta: '14 Oct 2026 · 9 min read',
-    article: true,
-  },
   '/photography': { title: 'Photography', description: 'Photographs on film, grouped into series.' },
   '/photography/texel': {
     title: 'Texel',
@@ -42,10 +28,15 @@ export const pages = {
 
 export type PagePath = keyof typeof pages
 
-export const ogImagePath = (path: PagePath) => `/og${path === '/' ? '/index' : path}.png`
+export const ogImagePath = (path: string) => `/og${path === '/' ? '/index' : path}.png`
 
-export function seo(path: PagePath) {
-  const page: Page = pages[path]
+export function seo(path: PagePath): ReturnType<typeof head>
+export function seo(path: string, page: Page): ReturnType<typeof head>
+export function seo(path: string, page: Page = pages[path as PagePath]) {
+  return head(path, page)
+}
+
+function head(path: string, page: Page) {
   const title = path === '/' ? siteName : `${page.title} - ${siteName}`
   const image = `${siteUrl}${ogImagePath(path)}`
   return {

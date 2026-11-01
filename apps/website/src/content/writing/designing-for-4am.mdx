@@ -1,0 +1,40 @@
+---
+title: Designing for 4am
+description: What three night shifts on a hospital ward taught me about handover screens, and why the best change we made was deleting things.
+kicker: Essay
+date: '2026-10-14'
+minutes: 9
+tags: [Health, Process]
+cover:
+  alt: lead image, wide
+  caption: Ward 4B at shift change, Amsterdam.
+outro: Thanks for reading. If you design for people on shifts, I’d like to hear how you handle handovers.
+---
+
+<Lead>In the autumn of 2019 I spent three night shifts on a hospital ward before drawing a single screen. I wanted to understand the handover: the fifteen minutes at 7:30am when one team of nurses tells the next everything that happened in the last nine hours.</Lead>
+
+## The handover
+
+<Sidenote n={1} note="Ward 4B, Amsterdam, over three weeks in autumn 2019. Shifts ran 22:30 to 07:30.">The tool they used was a long, scrolling list of patients, each with a dozen fields. It was accurate and complete, and almost nobody read it. Nurses printed it, folded it into a pocket and added notes by hand.</Sidenote>
+
+By 4am the people using it had been awake for twenty hours. They read standing up, between call bells, with one hand on a trolley. The screen had to work for that person, not the one in the design review at 2pm.
+
+## Say it once
+
+<Sidenote n={2} note="We tested this by asking nurses to read a patient summary aloud while a call bell was ringing. Anything they skipped, we cut.">We rewrote every patient card so it answered one question first: what does the next nurse need to do in the next hour? Everything else moved one tap away.</Sidenote>
+
+<Figure alt="patient card, before and after" caption="Fig. 1 · The patient card, first version and the one that shipped." />
+
+The cards got shorter and the language got plainer. “Fluid balance monitoring required” became “Check fluids at 9”. The words were the design.
+
+<Quote by="Ana, night nurse, Ward 4B">“If I have to read it twice, I’ve already missed something.”</Quote>
+
+## What we removed
+
+<Sidenote n={3} note="The settings page went from 41 options to 6. Nobody has asked for the other 35 back.">Most of the work was deletion. We removed the colour-coded risk badges nobody could tell apart under ward lighting, the free-text fields that duplicated the chart, and most of the settings.</Sidenote>
+
+Each thing we removed made the remaining things easier to see. Handover time dropped by 38% over the following six months, mostly because people stopped scrolling past things they didn’t need.
+
+## Calm is a feature
+
+I now start every project by asking when and where the hardest use of it happens. Usually it’s late, rushed, or both. If the screen works then, it works at 2pm too.
