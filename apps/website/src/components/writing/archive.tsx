@@ -2,13 +2,13 @@ import { useState } from 'react'
 import { Label } from '@/components/ui/label/label'
 import { ListRow } from '@/components/ui/list-row/list-row'
 import { Title } from '@/components/ui/title/title'
-import { type Post, postHref, posts } from './posts'
+import { type Post, posts } from '@/content/content'
 
-const topics = ['All', ...new Set(posts.map((p) => p.tag))]
+const topics = ['All', ...new Set(posts.flatMap((p) => p.tags))]
 
 export function Archive() {
   const [topic, setTopic] = useState('All')
-  const shown = posts.filter((p) => topic === 'All' || p.tag === topic)
+  const shown = posts.filter((p) => topic === 'All' || p.tags.includes(topic))
   const years = [...new Set(shown.map((p) => p.year))]
 
   return (
@@ -26,7 +26,10 @@ export function Archive() {
               onClick={() => setTopic(t)}
               className="focus-ring cursor-pointer rounded-pill px-3.5 py-2 text-sm font-medium ring-1 ring-border-default transition-colors aria-pressed:bg-navy aria-pressed:text-snow"
             >
-              {t} <span className="text-xs opacity-60">{posts.filter((p) => t === 'All' || p.tag === t).length}</span>
+              {t}{' '}
+              <span className="text-xs opacity-60">
+                {posts.filter((p) => t === 'All' || p.tags.includes(t)).length}
+              </span>
             </button>
           ))}
         </div>
@@ -40,9 +43,9 @@ export function Archive() {
             {shown
               .filter((p: Post) => p.year === year)
               .map((p) => (
-                <li key={p.title}>
-                  <ListRow render={<a href={postHref(p)} />}>
-                    <ListRow.Lead>{p.date}</ListRow.Lead>
+                <li key={p.slug}>
+                  <ListRow render={<a href={p.path} />}>
+                    <ListRow.Lead>{p.day}</ListRow.Lead>
                     <ListRow.Body>
                       <Title as="span" size="sm">
                         {p.title}
@@ -50,7 +53,7 @@ export function Archive() {
                     </ListRow.Body>
                     <ListRow.Meta>
                       <Label size="xs" render={<span />}>
-                        {p.tag} · {p.minutes}
+                        {p.tags[0]} · {p.minutes} min
                       </Label>
                     </ListRow.Meta>
                   </ListRow>

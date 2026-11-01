@@ -4,8 +4,8 @@ import { Label } from '@/components/ui/label/label'
 import { ListRow } from '@/components/ui/list-row/list-row'
 import { Title } from '@/components/ui/title/title'
 import { Typography } from '@/components/ui/typography/typography'
-import { mockImage } from '@/mock/image'
-import { projects } from './projects'
+import { projects } from '@/content/content'
+import { imageSrc } from '../content-image'
 
 const filters = [
   { value: 'All', word: 'all work,' },
@@ -16,9 +16,9 @@ type Filter = (typeof filters)[number]['value']
 
 export function AllProjects() {
   const [filter, setFilter] = useState<Filter>('All')
-  const [hovered, setHovered] = useState<string>(projects[0].title)
+  const [hovered, setHovered] = useState(projects[0]?.slug)
   const shown = projects.filter((p) => filter === 'All' || p.category === filter)
-  const current = shown.find((p) => p.title === hovered) ?? shown[0]
+  const current = shown.find((p) => p.slug === hovered) ?? shown[0]
 
   return (
     <div className="flex flex-col gap-12 pt-12">
@@ -38,19 +38,12 @@ export function AllProjects() {
       </Title>
       <div className="grid gap-8 md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
         <ul className="border-t border-border-default">
-          {shown.map(({ title, year, category }) => (
-            <li key={title} id={title.toLowerCase().replace(/ /g, '-')} className="scroll-mt-20">
+          {shown.map(({ slug, path, title, year, category }) => (
+            <li key={slug} id={slug} className="scroll-mt-20">
               <ListRow
-                render={
-                  <a
-                    // only Shiftboard has a case study so far
-                    href={title === projects[0].title ? '/projects/patrickroelofs' : '#'}
-                    onMouseEnter={() => setHovered(title)}
-                    onFocus={() => setHovered(title)}
-                  />
-                }
+                render={<a href={path} onMouseEnter={() => setHovered(slug)} onFocus={() => setHovered(slug)} />}
                 // dim the rows that aren't previewed
-                style={{ opacity: title === current.title ? 1 : 0.45 }}
+                style={{ opacity: slug === current?.slug ? 1 : 0.45 }}
               >
                 <ListRow.Lead>{year}</ListRow.Lead>
                 <ListRow.Body>
@@ -63,23 +56,24 @@ export function AllProjects() {
             </li>
           ))}
         </ul>
-        <div className="hidden md:block">
-          <div className="sticky top-8 flex flex-col gap-3.5">
-            <div className="overflow-hidden rounded-3xl">
-              <Image
-                ratio="4/3"
-                tone={current.tone}
-                label={current.image}
-                src={mockImage(current.image, 1200, 900)}
-                alt={current.image}
-              />
+        {current ? (
+          <div className="hidden md:block">
+            <div className="sticky top-8 flex flex-col gap-3.5">
+              <div className="overflow-hidden rounded-3xl">
+                <Image
+                  ratio="4/3"
+                  label={current.cover.alt}
+                  src={imageSrc(current.cover, 1200, 900)}
+                  alt={current.cover.alt}
+                />
+              </div>
+              <Typography>{current.description}</Typography>
+              <Label size="xs" render={<span />}>
+                {current.role}
+              </Label>
             </div>
-            <Typography>{current.description}</Typography>
-            <Label size="xs" render={<span />}>
-              {current.role}
-            </Label>
           </div>
-        </div>
+        ) : null}
       </div>
     </div>
   )
