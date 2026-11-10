@@ -4,7 +4,6 @@ import { Facts } from '../components/cascade/facts'
 import { Gallery } from '../components/cascade/gallery'
 import { Header } from '../components/cascade/header'
 import { Idea } from '../components/cascade/idea'
-import { NextProject } from '../components/cascade/next-project'
 import { Status } from '../components/cascade/status'
 import { Website } from '../components/cascade/website'
 import { DarkSlabFooter } from '../components/dark-slab-footer'
@@ -21,7 +20,6 @@ function Cascade() {
         <Build />
         <Website />
         <Status />
-        <NextProject />
       </main>
       <DarkSlabFooter />
     </>
