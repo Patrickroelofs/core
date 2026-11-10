@@ -27,7 +27,7 @@ export function Gallery() {
   return (
     <div className="mt-fluid-4xl grid gap-x-3 gap-y-8 md:grid-cols-2">
       {shots.map((shot) => (
-        <Shot key={shot.src} {...shot} />
+        <Shot key={shot.src} inset="sm" {...shot} />
       ))}
     </div>
   )

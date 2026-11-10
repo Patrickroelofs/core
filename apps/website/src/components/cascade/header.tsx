@@ -1,3 +1,4 @@
+import { Backdrop } from '@/components/ui/backdrop/backdrop'
 import { LinkButton } from '@/components/ui/button/link-button'
 import { Image } from '@/components/ui/image/image'
 import { Title } from '@/components/ui/title/title'
@@ -27,14 +28,14 @@ export function Header() {
           </LinkButton>
         </div>
       </div>
-      <div className="overflow-hidden rounded-card">
+      <Backdrop seed="/projects/cascade/website.webp">
         <Image
           priority
-          ratio="16/9"
+          ratio="16/10"
           src="/projects/cascade/website.webp"
           alt="The Cascadelist homepage: the headline 'Every thought gets a place to land' beside a small live outline"
         />
-      </div>
+      </Backdrop>
     </header>
   )
 }
