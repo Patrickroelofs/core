@@ -28,6 +28,8 @@ export function Idea() {
             </Typography>
           </div>
           <Shot
+            tone="coral"
+            url="app.cascadelist.com"
             src="/projects/cascade/outline.webp"
             alt="A Cascade outline with three nested groups: a novel, a sprint with tasks, and groceries"
             caption="A novel, a sprint and a grocery list in one outline, without an account."

@@ -1,3 +1,4 @@
+import { BrowserFrame } from '@/components/ui/browser-frame/browser-frame'
 import { Image } from '@/components/ui/image/image'
 import { Tag } from '@/components/ui/tag/tag'
 import { Title } from '@/components/ui/title/title'
@@ -30,13 +31,13 @@ export function FeaturedProject() {
               </Typography>
             </div>
           </div>
-          <div className="overflow-hidden rounded-card">
+          <BrowserFrame inset="sm" url="app.cascadelist.com">
             <Image
-              ratio="4/3"
+              ratio="16/10"
               src="/projects/cascade/outline.webp"
               alt="A Cascade outline with three nested groups: a novel, a sprint with tasks, and groceries"
             />
-          </div>
+          </BrowserFrame>
         </a>
       </section>
     </>
