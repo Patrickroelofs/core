@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { HeroIntro } from '@/components/ui/hero-intro/hero-intro'
 import { Image } from '@/components/ui/image/image'
 import { DarkSlabFooter } from '../components/dark-slab-footer'
+import { FeaturedProject } from '../components/home/featured-project'
 import { Featured as FeaturedPhotos } from '../components/photography/featured'
 import { seo } from '../seo/pages'
 
@@ -26,6 +27,7 @@ function Home() {
           </HeroIntro.Phrase>
           .
         </HeroIntro>
+        <FeaturedProject />
         <FeaturedPhotos />
       </main>
       <DarkSlabFooter />

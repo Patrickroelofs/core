@@ -11,8 +11,8 @@ import { defineConfig } from 'vite'
 import { ogImagePath, type PagePath, pages } from './src/seo/pages'
 
 const dirname = path.dirname(fileURLToPath(import.meta.url))
-const hiddenRoutes = /^(projects|writing)\./
-const hiddenPages = /^\/(projects|writing)(\/|$)/
+const hiddenRoutes = /^(projects|writing)\.(?!cascade\.)/
+const hiddenPages = /^\/(projects|writing)(?!\/cascade$)(\/|$)/
 
 function staticRoutes(dir: string) {
   const files = readdirSync(dir, { recursive: true, encoding: 'utf8' })

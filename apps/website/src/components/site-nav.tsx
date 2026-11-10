@@ -12,6 +12,7 @@ export function SiteNav() {
           <MobileNavigation.Trigger />
           <MobileNavigation.Sheet>
             <MobileNavigation.Link href="/about">About</MobileNavigation.Link>
+            <MobileNavigation.Link href="/projects/cascade">Cascadelist</MobileNavigation.Link>
             <MobileNavigation.Link href="/photography">Photography</MobileNavigation.Link>
           </MobileNavigation.Sheet>
         </MobileNavigation>
@@ -21,6 +22,9 @@ export function SiteNav() {
           <NavigationMenu.List>
             <NavigationMenu.Item>
               <NavigationMenu.Link href="/about">About</NavigationMenu.Link>
+            </NavigationMenu.Item>
+            <NavigationMenu.Item>
+              <NavigationMenu.Link href="/projects/cascade">Cascadelist</NavigationMenu.Link>
             </NavigationMenu.Item>
             <NavigationMenu.Item>
               <NavigationMenu.Link href="/photography">Photography</NavigationMenu.Link>
