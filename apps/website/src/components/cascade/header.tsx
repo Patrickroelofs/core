@@ -1,4 +1,4 @@
-import { BrowserFrame } from '@/components/ui/browser-frame/browser-frame'
+import { Backdrop } from '@/components/ui/backdrop/backdrop'
 import { LinkButton } from '@/components/ui/button/link-button'
 import { Image } from '@/components/ui/image/image'
 import { Title } from '@/components/ui/title/title'
@@ -28,14 +28,14 @@ export function Header() {
           </LinkButton>
         </div>
       </div>
-      <BrowserFrame url="cascadelist.com">
+      <Backdrop seed="/projects/cascade/website.webp">
         <Image
           priority
           ratio="16/10"
           src="/projects/cascade/website.webp"
           alt="The Cascadelist homepage: the headline 'Every thought gets a place to land' beside a small live outline"
         />
-      </BrowserFrame>
+      </Backdrop>
     </header>
   )
 }

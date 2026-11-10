@@ -1,4 +1,4 @@
-import { BrowserFrame } from '@/components/ui/browser-frame/browser-frame'
+import { Backdrop } from '@/components/ui/backdrop/backdrop'
 import { Image } from '@/components/ui/image/image'
 import { Tag } from '@/components/ui/tag/tag'
 import { Title } from '@/components/ui/title/title'
@@ -31,13 +31,13 @@ export function FeaturedProject() {
               </Typography>
             </div>
           </div>
-          <BrowserFrame inset="sm" url="app.cascadelist.com">
+          <Backdrop seed="/projects/cascade/outline.webp" inset="sm">
             <Image
               ratio="16/10"
               src="/projects/cascade/outline.webp"
               alt="A Cascade outline with three nested groups: a novel, a sprint with tasks, and groceries"
             />
-          </BrowserFrame>
+          </Backdrop>
         </a>
       </section>
     </>

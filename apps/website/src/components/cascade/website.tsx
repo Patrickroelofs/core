@@ -15,8 +15,6 @@ export function Website() {
             </Typography>
           </div>
           <Shot
-            tone="plum"
-            url="cascadelist.com"
             src="/projects/cascade/features.webp"
             alt="The features section of cascadelist.com: cards for Board, Table, Links and backlinks, Mirrors, Split pane and History, each marked coming soon"
             caption="One outline, a dozen ways to look at it: the views on the roadmap."
