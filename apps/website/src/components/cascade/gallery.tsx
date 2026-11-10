@@ -1,28 +1,34 @@
-import { Image } from '@/components/ui/image/image'
-import { Label } from '@/components/ui/label/label'
+import { Shot } from './shot'
+
+const shots = [
+  {
+    src: '/projects/cascade/menu.webp',
+    alt: 'The right-click menu on a line, with the Convert into submenu showing Text and Task',
+    caption: 'Right-click any line to convert, indent, zoom, duplicate or delete it.',
+  },
+  {
+    src: '/projects/cascade/palette.webp',
+    alt: "The command palette searching for 'chapter', with two matching nodes and an option to create a new one",
+    caption: 'The command palette searches every node and jumps straight to it.',
+  },
+  {
+    src: '/projects/cascade/zoom.webp',
+    alt: "The 'Sprint 14' line zoomed in as its own page, showing its three tasks",
+    caption: 'Zoomed in, a line becomes its own page with its own URL.',
+  },
+  {
+    src: '/projects/cascade/onboarding.webp',
+    alt: "Cascade onboarding, titled 'Everything is a line', listing the five gestures that drive the app",
+    caption: 'Onboarding explains the whole app in five lines.',
+  },
+] as const
 
 export function Gallery() {
   return (
-    <figure className="mt-fluid-4xl flex flex-col gap-3">
-      <div className="grid gap-3 md:grid-cols-2">
-        <div className="overflow-hidden rounded-3xl ring-1 ring-border-default">
-          <Image
-            ratio="16/9"
-            src="/projects/cascade/onboarding.webp"
-            alt="Cascade onboarding, titled 'Everything is a line', listing the five gestures that drive the app"
-          />
-        </div>
-        <div className="overflow-hidden rounded-3xl ring-1 ring-border-default">
-          <Image
-            ratio="16/9"
-            src="/projects/cascade/outline.webp"
-            alt="A Cascade outline with a list of lines above the 'Capture a thought' bar"
-          />
-        </div>
-      </div>
-      <Label size="xs" render={<figcaption />}>
-        Onboarding explains the whole app in five lines; after that it is an outline and a capture bar.
-      </Label>
-    </figure>
+    <div className="mt-fluid-4xl grid gap-x-3 gap-y-8 md:grid-cols-2">
+      {shots.map((shot) => (
+        <Shot key={shot.src} {...shot} />
+      ))}
+    </div>
   )
 }

@@ -11,7 +11,7 @@ const roadmap = [
 export function Status() {
   return (
     <LabeledSection id="status" tone="azure">
-      <LabeledSection.Label hint="03">Where it stands</LabeledSection.Label>
+      <LabeledSection.Label hint="04">Where it stands</LabeledSection.Label>
       <LabeledSection.Content>
         <ul className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-8">
           {roadmap.map(({ title, body }) => (

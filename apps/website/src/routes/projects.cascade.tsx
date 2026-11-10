@@ -6,6 +6,7 @@ import { Header } from '../components/cascade/header'
 import { Idea } from '../components/cascade/idea'
 import { NextProject } from '../components/cascade/next-project'
 import { Status } from '../components/cascade/status'
+import { Website } from '../components/cascade/website'
 import { DarkSlabFooter } from '../components/dark-slab-footer'
 import { seo } from '../seo/pages'
 
@@ -16,8 +17,9 @@ function Cascade() {
         <Header />
         <Facts />
         <Idea />
-        <Build />
         <Gallery />
+        <Build />
+        <Website />
         <Status />
         <NextProject />
       </main>

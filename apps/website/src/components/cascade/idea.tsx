@@ -1,6 +1,7 @@
 import { LabeledSection } from '@/components/ui/labeled-section/labeled-section'
 import { Title } from '@/components/ui/title/title'
 import { Typography } from '@/components/ui/typography/typography'
+import { Shot } from './shot'
 
 export function Idea() {
   return (
@@ -26,6 +27,11 @@ export function Idea() {
               start, and the command palette jumps to anything from the keyboard.
             </Typography>
           </div>
+          <Shot
+            src="/projects/cascade/outline.webp"
+            alt="A Cascade outline with three nested groups: a novel, a sprint with tasks, and groceries"
+            caption="A novel, a sprint and a grocery list in one outline, without an account."
+          />
         </div>
       </LabeledSection.Content>
     </LabeledSection>
