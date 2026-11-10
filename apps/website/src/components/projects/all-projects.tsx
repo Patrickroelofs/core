@@ -4,7 +4,6 @@ import { Label } from '@/components/ui/label/label'
 import { ListRow } from '@/components/ui/list-row/list-row'
 import { Title } from '@/components/ui/title/title'
 import { Typography } from '@/components/ui/typography/typography'
-import { mockImage } from '@/mock/image'
 import { projects } from './projects'
 
 const filters = [
@@ -38,17 +37,10 @@ export function AllProjects() {
       </Title>
       <div className="grid gap-8 md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
         <ul className="border-t border-border-default">
-          {shown.map(({ title, year, category }) => (
+          {shown.map(({ title, href, year, category }) => (
             <li key={title} id={title.toLowerCase().replace(/ /g, '-')} className="scroll-mt-20">
               <ListRow
-                render={
-                  <a
-                    // only Shiftboard has a case study so far
-                    href={title === projects[0].title ? '/projects/patrickroelofs' : '#'}
-                    onMouseEnter={() => setHovered(title)}
-                    onFocus={() => setHovered(title)}
-                  />
-                }
+                render={<a href={href} onMouseEnter={() => setHovered(title)} onFocus={() => setHovered(title)} />}
                 // dim the rows that aren't previewed
                 style={{ opacity: title === current.title ? 1 : 0.45 }}
               >
@@ -65,14 +57,8 @@ export function AllProjects() {
         </ul>
         <div className="hidden md:block">
           <div className="sticky top-8 flex flex-col gap-3.5">
-            <div className="overflow-hidden rounded-3xl">
-              <Image
-                ratio="4/3"
-                tone={current.tone}
-                label={current.image}
-                src={mockImage(current.image, 1200, 900)}
-                alt={current.image}
-              />
+            <div className="overflow-hidden rounded-card">
+              <Image ratio="4/3" tone={current.tone} label={current.image} src={current.src} alt={current.image} />
             </div>
             <Typography>{current.description}</Typography>
             <Label size="xs" render={<span />}>

@@ -3,9 +3,8 @@ import { Title } from '@/components/ui/title/title'
 
 export function NextProject() {
   return (
-    // TODO: no Mesa Triage page yet, link to the overview
     <a
-      href="/projects"
+      href="/projects/cascade"
       className="mt-fluid-4xl flex flex-col gap-5 border-t-[3px] border-coral pt-5 hover:text-accent-brand"
     >
       <span className="flex justify-between">
@@ -13,13 +12,13 @@ export function NextProject() {
           Next project
         </Label>
         <Label size="xs" render={<span />}>
-          Health · 2025
+          Personal · 2026
         </Label>
       </span>
       <Title as="span" size="xl">
-        Mesa{' '}
+        Cascade
         <Title as="span" size="xl" weight="black">
-          Triage
+          list
         </Title>{' '}
         →
       </Title>
