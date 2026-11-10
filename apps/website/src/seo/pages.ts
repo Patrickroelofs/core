@@ -22,6 +22,12 @@ export const pages = {
     kicker: 'Case study',
     meta: 'Personal · 2026',
   },
+  '/projects/cascade': {
+    title: 'Cascadelist',
+    description: 'An outliner for everyone: one infinite list you can nest, fold, zoom and link.',
+    kicker: 'Case study',
+    meta: 'Personal · 2026',
+  },
   '/writing': { title: 'Writing' },
   '/writing/designing-for-4am': {
     title: 'Designing for 4am',
