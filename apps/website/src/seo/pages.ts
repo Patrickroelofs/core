@@ -48,11 +48,33 @@ export const pages = {
 
 export type PagePath = keyof typeof pages
 
+/** Pages that are built and linked; the rest are still drafts. */
+export const publicPages = (Object.keys(pages) as PagePath[]).filter(
+  (path) => !/^\/(projects|writing)(?!\/cascade$)(\/|$)/.test(path),
+)
+
 export const ogImagePath = (path: PagePath) => `/og${path === '/' ? '/index' : path}.png`
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    { '@type': 'WebSite', '@id': `${siteUrl}/#website`, url: `${siteUrl}/`, name: siteName },
+    {
+      '@type': 'Person',
+      '@id': `${siteUrl}/#person`,
+      name: siteName,
+      url: `${siteUrl}/`,
+      jobTitle: 'Frontend developer',
+      nationality: 'Dutch',
+      sameAs: ['https://www.linkedin.com/in/patrick-roelofs/', 'https://github.com/Patrickroelofs/'],
+    },
+  ],
+}
 
 export function seo(path: PagePath) {
   const page: Page = pages[path]
-  const title = path === '/' ? siteName : `${page.title} - ${siteName}`
+  const title = path === '/' ? `${siteName} - Frontend developer` : `${page.title} - ${siteName}`
+  const url = `${siteUrl}${path}`
   const image = `${siteUrl}${ogImagePath(path)}`
   return {
     meta: [
@@ -60,7 +82,7 @@ export function seo(path: PagePath) {
       ...(page.description ? [{ name: 'description', content: page.description }] : []),
       { property: 'og:site_name', content: siteName },
       { property: 'og:type', content: page.article ? 'article' : 'website' },
-      { property: 'og:url', content: `${siteUrl}${path}` },
+      { property: 'og:url', content: url },
       { property: 'og:title', content: page.title },
       ...(page.description ? [{ property: 'og:description', content: page.description }] : []),
       { property: 'og:image', content: image },
@@ -71,6 +93,8 @@ export function seo(path: PagePath) {
       { name: 'twitter:title', content: page.title },
       ...(page.description ? [{ name: 'twitter:description', content: page.description }] : []),
       { name: 'twitter:image', content: image },
+      ...(path === '/' ? [{ 'script:ld+json': structuredData }] : []),
     ],
+    links: [{ rel: 'canonical', href: url }],
   }
 }

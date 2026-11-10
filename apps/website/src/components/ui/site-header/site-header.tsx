@@ -52,7 +52,7 @@ function Root(props: SiteHeaderProps) {
 }
 
 /**
- * Full name that folds to initials ("P.R.") when the header collapses; hover or focus slots it open again. The link is labelled with `name`.
+ * Full name that folds to initials ("P.R.") when the header collapses; hover or focus slots it open again. The link is named by the full words; the initials are hidden from assistive tech.
  * Slot mark: each word is a 1em window onto a two-row reel ("P." over "Patrick"). Open, the reel rolls up (overshooting) while the window widens to the word.
  */
 function Monogram({ name, href, ...props }: SiteHeaderMonogramProps) {
@@ -65,13 +65,11 @@ function Monogram({ name, href, ...props }: SiteHeaderMonogramProps) {
       )}
       data-monogram=""
       href={href}
-      aria-label={name}
       {...props}
     >
       {name.split(' ').map((word, i) => (
         <span
           key={word}
-          aria-hidden="true"
           className={cx(
             'block h-[1em] overflow-hidden font-black first:font-light last:[--closed:0.96em]',
             'max-w-[var(--closed,0.73em)] monogram-open:max-w-[calc(var(--chars)*0.62em)]',
@@ -86,7 +84,9 @@ function Monogram({ name, href, ...props }: SiteHeaderMonogramProps) {
             )}
           >
             {/* padding: negative letter-spacing makes the last glyph overhang its box, which `overflow: hidden` would clip */}
-            <span className="h-[1em] pr-[0.06em]">{word[0]}</span>
+            <span aria-hidden="true" className="h-[1em] pr-[0.06em]">
+              {word[0]}
+            </span>
             <span className="h-[1em] pr-[0.06em]">{word}</span>
           </span>
         </span>

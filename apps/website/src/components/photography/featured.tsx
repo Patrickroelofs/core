@@ -2,6 +2,7 @@ import { Image } from '@/components/ui/image/image'
 import { Tag } from '@/components/ui/tag/tag'
 import { Title } from '@/components/ui/title/title'
 import { Typography } from '@/components/ui/typography/typography'
+import { photo } from '../photo-series/photo'
 import { Rail } from '../photo-series/rail'
 
 export function Featured() {
@@ -15,13 +16,13 @@ export function Featured() {
         >
           <div className="grid aspect-[4/3] grid-cols-[2fr_1fr] grid-rows-2 gap-2">
             <div className="row-span-2 overflow-hidden rounded-3xl">
-              <Image ratio="fill" src="/photography/texel/000008500019.jpg" alt="" priority />
+              <Image ratio="fill" {...photo('000008500019')} sizes="(min-width: 860px) 32vw, 62vw" alt="" />
             </div>
             <div className="overflow-hidden rounded-[20px]">
-              <Image ratio="fill" src="/photography/texel/000008510009.jpg" alt="" />
+              <Image ratio="fill" {...photo('000008510009')} sizes="(min-width: 860px) 16vw, 31vw" alt="" />
             </div>
             <div className="overflow-hidden rounded-[20px]">
-              <Image ratio="fill" src="/photography/texel/000008500016.jpg" alt="" />
+              <Image ratio="fill" {...photo('000008500016')} sizes="(min-width: 860px) 16vw, 31vw" alt="" />
             </div>
           </div>
           <div className="flex flex-col gap-5">
