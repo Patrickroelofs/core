@@ -8,11 +8,11 @@ import redact from '@tanstack/redact/vite'
 import viteReact, { reactCompilerPreset } from '@vitejs/plugin-react'
 import { nitro } from 'nitro/vite'
 import { defineConfig } from 'vite'
-import { ogImagePath, type PagePath, pages } from './src/seo/pages'
+import { previewServer } from './preview-server'
+import { ogImagePath, publicPages } from './src/seo/pages'
 
 const dirname = path.dirname(fileURLToPath(import.meta.url))
 const hiddenRoutes = /^(projects|writing)\.(?!cascade\.)/
-const hiddenPages = /^\/(projects|writing)(?!\/cascade$)(\/|$)/
 
 function staticRoutes(dir: string) {
   const files = readdirSync(dir, { recursive: true, encoding: 'utf8' })
@@ -31,6 +31,7 @@ function staticRoutes(dir: string) {
 
 export default defineConfig({
   plugins: [
+    previewServer(path.join(dirname, '.output/public')),
     redact(),
     tanstackStart({ router: { routeFileIgnorePattern: hiddenRoutes.source } }),
     viteReact(),
@@ -39,10 +40,7 @@ export default defineConfig({
       preset: 'static',
       prerender: {
         crawlLinks: true,
-        routes: [
-          ...staticRoutes(path.join(dirname, 'src/routes')),
-          ...(Object.keys(pages) as PagePath[]).filter((page) => !hiddenPages.test(page)).map(ogImagePath),
-        ],
+        routes: [...staticRoutes(path.join(dirname, 'src/routes')), ...publicPages.map(ogImagePath)],
       },
       compressPublicAssets: { gzip: true, brotli: true },
     }),

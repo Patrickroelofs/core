@@ -14,3 +14,11 @@ Components live in `apps/website/src/components/ui/<name>/`. Style with Tailwind
 ## SEO
 
 Page titles, descriptions and Open Graph images come from `apps/website/src/seo/pages.ts`. Add new pages there and set the route's `head: () => seo('/path')`; the OG image (`/og/<path>.png`) is rendered with satori and prerendered at build. Tags use absolute URLs on `VITE_SITE_URL` (build-time, defaults to `https://patrickroelofs.com`); set it per deploy, e.g. `VITE_SITE_URL=https://v2.patrickroelofs.com`.
+
+## Photos
+
+Photo frames load WebP variants through `photo()` (`apps/website/src/components/photo-series/photo.ts`). After adding or replacing a JPEG in `apps/website/public/photography`, run `pnpm --filter website images` and commit the generated files.
+
+## Production server
+
+Production runs `vite preview`. Redirects, cache and security headers, the CSP and the 404 page live in `apps/website/preview-server.ts`.

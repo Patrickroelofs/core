@@ -2,6 +2,7 @@ import { Dialog } from '@base-ui/react/dialog'
 import { buttonStyles } from '@/components/ui/button/button'
 import { Image } from '@/components/ui/image/image'
 import { Label } from '@/components/ui/label/label'
+import { photo } from './photo'
 import { Rail } from './rail'
 
 const frames = [
@@ -27,6 +28,11 @@ const frames = [
   { file: '000008510023', alt: 'A seal swimming in green water', col: 'md:col-[3/span_8]' },
 ]
 
+function sizesFor(col: string) {
+  const span = Number(col.match(/span_(\d+)/)?.[1] ?? 12)
+  return `(min-width: 768px) min(${Math.round((span / 12) * 100)}vw, ${Math.round((span / 12) * 1400)}px), 100vw`
+}
+
 export function Frames() {
   return (
     <>
@@ -38,7 +44,8 @@ export function Frames() {
               <Dialog.Trigger className="block w-full cursor-zoom-in rounded-lg focus-ring" aria-label={`View ${alt}`}>
                 <Image
                   ratio={portrait ? 'film-portrait' : 'film-landscape'}
-                  src={`/photography/texel/${file}.jpg`}
+                  {...photo(file, portrait ? 1600 : 2200)}
+                  sizes={sizesFor(col)}
                   alt={alt}
                   priority={i === 0}
                 />
@@ -50,7 +57,8 @@ export function Frames() {
                     <div className="flex size-full items-center justify-center p-12">
                       <img
                         className="block max-h-full max-w-full rounded-lg object-contain"
-                        src={`/photography/texel/${file}.jpg`}
+                        {...photo(file, portrait ? 1600 : 2200)}
+                        sizes="100vw"
                         alt={alt}
                         decoding="async"
                       />
@@ -77,7 +85,7 @@ export function Frames() {
                 </Dialog.Viewport>
               </Dialog.Portal>
             </Dialog.Root>
-            <figcaption className="pt-3 opacity-60">
+            <figcaption className="pt-3 opacity-70">
               <Label size="xs" render={<span />}>
                 {String(i + 1).padStart(2, '0')} / {frames.length}
               </Label>

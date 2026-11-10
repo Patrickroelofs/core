@@ -28,7 +28,7 @@ function Root({ render, ...props }: ListRowProps) {
 /** Mono lead column, e.g. a date range. Lead and meta keep their colour when a link row turns coral on hover. */
 /** Lead and meta keep their colour when a link row turns coral on hover. */
 function Lead(props: Part<ComponentProps<'span'>>) {
-  return <span className="text-fg-default opacity-60 text-md max-sm:col-span-full" data-lead="" {...props} />
+  return <span className="text-fg-default opacity-70 text-md max-sm:col-span-full" data-lead="" {...props} />
 }
 
 /** Main column: put a `Title` (and detail text) inside. */
@@ -38,7 +38,7 @@ function Body(props: Part<ComponentProps<'span'>>) {
 
 /** Trailing small text, e.g. a `Label`. */
 function Meta(props: Part<ComponentProps<'span'>>) {
-  return <span className="whitespace-nowrap text-fg-default opacity-60" {...props} />
+  return <span className="whitespace-nowrap text-fg-default opacity-70" {...props} />
 }
 
 export const ListRow = Object.assign(Root, { Lead, Body, Meta })
