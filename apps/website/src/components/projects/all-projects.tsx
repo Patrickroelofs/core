@@ -57,7 +57,7 @@ export function AllProjects() {
         </ul>
         <div className="hidden md:block">
           <div className="sticky top-8 flex flex-col gap-3.5">
-            <div className="overflow-hidden rounded-3xl">
+            <div className="overflow-hidden rounded-card border-[1.5px] border-border-strong">
               <Image ratio="4/3" tone={current.tone} label={current.image} src={current.src} alt={current.image} />
             </div>
             <Typography>{current.description}</Typography>

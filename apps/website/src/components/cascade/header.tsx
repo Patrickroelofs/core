@@ -27,7 +27,7 @@ export function Header() {
           </LinkButton>
         </div>
       </div>
-      <div className="overflow-hidden rounded-3xl ring-1 ring-border-default">
+      <div className="overflow-hidden rounded-card border-[1.5px] border-border-strong">
         <Image
           priority
           ratio="16/9"
