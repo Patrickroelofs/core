@@ -44,6 +44,14 @@ export const pages = {
     kicker: 'Photo series',
     meta: 'Texel · November 2024',
   },
+  '/contact': {
+    title: 'Contact',
+    description: 'How to reach Patrick Roelofs: by email, on LinkedIn or on GitHub, and what to write about.',
+  },
+  '/privacy': {
+    title: 'Privacy',
+    description: 'What this website does with your data: no cookies, no analytics, no tracking and no accounts.',
+  },
 } satisfies Record<string, Page>
 
 export type PagePath = keyof typeof pages
@@ -55,6 +63,10 @@ export const publicPages = (Object.keys(pages) as PagePath[]).filter((path) => !
 export const person = {
   name: siteName,
   jobTitle: 'Frontend developer',
+  description:
+    'Patrick Roelofs is a frontend developer from the Netherlands who studied UX and now works at Iquality. He makes fun, calm software, builds the outliner Cascadelist and takes photographs on film.',
+  // search terms for the homepage: each one is also written out on that page
+  knowsAbout: ['Frontend development', 'UX design', 'Film photography'],
   employer: 'Iquality',
   country: 'NL',
   email: 'contact@patrickroelofs.com',
@@ -64,6 +76,8 @@ export const person = {
 export const pageUrl = (path: PagePath) => `${siteUrl}${path}`
 // every public page is also prerendered as markdown, for agents that ask for it
 export const markdownPath = (path: PagePath) => `${path === '/' ? '/index' : path}.md`
+
+const pageTypes: Partial<Record<PagePath, string>> = { '/about': 'ProfilePage', '/contact': 'ContactPage' }
 
 function jsonLd(path: PagePath, page: Page) {
   const personId = `${siteUrl}/#person`
@@ -85,14 +99,24 @@ function jsonLd(path: PagePath, page: Page) {
         name: person.name,
         url: siteUrl,
         jobTitle: person.jobTitle,
+        description: person.description,
+        knowsAbout: person.knowsAbout,
         worksFor: { '@type': 'Organization', name: person.employer },
         nationality: { '@type': 'Country', name: 'Netherlands' },
         knowsLanguage: ['nl', 'en'],
         email: `mailto:${person.email}`,
+        contactPoint: {
+          '@type': 'ContactPoint',
+          contactType: 'personal',
+          email: person.email,
+          url: pageUrl('/contact'),
+          availableLanguage: ['nl', 'en'],
+        },
+        address: { '@type': 'PostalAddress', addressCountry: person.country },
         sameAs: person.profiles,
       },
       {
-        '@type': path === '/about' ? 'ProfilePage' : page.article ? 'Article' : 'WebPage',
+        '@type': pageTypes[path] ?? (page.article ? 'Article' : 'WebPage'),
         '@id': `${url}#page`,
         url,
         ...(page.article ? { headline: page.title } : { name: page.title }),
@@ -109,9 +133,13 @@ function jsonLd(path: PagePath, page: Page) {
 
 export const ogImagePath = (path: PagePath) => `/og${path === '/' ? '/index' : path}.png`
 
+// the homepage names what Patrick does, so a search for his name and job finds it
+export const pageTitle = (path: PagePath) =>
+  path === '/' ? `${siteName} - ${person.jobTitle}` : `${pages[path].title} - ${siteName}`
+
 export function seo(path: PagePath) {
   const page: Page = pages[path]
-  const title = path === '/' ? siteName : `${page.title} - ${siteName}`
+  const title = pageTitle(path)
   const image = `${siteUrl}${ogImagePath(path)}`
   return {
     links: [

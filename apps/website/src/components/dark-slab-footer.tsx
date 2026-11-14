@@ -1,7 +1,9 @@
 import { Label } from '@/components/ui/label/label'
 import { Title } from '@/components/ui/title/title'
 
-const socials = [
+const links = [
+  { label: 'Contact', href: '/contact' },
+  { label: 'Privacy', href: '/privacy' },
   { label: 'GitHub', href: 'https://github.com/Patrickroelofs/' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/patrick-roelofs/' },
 ] as const
@@ -39,7 +41,7 @@ export function DarkSlabFooter() {
             © 2026 Patrick Roelofs
           </Label>
           <ul className="flex flex-wrap gap-5">
-            {socials.map(({ label, href }) => (
+            {links.map(({ label, href }) => (
               <li key={label}>
                 <Label size="xs" render={<a className="hover:text-coral" href={href} />}>
                   {label}

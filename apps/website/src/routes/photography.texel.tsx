@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { DarkSlabFooter } from '../components/dark-slab-footer'
+import { AboutTexel } from '../components/photo-series/about-texel'
 import { Frames } from '../components/photo-series/frames'
 import { Title } from '../components/ui/title/title'
 import { Typography } from '../components/ui/typography/typography'
@@ -21,6 +22,7 @@ function Texel() {
           </div>
         </header>
         <Frames />
+        <AboutTexel />
       </main>
       <DarkSlabFooter />
     </>

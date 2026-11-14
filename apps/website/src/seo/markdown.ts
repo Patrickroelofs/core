@@ -1,10 +1,11 @@
 // Build-time only (imported from vite.config.ts): a markdown copy of every prerendered page,
 // and the preview-server middleware that serves it to agents sending `Accept: text/markdown`.
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import TurndownService from 'turndown'
 import type { Plugin } from 'vite'
-import { markdownPath, type Page, type PagePath, pages, pageUrl, publicPages, siteName, siteUrl } from './pages'
+import { notFoundMarkdown } from './agents'
+import { markdownPath, type Page, type PagePath, pages, pageTitle, pageUrl, publicPages, siteUrl } from './pages'
 
 const turndown = new TurndownService({ headingStyle: 'atx', bulletListMarker: '-', codeBlockStyle: 'fenced' })
 turndown.remove(
@@ -29,7 +30,7 @@ export function htmlToMarkdown(html: string, pagePath: PagePath) {
     .replace(/\n{3,}/g, '\n\n')
   const front = [
     '---',
-    `title: ${JSON.stringify(pagePath === '/' ? siteName : `${page.title} - ${siteName}`)}`,
+    `title: ${JSON.stringify(pageTitle(pagePath))}`,
     ...(page.description ? [`description: ${JSON.stringify(page.description)}`] : []),
     `url: ${pageUrl(pagePath)}`,
     '---',
@@ -62,6 +63,20 @@ export function markdownHooks() {
   }
 }
 
+/** Whether the static output has something to serve at this URL path. */
+function isPublished(publicDir: string, pathname: string) {
+  let decoded: string
+  try {
+    decoded = decodeURIComponent(pathname)
+  } catch {
+    return false
+  }
+  const file = path.join(publicDir, path.normalize(`/${decoded}`))
+  return [file, path.join(file, 'index.html'), `${file}.html`].some((f) =>
+    statSync(f, { throwIfNoEntry: false })?.isFile(),
+  )
+}
+
 const discoveryLinks = ['</sitemap.xml>; rel="sitemap"', '</llms.txt>; rel="describedby"; type="text/plain"']
 
 /** `vite preview` is the production server: content negotiation and `Link` headers live here. */
@@ -83,7 +98,21 @@ export function markdownNegotiation(publicDir: string): Plugin {
         }
         const direct = publicPages.find((p) => markdownPath(p) === pathname)
         const pagePath = direct ?? publicPages.find((p) => p === pathname)
-        if (!pagePath || !existsSync(path.join(publicDir, markdownPath(pagePath)))) return next()
+        if (!pagePath || !existsSync(path.join(publicDir, markdownPath(pagePath)))) {
+          if (isPublished(publicDir, pathname)) return next()
+          // nothing is published here: a 404 an agent can read, or the designed 404 page
+          const wantsMarkdown = /\btext\/markdown\b/.test(req.headers.accept ?? '')
+          const page = path.join(publicDir, '404.html')
+          if (!wantsMarkdown && !(/\btext\/html\b/.test(req.headers.accept ?? '') && existsSync(page))) return next()
+          const body = wantsMarkdown ? Buffer.from(notFoundMarkdown(pathname)) : readFileSync(page)
+          res.statusCode = 404
+          res.setHeader('Content-Type', wantsMarkdown ? 'text/markdown; charset=utf-8' : 'text/html; charset=utf-8')
+          res.setHeader('Content-Length', body.byteLength)
+          res.setHeader('Vary', 'Accept')
+          res.setHeader('Link', discoveryLinks)
+          res.setHeader('X-Robots-Tag', 'noindex')
+          return res.end(req.method === 'HEAD' ? undefined : body)
+        }
         if (direct) return sendMarkdown(direct)
         res.setHeader('Vary', 'Accept')
         if (/\btext\/markdown\b/.test(req.headers.accept ?? '')) return sendMarkdown(pagePath)
