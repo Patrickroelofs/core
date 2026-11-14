@@ -14,3 +14,7 @@ Components live in `apps/website/src/components/ui/<name>/`. Style with Tailwind
 ## SEO
 
 Page titles, descriptions and Open Graph images come from `apps/website/src/seo/pages.ts`. Add new pages there and set the route's `head: () => seo('/path')`; the OG image (`/og/<path>.png`) is rendered with satori and prerendered at build. Tags use absolute URLs on `VITE_SITE_URL` (build-time, defaults to `https://patrickroelofs.com`); set it per deploy, e.g. `VITE_SITE_URL=https://v2.patrickroelofs.com`.
+
+## Agents (GEO)
+
+`seo()` also emits the canonical URL, JSON-LD (`person` in `pages.ts` holds the facts) and a markdown alternate. `robots.txt`, `sitemap.xml` and `llms.txt` are generated from `pages.ts` in `apps/website/src/seo/agents.ts`; the AI crawler policy (`Content-Signal`) is set there. The build writes a markdown copy of every public page (`/about.md`, `/index.md`) and `llms-full.txt` from the prerendered `<main>` (`src/seo/markdown.ts`), so keep page content inside `<main>` and mark decoration `aria-hidden`. The preview server serves the markdown for `Accept: text/markdown` and adds the `Link` headers.
