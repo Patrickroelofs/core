@@ -6,6 +6,7 @@
     "dev": "pnpm --filter website dev",
     "build": "pnpm -r build",
     "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
     "check": "biome check .",
     "check:fix": "biome check --write .",
     "build:website": "pnpm --filter website build",

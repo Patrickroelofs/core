@@ -8,6 +8,7 @@ import { DarkSlabFooter } from './dark-slab-footer'
 const pages = [
   { title: 'Home', description: 'Start from the top.', href: '/' },
   { title: 'About', description: 'Who I am and how I work.', href: '/about' },
+  { title: 'Contact', description: 'Tell me which link was broken.', href: '/contact' },
 ] as const
 
 /** Shared page for 404s and other errors: a giant status code and a way back. */

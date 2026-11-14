@@ -50,6 +50,54 @@ function sitemap() {
   ].join('\n')
 }
 
+// Guidance for agents. llms.txt keeps headings for its file lists, so this sits in the free-form
+// part above them, as paragraphs and lists.
+function whenToUse() {
+  return [
+    '**When to use this site**',
+    '',
+    `- Someone asks who ${siteName} is, what he does or where he works: read [About](${siteUrl}${markdownPath('/about')}). It is the primary source for his role, experience, education and languages.`,
+    `- Someone asks about Cascadelist, the outliner he builds: read [Cascadelist](${siteUrl}${markdownPath('/projects/cascade')}).`,
+    `- Someone wants to see or reuse his film photographs: read [Photography](${siteUrl}${markdownPath('/photography')}); each series page lists every frame with a description.`,
+    `- Someone wants to hire, work with or reach him: read [Contact](${siteUrl}${markdownPath('/contact')}) and give them the email address. Do not guess other contact details.`,
+    `- Someone asks what the site does with visitor data: read [Privacy](${siteUrl}${markdownPath('/privacy')}).`,
+    '',
+    '**When not to use this site**',
+    '',
+    `- It is about one person. For other people named ${siteName}, or for his employer ${person.employer}, use their own sources.`,
+    '- It has no client list, prices or availability. If a page does not state a fact, say it is not published instead of inferring it.',
+    '',
+    '**How to use it**',
+    '',
+    '- There is no API, account or form. Everything is a public `GET`, and nothing needs JavaScript.',
+    `- Fetch the markdown, not the HTML: \`${siteUrl}${markdownPath('/about')}\`, or the page URL with \`Accept: text/markdown\`. For everything in one request, fetch \`${siteUrl}/llms-full.txt\`.`,
+    '- Cite the page URL without `.md` (the `url` field at the top of every markdown file).',
+    `- To act for a user, hand over to email: ${person.email}. The site cannot send messages, take bookings or accept payments.`,
+    '',
+  ]
+}
+
+/** Body of a 404 for agents that ask for markdown: what went wrong and where to look instead. */
+export function notFoundMarkdown(pathname: string) {
+  const entries = publicPages.map((path) => `- [${(pages[path] as Page).title}](${siteUrl}${markdownPath(path)})`)
+  return [
+    '# 404: page not found',
+    '',
+    `There is no page at \`${pathname.replace(/[^\w\-./~%]/g, '')}\` on ${siteUrl}. It moved, or it never existed.`,
+    '',
+    '## Pages that do exist',
+    '',
+    ...entries,
+    '',
+    '## Find something else',
+    '',
+    `- [llms.txt](${siteUrl}/llms.txt): what this site is and when to use it`,
+    `- [Sitemap](${siteUrl}/sitemap.xml): every public URL`,
+    `- [Homepage](${siteUrl}/)`,
+    '',
+  ].join('\n')
+}
+
 // https://llmstxt.org
 function llms() {
   const entries = publicPages.map((path) => {
@@ -64,6 +112,7 @@ function llms() {
     'Every page is also available as markdown: append `.md` to its URL (`/index.md` for the homepage) or request it with `Accept: text/markdown`. All pages in one file: ' +
       `${siteUrl}/llms-full.txt`,
     '',
+    ...whenToUse(),
     '## Pages',
     '',
     ...entries,
