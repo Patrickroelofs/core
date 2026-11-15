@@ -29,7 +29,7 @@ function Grossglockner() {
           and waterfalls spilling over rock. Lower down there are flies on a pink thistle, a brown and white cow among
           blueberry bushes in a spruce forest, villages in a hazy valley, gondolas passing a grey limestone ridge and a
           paraglider drifting above the spruce trees. Everything was shot on 35mm film. Select a photograph to view it
-          full screen.
+          full screen or to download the original.
         </AboutSeries>
       </main>
       <DarkSlabFooter />
