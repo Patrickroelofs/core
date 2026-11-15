@@ -13,9 +13,10 @@ export function OnFilm() {
             work.
           </Typography>
           <Typography size="lg">
-            The first series is Texel: fifteen photographs from the Dutch Wadden island, taken in November 2024 on a
-            Praktica TL2, a 35mm film camera. It has dunes, seals, gulls and a red lighthouse. Open a series to see
-            every frame, view a photograph full screen and download the original.
+            The newest series is Grossglockner: sixteen photographs from around the highest mountain in Austria, taken
+            in July 2025, with the snow-covered summit, the Pasterze glacier and a cow in a spruce forest. The first is
+            Texel: fifteen photographs from the Dutch Wadden island, taken in November 2024. Both were shot on a
+            Praktica TL2, a 35mm film camera. Open a series to see every frame and view a photograph full screen.
           </Typography>
         </div>
       </LabeledSection.Content>

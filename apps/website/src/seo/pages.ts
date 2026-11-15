@@ -44,6 +44,12 @@ export const pages = {
     kicker: 'Photo series',
     meta: 'Texel · November 2024',
   },
+  '/photography/grossglockner': {
+    title: 'Grossglockner',
+    description: 'Photographs from the Grossglockner, Austria, taken in July 2025 on a Praktica TL2.',
+    kicker: 'Photo series',
+    meta: 'Grossglockner · July 2025',
+  },
   '/contact': {
     title: 'Contact',
     description: 'How to reach Patrick Roelofs: by email, on LinkedIn or on GitHub, and what to write about.',
