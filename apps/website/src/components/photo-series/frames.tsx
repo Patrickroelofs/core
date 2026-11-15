@@ -4,41 +4,29 @@ import { Image } from '@/components/ui/image/image'
 import { Label } from '@/components/ui/label/label'
 import { Rail } from './rail'
 
-const frames = [
-  { file: '000008500019', alt: 'Sunlit grassy dunes', col: 'md:col-span-full' },
-  { file: '000008490022', alt: 'Waves rolling onto a beach beneath a grey sky', col: 'md:col-[1/span_5]' },
-  { file: '000008500007', alt: 'Whale sculpture against a clear sky', col: 'md:col-[7/span_6]' },
-  { file: '000008500013', alt: 'A gull perched on a whale sculpture', col: 'md:col-[1/span_6]' },
-  {
-    file: '000008500014',
-    alt: 'A gull on the tip of a whale sculpture',
-    portrait: true,
-    col: 'md:col-[8/span_4]',
-  },
-  { file: '000008500016', alt: 'A seal looking out from the water', col: 'md:col-[3/span_8]' },
-  { file: '000008500023', alt: 'Birds flying above a grassy dune', col: 'md:col-[1/span_5]' },
-  { file: '000008500024', alt: 'A flock of birds above the dunes', col: 'md:col-[7/span_6]' },
-  { file: '000008510003', alt: 'Dunes and scrub beneath a cloudy sky', col: 'md:col-span-full' },
-  { file: '000008510004', alt: 'Coastal grassland stretching towards the sea', col: 'md:col-[2/span_5]' },
-  { file: '000008510006', alt: 'A weathered wooden post among dune grasses', col: 'md:col-[8/span_5]' },
-  { file: '000008510009', alt: 'A red lighthouse rising above tall grass', col: 'md:col-[3/span_8]' },
-  { file: '000008510013', alt: 'A red lighthouse beyond the dunes', col: 'md:col-[1/span_5]' },
-  { file: '000008510018', alt: 'Whale vertebrae displayed outdoors', col: 'md:col-[7/span_6]' },
-  { file: '000008510023', alt: 'A seal swimming in green water', col: 'md:col-[3/span_8]' },
-]
+export type Frame = { file: string; alt: string; portrait?: boolean; col: string }
 
-export function Frames() {
+type FramesProps = {
+  /** Folder under `/photography` that holds the files. */
+  slug: string
+  label: string
+  frames: Frame[]
+  /** Full-size scans live in `originals/`, offered as a download. */
+  originals?: boolean
+}
+
+export function Frames({ slug, label, frames, originals }: FramesProps) {
   return (
     <>
       <Rail tone="plum" space="3xl" />
-      <section aria-label="Photographs of Texel" className="grid gap-x-5 gap-y-fluid-2xl pt-fluid-l md:grid-cols-12">
+      <section aria-label={label} className="grid gap-x-5 gap-y-fluid-2xl pt-fluid-l md:grid-cols-12">
         {frames.map(({ file, alt, portrait, col }, i) => (
           <figure key={file} className={col}>
             <Dialog.Root>
               <Dialog.Trigger className="block w-full cursor-zoom-in rounded-lg focus-ring" aria-label={`View ${alt}`}>
                 <Image
                   ratio={portrait ? 'film-portrait' : 'film-landscape'}
-                  src={`/photography/texel/${file}.jpg`}
+                  src={`/photography/${slug}/${file}.jpg`}
                   alt={alt}
                   priority={i === 0}
                 />
@@ -50,7 +38,7 @@ export function Frames() {
                     <div className="flex size-full items-center justify-center p-12">
                       <img
                         className="block max-h-full max-w-full rounded-lg object-contain"
-                        src={`/photography/texel/${file}.jpg`}
+                        src={`/photography/${slug}/${file}.jpg`}
                         alt={alt}
                         decoding="async"
                       />
@@ -60,13 +48,15 @@ export function Frames() {
                         Frame {String(i + 1).padStart(2, '0')} / {frames.length}
                       </Dialog.Title>
                       <div className="flex flex-wrap gap-2">
-                        <a
-                          className={buttonStyles({ variant: 'primary', size: 'sm' })}
-                          href={`/photography/texel/originals/${file}.jpg`}
-                          download
-                        >
-                          Download original
-                        </a>
+                        {originals && (
+                          <a
+                            className={buttonStyles({ variant: 'primary', size: 'sm' })}
+                            href={`/photography/${slug}/originals/${file}.jpg`}
+                            download
+                          >
+                            Download original
+                          </a>
+                        )}
                         <Dialog.Close className={buttonStyles({ variant: 'secondary', size: 'sm' })}>
                           Close
                         </Dialog.Close>
