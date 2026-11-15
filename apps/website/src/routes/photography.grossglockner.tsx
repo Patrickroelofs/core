@@ -18,12 +18,12 @@ function Grossglockner() {
             </Title>
             <Typography weight="medium">
               Grossglockner, Austria.
-              <br /> Summer 2025 - 35mm film
+              <br /> July 2025 - 35mm film
             </Typography>
           </div>
         </header>
         <Frames slug="grossglockner" label="Photographs of the Grossglockner" frames={grossglocknerFrames} />
-        <AboutSeries lead="Thirteen photographs from around the Grossglockner, the highest mountain in Austria, taken in the summer of 2025.">
+        <AboutSeries lead="Sixteen photographs from around the Grossglockner, the highest mountain in Austria, taken in July 2025.">
           The series starts at the ice and works its way down: the snow-covered summit with clouds drifting past, the
           Pasterze glacier running into a pale meltwater lake, hikers crossing a rocky saddle, a turquoise mountain lake
           and waterfalls spilling over rock. Lower down there are flies on a pink thistle, a brown and white cow among

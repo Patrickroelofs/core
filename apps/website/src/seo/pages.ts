@@ -46,9 +46,9 @@ export const pages = {
   },
   '/photography/grossglockner': {
     title: 'Grossglockner',
-    description: 'Photographs from the Grossglockner, Austria, taken in the summer of 2025 on 35mm film.',
+    description: 'Photographs from the Grossglockner, Austria, taken in July 2025 on 35mm film.',
     kicker: 'Photo series',
-    meta: 'Grossglockner · 2025',
+    meta: 'Grossglockner · July 2025',
   },
   '/contact': {
     title: 'Contact',
