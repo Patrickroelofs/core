@@ -10,7 +10,7 @@ const series = [
     href: '/photography/grossglockner',
     title: 'Grossglockner',
     tag: 'Grossglockner · 2025',
-    description: 'Photographs from the Grossglockner, Austria, taken on 35mm film.',
+    description: 'Photographs from the Grossglockner, Austria, taken on a Praktica TL2.',
     images: ['grossglockner/03', 'grossglockner/04', 'grossglockner/02'],
   },
   {

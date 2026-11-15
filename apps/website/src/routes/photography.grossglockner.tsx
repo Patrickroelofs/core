@@ -18,7 +18,7 @@ function Grossglockner() {
             </Title>
             <Typography weight="medium">
               Grossglockner, Austria.
-              <br /> July 2025 - 35mm film
+              <br /> July 2025 - Praktica TL2
             </Typography>
           </div>
         </header>
@@ -28,8 +28,8 @@ function Grossglockner() {
           Pasterze glacier running into a pale meltwater lake, hikers crossing a rocky saddle, a turquoise mountain lake
           and waterfalls spilling over rock. Lower down there are flies on a pink thistle, a brown and white cow among
           blueberry bushes in a spruce forest, villages in a hazy valley, gondolas passing a grey limestone ridge and a
-          paraglider drifting above the spruce trees. Everything was shot on 35mm film. Select a photograph to view it
-          full screen or to download the original.
+          paraglider drifting above the spruce trees. Everything was shot on film with a Praktica TL2, a 35mm camera.
+          Select a photograph to view it full screen or to download the original.
         </AboutSeries>
       </main>
       <DarkSlabFooter />

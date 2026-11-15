@@ -46,7 +46,7 @@ export const pages = {
   },
   '/photography/grossglockner': {
     title: 'Grossglockner',
-    description: 'Photographs from the Grossglockner, Austria, taken in July 2025 on 35mm film.',
+    description: 'Photographs from the Grossglockner, Austria, taken in July 2025 on a Praktica TL2.',
     kicker: 'Photo series',
     meta: 'Grossglockner · July 2025',
   },
