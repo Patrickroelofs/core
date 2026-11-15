@@ -23,7 +23,7 @@ export const texelFrames: Frame[] = [
   { file: '000008510023', alt: 'A seal swimming in green water', col: 'md:col-[3/span_8]' },
 ]
 
-export const grossglocknerFrames: Frame[] = [
+export const austriaFrames: Frame[] = [
   { file: '03', alt: 'The snow-covered Grossglockner summit with clouds drifting past', col: 'md:col-span-full' },
   { file: '04', alt: 'The Pasterze glacier running down to a pale meltwater lake', col: 'md:col-[1/span_6]' },
   { file: '05', alt: 'Hikers on a rocky saddle beneath a deep blue sky', col: 'md:col-[8/span_5]' },

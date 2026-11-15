@@ -13,10 +13,10 @@ export function OnFilm() {
             work.
           </Typography>
           <Typography size="lg">
-            The newest series is Grossglockner: sixteen photographs from around the highest mountain in Austria, taken
-            in July 2025, with the snow-covered summit, the Pasterze glacier and a cow in a spruce forest. The first is
-            Texel: fifteen photographs from the Dutch Wadden island, taken in November 2024. Both were shot on a
-            Praktica TL2, a 35mm film camera. Open a series to see every frame and view a photograph full screen.
+            The newest series is Austria: sixteen photographs taken in July 2025 around the Grossglockner and Leogang,
+            with a snow-covered summit, the Pasterze glacier and cows in a spruce forest. The first is Texel: fifteen
+            photographs from the Dutch Wadden island, taken in November 2024. Both were shot on a Praktica TL2, a 35mm
+            film camera. Open a series to see every frame and view a photograph full screen.
           </Typography>
         </div>
       </LabeledSection.Content>

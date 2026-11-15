@@ -44,11 +44,11 @@ export const pages = {
     kicker: 'Photo series',
     meta: 'Texel · November 2024',
   },
-  '/photography/grossglockner': {
-    title: 'Grossglockner',
-    description: 'Photographs from the Grossglockner, Austria, taken in July 2025 on a Praktica TL2.',
+  '/photography/austria': {
+    title: 'Austria',
+    description: 'Photographs from Austria, taken in July 2025 around the Grossglockner and Leogang on a Praktica TL2.',
     kicker: 'Photo series',
-    meta: 'Grossglockner · July 2025',
+    meta: 'Austria · July 2025',
   },
   '/contact': {
     title: 'Contact',

@@ -7,11 +7,11 @@ import { Rail } from '../photo-series/rail'
 // newest first; `images` are the large tile and the two small ones
 const series = [
   {
-    href: '/photography/grossglockner',
-    title: 'Grossglockner',
-    tag: 'Grossglockner · 2025',
-    description: 'Photographs from the Grossglockner, Austria, taken on a Praktica TL2.',
-    images: ['grossglockner/03', 'grossglockner/04', 'grossglockner/02'],
+    href: '/photography/austria',
+    title: 'Austria',
+    tag: 'Austria · 2025',
+    description: 'Photographs from the Grossglockner and Leogang, Austria, taken on a Praktica TL2.',
+    images: ['austria/03', 'austria/04', 'austria/02'],
   },
   {
     href: '/photography/texel',
