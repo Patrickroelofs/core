@@ -31,7 +31,10 @@ export const grossglocknerFrames: Frame[] = [
   { file: '09', alt: 'Waterfalls spilling over rock ledges on a grassy slope', col: 'md:col-[1/span_5]' },
   { file: '07', alt: 'Two flies on a pink thistle beside a mountain stream', col: 'md:col-[7/span_6]' },
   { file: '06', alt: 'Green alpine valleys below peaks with patches of snow', col: 'md:col-span-full' },
-  { file: '02', alt: 'A brown and white cow among blueberry bushes in a spruce forest', col: 'md:col-[2/span_5]' },
-  { file: '10', alt: 'Villages in a hazy valley below low clouds and a dark ridge', col: 'md:col-[8/span_5]' },
-  { file: '01', alt: 'A grey limestone ridge above spruce trees, with gondolas passing', col: 'md:col-[3/span_8]' },
+  { file: '02', alt: 'A brown and white cow among blueberry bushes in a spruce forest', col: 'md:col-[1/span_5]' },
+  { file: '10', alt: 'Villages in a hazy valley below low clouds and a dark ridge', col: 'md:col-[7/span_6]' },
+  { file: '11', alt: 'A valley of villages and meadows seen over a forested slope', col: 'md:col-[3/span_8]' },
+  { file: '01', alt: 'A grey limestone ridge above spruce trees, with gondolas passing', col: 'md:col-[1/span_6]' },
+  { file: '12', alt: 'A paraglider above a row of spruce trees', col: 'md:col-[8/span_5]' },
+  { file: '13', alt: 'A paraglider over forested hills beneath a pale sky', col: 'md:col-[3/span_8]' },
 ]
